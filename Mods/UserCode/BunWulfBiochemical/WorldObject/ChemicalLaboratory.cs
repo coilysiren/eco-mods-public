@@ -52,6 +52,20 @@ namespace Eco.Mods.TechTree
         public override LocString DisplayName => Localizer.DoStr("Chemical Laboratory");
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
 
+        static ChemicalLaboratoryObject()
+        {
+            List<BlockOccupancy> BlockOccupancyList =
+                new()
+                {
+                    new(Vector3i.Up),
+                    new(new Vector3i(0, 1, -1)),
+                    new(Vector3i.Zero),
+                    new(Vector3i.Back),
+                };
+
+            AddOccupancy<ChemicalLaboratoryObject>(BlockOccupancyList);
+        }
+
         protected override void Initialize()
         {
             GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Crafting"));
