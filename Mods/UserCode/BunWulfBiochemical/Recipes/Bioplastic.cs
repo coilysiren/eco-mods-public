@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Plant Based Bioplastic"),
                 recipeType: typeof(BioplasticRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
         }
     }
 }

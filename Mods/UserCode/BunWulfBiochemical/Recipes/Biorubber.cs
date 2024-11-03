@@ -62,7 +62,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Tree Rubber"),
                 recipeType: typeof(BiorubberRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Vegetable Ethanol"),
                 recipeType: typeof(VegetableEthanolRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
         }
     }
 }

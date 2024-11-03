@@ -57,7 +57,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Plastic Container Biofuel, 50% Ethanol"),
                 recipeType: typeof(PlasticBiofuel)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
         }
     }
 }
