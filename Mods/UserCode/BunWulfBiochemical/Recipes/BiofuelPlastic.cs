@@ -1,5 +1,8 @@
 #pragma warning disable IDE0005
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 #pragma warning restore IDE0005
 
 using Eco.Gameplay.Components;

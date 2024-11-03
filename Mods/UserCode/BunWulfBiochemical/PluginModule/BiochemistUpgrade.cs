@@ -1,25 +1,18 @@
+#pragma warning disable IDE0005
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Eco.Core.Controller;
+using System.Linq;
+#pragma warning restore IDE0005
+
 using Eco.Core.Items;
-using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Components;
-using Eco.Gameplay.DynamicValues;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Items.Recipes;
 using Eco.Gameplay.Modules;
-using Eco.Gameplay.Objects;
-using Eco.Gameplay.Pipes;
-using Eco.Gameplay.Players;
 using Eco.Gameplay.Skills;
-using Eco.Gameplay.Systems;
-using Eco.Gameplay.Systems.TextLinks;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
-using Eco.Shared.Utils;
-using Eco.World;
-using Eco.World.Blocks;
 
 namespace Eco.Mods.TechTree
 {
@@ -29,7 +22,7 @@ namespace Eco.Mods.TechTree
     {
         public BiochemistUpgradeRecipe()
         {
-            var recipe = new Recipe();
+            Recipe recipe = new();
             recipe.Init(
                 name: "BiochemistUpgrade",
                 displayName: Localizer.DoStr("Biochemist Upgrade"),
@@ -39,17 +32,17 @@ namespace Eco.Mods.TechTree
                 },
                 items: new List<CraftingElement> { new CraftingElement<BiochemistUpgradeItem>() }
             );
-            this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 4; // Defines how much experience is gained when crafted.
-            this.LaborInCalories = CreateLaborInCaloriesValue(9000, typeof(BiochemistSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
+            Recipes = new List<Recipe> { recipe };
+            ExperienceOnCraft = 4; // Defines how much experience is gained when crafted.
+            LaborInCalories = CreateLaborInCaloriesValue(9000, typeof(BiochemistSkill));
+            CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(BiochemistUpgradeRecipe),
                 start: 18,
                 skillType: typeof(BiochemistSkill),
                 typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)
             );
-            this.Initialize(
+            Initialize(
                 displayText: Localizer.DoStr("Biochemist Upgrade"),
                 recipeType: typeof(BiochemistUpgradeRecipe)
             );

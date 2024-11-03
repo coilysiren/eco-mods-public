@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 #pragma warning restore IDE0005
 
 using Eco.Core.Controller;
@@ -21,7 +22,7 @@ using Eco.Shared.Items;
 using Eco.Shared.Localization;
 using Eco.Shared.Math;
 using Eco.Shared.Serialization;
-using static Eco.Gameplay.Components.PartsComponent;
+using static Eco.Gameplay.Components.PartsComponent; // would like to remove the static import, but not sure how to do it
 
 namespace Eco.Mods.TechTree
 {
@@ -47,7 +48,6 @@ namespace Eco.Mods.TechTree
     [Tag("Usable")]
     [Ecopedia("Work Stations", "Researching", subPageName: "Chemical Laboratory Item")]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
-    [RepairRequiresSkill(typeof(SelfImprovementSkill), 5)]
     public partial class ChemicalLaboratoryObject : WorldObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(ChemicalLaboratoryItem);
@@ -57,15 +57,6 @@ namespace Eco.Mods.TechTree
         protected override void Initialize()
         {
             GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Crafting"));
-            GetComponent<LiquidConverterComponent>()
-                .Setup(
-                    typeof(WaterItem),
-                    typeof(SewageItem),
-                    BlockOccupancyType.WaterInputPort,
-                    BlockOccupancyType.SewageOutputPort,
-                    0.3f,
-                    0.9f
-                );
             {
                 GetComponent<PartsComponent>()
                     .Config(
