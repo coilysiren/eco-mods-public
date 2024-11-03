@@ -54,21 +54,17 @@ namespace Eco.Mods.TechTree
 
         static ChemicalLaboratoryObject()
         {
-            List<BlockOccupancy> BlockOccupancyList =
-                new()
-                {
-                    new(Vector3i.Up),
-                    new(new Vector3i(0, 1, -1)),
-                    new(Vector3i.Zero),
-                    new(Vector3i.Back),
-                };
-
-            AddOccupancy<ChemicalLaboratoryObject>(BlockOccupancyList);
+            AddOccupancy<ChemicalLaboratoryObject>(new List<BlockOccupancy>(){
+                new (new Vector3i(-2, 0, 0)),
+                new (new Vector3i(-2, 1, 0)),
+                new (new Vector3i(-1, 0, 0)),
+                new (new Vector3i(-1, 1, 0)),
+                new (new Vector3i(0, 0, 0)),
+                new (new Vector3i(0, 1, 0)),
+            });
         }
 
         protected override void Initialize()
-        {
-            GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Crafting"));
             {
                 GetComponent<PartsComponent>()
                     .Config(
