@@ -54,27 +54,29 @@ namespace Eco.Mods.TechTree
 
         static ChemicalLaboratoryObject()
         {
-            AddOccupancy<ChemicalLaboratoryObject>(new List<BlockOccupancy>(){
-                new (new Vector3i(0, 0, 0)),
-                new (new Vector3i(1, 0, 0)),
-                new (new Vector3i(2, 0, 0)),
-                new (new Vector3i(0, 1, 0)),
-                new (new Vector3i(1, 1, 0)),
-                new (new Vector3i(2, 1, 0)),
-            });
+            AddOccupancy<ChemicalLaboratoryObject>(
+                new List<BlockOccupancy>()
+                {
+                    new(new Vector3i(0, 0, 0)),
+                    new(new Vector3i(1, 0, 0)),
+                    new(new Vector3i(2, 0, 0)),
+                    new(new Vector3i(0, 1, 0)),
+                    new(new Vector3i(1, 1, 0)),
+                    new(new Vector3i(2, 1, 0)),
+                }
+            );
         }
 
         protected override void Initialize()
-            {
-                GetComponent<PartsComponent>()
-                    .Config(
-                        () => LocString.Empty,
-                        new PartInfo[]
-                        {
-                            new() { TypeName = nameof(PaperItem), Quantity = 10 },
-                        }
-                    );
-            }
+        {
+            GetComponent<PartsComponent>()
+                .Config(
+                    () => LocString.Empty,
+                    new PartInfo[]
+                    {
+                        new() { TypeName = nameof(PaperItem), Quantity = 10 },
+                    }
+                );
         }
     }
 
