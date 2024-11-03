@@ -12,7 +12,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(BiochemistSkill), 0)]
+    [RequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class VegetableEthanolRecipe : RecipeFamily
     {
         public VegetableEthanolRecipe()

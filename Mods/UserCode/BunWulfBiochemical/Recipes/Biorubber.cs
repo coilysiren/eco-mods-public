@@ -12,7 +12,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(BiochemistSkill), 1)]
+    [RequiresSkill(typeof(BiochemistSkill), 2)]
     public partial class BiorubberRecipe : RecipeFamily
     {
         public BiorubberRecipe()
