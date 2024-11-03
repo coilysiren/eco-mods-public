@@ -1,44 +1,26 @@
+#pragma warning disable IDE0005
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+#pragma warning restore IDE0005
+
 using Eco.Core.Controller;
 using Eco.Core.Items;
-using Eco.Core.Utils;
-using Eco.Gameplay.Blocks;
-using Eco.Gameplay.Civics.Objects;
 using Eco.Gameplay.Components;
 using Eco.Gameplay.Components.Auth;
-using Eco.Gameplay.Components.Storage;
-using Eco.Gameplay.DynamicValues;
-using Eco.Gameplay.Economy;
-using Eco.Gameplay.Housing;
-using Eco.Gameplay.Housing.PropertyValues;
-using Eco.Gameplay.Interactions;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Items.Recipes;
-using Eco.Gameplay.Minimap;
 using Eco.Gameplay.Modules;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Occupancy;
-using Eco.Gameplay.Pipes;
-using Eco.Gameplay.Pipes.Gases;
 using Eco.Gameplay.Pipes.LiquidComponents;
-using Eco.Gameplay.Players;
 using Eco.Gameplay.Property;
-using Eco.Gameplay.Settlements;
 using Eco.Gameplay.Skills;
-using Eco.Gameplay.Systems;
 using Eco.Gameplay.Systems.NewTooltip;
-using Eco.Gameplay.Systems.TextLinks;
-using Eco.Shared;
 using Eco.Shared.Items;
 using Eco.Shared.Localization;
 using Eco.Shared.Math;
-using Eco.Shared.Networking;
 using Eco.Shared.Serialization;
-using Eco.Shared.Utils;
-using Eco.Shared.View;
-using Eco.World.Blocks;
 using static Eco.Gameplay.Components.PartsComponent;
 
 namespace Eco.Mods.TechTree
@@ -59,8 +41,8 @@ namespace Eco.Mods.TechTree
     [RequireRoomVolume(24)]
     [RequireRoomMaterialTier(
         2.8f,
-        typeof(CuttingEdgeCookingLavishReqTalent),
-        typeof(CuttingEdgeCookingFrugalReqTalent)
+        typeof(BiochemistLavishReqTalent),
+        typeof(BiochemistFrugalReqTalent)
     )]
     [Tag("Usable")]
     [Ecopedia("Work Stations", "Researching", subPageName: "Chemical Laboratory Item")]
@@ -74,9 +56,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            this.ModsPreInitialize();
-            this.GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Crafting"));
-            this.GetComponent<LiquidConverterComponent>()
+            GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Crafting"));
+            GetComponent<LiquidConverterComponent>()
                 .Setup(
                     typeof(WaterItem),
                     typeof(SewageItem),
@@ -85,9 +66,8 @@ namespace Eco.Mods.TechTree
                     0.3f,
                     0.9f
                 );
-            this.ModsPostInitialize();
             {
-                this.GetComponent<PartsComponent>()
+                GetComponent<PartsComponent>()
                     .Config(
                         () => LocString.Empty,
                         new PartInfo[]
@@ -108,7 +88,7 @@ namespace Eco.Mods.TechTree
     [Tag(nameof(SurfaceTags.CanBeOnRug))]
     [AllowPluginModules(
         Tags = new[] { "ModernUpgrade" },
-        ItemTypes = new[] { typeof(CuttingEdgeCookingUpgradeItem) }
+        ItemTypes = new[] { typeof(BiochemistUpgradeItem) }
     )] //noloc
     public partial class ChemicalLaboratoryItem
         : WorldObjectItem<ChemicalLaboratoryObject>,
@@ -117,7 +97,7 @@ namespace Eco.Mods.TechTree
         protected override OccupancyContext GetOccupancyContext =>
             new SideAttachedContext(
                 0 | DirectionAxisFlags.Down,
-                WorldObject.GetOccupancyInfo(this.WorldObjectType)
+                WorldObject.GetOccupancyInfo(WorldObjectType)
             );
 
         [
@@ -125,7 +105,7 @@ namespace Eco.Mods.TechTree
             SyncToView,
             NewTooltipChildren(CacheAs.Instance, flags: TTFlags.AllowNonControllerTypeForChildren)
         ]
-        public object PersistentData { get; set; }
+        public object? PersistentData { get; set; }
     }
 
     [RequiresSkill(typeof(MechanicsSkill), 1)]
@@ -134,31 +114,31 @@ namespace Eco.Mods.TechTree
     {
         public ChemicalLaboratoryRecipe()
         {
-            var recipe = new Recipe();
+            Recipe recipe = new();
             recipe.Init(
                 name: "Chemical Laboratory", //noloc
                 displayName: Localizer.DoStr("Chemical Laboratory"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(
+                    new(
                         typeof(IronBarItem),
                         20,
                         typeof(MechanicsSkill),
                         typeof(MechanicsLavishResourcesTalent)
                     ),
-                    new IngredientElement(
+                    new(
                         typeof(GlassItem),
                         15,
                         typeof(MechanicsSkill),
                         typeof(MechanicsLavishResourcesTalent)
                     ),
-                    new IngredientElement(
+                    new(
                         typeof(PaperItem),
                         20,
                         typeof(MechanicsSkill),
                         typeof(MechanicsLavishResourcesTalent)
                     ),
-                    new IngredientElement(
+                    new(
                         "Lumber",
                         8,
                         typeof(MechanicsSkill),
@@ -167,17 +147,17 @@ namespace Eco.Mods.TechTree
                 },
                 items: new List<CraftingElement> { new CraftingElement<ChemicalLaboratoryItem>() }
             );
-            this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 20; // Defines how much experience is gained when crafted.
-            this.LaborInCalories = CreateLaborInCaloriesValue(120, typeof(MechanicsSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
+            Recipes = new List<Recipe> { recipe };
+            ExperienceOnCraft = 20; // Defines how much experience is gained when crafted.
+            LaborInCalories = CreateLaborInCaloriesValue(120, typeof(MechanicsSkill));
+            CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ChemicalLaboratoryRecipe),
                 start: 15,
                 skillType: typeof(MechanicsSkill),
                 typeof(MechanicsFocusedSpeedTalent),
                 typeof(MechanicsParallelSpeedTalent)
             );
-            this.Initialize(
+            Initialize(
                 displayText: Localizer.DoStr("Chemical Laboratory"),
                 recipeType: typeof(ChemicalLaboratoryRecipe)
             );

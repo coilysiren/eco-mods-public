@@ -1,26 +1,19 @@
+#pragma warning disable IDE0005
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Eco.Core.Controller;
+#pragma warning restore IDE0005
+
 using Eco.Core.Items;
-using Eco.Core.Utils;
-using Eco.Core.Utils.AtomicAction;
-using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Components;
 using Eco.Gameplay.DynamicValues;
 using Eco.Gameplay.Items;
 using Eco.Gameplay.Items.Recipes;
 using Eco.Gameplay.Players;
-using Eco.Gameplay.Property;
 using Eco.Gameplay.Skills;
-using Eco.Gameplay.Systems;
-using Eco.Gameplay.Systems.NewTooltip;
-using Eco.Gameplay.Systems.TextLinks;
 using Eco.Shared.Localization;
 using Eco.Shared.Serialization;
-using Eco.Shared.Services;
-using Eco.Shared.Utils;
 
 namespace Eco.Mods.TechTree
 {
@@ -35,40 +28,34 @@ namespace Eco.Mods.TechTree
     {
         public override void OnLevelUp(User user)
         {
-            user.Skillset.AddExperience(
+            _ = user.Skillset.AddExperience(
                 typeof(SelfImprovementSkill),
                 20,
                 Localizer.DoStr("for leveling up another specialization.")
             );
         }
 
-        public static MultiplicativeStrategy MultiplicativeStrategy = new MultiplicativeStrategy(
-            new float[]
-            {
-                1,
-                1 - 0.2f,
-                1 - 0.25f,
-                1 - 0.3f,
-                1 - 0.35f,
-                1 - 0.4f,
-                1 - 0.45f,
-                1 - 0.5f,
-            }
-        );
+        public static MultiplicativeStrategy MultiplicativeStrategy =
+            new(
+                new float[]
+                {
+                    1,
+                    1 - 0.2f,
+                    1 - 0.25f,
+                    1 - 0.3f,
+                    1 - 0.35f,
+                    1 - 0.4f,
+                    1 - 0.45f,
+                    1 - 0.5f,
+                }
+            );
         public override MultiplicativeStrategy MultiStrategy => MultiplicativeStrategy;
 
-        public static AdditiveStrategy AdditiveStrategy = new AdditiveStrategy(
-            new float[] { 0, 0.5f, 0.55f, 0.6f, 0.65f, 0.7f, 0.75f, 0.8f }
-        );
+        public static AdditiveStrategy AdditiveStrategy =
+            new(new float[] { 0, 0.5f, 0.55f, 0.6f, 0.65f, 0.7f, 0.75f, 0.8f });
         public override AdditiveStrategy AddStrategy => AdditiveStrategy;
-        public override int MaxLevel
-        {
-            get { return 7; }
-        }
-        public override int Tier
-        {
-            get { return 4; }
-        }
+        public override int MaxLevel => 7;
+        public override int Tier => 4;
     }
 
     [Serialized]
@@ -89,50 +76,32 @@ namespace Eco.Mods.TechTree
     {
         public BiochemistSkillBookRecipe()
         {
-            var recipe = new Recipe();
+            Recipe recipe = new();
             recipe.Init(
                 name: "Biochemist",
                 displayName: Localizer.DoStr("Biochemist Skill Book"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(
-                        typeof(CulinaryResearchPaperAdvancedItem),
-                        10,
-                        typeof(FarmingSkill)
-                    ),
-                    new IngredientElement(
-                        typeof(AgricultureResearchPaperAdvancedItem),
-                        10,
-                        typeof(FarmingSkill)
-                    ),
-                    new IngredientElement(
-                        typeof(EngineeringResearchPaperModernItem),
-                        10,
-                        typeof(FarmingSkill)
-                    ),
-                    new IngredientElement(
-                        typeof(AgricultureResearchPaperModernItem),
-                        10,
-                        typeof(FarmingSkill)
-                    ),
-                    new IngredientElement("Basic Research", 30, typeof(FarmingSkill)),
-                    new IngredientElement("Advanced Research", 20, typeof(FarmingSkill)),
+                    new(typeof(CulinaryResearchPaperAdvancedItem), 10, typeof(FarmingSkill)),
+                    new(typeof(AgricultureResearchPaperAdvancedItem), 10, typeof(FarmingSkill)),
+                    new(typeof(EngineeringResearchPaperModernItem), 10, typeof(FarmingSkill)),
+                    new(typeof(AgricultureResearchPaperModernItem), 10, typeof(FarmingSkill)),
+                    new("Basic Research", 30, typeof(FarmingSkill)),
+                    new("Advanced Research", 20, typeof(FarmingSkill)),
                 },
                 items: new List<CraftingElement> { new CraftingElement<BiochemistSkillBook>() }
             );
-            this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(600, typeof(FarmingSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
+            Recipes = new List<Recipe> { recipe };
+            LaborInCalories = CreateLaborInCaloriesValue(600, typeof(FarmingSkill));
+            CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(BiochemistSkillBookRecipe),
                 start: 15,
                 skillType: typeof(FarmingSkill)
             );
-            this.ModsPreInitialize();
-            this.Initialize(
+            Initialize(
                 displayText: Localizer.DoStr("Biochemist Skill Book"),
                 recipeType: typeof(BiochemistSkillBookRecipe)
             );
-            this.ModsPostInitialize();
             CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
         }
     }

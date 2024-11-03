@@ -9,7 +9,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 1)]
+    [RequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class BiorubberRecipe : RecipeFamily
     {
         public BiorubberRecipe()
@@ -24,15 +24,15 @@ namespace Eco.Mods.TechTree
                     new(
                         typeof(CeibaLogItem),
                         40,
-                        typeof(CuttingEdgeCookingSkill),
-                        typeof(CuttingEdgeCookingLavishResourcesTalent)
+                        typeof(BiochemistSkill),
+                        typeof(BiochemistLavishResourcesTalent)
                     ),
                     // priced at 0.15 x 40 = 6
                     new(
                         "Fat",
                         40,
-                        typeof(CuttingEdgeCookingSkill),
-                        typeof(CuttingEdgeCookingLavishResourcesTalent)
+                        typeof(BiochemistSkill),
+                        typeof(BiochemistLavishResourcesTalent)
                     ),
                     // ingredient cost = 14
                 },
@@ -46,14 +46,14 @@ namespace Eco.Mods.TechTree
             // SyntheticRubberRecipe.ExperienceOnCraft
             ExperienceOnCraft = 1;
             // SyntheticRubberRecipe.LaborInCalories / 4
-            LaborInCalories = CreateLaborInCaloriesValue(45, typeof(CuttingEdgeCookingSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(45, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(BiorubberRecipe),
                 // SyntheticRubberRecipe.CraftMinutes * 2
                 start: 3,
-                skillType: typeof(CuttingEdgeCookingSkill),
-                typeof(CuttingEdgeCookingFocusedSpeedTalent),
-                typeof(CuttingEdgeCookingParallelSpeedTalent)
+                skillType: typeof(BiochemistSkill),
+                typeof(BiochemistFocusedSpeedTalent),
+                typeof(BiochemistParallelSpeedTalent)
             );
             Initialize(
                 displayText: Localizer.DoStr("Tree Rubber"),

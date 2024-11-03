@@ -9,39 +9,39 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 0)]
-    public partial class CornEthanolRecipe : RecipeFamily
+    [RequiresSkill(typeof(BiochemistSkill), 0)]
+    public partial class VegetableEthanolRecipe : RecipeFamily
     {
-        public CornEthanolRecipe()
+        public VegetableEthanolRecipe()
         {
-            var recipe = new Recipe();
+            Recipe recipe = new();
             recipe.Init(
-                name: "CornEthanol",
-                displayName: Localizer.DoStr("Corn Ethanol"),
+                name: "VegetableEthanol",
+                displayName: Localizer.DoStr("Vegetable Ethanol"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(
+                    new(
                         "Vegetable",
                         10,
-                        typeof(CuttingEdgeCookingSkill),
-                        typeof(CuttingEdgeCookingLavishResourcesTalent)
+                        typeof(BiochemistSkill),
+                        typeof(BiochemistLavishResourcesTalent)
                     ),
                 },
                 items: new List<CraftingElement> { new CraftingElement<EthanolItem>(1) }
             );
-            this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 0.5f; // Defines how much experience is gained when crafted.
-            this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(CuttingEdgeCookingSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(CornEthanolRecipe),
+            Recipes = new List<Recipe> { recipe };
+            ExperienceOnCraft = 0.5f; // Defines how much experience is gained when crafted.
+            LaborInCalories = CreateLaborInCaloriesValue(60, typeof(BiochemistSkill));
+            CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(VegetableEthanolRecipe),
                 start: 1,
-                skillType: typeof(CuttingEdgeCookingSkill),
-                typeof(CuttingEdgeCookingFocusedSpeedTalent),
-                typeof(CuttingEdgeCookingParallelSpeedTalent)
+                skillType: typeof(BiochemistSkill),
+                typeof(BiochemistFocusedSpeedTalent),
+                typeof(BiochemistParallelSpeedTalent)
             );
-            this.Initialize(
-                displayText: Localizer.DoStr("Corn Ethanol"),
-                recipeType: typeof(CornEthanolRecipe)
+            Initialize(
+                displayText: Localizer.DoStr("Vegetable Ethanol"),
+                recipeType: typeof(VegetableEthanolRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
         }

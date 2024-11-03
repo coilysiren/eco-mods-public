@@ -9,7 +9,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(CuttingEdgeCookingSkill), 1)]
+    [RequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class CarboEpoxyRecipe : RecipeFamily
     {
         public CarboEpoxyRecipe()
@@ -24,15 +24,15 @@ namespace Eco.Mods.TechTree
                     new(
                         "Coal",
                         1,
-                        typeof(CuttingEdgeCookingSkill),
-                        typeof(CuttingEdgeCookingLavishResourcesTalent)
+                        typeof(BiochemistSkill),
+                        typeof(BiochemistLavishResourcesTalent)
                     ),
                     // priced at 0.15 x 10 = 1.5
                     new(
                         "Fat",
                         10,
-                        typeof(CuttingEdgeCookingSkill),
-                        typeof(CuttingEdgeCookingLavishResourcesTalent)
+                        typeof(BiochemistSkill),
+                        typeof(BiochemistLavishResourcesTalent)
                     ),
                     // ingredient cost = 2.5
                 },
@@ -46,14 +46,14 @@ namespace Eco.Mods.TechTree
             // EpoxyRecipe.ExperienceOnCraft
             ExperienceOnCraft = 1;
             // EpoxyRecipe.LaborInCalories / 4
-            LaborInCalories = CreateLaborInCaloriesValue(45, typeof(CuttingEdgeCookingSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(45, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CarboEpoxyRecipe),
                 // EpoxyRecipe.CraftMinutes * 2
                 start: 3,
-                skillType: typeof(CuttingEdgeCookingSkill),
-                typeof(CuttingEdgeCookingFocusedSpeedTalent),
-                typeof(CuttingEdgeCookingParallelSpeedTalent)
+                skillType: typeof(BiochemistSkill),
+                typeof(BiochemistFocusedSpeedTalent),
+                typeof(BiochemistParallelSpeedTalent)
             );
             Initialize(
                 displayText: Localizer.DoStr("Coal Fat Epoxy"),
