@@ -55,12 +55,12 @@ namespace Eco.Mods.TechTree
         static ChemicalLaboratoryObject()
         {
             AddOccupancy<ChemicalLaboratoryObject>(new List<BlockOccupancy>(){
-                new (new Vector3i(-2, 0, 0)),
-                new (new Vector3i(-2, 1, 0)),
-                new (new Vector3i(-1, 0, 0)),
-                new (new Vector3i(-1, 1, 0)),
                 new (new Vector3i(0, 0, 0)),
+                new (new Vector3i(1, 0, 0)),
+                new (new Vector3i(2, 0, 0)),
                 new (new Vector3i(0, 1, 0)),
+                new (new Vector3i(1, 1, 0)),
+                new (new Vector3i(2, 1, 0)),
             });
         }
 
