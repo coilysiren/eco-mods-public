@@ -14,7 +14,6 @@ using Eco.Gameplay.Items.Recipes;
 using Eco.Gameplay.Modules;
 using Eco.Gameplay.Objects;
 using Eco.Gameplay.Occupancy;
-using Eco.Gameplay.Pipes.LiquidComponents;
 using Eco.Gameplay.Property;
 using Eco.Gameplay.Skills;
 using Eco.Gameplay.Systems.NewTooltip;
@@ -34,7 +33,6 @@ namespace Eco.Mods.TechTree
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(PartsComponent))]
     [RequireComponent(typeof(OccupancyRequirementComponent))]
-    [RequireComponent(typeof(LiquidConverterComponent))]
     [RequireComponent(typeof(PluginModulesComponent))]
     [RequireComponent(typeof(ForSaleComponent))]
     [RequireComponent(typeof(RoomRequirementsComponent))]
