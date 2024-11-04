@@ -46,7 +46,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Biochemist Upgrade"),
                 recipeType: typeof(BiochemistUpgradeRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryItem), recipe: this);
         }
     }
 
