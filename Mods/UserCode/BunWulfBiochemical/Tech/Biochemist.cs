@@ -19,7 +19,9 @@ namespace Eco.Mods.TechTree
 {
     [Serialized]
     [LocDisplayName("Biochemist")]
-    [LocDescription("Biochemist TODO.")]
+    [LocDescription(
+        "A profession who's role is to go toe to toe with Oil Drilling. The Biochemist gets recipes to make Biodiesel, Plastic, Rubber, Epoxy, and Nylon. The recipes have similar costs to Oil Drilling, but the Biochemist is more sustainable and has a lower impact on the environment.."
+    )]
     [Ecopedia("Professions", "Scientist", createAsSubPage: true)]
     [RequiresSkill(typeof(ScientistSkill), 0), Tag("Scientist Specialty"), Tier(4)]
     [Tag("Specialty")]
