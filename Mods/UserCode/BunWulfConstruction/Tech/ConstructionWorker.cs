@@ -18,7 +18,7 @@ using Eco.Shared.Serialization;
 namespace Eco.Mods.TechTree
 {
     [Serialized]
-    [LocDisplayName("ConstructionWorker")]
+    [LocDisplayName("Construction Worker")]
     [LocDescription("TODO")]
     [Ecopedia("Professions", "Survivalist", createAsSubPage: true)]
     [RequiresSkill(typeof(SurvivalistSkill), 0), Tag("Survivalist Specialty"), Tier(3)]
