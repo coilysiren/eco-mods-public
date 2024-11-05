@@ -14,15 +14,15 @@ using Eco.Shared.Localization;
 namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(ConstructionWorkerSkill), 4)]
-    [Ecopedia("Blocks", "Pipes", subPageName: "Copper Pipe Item")]
-    public partial class CopperPipeRecipe : RecipeFamily
+    [Ecopedia("Blocks", "Pipes", subPageName: "Builder Grade Copper Pipe Item")]
+    public partial class ConstructionCopperPipeRecipe : RecipeFamily
     {
-        public CopperPipeRecipe()
+        public ConstructionCopperPipeRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
                 name: "CopperPipe",
-                displayName: Localizer.DoStr("Copper Pipe"),
+                displayName: Localizer.DoStr("Builder Grade Copper Pipe"),
                 ingredients: new List<IngredientElement>
                 {
                     new(
@@ -39,7 +39,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(15, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(CopperPipeRecipe),
+                beneficiary: typeof(ConstructionCopperPipeRecipe),
                 start: 0.8f,
                 skillType: typeof(ConstructionWorkerSkill),
                 typeof(ConstructionWorkerFocusedSpeedTalent),
@@ -48,8 +48,8 @@ namespace Eco.Mods.TechTree
 
             ModsPreInitialize();
             Initialize(
-                displayText: Localizer.DoStr("Copper Pipe"),
-                recipeType: typeof(CopperPipeRecipe)
+                displayText: Localizer.DoStr("Builder Grade Copper Pipe"),
+                recipeType: typeof(ConstructionCopperPipeRecipe)
             );
             ModsPostInitialize();
 

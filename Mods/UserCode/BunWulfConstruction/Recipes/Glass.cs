@@ -15,14 +15,14 @@ namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(ConstructionWorkerSkill), 3)]
     [Ecopedia("Blocks", "Building Materials", subPageName: "Glass Item")]
-    public partial class GlassRecipe : RecipeFamily
+    public partial class ConstructionGlassRecipe : RecipeFamily
     {
-        public GlassRecipe()
+        public ConstructionGlassRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
                 name: "Glass",
-                displayName: Localizer.DoStr("Glass"),
+                displayName: Localizer.DoStr("Builder Grade Glass"),
                 ingredients: new List<IngredientElement>
                 {
                     new(
@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(30, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(GlassRecipe),
+                beneficiary: typeof(ConstructionGlassRecipe),
                 start: 1.2f,
                 skillType: typeof(ConstructionWorkerSkill),
                 typeof(ConstructionWorkerFocusedSpeedTalent),
@@ -48,7 +48,10 @@ namespace Eco.Mods.TechTree
             );
 
             ModsPreInitialize();
-            Initialize(displayText: Localizer.DoStr("Glass"), recipeType: typeof(GlassRecipe));
+            Initialize(
+                displayText: Localizer.DoStr("Builder Grade Glass"),
+                recipeType: typeof(ConstructionGlassRecipe)
+            );
             ModsPostInitialize();
 
             CraftingComponent.AddRecipe(tableType: typeof(GlassworksObject), recipe: this);

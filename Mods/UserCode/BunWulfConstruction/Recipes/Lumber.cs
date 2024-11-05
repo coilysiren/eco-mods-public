@@ -15,14 +15,14 @@ namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(ConstructionWorkerSkill), 3)]
     [Ecopedia("Blocks", "Building Materials", subPageName: "Lumber Item")]
-    public partial class LumberRecipe : RecipeFamily
+    public partial class ConstructionLumberRecipe : RecipeFamily
     {
-        public LumberRecipe()
+        public ConstructionLumberRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
                 name: "Lumber",
-                displayName: Localizer.DoStr("Lumber"),
+                displayName: Localizer.DoStr("Builder Grade Lumber"),
                 ingredients: new List<IngredientElement>
                 {
                     new(
@@ -51,7 +51,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(60, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(LumberRecipe),
+                beneficiary: typeof(ConstructionLumberRecipe),
                 start: 0.32f,
                 skillType: typeof(ConstructionWorkerSkill),
                 typeof(ConstructionWorkerFocusedSpeedTalent),
@@ -59,7 +59,10 @@ namespace Eco.Mods.TechTree
             );
 
             ModsPreInitialize();
-            Initialize(displayText: Localizer.DoStr("Lumber"), recipeType: typeof(LumberRecipe));
+            Initialize(
+                displayText: Localizer.DoStr("Builder Grade Lumber"),
+                recipeType: typeof(ConstructionLumberRecipe)
+            );
             ModsPostInitialize();
 
             CraftingComponent.AddRecipe(tableType: typeof(SawmillObject), recipe: this);

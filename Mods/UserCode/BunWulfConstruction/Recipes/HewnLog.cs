@@ -15,14 +15,14 @@ namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(ConstructionWorkerSkill), 1)]
     [Ecopedia("Blocks", "Building Materials", subPageName: "Hewn Log Item")]
-    public partial class HewnLogRecipe : RecipeFamily
+    public partial class ConstructionHewnLogRecipe : RecipeFamily
     {
-        public HewnLogRecipe()
+        public ConstructionHewnLogRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
                 name: "HewnLog",
-                displayName: Localizer.DoStr("Hewn Log"),
+                displayName: Localizer.DoStr("Builder Grade Hewn Log"),
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(DowelItem), 2, typeof(ConstructionWorkerSkill)),
@@ -34,13 +34,16 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(20, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(HewnLogRecipe),
+                beneficiary: typeof(ConstructionHewnLogRecipe),
                 start: 0.16f,
                 skillType: typeof(ConstructionWorkerSkill)
             );
 
             ModsPreInitialize();
-            Initialize(displayText: Localizer.DoStr("Hewn Log"), recipeType: typeof(HewnLogRecipe));
+            Initialize(
+                displayText: Localizer.DoStr("Builder Grade Hewn Log"),
+                recipeType: typeof(ConstructionHewnLogRecipe)
+            );
             ModsPostInitialize();
 
             CraftingComponent.AddRecipe(tableType: typeof(CarpentryTableObject), recipe: this);

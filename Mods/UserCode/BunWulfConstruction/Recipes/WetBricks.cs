@@ -15,14 +15,14 @@ namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(ConstructionWorkerSkill), 2)]
     [Ecopedia("Items", "Products", subPageName: "Wet Brick Item")]
-    public partial class WetBrickRecipe : RecipeFamily
+    public partial class ConstructionWetBrickRecipe : RecipeFamily
     {
-        public WetBrickRecipe()
+        public ConstructionWetBrickRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
                 name: "WetBrick",
-                displayName: Localizer.DoStr("Wet Brick"),
+                displayName: Localizer.DoStr("Builder Grade Wet Brick"),
                 ingredients: new List<IngredientElement>
                 {
                     new(
@@ -59,7 +59,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(100, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(WetBrickRecipe),
+                beneficiary: typeof(ConstructionWetBrickRecipe),
                 start: 0.5f,
                 skillType: typeof(ConstructionWorkerSkill),
                 typeof(ConstructionWorkerFocusedSpeedTalent),
@@ -68,8 +68,8 @@ namespace Eco.Mods.TechTree
 
             ModsPreInitialize();
             Initialize(
-                displayText: Localizer.DoStr("Wet Brick"),
-                recipeType: typeof(WetBrickRecipe)
+                displayText: Localizer.DoStr("Builder Grade Wet Brick"),
+                recipeType: typeof(ConstructionWetBrickRecipe)
             );
             ModsPostInitialize();
 

@@ -15,14 +15,14 @@ namespace Eco.Mods.TechTree
 {
     [RequiresSkill(typeof(ConstructionWorkerSkill), 1)]
     [Ecopedia("Blocks", "Building Materials", subPageName: "Mortared Stone Item")]
-    public partial class MortaredStoneRecipe : RecipeFamily
+    public partial class ConstructionMortaredStoneRecipe : RecipeFamily
     {
-        public MortaredStoneRecipe()
+        public ConstructionMortaredStoneRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
                 name: "MortaredStone",
-                displayName: Localizer.DoStr("Mortared Stone"),
+                displayName: Localizer.DoStr("Builder Grade Mortared Stone"),
                 ingredients: new List<IngredientElement>
                 {
                     new(
@@ -45,7 +45,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(15, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(MortaredStoneRecipe),
+                beneficiary: typeof(ConstructionMortaredStoneRecipe),
                 start: 0.16f,
                 skillType: typeof(ConstructionWorkerSkill),
                 typeof(ConstructionWorkerFocusedSpeedTalent),
@@ -54,8 +54,8 @@ namespace Eco.Mods.TechTree
 
             ModsPreInitialize();
             Initialize(
-                displayText: Localizer.DoStr("Mortared Stone"),
-                recipeType: typeof(MortaredStoneRecipe)
+                displayText: Localizer.DoStr("Builder Grade Mortared Stone"),
+                recipeType: typeof(ConstructionMortaredStoneRecipe)
             );
             ModsPostInitialize();
 
