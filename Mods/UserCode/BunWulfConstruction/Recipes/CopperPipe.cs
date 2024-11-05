@@ -46,18 +46,11 @@ namespace Eco.Mods.TechTree
                 typeof(ConstructionWorkerParallelSpeedTalent)
             );
 
-            ModsPreInitialize();
             Initialize(
                 displayText: Localizer.DoStr("Builder Grade Copper Pipe"),
                 recipeType: typeof(ConstructionCopperPipeRecipe)
             );
-            ModsPostInitialize();
-
             CraftingComponent.AddRecipe(tableType: typeof(AnvilObject), recipe: this);
         }
-
-        partial void ModsPreInitialize();
-
-        partial void ModsPostInitialize();
     }
 }

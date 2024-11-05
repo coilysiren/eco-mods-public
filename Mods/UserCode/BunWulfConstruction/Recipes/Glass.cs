@@ -47,18 +47,11 @@ namespace Eco.Mods.TechTree
                 typeof(ConstructionWorkerParallelSpeedTalent)
             );
 
-            ModsPreInitialize();
             Initialize(
                 displayText: Localizer.DoStr("Builder Grade Glass"),
                 recipeType: typeof(ConstructionGlassRecipe)
             );
-            ModsPostInitialize();
-
             CraftingComponent.AddRecipe(tableType: typeof(GlassworksObject), recipe: this);
         }
-
-        partial void ModsPreInitialize();
-
-        partial void ModsPostInitialize();
     }
 }

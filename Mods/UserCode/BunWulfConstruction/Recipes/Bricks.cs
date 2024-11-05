@@ -52,18 +52,11 @@ namespace Eco.Mods.TechTree
                 typeof(ConstructionWorkerParallelSpeedTalent)
             );
 
-            ModsPreInitialize();
             Initialize(
                 displayText: Localizer.DoStr("Builder Grade Brick"),
                 recipeType: typeof(ConstructionBrickRecipe)
             );
-            ModsPostInitialize();
-
             CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
         }
-
-        partial void ModsPreInitialize();
-
-        partial void ModsPostInitialize();
     }
 }

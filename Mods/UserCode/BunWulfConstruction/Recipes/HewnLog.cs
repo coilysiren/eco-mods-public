@@ -39,18 +39,11 @@ namespace Eco.Mods.TechTree
                 skillType: typeof(ConstructionWorkerSkill)
             );
 
-            ModsPreInitialize();
             Initialize(
                 displayText: Localizer.DoStr("Builder Grade Hewn Log"),
                 recipeType: typeof(ConstructionHewnLogRecipe)
             );
-            ModsPostInitialize();
-
             CraftingComponent.AddRecipe(tableType: typeof(CarpentryTableObject), recipe: this);
         }
-
-        partial void ModsPreInitialize();
-
-        partial void ModsPostInitialize();
     }
 }
