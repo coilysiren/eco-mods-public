@@ -91,42 +91,7 @@ namespace Eco.Mods.TechTree
         partial void ModsPostInitialize();
     }
 
-    [Serialized]
-    [Solid, Wall, Constructed,BuildRoomMaterialOption]
-    [BlockTier(2)]
-    [RequiresSkill(typeof(ConstructionSkill), 1)]
-        public partial class MortaredStoneBlock :
-        Block
-        , IRepresentsItem
-    {
-        public virtual Type RepresentedItemType { get { return typeof(MortaredStoneItem); } }
-    }
 
-    [Serialized]
-    [LocDisplayName("Mortared Stone")]
-    [LocDescription("Old stone")]
-    [MaxStackSize(15)]
-    [Weight(10000)]
-    [Ecopedia("Blocks", "Building Materials", createAsSubPage: true)]
-    [Tag("MortaredStone")]
-    [Tag("Constructable")]
-    [Tier(2)]
-    public partial class MortaredStoneItem :
- 
-    BlockItem<MortaredStoneBlock>
-    {
-        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Builder Grade Mortared Stone"); } }
-
-        public override bool CanStickToWalls { get { return false; } }
-
-        private static Type[] blockTypes = new Type[] {
-            typeof(MortaredStoneStacked1Block),
-            typeof(MortaredStoneStacked2Block),
-            typeof(MortaredStoneStacked3Block)
-        };
-        
-        public override Type[] BlockTypes { get { return blockTypes; } }
-    }
 
     [Tag("MortaredStone")]
     [Tag("Constructable")]

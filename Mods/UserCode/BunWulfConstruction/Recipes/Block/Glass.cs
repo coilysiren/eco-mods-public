@@ -91,43 +91,7 @@ namespace Eco.Mods.TechTree
         partial void ModsPostInitialize();
     }
 
-    [Serialized]
-    [Solid, Wall, Constructed,BuildRoomMaterialOption]
-    [BlockTier(3)]
-    [DoesntEncase]
-    [RequiresSkill(typeof(ConstructionSkill), 1)]
-        public partial class GlassBlock :
-        Block
-        , IRepresentsItem
-    {
-        public virtual Type RepresentedItemType { get { return typeof(GlassItem); } }
-    }
 
-    [Serialized]
-    [LocDisplayName("Glass")]
-    [LocDescription("A transparent, solid material useful for more than just windows.")]
-    [MaxStackSize(20)]
-    [Weight(10000)]
-    [Ecopedia("Blocks", "Building Materials", createAsSubPage: true)]
-    [Tag("Constructable")]
-    [Tier(3)]
-    public partial class GlassItem :
- 
-    BlockItem<GlassBlock>
-    {
-        public override LocString DisplayNamePlural { get { return Localizer.DoStr("Builder Grade Glass"); } }
-
-        public override bool CanStickToWalls { get { return false; } }
-
-        private static Type[] blockTypes = new Type[] {
-            typeof(GlassStacked1Block),
-            typeof(GlassStacked2Block),
-            typeof(GlassStacked3Block),
-            typeof(GlassStacked4Block)
-        };
-        
-        public override Type[] BlockTypes { get { return blockTypes; } }
-    }
 
     [Tag("Constructable")]
     [Tag(BlockTags.PartialStack)]

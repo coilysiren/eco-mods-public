@@ -91,41 +91,7 @@ namespace Eco.Mods.TechTree
         partial void ModsPostInitialize();
     }
 
-    [Serialized]
-    [Solid, Wall, Constructed,BuildRoomMaterialOption]
-    [BlockTier(3)]
-    [RequiresSkill(typeof(PotterySkill), 1)]
-        public partial class BrickBlock :
-        Block
-        , IRepresentsItem
-    {
-        public virtual Type RepresentedItemType { get { return typeof(BrickItem); } }
-    }
 
-    [Serialized]
-    [LocDisplayName("Brick")]
-    [LocDescription("Durable building material made from fired blocks and mortar.")]
-    [MaxStackSize(20)]
-    [Weight(10000)]
-    [Ecopedia("Blocks", "Building Materials", createAsSubPage: true)]
-    [Tag("Constructable")]
-    [Tier(3)]
-    public partial class BrickItem :
- 
-    BlockItem<BrickBlock>
-    {
-
-        public override bool CanStickToWalls { get { return false; } }
-
-        private static Type[] blockTypes = new Type[] {
-            typeof(BrickStacked1Block),
-            typeof(BrickStacked2Block),
-            typeof(BrickStacked3Block),
-            typeof(BrickStacked4Block)
-        };
-        
-        public override Type[] BlockTypes { get { return blockTypes; } }
-    }
 
     [Tag("Constructable")]
     [Tag(BlockTags.PartialStack)]

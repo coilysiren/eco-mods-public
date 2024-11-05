@@ -27,13 +27,13 @@ namespace Eco.Mods.TechTree
     using Eco.Core.Controller;
     using Eco.Gameplay.Items.Recipes;
 
-        
+
     /// <summary>
     /// <para>Server side recipe definition for "Dowel".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
     [RequiresSkill(typeof(ConstructionSkill), 1)]
@@ -63,7 +63,7 @@ namespace Eco.Mods.TechTree
                 });
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 0.5f; // Defines how much experience is gained when crafted.
-            
+
             // Defines the amount of labor required and the required skill to add labor
             this.LaborInCalories = CreateLaborInCaloriesValue(40,typeof(ConstructionSkill));
 
@@ -85,22 +85,13 @@ namespace Eco.Mods.TechTree
         /// <summary>Hook for mods to customize RecipeFamily after initialization, but before registration. You can change skill requirements here.</summary>
         partial void ModsPostInitialize();
     }
-    
+
     /// <summary>
     /// <para>Server side item definition for the "Dowel" item.</para>
     /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.Item.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
-    [Serialized] // Tells the save/load system this object needs to be serialized. 
-    [LocDisplayName("Dowel")] // Defines the localized name of the item.
-    [Weight(50)] // Defines how heavy Dowel is.
-    [Ecopedia("Items", "Products", createAsSubPage: true)]
-    [LocDescription("Dowels used for construction.")] //The tooltip description for the item.
-    public partial class DowelItem : Item    {
-
-
-    }
 }

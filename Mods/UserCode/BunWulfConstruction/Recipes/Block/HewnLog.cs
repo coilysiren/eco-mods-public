@@ -91,44 +91,7 @@ namespace Eco.Mods.TechTree
         partial void ModsPostInitialize();
     }
 
-    [Serialized]
-    [Solid, Wall, Constructed,BuildRoomMaterialOption]
-    [BlockTier(2)]
-    [RequiresSkill(typeof(ConstructionSkill), 1)]
-        public partial class HewnLogBlock :
-        Block
-        , IRepresentsItem
-    {
-        public virtual Type RepresentedItemType { get { return typeof(HewnLogItem); } }
-    }
 
-    [Serialized]
-    [LocDisplayName("Hewn Log")]
-    [LocDescription("A log hewn and shaped to be a building material. Hewing logs at a workbench will grant no experience.")]
-    [MaxStackSize(15)]
-    [Weight(10000)]
-    [Fuel(4000)][Tag("Fuel")]
-    [ResourcePile]
-    [Ecopedia("Blocks", "Building Materials", createAsSubPage: true)]
-    [Tag("HewnLog")]
-    [Tag("Burnable Fuel")]
-    [Tag("Constructable")]
-    [Tier(2)]
-    public partial class HewnLogItem :
- 
-    BlockItem<HewnLogBlock>
-    {
-
-        public override bool CanStickToWalls { get { return false; } }
-
-        private static Type[] blockTypes = new Type[] {
-            typeof(HewnLogStacked1Block),
-            typeof(HewnLogStacked2Block),
-            typeof(HewnLogStacked3Block)
-        };
-        
-        public override Type[] BlockTypes { get { return blockTypes; } }
-    }
 
     [Tag("HewnLog")]
     [Tag("Burnable Fuel")]

@@ -92,45 +92,7 @@ namespace Eco.Mods.TechTree
         partial void ModsPostInitialize();
     }
 
-    [Serialized]
-    [Solid, Wall, Constructed,BuildRoomMaterialOption]
-    [BlockTier(3)]
-    [RequiresSkill(typeof(CarpentrySkill), 1)]
-        public partial class LumberBlock :
-        Block
-        , IRepresentsItem
-    {
-        public virtual Type RepresentedItemType { get { return typeof(LumberItem); } }
-    }
 
-    [Serialized]
-    [LocDisplayName("Lumber")]
-    [LocDescription("Can be fashioned into various usable equipment.")]
-    [MaxStackSize(20)]
-    [Weight(10000)]
-    [Fuel(4000)][Tag("Fuel")]
-    [ResourcePile]
-    [Ecopedia("Blocks", "Building Materials", createAsSubPage: true)]
-    [Tag("Lumber")]
-    [Tag("Burnable Fuel")]
-    [Tag("Constructable")]
-    [Tier(3)]
-    public partial class LumberItem :
- 
-    BlockItem<LumberBlock>
-    {
-
-        public override bool CanStickToWalls { get { return false; } }
-
-        private static Type[] blockTypes = new Type[] {
-            typeof(LumberStacked1Block),
-            typeof(LumberStacked2Block),
-            typeof(LumberStacked3Block),
-            typeof(LumberStacked4Block)
-        };
-        
-        public override Type[] BlockTypes { get { return blockTypes; } }
-    }
 
     [Tag("Lumber")]
     [Tag("Burnable Fuel")]

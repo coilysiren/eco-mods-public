@@ -91,30 +91,6 @@ namespace Eco.Mods.TechTree
         partial void ModsPostInitialize();
     }
 
-    [Serialized]
-    [Solid, Constructed]
-    [BlockTier(3)]
-    [DoesntEncase]
-    [RequiresSkill(typeof(ConstructionSkill), 1)]
-        public partial class IronPipeBlock :
-        PipeBlock
-        , IRepresentsItem
-    {
-        public virtual Type RepresentedItemType { get { return typeof(IronPipeItem); } }
-    }
 
-    [Serialized]
-    [LocDisplayName("Iron Pipe")]
-    [LocDescription("A pipe for transporting liquids.")]
-    [MaxStackSize(10)]
-    [Weight(2000)]
-    [Ecopedia("Blocks", "Pipes", createAsSubPage: true)]
-    [Tier(3)]
-    public partial class IronPipeItem :
- 
-    PipeItem<IronPipeBlock>
-    {
-
-    }
 
 }
