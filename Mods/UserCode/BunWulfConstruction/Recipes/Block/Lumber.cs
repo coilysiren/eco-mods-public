@@ -40,7 +40,7 @@ namespace Eco.Mods.TechTree
     /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
-    [RequiresSkill(typeof(CarpentrySkill), 1)]
+    [RequiresSkill(typeof(ConstructionSkill), 2)]
     [Ecopedia("Blocks", "Building Materials", subPageName: "Lumber Item")]
     public partial class ConstructionLumberRecipe : RecipeFamily
     {
@@ -55,9 +55,9 @@ namespace Eco.Mods.TechTree
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(NailItem), 2, typeof(CarpentrySkill), typeof(CarpentryLavishResourcesTalent)),
-                    new IngredientElement(typeof(FlaxseedOilItem), 0.5f, typeof(CarpentrySkill), typeof(CarpentryLavishResourcesTalent)),
-                    new IngredientElement("WoodBoard", 10, typeof(CarpentrySkill), typeof(CarpentryLavishResourcesTalent)), //noloc
+                    new IngredientElement(typeof(NailItem), 2, typeof(ConstructionSkill), typeof(CarpentryLavishResourcesTalent)),
+                    new IngredientElement(typeof(FlaxseedOilItem), 0.5f, typeof(ConstructionSkill), typeof(CarpentryLavishResourcesTalent)),
+                    new IngredientElement("WoodBoard", 10, typeof(ConstructionSkill), typeof(CarpentryLavishResourcesTalent)), //noloc
                 },
 
                 // Define our recipe output items.
@@ -71,10 +71,10 @@ namespace Eco.Mods.TechTree
             this.ExperienceOnCraft = 1; // Defines how much experience is gained when crafted.
             
             // Defines the amount of labor required and the required skill to add labor
-            this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(CarpentrySkill));
+            this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(ConstructionSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionLumberRecipe), start: 0.32f, skillType: typeof(CarpentrySkill), typeof(CarpentryFocusedSpeedTalent), typeof(CarpentryParallelSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionLumberRecipe), start: 0.32f, skillType: typeof(ConstructionSkill), typeof(CarpentryFocusedSpeedTalent), typeof(CarpentryParallelSpeedTalent));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Lumber"
             this.ModsPreInitialize();

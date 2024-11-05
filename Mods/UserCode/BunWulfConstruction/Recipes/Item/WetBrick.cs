@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
     /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
-    [RequiresSkill(typeof(PotterySkill), 1)]
+    [RequiresSkill(typeof(ConstructionSkill), 2)]
     [Ecopedia("Items", "Products", subPageName: "Wet Brick Item")]
     public partial class ConstructionWetBrickRecipe : RecipeFamily
     {
@@ -51,9 +51,9 @@ namespace Eco.Mods.TechTree
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(SandItem), 3, typeof(PotterySkill), typeof(PotteryLavishResourcesTalent)),
-                    new IngredientElement(typeof(ClayItem), 12, typeof(PotterySkill), typeof(PotteryLavishResourcesTalent)),
-                    new IngredientElement(typeof(WoodenMoldItem), 4, typeof(PotterySkill), typeof(PotteryLavishResourcesTalent)),
+                    new IngredientElement(typeof(SandItem), 3, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
+                    new IngredientElement(typeof(ClayItem), 12, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
+                    new IngredientElement(typeof(WoodenMoldItem), 4, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
                 },
 
                 // Define our recipe output items.
@@ -62,16 +62,16 @@ namespace Eco.Mods.TechTree
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<WetBrickItem>(4),
-                    new CraftingElement<WoodenMoldItem>(typeof(PotterySkill), 2, typeof(PotteryLavishResourcesTalent)),
+                    new CraftingElement<WoodenMoldItem>(typeof(ConstructionSkill), 2, typeof(PotteryLavishResourcesTalent)),
                 });
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 0.5f; // Defines how much experience is gained when crafted.
 
             // Defines the amount of labor required and the required skill to add labor
-            this.LaborInCalories = CreateLaborInCaloriesValue(100, typeof(PotterySkill));
+            this.LaborInCalories = CreateLaborInCaloriesValue(100, typeof(ConstructionSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionWetBrickRecipe), start: 0.5f, skillType: typeof(PotterySkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionWetBrickRecipe), start: 0.5f, skillType: typeof(ConstructionSkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Wet Brick"
             this.ModsPreInitialize();

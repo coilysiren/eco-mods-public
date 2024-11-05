@@ -91,14 +91,16 @@ def zip_assets(ctx: invoke.Context, mod):
 def bunwulf_construction(_: invoke.Context):
     recipes_changes = {
         r"Block\Brick.cs": {
+            "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
             "displayName": ['Localizer.DoStr("Brick")', 'Localizer.DoStr("Builder Grade Brick")'],
             "class": ["BrickRecipe", "ConstructionBrickRecipe"],
-            "skill": ["MasonrySkill", "ConstructionSkill"],
+            "skill": ["PotterySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class BrickItem"],
             "block": ["REMOVE-CLASS", "public partial class BrickBlock"],
             "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("Constructable")]'],
         },
         r"Block\CopperPipe.cs": {
+            "level": ["RequiresSkill(typeof(SmeltingSkill), 2)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
             "displayName": ['Localizer.DoStr("Copper Pipe")', 'Localizer.DoStr("Builder Grade Copper Pipe")'],
             "class": ["CopperPipeRecipe", "ConstructionCopperPipeRecipe"],
             "skill": ["SmeltingSkill", "ConstructionSkill"],
@@ -106,12 +108,14 @@ def bunwulf_construction(_: invoke.Context):
             "block": ["REMOVE-CLASS", "public partial class CopperPipeBlock"],
         },
         r"Item\Dowel.cs": {
+            "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
             "displayName": ['Localizer.DoStr("Dowel")', 'Localizer.DoStr("Builder Grade Dowel")'],
             "class": ["DowelRecipe", "ConstructionDowelRecipe"],
             "skill": ["LoggingSkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class DowelItem"],
         },
         r"Block\Glass.cs": {
+            "level": ["RequiresSkill(typeof(GlassworkingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
             "displayName": ['Localizer.DoStr("Glass")', 'Localizer.DoStr("Builder Grade Glass")'],
             "class": ["GlassRecipe", "ConstructionGlassRecipe"],
             "skill": ["GlassworkingSkill", "ConstructionSkill"],
@@ -120,6 +124,7 @@ def bunwulf_construction(_: invoke.Context):
             "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("Constructable")]'],
         },
         r"Block\HewnLog.cs": {
+            "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
             "displayName": ['Localizer.DoStr("Hewn Log")', 'Localizer.DoStr("Builder Grade Hewn Log")'],
             "class": ["HewnLogRecipe", "ConstructionHewnLogRecipe"],
             "skill": ["LoggingSkill", "ConstructionSkill"],
@@ -128,6 +133,7 @@ def bunwulf_construction(_: invoke.Context):
             "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("HewnLog")]'],
         },
         r"Block\IronPipe.cs": {
+            "level": ["RequiresSkill(typeof(SmeltingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
             "displayName": ['Localizer.DoStr("Iron Pipe")', 'Localizer.DoStr("Builder Grade Iron Pipe")'],
             "class": ["IronPipeRecipe", "ConstructionIronPipeRecipe"],
             "skill": ["SmeltingSkill", "ConstructionSkill"],
@@ -135,14 +141,16 @@ def bunwulf_construction(_: invoke.Context):
             "block": ["REMOVE-CLASS", "public partial class IronPipeBlock"],
         },
         r"Block\Lumber.cs": {
+            "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
             "displayName": ['Localizer.DoStr("Lumber")', 'Localizer.DoStr("Builder Grade Lumber")'],
             "class": ["LumberRecipe", "ConstructionLumberRecipe"],
-            "skill": ["LoggingSkill", "ConstructionSkill"],
+            "skill": ["CarpentrySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class LumberItem"],
             "block": ["REMOVE-CLASS", "public partial class LumberBlock"],
             "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("Lumber")]'],
         },
         r"Block\MortaredStone.cs": {
+            "level": ["RequiresSkill(typeof(MasonrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
             "displayName": ['Localizer.DoStr("Mortared Stone")', 'Localizer.DoStr("Builder Grade Mortared Stone")'],
             "class": ["MortaredStoneRecipe", "ConstructionMortaredStoneRecipe"],
             "skill": ["MasonrySkill", "ConstructionSkill"],
@@ -151,9 +159,10 @@ def bunwulf_construction(_: invoke.Context):
             "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("MortaredStone")]'],
         },
         r"Item\WetBrick.cs": {
+            "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
             "displayName": ['Localizer.DoStr("Wet Brick")', 'Localizer.DoStr("Builder Grade Wet Brick")'],
             "class": ["WetBrickRecipe", "ConstructionWetBrickRecipe"],
-            "skill": ["MasonrySkill", "ConstructionSkill"],
+            "skill": ["PotterySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class WetBrickItem"],
         },
     }
@@ -240,7 +249,7 @@ def bunwulf_construction(_: invoke.Context):
 
             # This is a special case where we need to remove the item from the recipe
             # It's a little complex, so read it one step at a time.
-            if values[0] == "REMOVE-CONSTRUCTABLE":
+            elif values[0] == "REMOVE-CONSTRUCTABLE":
                 print(f"\tRemoving {values[1]} from recipe")
 
                 # Step 1: Identify the first Tag line.
@@ -261,6 +270,8 @@ def bunwulf_construction(_: invoke.Context):
 
             else:
                 print(f"\tReplacing {key}")
+                if values[0] not in recipe_file:
+                    raise TextProcessingException(f"\t\tCouldn't find {values[0]} in {file}")
                 recipe_file = recipe_file.replace(values[0], values[1])
 
         print(f"\tWriting {file}")

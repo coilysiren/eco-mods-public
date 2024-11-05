@@ -37,10 +37,10 @@ namespace Eco.Mods.TechTree
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
-    [RequiresSkill(typeof(PotterySkill), 1)]
+    [RequiresSkill(typeof(ConstructionSkill), 2)]
     [Ecopedia("Blocks", "Building Materials", subPageName: "Brick Item")]
     public partial class ConstructionBrickRecipe : RecipeFamily
     {
@@ -55,8 +55,8 @@ namespace Eco.Mods.TechTree
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(WetBrickItem), 1, typeof(PotterySkill), typeof(PotteryLavishResourcesTalent)),
-                    new IngredientElement(typeof(MortarItem), 4, typeof(PotterySkill), typeof(PotteryLavishResourcesTalent)),
+                    new IngredientElement(typeof(WetBrickItem), 1, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
+                    new IngredientElement(typeof(MortarItem), 4, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
                 },
 
                 // Define our recipe output items.
@@ -68,12 +68,12 @@ namespace Eco.Mods.TechTree
                 });
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 1; // Defines how much experience is gained when crafted.
-
+            
             // Defines the amount of labor required and the required skill to add labor
-            this.LaborInCalories = CreateLaborInCaloriesValue(15, typeof(PotterySkill));
+            this.LaborInCalories = CreateLaborInCaloriesValue(15, typeof(ConstructionSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionBrickRecipe), start: 0.32f, skillType: typeof(PotterySkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionBrickRecipe), start: 0.32f, skillType: typeof(ConstructionSkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Brick"
             this.ModsPreInitialize();
