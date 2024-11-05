@@ -13,7 +13,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(LoggingSkill), 1)]
+    [RequiresSkill(typeof(ConstructionWorkerSkill), 1)]
     [Ecopedia("Items", "Products", subPageName: "Dowel Item")]
     public partial class ConstructionDowelRecipe : RecipeFamily
     {
@@ -28,12 +28,12 @@ namespace Eco.Mods.TechTree
             );
             Recipes = new List<Recipe> { recipe };
 
-            LaborInCalories = CreateLaborInCaloriesValue(40, typeof(LoggingSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(40, typeof(ConstructionWorkerSkill));
 
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ConstructionDowelRecipe),
                 start: 0.4f,
-                skillType: typeof(LoggingSkill)
+                skillType: typeof(ConstructionWorkerSkill)
             );
 
             Initialize(
