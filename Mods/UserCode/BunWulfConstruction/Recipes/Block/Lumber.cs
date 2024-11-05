@@ -94,24 +94,4 @@ namespace Eco.Mods.TechTree
 
 
 
-    [Tag("Lumber")]
-    [Tag("Burnable Fuel")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class LumberStacked1Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("Lumber")]
-    [Tag("Burnable Fuel")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class LumberStacked2Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("Lumber")]
-    [Tag("Burnable Fuel")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class LumberStacked3Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("Lumber")]
-    [Tag("Burnable Fuel")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.FullStack)]
-    [Serialized, Solid,Wall] public class LumberStacked4Block : PickupableBlock, IWaterLoggedBlock { } //Only a wall if it's all 4 Lumber
 }
