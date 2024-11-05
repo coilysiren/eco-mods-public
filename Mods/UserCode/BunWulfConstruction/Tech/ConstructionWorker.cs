@@ -86,8 +86,8 @@ namespace Eco.Mods.TechTree
                 ingredients: new List<IngredientElement>
                 {
                     new("Basic Research", 10, typeof(SurvivalistSkill)),
-                    // 10 dendro basics
-                    // 10 geo basics
+                    new(typeof(GeologyResearchPaperBasicItem), 3, typeof(SurvivalistSkill)),
+                    new(typeof(DendrologyResearchPaperBasicItem), 3, typeof(SurvivalistSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -105,7 +105,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Construction Worker Skill Book"),
                 recipeType: typeof(ConstructionWorkerSkillBookRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
         }
     }
 }
