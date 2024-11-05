@@ -12,26 +12,25 @@ using Eco.Shared.Serialization;
 namespace Eco.Mods.TechTree
 {
     [Serialized]
-    [LocDisplayName("Focused Workflow: Construstion Worker")]
+    [LocDisplayName("Focused Workflow: Construstion")]
     [LocDescription("Doubles the speed of related tables when alone.")]
-    public partial class ConstructionWorkerFocusedWorkflowTalentGroup : TalentGroup
+    public partial class ConstructionFocusedWorkflowTalentGroup : TalentGroup
     {
-        public ConstructionWorkerFocusedWorkflowTalentGroup()
+        public ConstructionFocusedWorkflowTalentGroup()
         {
-            Talents = new Type[] { typeof(ConstructionWorkerFocusedSpeedTalent) };
-            OwningSkill = typeof(ConstructionWorkerSkill);
+            Talents = new Type[] { typeof(ConstructionFocusedSpeedTalent) };
+            OwningSkill = typeof(ConstructionSkill);
             Level = 3;
         }
     }
 
     [Serialized]
-    public partial class ConstructionWorkerFocusedSpeedTalent : FocusedWorkflowTalent
+    public partial class ConstructionFocusedSpeedTalent : FocusedWorkflowTalent
     {
         public override bool Base => false;
-        public override Type TalentGroupType =>
-            typeof(ConstructionWorkerFocusedWorkflowTalentGroup);
+        public override Type TalentGroupType => typeof(ConstructionFocusedWorkflowTalentGroup);
 
-        public ConstructionWorkerFocusedSpeedTalent()
+        public ConstructionFocusedSpeedTalent()
         {
             Value = 0.5f;
         }

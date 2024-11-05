@@ -12,28 +12,27 @@ using Eco.Shared.Serialization;
 namespace Eco.Mods.TechTree
 {
     [Serialized]
-    [LocDisplayName("Frugal Workspace: Construstion Worker")]
+    [LocDisplayName("Frugal Workspace: Construstion")]
     [LocDescription(
         "Lowers the tier requirement of related tables by 0.2. (Only applies to claimed workstations)"
     )]
-    public partial class ConstructionWorkerFrugalWorkspaceTalentGroup : TalentGroup
+    public partial class ConstructionFrugalWorkspaceTalentGroup : TalentGroup
     {
-        public ConstructionWorkerFrugalWorkspaceTalentGroup()
+        public ConstructionFrugalWorkspaceTalentGroup()
         {
-            Talents = new Type[] { typeof(ConstructionWorkerFrugalReqTalent) };
-            OwningSkill = typeof(ConstructionWorkerSkill);
+            Talents = new Type[] { typeof(ConstructionFrugalReqTalent) };
+            OwningSkill = typeof(ConstructionSkill);
             Level = 6;
         }
     }
 
     [Serialized]
-    public partial class ConstructionWorkerFrugalReqTalent : FrugalWorkspaceTalent
+    public partial class ConstructionFrugalReqTalent : FrugalWorkspaceTalent
     {
         public override bool Base => false;
-        public override Type TalentGroupType =>
-            typeof(ConstructionWorkerFrugalWorkspaceTalentGroup);
+        public override Type TalentGroupType => typeof(ConstructionFrugalWorkspaceTalentGroup);
 
-        public ConstructionWorkerFrugalReqTalent()
+        public ConstructionFrugalReqTalent()
         {
             Value = -0.2f;
         }

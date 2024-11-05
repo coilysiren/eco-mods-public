@@ -18,13 +18,13 @@ using Eco.Shared.Serialization;
 namespace Eco.Mods.TechTree
 {
     [Serialized]
-    [LocDisplayName("Construction Worker")]
+    [LocDisplayName("Construction")]
     [LocDescription("TODO")]
     [Ecopedia("Professions", "Survivalist", createAsSubPage: true)]
     [RequiresSkill(typeof(SurvivalistSkill), 0), Tag("Survivalist Specialty"), Tier(3)]
     [Tag("Specialty")]
     [Tag("Teachable")]
-    public partial class ConstructionWorkerSkill : Skill
+    public partial class ConstructionSkill : Skill
     {
         public override void OnLevelUp(User user)
         {
@@ -62,48 +62,45 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [Weight(1000)]
-    [LocDisplayName("Construction Worker Skill Book")]
+    [LocDisplayName("Construction Skill Book")]
     [Ecopedia("Items", "Skill Books", createAsSubPage: true)]
-    public partial class ConstructionWorkerSkillBook
-        : SkillBook<ConstructionWorkerSkill, ConstructionWorkerSkillScroll> { }
+    public partial class ConstructionSkillBook
+        : SkillBook<ConstructionSkill, ConstructionSkillScroll> { }
 
     [Serialized]
     [Weight(100)]
-    [LocDisplayName("Construction Worker Skill Scroll")]
-    public partial class ConstructionWorkerSkillScroll
-        : SkillScroll<ConstructionWorkerSkill, ConstructionWorkerSkillBook> { }
+    [LocDisplayName("Construction Skill Scroll")]
+    public partial class ConstructionSkillScroll
+        : SkillScroll<ConstructionSkill, ConstructionSkillBook> { }
 
     [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    [Ecopedia("Professions", "Survivalist", subPageName: "Construction Worker Skill Book Item")]
-    public partial class ConstructionWorkerSkillBookRecipe : RecipeFamily
+    [Ecopedia("Professions", "Survivalist", subPageName: "Construction Skill Book Item")]
+    public partial class ConstructionSkillBookRecipe : RecipeFamily
     {
-        public ConstructionWorkerSkillBookRecipe()
+        public ConstructionSkillBookRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
-                name: "ConstructionWorker",
-                displayName: Localizer.DoStr("Construction Worker Skill Book"),
+                name: "Construction",
+                displayName: Localizer.DoStr("Construction Skill Book"),
                 ingredients: new List<IngredientElement>
                 {
                     new("Basic Research", 10, typeof(SurvivalistSkill)),
                     new(typeof(GeologyResearchPaperBasicItem), 3, typeof(SurvivalistSkill)),
                     new(typeof(DendrologyResearchPaperBasicItem), 3, typeof(SurvivalistSkill)),
                 },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<ConstructionWorkerSkillBook>(),
-                }
+                items: new List<CraftingElement> { new CraftingElement<ConstructionSkillBook>() }
             );
             Recipes = new List<Recipe> { recipe };
             LaborInCalories = CreateLaborInCaloriesValue(600, typeof(SurvivalistSkill));
             CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(ConstructionWorkerSkillBookRecipe),
+                beneficiary: typeof(ConstructionSkillBookRecipe),
                 start: 15,
                 skillType: typeof(SurvivalistSkill)
             );
             Initialize(
-                displayText: Localizer.DoStr("Construction Worker Skill Book"),
-                recipeType: typeof(ConstructionWorkerSkillBookRecipe)
+                displayText: Localizer.DoStr("Construction Skill Book"),
+                recipeType: typeof(ConstructionSkillBookRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
         }

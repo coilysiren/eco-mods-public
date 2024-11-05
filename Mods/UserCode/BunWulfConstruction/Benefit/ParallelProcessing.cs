@@ -12,28 +12,27 @@ using Eco.Shared.Serialization;
 namespace Eco.Mods.TechTree
 {
     [Serialized]
-    [LocDisplayName("Parallel Processing: Construction Worker")]
+    [LocDisplayName("Parallel Processing: Construction")]
     [LocDescription(
         "Increases the crafting speed of identical tables when they share a room by 20 percent."
     )]
-    public partial class ConstructionWorkerParallelProcessingTalentGroup : TalentGroup
+    public partial class ConstructionParallelProcessingTalentGroup : TalentGroup
     {
-        public ConstructionWorkerParallelProcessingTalentGroup()
+        public ConstructionParallelProcessingTalentGroup()
         {
-            Talents = new Type[] { typeof(ConstructionWorkerParallelSpeedTalent) };
-            OwningSkill = typeof(ConstructionWorkerSkill);
+            Talents = new Type[] { typeof(ConstructionParallelSpeedTalent) };
+            OwningSkill = typeof(ConstructionSkill);
             Level = 3;
         }
     }
 
     [Serialized]
-    public partial class ConstructionWorkerParallelSpeedTalent : ParallelProcessingTalent
+    public partial class ConstructionParallelSpeedTalent : ParallelProcessingTalent
     {
         public override bool Base => false;
-        public override Type TalentGroupType =>
-            typeof(ConstructionWorkerParallelProcessingTalentGroup);
+        public override Type TalentGroupType => typeof(ConstructionParallelProcessingTalentGroup);
 
-        public ConstructionWorkerParallelSpeedTalent()
+        public ConstructionParallelSpeedTalent()
         {
             Value = 0.8f;
         }

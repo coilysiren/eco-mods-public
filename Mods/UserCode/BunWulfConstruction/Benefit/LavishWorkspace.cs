@@ -12,45 +12,43 @@ using Eco.Shared.Serialization;
 namespace Eco.Mods.TechTree
 {
     [Serialized]
-    [LocDisplayName("Lavish Workspace: Construction Worker")]
+    [LocDisplayName("Lavish Workspace: Construction")]
     [LocDescription(
         "Increases the tier requirement of tables by 0.2, but reduces the resources needed by 5 percent.(Only applies to claimed workstations)"
     )]
-    public partial class ConstructionWorkerLavishWorkspaceTalentGroup : TalentGroup
+    public partial class ConstructionLavishWorkspaceTalentGroup : TalentGroup
     {
-        public ConstructionWorkerLavishWorkspaceTalentGroup()
+        public ConstructionLavishWorkspaceTalentGroup()
         {
             Talents = new Type[]
             {
-                typeof(ConstructionWorkerLavishResourcesTalent),
-                typeof(ConstructionWorkerLavishReqTalent),
+                typeof(ConstructionLavishResourcesTalent),
+                typeof(ConstructionLavishReqTalent),
             };
-            OwningSkill = typeof(ConstructionWorkerSkill);
+            OwningSkill = typeof(ConstructionSkill);
             Level = 6;
         }
     }
 
     [Serialized]
-    public partial class ConstructionWorkerLavishResourcesTalent : LavishWorkspaceTalent
+    public partial class ConstructionLavishResourcesTalent : LavishWorkspaceTalent
     {
         public override bool Base => false;
-        public override Type TalentGroupType =>
-            typeof(ConstructionWorkerLavishWorkspaceTalentGroup);
+        public override Type TalentGroupType => typeof(ConstructionLavishWorkspaceTalentGroup);
 
-        public ConstructionWorkerLavishResourcesTalent()
+        public ConstructionLavishResourcesTalent()
         {
             Value = 0.95f;
         }
     }
 
     [Serialized]
-    public partial class ConstructionWorkerLavishReqTalent : LavishWorkspaceTalent
+    public partial class ConstructionLavishReqTalent : LavishWorkspaceTalent
     {
         public override bool Base => false;
-        public override Type TalentGroupType =>
-            typeof(ConstructionWorkerLavishWorkspaceTalentGroup);
+        public override Type TalentGroupType => typeof(ConstructionLavishWorkspaceTalentGroup);
 
-        public ConstructionWorkerLavishReqTalent()
+        public ConstructionLavishReqTalent()
         {
             Value = 0.2f;
         }
