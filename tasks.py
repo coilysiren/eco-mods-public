@@ -286,7 +286,75 @@ def bunwulf_librarian(_: invoke.Context):
             ],
             "skill": ["HuntingSkill", "LibrarianSkill"],
         },
-        # r"Item\PaperAdvanced.cs": {},
+        r"Item\GeologyResearchPaperAdvanced.cs": {
+            "item": ["REMOVE-CLASS", "public partial class GeologyResearchPaperAdvancedItem"],
+            "class": ["GeologyResearchPaperAdvancedRecipe", "LibrarianGeologyResearchPaperAdvancedRecipe"],
+            "level": ["RequiresSkill(typeof(MasonrySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Geology Research Paper Advanced',
+                'Localizer.DoStr("Librarian Geology Research Paper Advanced',
+            ],
+            "skill": ["MasonrySkill", "LibrarianSkill"],
+        },
+        r"Item\CulinaryResearchPaperAdvanced.cs": {
+            "item": ["REMOVE-CLASS", "public partial class CulinaryResearchPaperAdvancedItem"],
+            "class": ["CulinaryResearchPaperAdvancedRecipe", "LibrarianCulinaryResearchPaperAdvancedRecipe"],
+            "level": ["RequiresSkill(typeof(CookingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Culinary Research Paper Advanced',
+                'Localizer.DoStr("Librarian Culinary Research Paper Advanced',
+            ],
+            "skill": ["CookingSkill", "LibrarianSkill"],
+        },
+        r"Item\DendrologyResearchPaperAdvanced.cs": {
+            "item": ["REMOVE-CLASS", "public partial class DendrologyResearchPaperAdvancedItem"],
+            "class": ["DendrologyResearchPaperAdvancedRecipe", "LibrarianDendrologyResearchPaperAdvancedRecipe"],
+            "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Dendrology Research Paper Advanced',
+                'Localizer.DoStr("Librarian Dendrology Research Paper Advanced',
+            ],
+            "skill": ["CarpentrySkill", "LibrarianSkill"],
+        },
+        r"Item\MetallurgyResearchPaperAdvanced.cs": {
+            "item": ["REMOVE-CLASS", "public partial class MetallurgyResearchPaperAdvancedItem"],
+            "class": ["MetallurgyResearchPaperAdvancedRecipe", "LibrarianMetallurgyResearchPaperAdvancedRecipe"],
+            "level": ["RequiresSkill(typeof(SmeltingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Metallurgy Research Paper Advanced',
+                'Localizer.DoStr("Librarian Metallurgy Research Paper Advanced',
+            ],
+            "skill": ["SmeltingSkill", "LibrarianSkill"],
+        },
+        r"Item\AgricultureResearchPaperAdvanced.cs": {
+            "item": ["REMOVE-CLASS", "public partial class AgricultureResearchPaperAdvancedItem"],
+            "class": ["AgricultureResearchPaperAdvancedRecipe", "LibrarianAgricultureResearchPaperAdvancedRecipe"],
+            "level": ["RequiresSkill(typeof(FarmingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Agriculture Research Paper Advanced',
+                'Localizer.DoStr("Librarian Agriculture Research Paper Advanced',
+            ],
+            "skill": ["FarmingSkill", "LibrarianSkill"],
+        },
+        r"Item\EngineeringResearchPaperAdvanced.cs": {
+            "item": ["REMOVE-CLASS", "public partial class EngineeringResearchPaperAdvancedItem"],
+            "class": ["EngineeringResearchPaperAdvancedRecipe", "LibrarianEngineeringResearchPaperAdvancedRecipe"],
+            "level": ["RequiresSkill(typeof(BasicEngineeringSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Engineering Research Paper Advanced',
+                'Localizer.DoStr("Librarian Engineering Research Paper Advanced',
+            ],
+            "skill": ["BasicEngineeringSkill", "LibrarianSkill"],
+        },
+        r"Recipe\CulinaryResearchPaperAdvancedMeat.cs": {
+            "class": ["CulinaryResearchPaperAdvancedMeatRecipe", "LibrarianCulinaryResearchPaperAdvancedMeatRecipe"],
+            "level": ["RequiresSkill(typeof(BakingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
+            "displayName": [
+                'Localizer.DoStr("Culinary Research Paper Advanced Meat',
+                'Localizer.DoStr("Librarian Culinary Research Paper Advanced Meat',
+            ],
+            "skill": ["BakingSkill", "LibrarianSkill"],
+        },
         # r"Item\PaperModern.cs": {},
     }
 
