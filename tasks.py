@@ -87,6 +87,27 @@ def zip_assets(ctx: invoke.Context, mod):
 #######################
 
 
+def process_recipes(recipes_changes, target_path):
+    for file, changes in recipes_changes.items():
+        print(f"Reading {file}")
+        with open(os.path.join(AUTOGEN_PATH, file), "r", encoding=",utf-8") as f:
+            recipe_data = f.read()
+
+        for key, configs in changes.items():
+            if configs[0] == "REMOVE-CLASS":
+                recipe_data = remove_class(recipe_data, file, key, configs)
+            elif configs[0] == "REMOVE-CONSTRUCTABLE":
+                recipe_data = remove_constructable(recipe_data, file, key, configs)
+            else:
+                recipe_data = replace_key(recipe_data, file, key, configs)
+
+        print(f"\tWriting {file}")
+        folder = file.split("\\", maxsplit=1)[0]
+        os.makedirs(os.path.join(target_path, folder), exist_ok=True)
+        with open(os.path.join(target_path, file), "w", encoding="utf-8") as f:
+            f.write(recipe_data)
+
+
 def remove_class(recipe_data, file, key, configs):
     recipe_lines = recipe_data.split("\n")
     print(f'\tRemoving "{configs[1]}" from recipe')
@@ -270,21 +291,4 @@ def bunwulf_construction(_: invoke.Context):
         },
     }
 
-    for file, changes in recipes_changes.items():
-        print(f"Reading {file}")
-        with open(os.path.join(AUTOGEN_PATH, file), "r", encoding="utf-8") as f:
-            recipe_data = f.read()
-
-        for key, configs in changes.items():
-            if configs[0] == "REMOVE-CLASS":
-                recipe_data = remove_class(recipe_data, file, key, configs)
-            elif configs[0] == "REMOVE-CONSTRUCTABLE":
-                recipe_data = remove_constructable(recipe_data, file, key, configs)
-            else:
-                recipe_data = replace_key(recipe_data, file, key, configs)
-
-        print(f"\tWriting {file}")
-        folder = file.split("\\", maxsplit=1)[0]
-        os.makedirs(os.path.join(BUNWULF_CONSTRUCTION_PATH, folder), exist_ok=True)
-        with open(os.path.join(BUNWULF_CONSTRUCTION_PATH, file), "w", encoding="utf-8") as f:
-            f.write(recipe_data)
+    process_recipes(recipes_changes, BUNWULF_CONSTRUCTION_PATH)
