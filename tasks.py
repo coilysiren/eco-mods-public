@@ -25,6 +25,10 @@ BUNWULF_CONSTRUCTION_PATH = os.path.join(
     "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfConstruction", "Recipes"
 )
 
+BUNWULF_LIBRARIAN_PATH = os.path.join(
+    "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfLibrarian", "Recipes"
+)
+
 
 class TextProcessingException(Exception):
     pass
@@ -209,6 +213,84 @@ def replace_key(recipe_data, file, key, configs):
         raise TextProcessingException(f"\t\tCouldn't find {configs[0]} in {file}:{key}")
     recipe_data = recipe_data.replace(configs[0], configs[1])
     return recipe_data
+
+
+@invoke.task
+def bunwulf_librarian(_: invoke.Context):
+    recipe_changes = {
+        r"Item\GeologyResearchPaperBasic.cs": {
+            "item": ["REMOVE-CLASS", "public partial class GeologyResearchPaperBasicItem"],
+            "class": ["GeologyResearchPaperBasicRecipe", "LibrarianGeologyResearchPaperBasicRecipe"],
+            "level": ["RequiresSkill(typeof(MiningSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Geology Research Paper',
+                'Localizer.DoStr("Librarian Geology Research Paper',
+            ],
+            "skill": ["MiningSkill", "LibrarianSkill"],
+        },
+        r"Item\CulinaryResearchPaperBasic.cs": {
+            "item": ["REMOVE-CLASS", "public partial class CulinaryResearchPaperBasicItem"],
+            "class": ["CulinaryResearchPaperBasicRecipe", "LibrarianCulinaryResearchPaperBasicRecipe"],
+            "level": ["RequiresSkill(typeof(CampfireCookingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Culinary Research Paper',
+                'Localizer.DoStr("Librarian Culinary Research Paper',
+            ],
+            "skill": ["CampfireCookingSkill", "LibrarianSkill"],
+        },
+        r"Item\GatheringResearchPaperBasic.cs": {
+            "item": ["REMOVE-CLASS", "public partial class GatheringResearchPaperBasicItem"],
+            "class": ["GatheringResearchPaperBasicRecipe", "LibrarianGatheringResearchPaperBasicRecipe"],
+            "level": ["RequiresSkill(typeof(GatheringSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Gathering Research Paper',
+                'Localizer.DoStr("Librarian Gathering Research Paper',
+            ],
+            "skill": ["GatheringSkill", "LibrarianSkill"],
+        },
+        r"Item\DendrologyResearchPaperBasic.cs": {
+            "item": ["REMOVE-CLASS", "public partial class DendrologyResearchPaperBasicItem"],
+            "class": ["DendrologyResearchPaperBasicRecipe", "LibrarianDendrologyResearchPaperBasicRecipe"],
+            "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Dendrology Research Paper',
+                'Localizer.DoStr("Librarian Dendrology Research Paper',
+            ],
+            "skill": ["LoggingSkill", "LibrarianSkill"],
+        },
+        r"Item\MetallurgyResearchPaperBasic.cs": {
+            "item": ["REMOVE-CLASS", "public partial class MetallurgyResearchPaperBasicItem"],
+            "class": ["MetallurgyResearchPaperBasicRecipe", "LibrarianMetallurgyResearchPaperBasicRecipe"],
+            "level": ["RequiresSkill(typeof(MiningSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Metallurgy Research Paper',
+                'Localizer.DoStr("Librarian Metallurgy Research Paper',
+            ],
+            "skill": ["MiningSkill", "LibrarianSkill"],
+        },
+        r"Recipe\CulinaryResearchPaperBasicFish.cs": {
+            "class": ["CulinaryResearchPaperBasicFishRecipe", "LibrarianCulinaryResearchPaperBasicFishRecipe"],
+            "level": ["RequiresSkill(typeof(HuntingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Culinary Research Paper Basic Fish',
+                'Localizer.DoStr("Librarian Culinary Research Paper Basic Fish',
+            ],
+            "skill": ["HuntingSkill", "LibrarianSkill"],
+        },
+        r"Recipe\CulinaryResearchPaperBasicMeat.cs": {
+            "class": ["CulinaryResearchPaperBasicMeatRecipe", "LibrarianCulinaryResearchPaperBasicMeatRecipe"],
+            "level": ["RequiresSkill(typeof(HuntingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
+            "displayName": [
+                'Localizer.DoStr("Culinary Research Paper Basic Meat',
+                'Localizer.DoStr("Librarian Culinary Research Paper Basic Meat',
+            ],
+            "skill": ["HuntingSkill", "LibrarianSkill"],
+        },
+        # r"Item\PaperAdvanced.cs": {},
+        # r"Item\PaperModern.cs": {},
+    }
+
+    process_recipes(recipe_changes, BUNWULF_LIBRARIAN_PATH)
 
 
 @invoke.task
