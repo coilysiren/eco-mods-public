@@ -355,7 +355,75 @@ def bunwulf_librarian(_: invoke.Context):
             ],
             "skill": ["BakingSkill", "LibrarianSkill"],
         },
-        # r"Item\PaperModern.cs": {},
+        r"Item\GeologyResearchPaperModern.cs": {
+            "item": ["REMOVE-CLASS", "public partial class GeologyResearchPaperModernItem"],
+            "class": ["GeologyResearchPaperModernRecipe", "LibrarianGeologyResearchPaperModernRecipe"],
+            "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Geology Research Paper Modern',
+                'Localizer.DoStr("Librarian Geology Research Paper Modern',
+            ],
+            "skill": ["PotterySkill", "LibrarianSkill"],
+        },
+        r"Item\CulinaryResearchPaperModern.cs": {
+            "item": ["REMOVE-CLASS", "public partial class CulinaryResearchPaperModernItem"],
+            "class": ["CulinaryResearchPaperModernRecipe", "LibrarianCulinaryResearchPaperModernRecipe"],
+            "level": ["RequiresSkill(typeof(AdvancedCookingSkill), 2)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Culinary Research Paper Modern',
+                'Localizer.DoStr("Librarian Culinary Research Paper Modern',
+            ],
+            "skill": ["AdvancedCookingSkill", "LibrarianSkill"],
+        },
+        r"Item\DendrologyResearchPaperModern.cs": {
+            "item": ["REMOVE-CLASS", "public partial class DendrologyResearchPaperModernItem"],
+            "class": ["DendrologyResearchPaperModernRecipe", "LibrarianDendrologyResearchPaperModernRecipe"],
+            "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Dendrology Research Paper Modern',
+                'Localizer.DoStr("Librarian Dendrology Research Paper Modern',
+            ],
+            "skill": ["CarpentrySkill", "LibrarianSkill"],
+        },
+        r"Item\MetallurgyResearchPaperModern.cs": {
+            "item": ["REMOVE-CLASS", "public partial class MetallurgyResearchPaperModernItem"],
+            "class": ["MetallurgyResearchPaperModernRecipe", "LibrarianMetallurgyResearchPaperModernRecipe"],
+            "level": ["RequiresSkill(typeof(AdvancedSmeltingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Metallurgy Research Paper Modern',
+                'Localizer.DoStr("Librarian Metallurgy Research Paper Modern',
+            ],
+            "skill": ["AdvancedSmeltingSkill", "LibrarianSkill"],
+        },
+        r"Item\AgricultureResearchPaperModern.cs": {
+            "item": ["REMOVE-CLASS", "public partial class AgricultureResearchPaperModernItem"],
+            "class": ["AgricultureResearchPaperModernRecipe", "LibrarianAgricultureResearchPaperModernRecipe"],
+            "level": ["RequiresSkill(typeof(FertilizersSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Agriculture Research Paper Modern',
+                'Localizer.DoStr("Librarian Agriculture Research Paper Modern',
+            ],
+            "skill": ["FertilizersSkill", "LibrarianSkill"],
+        },
+        r"Item\EngineeringResearchPaperModern.cs": {
+            "item": ["REMOVE-CLASS", "public partial class EngineeringResearchPaperModernItem"],
+            "class": ["EngineeringResearchPaperModernRecipe", "LibrarianEngineeringResearchPaperModernRecipe"],
+            "level": ["RequiresSkill(typeof(MechanicsSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Engineering Research Paper Modern',
+                'Localizer.DoStr("Librarian Engineering Research Paper Modern',
+            ],
+            "skill": ["MechanicsSkill", "LibrarianSkill"],
+        },
+        r"Recipe\GeologyResearchPaperModernGlass.cs": {
+            "class": ["GeologyResearchPaperModernGlassRecipe", "LibrarianGeologyResearchPaperModernGlassRecipe"],
+            "level": ["RequiresSkill(typeof(GlassworkingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
+            "displayName": [
+                'Localizer.DoStr("Geology Research Paper Modern Glass',
+                'Localizer.DoStr("Librarian Geology Research Paper Modern Glass',
+            ],
+            "skill": ["GlassworkingSkill", "LibrarianSkill"],
+        },
     }
 
     process_recipes(recipe_changes, BUNWULF_LIBRARIAN_PATH)
