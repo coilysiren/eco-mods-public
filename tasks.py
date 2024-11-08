@@ -87,6 +87,109 @@ def zip_assets(ctx: invoke.Context, mod):
 #######################
 
 
+def remove_class(recipe_data, file, key, configs):
+    recipe_lines = recipe_data.split("\n")
+    print(f'\tRemoving "{configs[1]}" from recipe')
+
+    # Step 1: Identify the line where the item starts.
+    class_line = 0
+    for line, value in enumerate(recipe_lines):
+        if configs[1] in value:
+            class_line = line
+            break
+    if class_line == 0:
+        raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
+    print(f'\t\tFound "{configs[1]}" at line {class_line}')
+
+    # Step 2: Find all of the lines with the serialized attribute.
+    serialized_lines = []
+    for line, value in enumerate(recipe_lines[:class_line]):
+        if value.strip().startswith("[Serialized]"):
+            serialized_lines.append(line)
+    # This should never happen, but just in case.
+    if not serialized_lines:
+        raise TextProcessingException(f"\t\tCouldn't find [Serialized] in {file}:{key}")
+    serialized_line = serialized_lines[-1]
+    print(f"\t\t[Serialized] attribute line: {serialized_line}")
+
+    # Step 3: Find the item start column by looking for the first { that
+    # occurs after the serialized attribute.
+    item_start_line = 0
+    for line in range(serialized_line, len(recipe_lines)):
+        if "{" in recipe_lines[line]:
+            item_start_line = line
+            break
+    if item_start_line == 0:
+        raise TextProcessingException(f"\t\tCouldn't find item start in {file}:{key}")
+    print(f"\t\tClass body starts at line {item_start_line}")
+
+    # Step 4: Find the line where the item ends, includes
+    # Step 4a, 4b, and 4c.
+
+    # Step 4b:
+    # If there's a { on our class's line, then our item end line is aligned
+    # with the start our class's line.
+    if recipe_lines[class_line].strip().endswith("{"):
+        item_start_column = recipe_lines[class_line].index(configs[1])
+
+    # Step 4a:
+    # Otherwise, the item end line is the first line that has a } at the same
+    # column as the first { in our class's line.
+    else:
+        item_end_line = 0
+        item_column_line = recipe_lines[item_start_line]
+        item_start_column = item_column_line.index("{")
+
+    # Step 4c:
+    # Find the line where the item ends.
+    for line in range(class_line, len(recipe_lines)):
+        if recipe_lines[line].strip().startswith("}"):
+            if recipe_lines[line].index("}") == item_start_column:
+                item_end_line = line
+                break
+    if item_end_line == 0:
+        raise TextProcessingException(f"\t\tCouldn't find item ending in {file}:{key}")
+    print(f"\t\tItem ends at line {item_end_line}")
+
+    # Step 5: Remove the lines from item_start_line to item_end_line.
+    print(f"\t\tRemoving lines {serialized_line} to {item_end_line}")
+    del recipe_lines[serialized_line : item_end_line + 1]
+
+    # Step -1: Join the lines back together to get a single string.
+    recipe_data = "\n".join(recipe_lines)
+    return recipe_data
+
+
+def remove_constructable(recipe_data, file, key, configs):
+    recipe_lines = recipe_data.split("\n")
+    print(f"\tRemoving {configs[1]} from recipe")
+
+    # Step 1: Identify the first Tag line.
+    constructable_line = 0
+    for line, value in enumerate(recipe_lines):
+        if configs[1] in value:
+            constructable_line = line
+            break
+    if constructable_line == 0:
+        raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
+
+    # Step 2: This is the end of the file, so remove the lines from constructable_line to the end.
+    print(f"\t\tRemoving lines {constructable_line} to {len(recipe_lines) - 2}")
+    del recipe_lines[constructable_line : len(recipe_lines) - 2]
+
+    # Step -1: Join the lines back together to get a single string.
+    recipe_data = "\n".join(recipe_lines)
+    return recipe_data
+
+
+def replace_key(recipe_data, file, key, configs):
+    print(f"\tReplacing {key}")
+    if configs[0] not in recipe_data:
+        raise TextProcessingException(f"\t\tCouldn't find {configs[0]} in {file}:{key}")
+    recipe_data = recipe_data.replace(configs[0], configs[1])
+    return recipe_data
+
+
 @invoke.task
 def bunwulf_construction(_: invoke.Context):
     recipes_changes = {
@@ -170,112 +273,18 @@ def bunwulf_construction(_: invoke.Context):
     for file, changes in recipes_changes.items():
         print(f"Reading {file}")
         with open(os.path.join(AUTOGEN_PATH, file), "r", encoding="utf-8") as f:
-            recipe_file = f.read()
+            recipe_data = f.read()
 
-        for key, values in changes.items():
-            recipe_lines = recipe_file.split("\n")
-
-            # This is a special case where we need to remove the item from the recipe
-            # It's a little complex, so read it one step at a time.
-            if values[0] == "REMOVE-CLASS":
-                print(f'\tRemoving "{values[1]}" from recipe')
-
-                # Step 1: Identify the line where the item starts.
-                class_line = 0
-                for line, value in enumerate(recipe_lines):
-                    if values[1] in value:
-                        class_line = line
-                        break
-                if class_line == 0:
-                    raise TextProcessingException(f"\t\tCouldn't find {values[1]} in {file}")
-                print(f'\t\tFound "{values[1]}" at line {class_line}')
-
-                # Step 2: Find all of the lines with the serialized attribute.
-                serialized_lines = []
-                for line, value in enumerate(recipe_lines[:class_line]):
-                    if value.strip().startswith("[Serialized]"):
-                        serialized_lines.append(line)
-                # This should never happen, but just in case.
-                if not serialized_lines:
-                    raise TextProcessingException(f"\t\tCouldn't find [Serialized] in {file}")
-                serialized_line = serialized_lines[-1]
-                print(f"\t\t[Serialized] attribute line: {serialized_line}")
-
-                # Step 3: Find the item start column by looking for the first { that
-                # occurs after the serialized attribute.
-                item_start_line = 0
-                for line in range(serialized_line, len(recipe_lines)):
-                    if "{" in recipe_lines[line]:
-                        item_start_line = line
-                        break
-                if item_start_line == 0:
-                    raise TextProcessingException(f"\t\tCouldn't find item start in {file}")
-                print(f"\t\tClass body starts at line {item_start_line}")
-
-                # Step 4: Find the line where the item ends, includes
-                # Step 4a, 4b, and 4c.
-
-                # Step 4b:
-                # If there's a { on our class's line, then our item end line is aligned
-                # with the start our class's line.
-                if recipe_lines[class_line].strip().endswith("{"):
-                    item_start_column = recipe_lines[class_line].index(values[1])
-
-                # Step 4a:
-                # Otherwise, the item end line is the first line that has a } at the same
-                # column as the first { in our class's line.
-                else:
-                    item_end_line = 0
-                    item_column_line = recipe_lines[item_start_line]
-                    item_start_column = item_column_line.index("{")
-
-                # Step 4c:
-                # Find the line where the item ends.
-                for line in range(class_line, len(recipe_lines)):
-                    if recipe_lines[line].strip().startswith("}"):
-                        if recipe_lines[line].index("}") == item_start_column:
-                            item_end_line = line
-                            break
-                if item_end_line == 0:
-                    raise TextProcessingException(f"\t\tCouldn't find item end in {file}")
-                print(f"\t\tItem ends at line {item_end_line}")
-
-                # Step 5: Remove the lines from item_start_line to item_end_line.
-                print(f"\t\tRemoving lines {serialized_line} to {item_end_line}")
-                del recipe_lines[serialized_line : item_end_line + 1]
-
-                # Step -1: Join the lines back together to get a single string.
-                recipe_file = "\n".join(recipe_lines)
-
-            # This is a special case where we need to remove the item from the recipe
-            # It's a little complex, so read it one step at a time.
-            elif values[0] == "REMOVE-CONSTRUCTABLE":
-                print(f"\tRemoving {values[1]} from recipe")
-
-                # Step 1: Identify the first Tag line.
-                constructable_line = 0
-                for line, value in enumerate(recipe_lines):
-                    if values[1] in value:
-                        constructable_line = line
-                        break
-                if constructable_line == 0:
-                    raise TextProcessingException(f"\t\tCouldn't find {values[1]} in {file}")
-
-                # Step 2: This is the end of the file, so remove the lines from constructable_line to the end.
-                print(f"\t\tRemoving lines {constructable_line} to {len(recipe_lines) - 2}")
-                del recipe_lines[constructable_line : len(recipe_lines) - 2]
-
-                # Step -1: Join the lines back together to get a single string.
-                recipe_file = "\n".join(recipe_lines)
-
+        for key, configs in changes.items():
+            if configs[0] == "REMOVE-CLASS":
+                recipe_data = remove_class(recipe_data, file, key, configs)
+            elif configs[0] == "REMOVE-CONSTRUCTABLE":
+                recipe_data = remove_constructable(recipe_data, file, key, configs)
             else:
-                print(f"\tReplacing {key}")
-                if values[0] not in recipe_file:
-                    raise TextProcessingException(f"\t\tCouldn't find {values[0]} in {file}")
-                recipe_file = recipe_file.replace(values[0], values[1])
+                recipe_data = replace_key(recipe_data, file, key, configs)
 
         print(f"\tWriting {file}")
         folder = file.split("\\", maxsplit=1)[0]
         os.makedirs(os.path.join(BUNWULF_CONSTRUCTION_PATH, folder), exist_ok=True)
         with open(os.path.join(BUNWULF_CONSTRUCTION_PATH, file), "w", encoding="utf-8") as f:
-            f.write(recipe_file)
+            f.write(recipe_data)
