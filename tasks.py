@@ -251,11 +251,11 @@ def bunwulf_agricultural(_: invoke.Context):
         ],
         "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
         "ModsPostInitBracket": ["REMOVE-LINE", "ModsPostInitialize", 2],
+        "Serialized": ["[Serialized]", ""],
     }
 
     recipe_changes = {
         r"Plant\Wheat.cs": {
-            **plant_changes,
             "PlantBlock": ["REMOVE-CLASS", "public partial class WheatBlock", "serialized"],
             "WorldPosition3i": [
                 "public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }",
@@ -266,6 +266,7 @@ def bunwulf_agricultural(_: invoke.Context):
                 "partial void ModsPostInitialize() {",
                 'partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = "TOTALY NOT WHEAT"; }',
             ],
+            **plant_changes,
         },
         # r"Plant\Tomatoes.cs": {},
         # r"Plant\Taro.cs": {},

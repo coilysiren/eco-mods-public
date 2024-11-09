@@ -34,7 +34,7 @@ namespace Eco.Mods.Organisms
     /// <para>Server side entity definition for the "Wheat" entity.</para>
     /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Plants.PlantEntity.html</para>
     /// </summary>
-    [Serialized] // Tells the save/load system this object needs to be serialized.
+     // Tells the save/load system this object needs to be serialized.
     public partial class Wheat : PlantEntity
     {
         
