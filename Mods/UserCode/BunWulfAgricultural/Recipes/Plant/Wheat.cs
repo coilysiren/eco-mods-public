@@ -1,4 +1,4 @@
-﻿namespace Eco.Mods.TechTree
+﻿namespace Eco.Mods.Organisms
 {
     public partial class Wheat : PlantEntity
     {
