@@ -239,54 +239,54 @@ def replace_key(recipe_data, file, key, configs):
 
 @invoke.task
 def bunwulf_agricultural(_: invoke.Context):
-    plant_changes = {
-        "Ecopedia": ['[Ecopedia("Plants", "Plants", createAsSubPage: true)]', ""],
-        "PlantsTag": ['[Tag("Plants")]', ""],
-        "Localized": ["[Localized(false, true)]", ""],
-        "Species": ["static PlantSpecies species;", ""],
-        "PlantLayerSettings": [
-            "REMOVE-CLASS",
-            "PlantLayerSettings",
-            "unserialized",
-        ],
-        "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
-        "ModsPostInitBracket": ["REMOVE-LINE", "ModsPostInitialize", 2],
-        "Serialized": ["[Serialized]", ""],
-    }
+    # plant_changes = {
+    #     "Ecopedia": ['[Ecopedia("Plants", "Plants", createAsSubPage: true)]', ""],
+    #     "PlantsTag": ['[Tag("Plants")]', ""],
+    #     "Localized": ["[Localized(false, true)]", ""],
+    #     "Species": ["static PlantSpecies species;", ""],
+    #     "PlantLayerSettings": [
+    #         "REMOVE-CLASS",
+    #         "PlantLayerSettings",
+    #         "unserialized",
+    #     ],
+    #     "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
+    #     "ModsPostInitBracket": ["REMOVE-LINE", "ModsPostInitialize", 2],
+    #     "Serialized": ["[Serialized]", ""],
+    # }
 
-    recipe_changes = {
-        r"Plant\Wheat.cs": {
-            "PlantBlock": ["REMOVE-CLASS", "public partial class WheatBlock", "serialized"],
-            "WorldPosition3i": [
-                "public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }",
-                "",
-            ],
-            "PreSpecies": ["public Wheat() { }", ""],
-            "ModsPostInit": [
-                "partial void ModsPostInitialize() {",
-                'partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = "TOTALY NOT WHEAT"; }',
-            ],
-            **plant_changes,
-        },
-        # r"Plant\Tomatoes.cs": {},
-        # r"Plant\Taro.cs": {},
-        # r"Plant\Beans.cs": {},
-        # r"Plant\Rice.cs": {},
-        # r"Plant\Camas.cs": {},
-        # r"Plant\BoleteMushroom.cs": {},
-        # r"Plant\Pumpkin.cs": {},
-        # r"Plant\PricklyPear.cs": {},
-        # r"Plant\Beets.cs": {},
-        # r"Plant\Pineapple.cs": {},
-        # r"Plant\Papaya.cs": {},
-        # r"Plant\Agave.cs": {},
-        # r"Plant\CriminiMushroom.cs": {},
-        # r"Plant\Huckleberry.cs": {},
-        # r"Plant\Corn.cs": {},
-        # r"Plant\CookeinaMushroom.cs": {},
-        # r"Plant\Fireweed.cs": {},
-        # r"Plant\Fern.cs": {},
-    }
+    # recipe_changes = {
+    #     r"Plant\Wheat.cs": {
+    #         "PlantBlock": ["REMOVE-CLASS", "public partial class WheatBlock", "serialized"],
+    #         "WorldPosition3i": [
+    #             "public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }",
+    #             "",
+    #         ],
+    #         "PreSpecies": ["public Wheat() { }", ""],
+    #         "ModsPostInit": [
+    #             "partial void ModsPostInitialize() {",
+    #             'partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = "TOTALY NOT WHEAT"; }',
+    #         ],
+    #         **plant_changes,
+    #     },
+    #     # r"Plant\Tomatoes.cs": {},
+    #     # r"Plant\Taro.cs": {},
+    #     # r"Plant\Beans.cs": {},
+    #     # r"Plant\Rice.cs": {},
+    #     # r"Plant\Camas.cs": {},
+    #     # r"Plant\BoleteMushroom.cs": {},
+    #     # r"Plant\Pumpkin.cs": {},
+    #     # r"Plant\PricklyPear.cs": {},
+    #     # r"Plant\Beets.cs": {},
+    #     # r"Plant\Pineapple.cs": {},
+    #     # r"Plant\Papaya.cs": {},
+    #     # r"Plant\Agave.cs": {},
+    #     # r"Plant\CriminiMushroom.cs": {},
+    #     # r"Plant\Huckleberry.cs": {},
+    #     # r"Plant\Corn.cs": {},
+    #     # r"Plant\CookeinaMushroom.cs": {},
+    #     # r"Plant\Fireweed.cs": {},
+    #     # r"Plant\Fern.cs": {},
+    # }
 
     process_recipes(recipe_changes, BUNWULF_AGRICULTURAL_PATH)
 
