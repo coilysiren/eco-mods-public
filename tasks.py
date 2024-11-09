@@ -106,6 +106,8 @@ def process_recipes(recipes_changes, target_path):
                 recipe_data = remove_class(recipe_data, file, key, configs)
             elif configs[0] == "REMOVE-CONSTRUCTABLE":
                 recipe_data = remove_constructable(recipe_data, file, key, configs)
+            elif configs[0] == "REMOVE-LINE":
+                recipe_data = remove_line(recipe_data, file, key, configs)
             else:
                 recipe_data = replace_key(recipe_data, file, key, configs)
 
@@ -202,6 +204,31 @@ def remove_constructable(recipe_data, file, key, configs):
     return recipe_data
 
 
+def remove_line(recipe_data, file, key, configs):
+    recipe_lines = recipe_data.split("\n")
+    print(f"\tRemoving line near {configs[1]} from recipe")
+
+    # Step 1: Identify the line to remove.
+    line_to_remove = 0
+    for line, value in enumerate(recipe_lines):
+        if configs[1] in value:
+            line_to_remove = line
+            break
+    if line_to_remove == 0:
+        raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
+
+    # Step 2: Add offset
+    line_to_remove += configs[2]
+
+    # Step 3: Remove the line.
+    print(f"\t\tRemoving line {line_to_remove}")
+    del recipe_lines[line_to_remove]
+
+    # Step -1: Join the lines back together to get a single string.
+    recipe_data = "\n".join(recipe_lines)
+    return recipe_data
+
+
 def replace_key(recipe_data, file, key, configs):
     print(f"\tReplacing {key}")
     if configs[0] not in recipe_data:
@@ -217,26 +244,27 @@ def bunwulf_agricultural(_: invoke.Context):
         "PlantsTag": ['[Tag("Plants")]', ""],
         "Localized": ["[Localized(false, true)]", ""],
         "Species": ["static PlantSpecies species;", ""],
+        "PlantLayerSettings": [
+            "REMOVE-CLASS",
+            "PlantLayerSettings",
+            "unserialized",
+        ],
+        "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
+        "ModsPostInitBracket": ["REMOVE-LINE", "ModsPostInitialize", 2],
     }
 
     recipe_changes = {
         r"Plant\Wheat.cs": {
             **plant_changes,
-            "PlantLayerSettings": [
-                "REMOVE-CLASS",
-                "public partial class PlantLayerSettingsWheat : PlantLayerSettings",
-                "unserialized",
-            ],
             "PlantBlock": ["REMOVE-CLASS", "public partial class WheatBlock", "serialized"],
             "WorldPosition3i": [
                 "public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }",
                 "",
             ],
-            "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
             "PreSpecies": ["public Wheat() { }", ""],
             "ModsPostInit": [
-                "partial void ModsPostInitialize()",
-                "partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = 'TOTALY NOT WHEAT' }",
+                "partial void ModsPostInitialize() {",
+                'partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = "TOTALY NOT WHEAT"; }',
             ],
         },
         # r"Plant\Tomatoes.cs": {},

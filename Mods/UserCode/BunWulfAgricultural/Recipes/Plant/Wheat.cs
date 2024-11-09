@@ -13,12 +13,6 @@ namespace Eco.Mods.WorldLayers
 
     /// <summary>
     /// <para>Server side layer settings definition for the "Wheat" plant layer setting.</para>
-    /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.simulation/Eco.Simulation.WorldLayers.Layers.PlantLayerSettings.html</para>
-    /// </summary>
-    /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
-    /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
-    /// </remarks>
 }
 
 namespace Eco.Mods.Organisms
@@ -56,9 +50,8 @@ namespace Eco.Mods.Organisms
             /// <summary>Hook for setting the base default properties of a plant species before initialization.</summary>
             partial void SetDefaultProperties();
             /// <summary>Hook for mods to customize the properties of plant species after initialization.</summary>
-            partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = 'TOTALY NOT WHEAT' } {
+            partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = "TOTALY NOT WHEAT"; }
 
-            }
         }
     }
 
