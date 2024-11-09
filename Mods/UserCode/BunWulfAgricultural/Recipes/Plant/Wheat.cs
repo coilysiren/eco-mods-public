@@ -6,7 +6,7 @@
         {
             partial void ModsPostInitialize()
             {
-                MaturityAgeDays = MaturityAgeDays / 2;
+                this.MaturityAgeDays = MaturityAgeDays / 2;
             }
         }
     }
