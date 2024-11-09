@@ -29,6 +29,10 @@ BUNWULF_LIBRARIAN_PATH = os.path.join(
     "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfLibrarian", "Recipes"
 )
 
+BUNWULF_AGRICULTURAL_PATH = os.path.join(
+    "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfAgricultural", "Recipes"
+)
+
 
 class TextProcessingException(Exception):
     pass
@@ -127,58 +131,49 @@ def remove_class(recipe_data, file, key, configs):
     print(f'\t\tFound "{configs[1]}" at line {class_line}')
 
     # Step 2: Find all of the lines with the serialized attribute.
-    serialized_lines = []
-    for line, value in enumerate(recipe_lines[:class_line]):
-        if value.strip().startswith("[Serialized]"):
-            serialized_lines.append(line)
-    # This should never happen, but just in case.
-    if not serialized_lines:
-        raise TextProcessingException(f"\t\tCouldn't find [Serialized] in {file}:{key}")
-    serialized_line = serialized_lines[-1]
-    print(f"\t\t[Serialized] attribute line: {serialized_line}")
+    if configs[2] == "serialized":
+        serialized_lines = []
+        for line, value in enumerate(recipe_lines[:class_line]):
+            if value.strip().startswith("[Serialized]"):
+                serialized_lines.append(line)
+        # This should never happen, but just in case.
+        if not serialized_lines:
+            raise TextProcessingException(f"\t\tCouldn't find [Serialized] in {file}:{key}")
+        serialized_line = serialized_lines[-1]
+        class_line = serialized_line
+        print(f"\t\t[Serialized] attribute line: {serialized_line}")
 
-    # Step 3: Find the item start column by looking for the first { that
-    # occurs after the serialized attribute.
-    item_start_line = 0
-    for line in range(serialized_line, len(recipe_lines)):
-        if "{" in recipe_lines[line]:
-            item_start_line = line
+    # Step 3: Count brackets to find the end of the class.
+    bracket_count = 0
+    recipe_data = "\n".join(recipe_lines)
+    class_start = recipe_data.find(configs[1])
+    print(f"\t\tFound start of class at index {class_start}")
+    print(f"\t\tLooking from index {class_start} to {len(recipe_data)}")
+    backets_started = False
+
+    for index in range(class_start, len(recipe_data)):
+        char = recipe_data[index]
+        if char == "{":
+            bracket_count += 1
+            backets_started = True
+        elif char == "}":
+            bracket_count -= 1
+        elif backets_started and bracket_count == 0:
+            class_end = index
             break
-    if item_start_line == 0:
-        raise TextProcessingException(f"\t\tCouldn't find item start in {file}:{key}")
-    print(f"\t\tClass body starts at line {item_start_line}")
+    if bracket_count != 0:
+        raise TextProcessingException(f"\t\tCouldn't find end of class in {file}:{key}")
+    print(f"\t\tFound end of class at index {class_end}")
 
-    # Step 4: Find the line where the item ends, includes
-    # Step 4a, 4b, and 4c.
+    # Translate the class end index to a line number.
+    class_end_line = recipe_data[:class_end].count("\n") + 1
+    print(f"\t\tRemoving lines {class_line} to {class_end_line}")
+    recipe_lines = recipe_data.split("\n")
+    del recipe_lines[class_line:class_end_line]
 
-    # Step 4b:
-    # If there's a { on our class's line, then our item end line is aligned
-    # with the start our class's line.
-    if recipe_lines[class_line].strip().endswith("{"):
-        item_start_column = recipe_lines[class_line].index(configs[1])
-
-    # Step 4a:
-    # Otherwise, the item end line is the first line that has a } at the same
-    # column as the first { in our class's line.
-    else:
-        item_end_line = 0
-        item_column_line = recipe_lines[item_start_line]
-        item_start_column = item_column_line.index("{")
-
-    # Step 4c:
-    # Find the line where the item ends.
-    for line in range(class_line, len(recipe_lines)):
-        if recipe_lines[line].strip().startswith("}"):
-            if recipe_lines[line].index("}") == item_start_column:
-                item_end_line = line
-                break
-    if item_end_line == 0:
-        raise TextProcessingException(f"\t\tCouldn't find item ending in {file}:{key}")
-    print(f"\t\tItem ends at line {item_end_line}")
-
-    # Step 5: Remove the lines from item_start_line to item_end_line.
-    print(f"\t\tRemoving lines {serialized_line} to {item_end_line}")
-    del recipe_lines[serialized_line : item_end_line + 1]
+    # # Step 5: Remove the lines from item_start_line to item_end_line.
+    # print(f"\t\tRemoving lines {class_line} to {item_end_line}")
+    # del recipe_lines[class_line : item_end_line + 1]
 
     # Step -1: Join the lines back together to get a single string.
     recipe_data = "\n".join(recipe_lines)
@@ -213,6 +208,58 @@ def replace_key(recipe_data, file, key, configs):
         raise TextProcessingException(f"\t\tCouldn't find {configs[0]} in {file}:{key}")
     recipe_data = recipe_data.replace(configs[0], configs[1])
     return recipe_data
+
+
+@invoke.task
+def bunwulf_agricultural(_: invoke.Context):
+    plant_changes = {
+        "Ecopedia": ['[Ecopedia("Plants", "Plants", createAsSubPage: true)]', ""],
+        "PlantsTag": ['[Tag("Plants")]', ""],
+        "Localized": ["[Localized(false, true)]", ""],
+        "Species": ["static PlantSpecies species;", ""],
+    }
+
+    recipe_changes = {
+        r"Plant\Wheat.cs": {
+            **plant_changes,
+            "PlantLayerSettings": [
+                "REMOVE-CLASS",
+                "public partial class PlantLayerSettingsWheat : PlantLayerSettings",
+                "unserialized",
+            ],
+            "PlantBlock": ["REMOVE-CLASS", "public partial class WheatBlock", "serialized"],
+            "WorldPosition3i": [
+                "public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }",
+                "",
+            ],
+            "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
+            "PreSpecies": ["public Wheat() { }", ""],
+            "ModsPostInit": [
+                "partial void ModsPostInitialize()",
+                "partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = 'TOTALY NOT WHEAT' }",
+            ],
+        },
+        # r"Plant\Tomatoes.cs": {},
+        # r"Plant\Taro.cs": {},
+        # r"Plant\Beans.cs": {},
+        # r"Plant\Rice.cs": {},
+        # r"Plant\Camas.cs": {},
+        # r"Plant\BoleteMushroom.cs": {},
+        # r"Plant\Pumpkin.cs": {},
+        # r"Plant\PricklyPear.cs": {},
+        # r"Plant\Beets.cs": {},
+        # r"Plant\Pineapple.cs": {},
+        # r"Plant\Papaya.cs": {},
+        # r"Plant\Agave.cs": {},
+        # r"Plant\CriminiMushroom.cs": {},
+        # r"Plant\Huckleberry.cs": {},
+        # r"Plant\Corn.cs": {},
+        # r"Plant\CookeinaMushroom.cs": {},
+        # r"Plant\Fireweed.cs": {},
+        # r"Plant\Fern.cs": {},
+    }
+
+    process_recipes(recipe_changes, BUNWULF_AGRICULTURAL_PATH)
 
 
 @invoke.task
