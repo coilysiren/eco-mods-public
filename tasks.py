@@ -3,6 +3,7 @@ import shutil
 import stat
 
 import invoke
+import jinja2
 
 
 AUTOGEN_PATH = os.path.join(
@@ -237,6 +238,19 @@ def replace_key(recipe_data, file, key, configs):
     return recipe_data
 
 
+def template_recipes(recipes_templates, template, target_path):
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates/"))
+    print(f"Rendering templates for {template}")
+
+    for path, values in recipes_templates.items():
+        template = env.get_template(template)
+        content = template.render(**values)
+
+        with open(os.path.join(target_path, path), mode="w", encoding="utf-8") as recipe:
+            recipe.write(content)
+            print(f"\t {path}")
+
+
 #######################
 # SPECIALITY SPECIFIC #
 #######################
@@ -244,29 +258,37 @@ def replace_key(recipe_data, file, key, configs):
 
 @invoke.task
 def bunwulf_agricultural(_: invoke.Context):
-    # recipe_changes = {
-    #     # r"Plant\Wheat.cs": {},
-    #     # r"Plant\Tomatoes.cs": {},
-    #     # r"Plant\Taro.cs": {},
-    #     # r"Plant\Beans.cs": {},
-    #     # r"Plant\Rice.cs": {},
-    #     # r"Plant\Camas.cs": {},
-    #     # r"Plant\BoleteMushroom.cs": {},
-    #     # r"Plant\Pumpkin.cs": {},
-    #     # r"Plant\PricklyPear.cs": {},
-    #     # r"Plant\Beets.cs": {},
-    #     # r"Plant\Pineapple.cs": {},
-    #     # r"Plant\Papaya.cs": {},
-    #     # r"Plant\Agave.cs": {},
-    #     # r"Plant\CriminiMushroom.cs": {},
-    #     # r"Plant\Huckleberry.cs": {},
-    #     # r"Plant\Corn.cs": {},
-    #     # r"Plant\CookeinaMushroom.cs": {},
-    #     # r"Plant\Fireweed.cs": {},
-    #     # r"Plant\Fern.cs": {},
-    # }
+    recipe_list = [
+        r"Plant\Wheat.cs",
+        r"Plant\Tomatoes.cs",
+        r"Plant\Taro.cs",
+        r"Plant\Beans.cs",
+        r"Plant\Rice.cs",
+        r"Plant\Camas.cs",
+        r"Plant\BoleteMushroom.cs",
+        r"Plant\Pumpkin.cs",
+        r"Plant\PricklyPear.cs",
+        r"Plant\Beets.cs",
+        r"Plant\Pineapple.cs",
+        r"Plant\Papaya.cs",
+        r"Plant\Agave.cs",
+        r"Plant\CriminiMushroom.cs",
+        r"Plant\Huckleberry.cs",
+        r"Plant\Corn.cs",
+        r"Plant\CookeinaMushroom.cs",
+        r"Plant\Fireweed.cs",
+        r"Plant\Fern.cs",
+    ]
 
-    process_recipes(recipe_changes, BUNWULF_AGRICULTURAL_PATH)
+    recipes_templates = {
+        template: {
+            "plant": template.split("\\")[-1].split(".")[0],
+            "species": template.split("\\")[-1].split(".")[0] + "Species",
+        }
+        for template in recipe_list
+    }
+
+    template_recipes(recipes_templates, "plant.template", BUNWULF_AGRICULTURAL_PATH)
 
 
 @invoke.task

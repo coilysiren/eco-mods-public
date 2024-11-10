@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Eco.Core.Items;
 using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Plants;
@@ -14,9 +14,9 @@ using Eco.World.Blocks;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Wheat : PlantEntity
+    public partial class Wheat
     {
-        public partial class WheatSpecies : PlantSpecies
+        public partial class WheatSpecies
         {
             partial void ModsPostInitialize()
             {
