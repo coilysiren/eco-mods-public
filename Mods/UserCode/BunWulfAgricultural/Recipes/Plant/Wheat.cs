@@ -13,9 +13,9 @@ using Eco.World.Blocks;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Wheat : PlantEntity
+    public partial class Wheat
     {
-        public partial class WheatSpecies : PlantSpecies
+        public partial class WheatSpecies
         {
             partial void ModsPostInitialize()
             {
