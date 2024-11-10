@@ -25,6 +25,7 @@ class TextProcessingException(Exception):
 
 def process_recipes(recipes_changes, target_path):
     item_pattern = r"\s+(public partial class \w+Item)"
+    block_pattern = r"\s+(public partial class \w+Block)"
 
     for file, changes in recipes_changes.items():
         print(f"Reading {file}")
@@ -37,13 +38,14 @@ def process_recipes(recipes_changes, target_path):
             if match := re.match(item_pattern, line):
                 recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
 
+        # Remove blocks, we never need to duplicate them.
+        recipes_lines = recipe_data.split("\n")
+        for line in recipes_lines:
+            if match := re.match(block_pattern, line):
+                recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
+
         for key, configs in changes.items():
-            if configs[0] == "REMOVE-CONSTRUCTABLE":
-                recipe_data = remove_constructable(recipe_data, file, key, configs)
-            elif configs[0] == "REMOVE-LINE":
-                recipe_data = remove_line(recipe_data, file, key, configs)
-            else:
-                recipe_data = replace_key(recipe_data, file, key, configs)
+            recipe_data = replace_key(recipe_data, file, key, configs)
 
         print(f"\tWriting {file}")
         folder = file.split("\\", maxsplit=1)[0]
@@ -102,53 +104,6 @@ def remove_class(recipe_data, file, key, class_name):
     # print(f"\t\tRemoving lines {class_start_line} to {class_end_line}")
     recipe_lines = recipe_data.split("\n")
     del recipe_lines[class_start_line:class_end_line]
-
-    # Step -1: Join the lines back together to get a single string.
-    recipe_data = "\n".join(recipe_lines)
-    return recipe_data
-
-
-def remove_constructable(recipe_data, file, key, configs):
-    recipe_lines = recipe_data.split("\n")
-    print(f"\tRemoving {configs[1]} from recipe")
-
-    # Step 1: Identify the first Tag line.
-    constructable_line = 0
-    for line, value in enumerate(recipe_lines):
-        if configs[1] in value:
-            constructable_line = line
-            break
-    if constructable_line == 0:
-        raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
-
-    # Step 2: This is the end of the file, so remove the lines from constructable_line to the end.
-    print(f"\t\tRemoving lines {constructable_line} to {len(recipe_lines) - 2}")
-    del recipe_lines[constructable_line : len(recipe_lines) - 2]
-
-    # Step -1: Join the lines back together to get a single string.
-    recipe_data = "\n".join(recipe_lines)
-    return recipe_data
-
-
-def remove_line(recipe_data, file, key, configs):
-    recipe_lines = recipe_data.split("\n")
-    print(f"\tRemoving line near {configs[1]} from recipe")
-
-    # Step 1: Identify the line to remove.
-    line_to_remove = 0
-    for line, value in enumerate(recipe_lines):
-        if configs[1] in value:
-            line_to_remove = line
-            break
-    if line_to_remove == 0:
-        raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
-
-    # Step 2: Add offset
-    line_to_remove += configs[2]
-
-    # Step 3: Remove the line.
-    print(f"\t\tRemoving line {line_to_remove}")
-    del recipe_lines[line_to_remove]
 
     # Step -1: Join the lines back together to get a single string.
     recipe_data = "\n".join(recipe_lines)
