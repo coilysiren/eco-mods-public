@@ -21,6 +21,7 @@ namespace Eco.Mods.Organisms
             partial void ModsPostInitialize()
             {
                 this.MaturityAgeDays = this.MaturityAgeDays / 2;
+                this.SeedingArea = this.SeedingArea * 5;
             }
         }
     }
