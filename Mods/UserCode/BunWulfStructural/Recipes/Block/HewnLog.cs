@@ -93,4 +93,19 @@ namespace Eco.Mods.TechTree
 
 
 
+    [Tag("HewnLog")]
+    [Tag("Burnable Fuel")]
+    [Tag("Constructable")]
+    [Tag(BlockTags.PartialStack)]
+    [Serialized, Solid] public class HewnLogStacked1Block : PickupableBlock, IWaterLoggedBlock { }
+    [Tag("HewnLog")]
+    [Tag("Burnable Fuel")]
+    [Tag("Constructable")]
+    [Tag(BlockTags.PartialStack)]
+    [Serialized, Solid] public class HewnLogStacked2Block : PickupableBlock, IWaterLoggedBlock { }
+    [Tag("HewnLog")]
+    [Tag("Burnable Fuel")]
+    [Tag("Constructable")]
+    [Tag(BlockTags.FullStack)]
+    [Serialized, Solid,Wall] public class HewnLogStacked3Block : PickupableBlock, IWaterLoggedBlock { } //Only a wall if it's all 4 HewnLog
 }

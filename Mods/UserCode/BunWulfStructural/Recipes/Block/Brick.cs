@@ -33,7 +33,7 @@ namespace Eco.Mods.TechTree
     /// <summary>Auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.</summary>
 
     /// <summary>
-    /// <para>Server side recipe definition for "Glass".</para>
+    /// <para>Server side recipe definition for "Brick".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
@@ -41,22 +41,22 @@ namespace Eco.Mods.TechTree
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
     [RequiresSkill(typeof(ConstructionSkill), 2)]
-    [Ecopedia("Blocks", "Building Materials", subPageName: "Glass Item")]
-    public partial class ConstructionGlassRecipe : RecipeFamily
+    [Ecopedia("Blocks", "Building Materials", subPageName: "Brick Item")]
+    public partial class ConstructionBrickRecipe : RecipeFamily
     {
-        public ConstructionGlassRecipe()
+        public ConstructionBrickRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "Glass",  //noloc
-                displayName: Localizer.DoStr("Builder Grade Glass"),
+                name: "Brick",  //noloc
+                displayName: Localizer.DoStr("Builder Grade Brick"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(SandItem), 4, typeof(ConstructionSkill), typeof(GlassworkingLavishResourcesTalent)),
-                    new IngredientElement(typeof(CrushedLimestoneItem), 1, true),
+                    new IngredientElement(typeof(WetBrickItem), 1, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
+                    new IngredientElement(typeof(MortarItem), 4, typeof(ConstructionSkill), typeof(PotteryLavishResourcesTalent)),
                 },
 
                 // Define our recipe output items.
@@ -64,24 +64,24 @@ namespace Eco.Mods.TechTree
                 // to create.
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<GlassItem>()
+                    new CraftingElement<BrickItem>()
                 });
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 1; // Defines how much experience is gained when crafted.
             
             // Defines the amount of labor required and the required skill to add labor
-            this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(ConstructionSkill));
+            this.LaborInCalories = CreateLaborInCaloriesValue(15, typeof(ConstructionSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionGlassRecipe), start: 1.2f, skillType: typeof(ConstructionSkill), typeof(GlassworkingFocusedSpeedTalent), typeof(GlassworkingParallelSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionBrickRecipe), start: 0.32f, skillType: typeof(ConstructionSkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Glass"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Brick"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Builder Grade Glass"), recipeType: typeof(ConstructionGlassRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Builder Grade Brick"), recipeType: typeof(ConstructionBrickRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
-            CraftingComponent.AddRecipe(tableType: typeof(GlassworksObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
         }
 
         /// <summary>Hook for mods to customize RecipeFamily before initialization. You can change recipes, xp, labor, time here.</summary>
@@ -93,4 +93,16 @@ namespace Eco.Mods.TechTree
 
 
 
+    [Tag("Constructable")]
+    [Tag(BlockTags.PartialStack)]
+    [Serialized, Solid] public class BrickStacked1Block : PickupableBlock, IWaterLoggedBlock { }
+    [Tag("Constructable")]
+    [Tag(BlockTags.PartialStack)]
+    [Serialized, Solid] public class BrickStacked2Block : PickupableBlock, IWaterLoggedBlock { }
+    [Tag("Constructable")]
+    [Tag(BlockTags.PartialStack)]
+    [Serialized, Solid] public class BrickStacked3Block : PickupableBlock, IWaterLoggedBlock { }
+    [Tag("Constructable")]
+    [Tag(BlockTags.FullStack)]
+    [Serialized, Solid,Wall] public class BrickStacked4Block : PickupableBlock, IWaterLoggedBlock { } //Only a wall if it's all 4 Brick
 }

@@ -111,83 +111,62 @@ def bunwulf_educational(_: invoke.Context):
 
 
 @invoke.task
-def bunwulf_construction(_: invoke.Context):
+def bunwulf_structural(_: invoke.Context):
     recipes_changes = {
         r"Block\Brick.cs": {
             "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Brick")', 'Builder Grade Brick")'],
             "class": ["BrickRecipe", "ConstructionBrickRecipe"],
+            "displayName": ['Brick")', 'Builder Grade Brick")'],
             "skill": ["PotterySkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class BrickItem"],
-            "block": ["REMOVE-CLASS", "public partial class BrickBlock"],
-            "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("Constructable")]'],
         },
         r"Block\CopperPipe.cs": {
             "level": ["RequiresSkill(typeof(SmeltingSkill), 2)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
-            "displayName": ['Copper Pipe")', 'Builder Grade Copper Pipe")'],
             "class": ["CopperPipeRecipe", "ConstructionCopperPipeRecipe"],
+            "displayName": ['Copper Pipe")', 'Builder Grade Copper Pipe")'],
             "skill": ["SmeltingSkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class CopperPipeItem"],
-            "block": ["REMOVE-CLASS", "public partial class CopperPipeBlock"],
         },
         r"Item\Dowel.cs": {
             "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "displayName": ['Dowel")', 'Builder Grade Dowel")'],
             "class": ["DowelRecipe", "ConstructionDowelRecipe"],
+            "displayName": ['Dowel")', 'Builder Grade Dowel")'],
             "skill": ["LoggingSkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class DowelItem"],
         },
         r"Block\Glass.cs": {
             "level": ["RequiresSkill(typeof(GlassworkingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Glass")', 'Builder Grade Glass")'],
             "class": ["GlassRecipe", "ConstructionGlassRecipe"],
+            "displayName": ['Glass")', 'Builder Grade Glass")'],
             "skill": ["GlassworkingSkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class GlassItem"],
-            "block": ["REMOVE-CLASS", "public partial class GlassBlock"],
-            "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("Constructable")]'],
         },
         r"Block\HewnLog.cs": {
             "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "displayName": ['Hewn Log")', 'Builder Grade Hewn Log")'],
             "class": ["HewnLogRecipe", "ConstructionHewnLogRecipe"],
+            "displayName": ['Hewn Log")', 'Builder Grade Hewn Log")'],
             "skill": ["LoggingSkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class HewnLogItem"],
-            "block": ["REMOVE-CLASS", "public partial class HewnLogBlock"],
-            "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("HewnLog")]'],
         },
         r"Block\IronPipe.cs": {
             "level": ["RequiresSkill(typeof(SmeltingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
-            "displayName": ['Iron Pipe")', 'Builder Grade Iron Pipe")'],
             "class": ["IronPipeRecipe", "ConstructionIronPipeRecipe"],
+            "displayName": ['Iron Pipe")', 'Builder Grade Iron Pipe")'],
             "skill": ["SmeltingSkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class IronPipeItem"],
-            "block": ["REMOVE-CLASS", "public partial class IronPipeBlock"],
         },
         r"Block\Lumber.cs": {
             "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Lumber")', 'Builder Grade Lumber")'],
             "class": ["LumberRecipe", "ConstructionLumberRecipe"],
+            "displayName": ['Lumber")', 'Builder Grade Lumber")'],
             "skill": ["CarpentrySkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class LumberItem"],
-            "block": ["REMOVE-CLASS", "public partial class LumberBlock"],
-            "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("Lumber")]'],
         },
         r"Block\MortaredStone.cs": {
             "level": ["RequiresSkill(typeof(MasonrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "displayName": ['Mortared Stone")', 'Builder Grade Mortared Stone")'],
             "class": ["MortaredStoneRecipe", "ConstructionMortaredStoneRecipe"],
+            "displayName": ['Mortared Stone")', 'Builder Grade Mortared Stone")'],
             "skill": ["MasonrySkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class MortaredStoneItem"],
-            "block": ["REMOVE-CLASS", "public partial class MortaredStoneBlock"],
-            "constructable": ["REMOVE-CONSTRUCTABLE", '[Tag("MortaredStone")]'],
         },
         r"Item\WetBrick.cs": {
             "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Wet Brick")', 'Builder Grade Wet Brick")'],
             "class": ["WetBrickRecipe", "ConstructionWetBrickRecipe"],
+            "displayName": ['Wet Brick")', 'Builder Grade Wet Brick")'],
             "skill": ["PotterySkill", "ConstructionSkill"],
-            "item": ["REMOVE-CLASS", "public partial class WetBrickItem"],
         },
     }
 
-    util.process_recipes(recipes_changes, BUNWULF_CONSTRUCTION_PATH)
+    util.process_recipes(recipes_changes, os.path.join(USERCODE_PATH, "BunWulfStructural", "Recipes"))
