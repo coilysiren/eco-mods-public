@@ -91,6 +91,13 @@ def zip_assets(ctx: invoke.Context, mod):
     ctx.run(f"zip -r {mod}.zip ./Mods/UserCode/{mod}")
 
 
+@invoke.task
+def push_asset(ctx: invoke.Context, mod):
+    remote_path = "/home/kai/.local/share/Steam/steamapps/common/Eco/Eco_Data/Server"
+    ctx.run(f"scp {mod}.zip kai@kai-server:{remote_path}")
+    ctx.run(f'ssh -t kai@kai-server "cd {remote_path} && unzip -o {mod}.zip"')
+
+
 ############################
 # SPECIALITY MOD FUNCTIONS #
 ############################
