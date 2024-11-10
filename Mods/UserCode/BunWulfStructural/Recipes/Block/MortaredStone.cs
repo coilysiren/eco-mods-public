@@ -93,16 +93,4 @@ namespace Eco.Mods.TechTree
 
 
 
-    [Tag("MortaredStone")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class MortaredStoneStacked1Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("MortaredStone")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class MortaredStoneStacked2Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("MortaredStone")]
-    [Tag("Constructable")]
-    [Tag(BlockTags.FullStack)]
-    [Serialized, Solid,Wall] public class MortaredStoneStacked3Block : PickupableBlock, IWaterLoggedBlock { } //Only a wall if it's all 4 MortaredStone
 }

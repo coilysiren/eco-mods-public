@@ -93,16 +93,4 @@ namespace Eco.Mods.TechTree
 
 
 
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class BrickStacked1Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class BrickStacked2Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("Constructable")]
-    [Tag(BlockTags.PartialStack)]
-    [Serialized, Solid] public class BrickStacked3Block : PickupableBlock, IWaterLoggedBlock { }
-    [Tag("Constructable")]
-    [Tag(BlockTags.FullStack)]
-    [Serialized, Solid,Wall] public class BrickStacked4Block : PickupableBlock, IWaterLoggedBlock { } //Only a wall if it's all 4 Brick
 }

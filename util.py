@@ -24,8 +24,8 @@ class TextProcessingException(Exception):
 
 
 def process_recipes(recipes_changes, target_path):
-    item_pattern = r"\s+(public partial class \w+Item)"
-    block_pattern = r"\s+(public partial class \w+Block)"
+    item_pattern = r".*(class \w+Item).*"
+    block_pattern = r".*(class \w+Block).*"
 
     for file, changes in recipes_changes.items():
         print(f"Reading {file}")
@@ -35,6 +35,7 @@ def process_recipes(recipes_changes, target_path):
         # Remove items, we never need to duplicate them.
         recipes_lines = recipe_data.split("\n")
         for line in recipes_lines:
+            # print(f"{re.match(item_pattern, line)} => {line}")
             if match := re.match(item_pattern, line):
                 recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
 
@@ -66,7 +67,7 @@ def remove_class(recipe_data, file, key, class_name):
             break
     if class_start_line == 0:
         raise TextProcessingException(f"\t\tCouldn't find {class_name} in {file}:{key}")
-    # print(f'\t\tFound "{class_name}" at line {class_start_line}')
+    print(f'\t\tFound "{class_name}" at line {class_start_line}')
 
     # Step 2: Move class start line upwards if the class has any annotations.
     for index in range(class_start_line, 0, -1):
@@ -77,7 +78,7 @@ def remove_class(recipe_data, file, key, class_name):
             continue
         else:
             break
-    # print(f"\t\tMoved class start line to {class_start_line} due to annotations")
+    print(f"\t\tMoved class start line to {class_start_line} due to annotations")
 
     # Step 3: Count brackets to find the end of the class.
     bracket_count = 0
@@ -98,10 +99,10 @@ def remove_class(recipe_data, file, key, class_name):
     if bracket_count != 0 or class_end_index == 0:
         raise TextProcessingException(f"\t\tCouldn't find end of class in {file}:{key}")
     class_end_line = recipe_data[:class_end_index].count("\n") + 1
-    # print(f"\t\tclass end bracket found at line {class_end_line}")
+    print(f"\t\tclass end bracket found at line {class_end_line}")
 
     # Step 4: Translate the class end index to a line number, remove the lines.
-    # print(f"\t\tRemoving lines {class_start_line} to {class_end_line}")
+    print(f"\t\tRemoving lines {class_start_line} to {class_end_line}")
     recipe_lines = recipe_data.split("\n")
     del recipe_lines[class_start_line:class_end_line]
 
