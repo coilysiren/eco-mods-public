@@ -2,6 +2,7 @@
 using Eco.Core.Items;
 using Eco.Gameplay.Blocks;
 using Eco.Gameplay.Plants;
+using Eco.Mods.Organisms;
 using Eco.Mods.TechTree;
 using Eco.Shared.Localization;
 using Eco.Shared.Math;
@@ -13,11 +14,14 @@ using Eco.World.Blocks;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class WheatSpecies
+    public partial class Wheat : PlantEntity
     {
-        partial void ModsPostInitialize()
+        public partial class WheatSpecies : PlantSpecies
         {
-            this.MaturityAgeDays = MaturityAgeDays / 2;
+            partial void ModsPostInitialize()
+            {
+                this.MaturityAgeDays = this.MaturityAgeDays / 2;
+            }
         }
     }
 }
