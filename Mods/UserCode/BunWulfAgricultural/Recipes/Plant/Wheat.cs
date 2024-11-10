@@ -13,14 +13,11 @@ using Eco.World.Blocks;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Wheat
+    public partial class WheatSpecies
     {
-        public partial class WheatSpecies
+        partial void ModsPostInitialize()
         {
-            partial void ModsPostInitialize()
-            {
-                this.MaturityAgeDays = MaturityAgeDays / 2;
-            }
+            this.MaturityAgeDays = MaturityAgeDays / 2;
         }
     }
 }
