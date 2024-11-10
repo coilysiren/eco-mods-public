@@ -26,8 +26,8 @@ BUNWULF_CONSTRUCTION_PATH = os.path.join(
     "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfConstruction", "Recipes"
 )
 
-BUNWULF_LIBRARIAN_PATH = os.path.join(
-    "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfLibrarian", "Recipes"
+BUNWULF_EDUCATIONAL_PATH = os.path.join(
+    "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfEducational", "Recipes"
 )
 
 BUNWULF_AGRICULTURAL_PATH = os.path.join(
@@ -130,38 +130,34 @@ def remove_class(recipe_data, file, key, configs):
     recipe_lines = recipe_data.split("\n")
     print(f'\tRemoving "{configs[1]}" from recipe')
 
-    # Step 1: Identify the line where the item starts.
-    class_line = 0
+    # Step 1: Identify the line where the class starts.
+    class_start_line = 0
     for line, value in enumerate(recipe_lines):
         if configs[1] in value:
-            class_line = line
+            class_start_line = line
             break
-    if class_line == 0:
+    if class_start_line == 0:
         raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
-    print(f'\t\tFound "{configs[1]}" at line {class_line}')
+    print(f'\t\tFound "{configs[1]}" at line {class_start_line}')
 
-    # Step 2: Find all of the lines with the serialized attribute.
-    if configs[2] == "serialized":
-        serialized_lines = []
-        for line, value in enumerate(recipe_lines[:class_line]):
-            if value.strip().startswith("[Serialized]"):
-                serialized_lines.append(line)
-        # This should never happen, but just in case.
-        if not serialized_lines:
-            raise TextProcessingException(f"\t\tCouldn't find [Serialized] in {file}:{key}")
-        serialized_line = serialized_lines[-1]
-        class_line = serialized_line
-        print(f"\t\t[Serialized] attribute line: {serialized_line}")
+    # Step 2: Move class start line upwards if the class has any annotations.
+    for index in range(class_start_line, 0, -1):
+        line = recipe_lines[index].strip()
+        if line.startswith("["):
+            class_start_line = index
+        elif configs[1] in line:
+            continue
+        else:
+            break
+    print(f"\t\tMoved class start line to {class_start_line} due to annotations")
 
     # Step 3: Count brackets to find the end of the class.
     bracket_count = 0
+    class_end_index = 0
     recipe_data = "\n".join(recipe_lines)
-    class_start = recipe_data.find(configs[1])
-    print(f"\t\tFound start of class at index {class_start}")
-    print(f"\t\tLooking from index {class_start} to {len(recipe_data)}")
+    class_start_index = recipe_data.find(configs[1])
     backets_started = False
-
-    for index in range(class_start, len(recipe_data)):
+    for index in range(class_start_index, len(recipe_data)):
         char = recipe_data[index]
         if char == "{":
             bracket_count += 1
@@ -169,21 +165,17 @@ def remove_class(recipe_data, file, key, configs):
         elif char == "}":
             bracket_count -= 1
         elif backets_started and bracket_count == 0:
-            class_end = index
+            class_end_index = index
             break
-    if bracket_count != 0:
+    if bracket_count != 0 or class_end_index == 0:
         raise TextProcessingException(f"\t\tCouldn't find end of class in {file}:{key}")
-    print(f"\t\tFound end of class at index {class_end}")
+    class_end_line = recipe_data[:class_end_index].count("\n") + 1
+    print(f"\t\tclass end bracket found at line {class_end_line}")
 
-    # Translate the class end index to a line number.
-    class_end_line = recipe_data[:class_end].count("\n") + 1
-    print(f"\t\tRemoving lines {class_line} to {class_end_line}")
+    # Step 4: Translate the class end index to a line number, remove the lines.
+    print(f"\t\tRemoving lines {class_start_line} to {class_end_line}")
     recipe_lines = recipe_data.split("\n")
-    del recipe_lines[class_line:class_end_line]
-
-    # # Step 5: Remove the lines from item_start_line to item_end_line.
-    # print(f"\t\tRemoving lines {class_line} to {item_end_line}")
-    # del recipe_lines[class_line : item_end_line + 1]
+    del recipe_lines[class_start_line:class_end_line]
 
     # Step -1: Join the lines back together to get a single string.
     recipe_data = "\n".join(recipe_lines)
@@ -299,55 +291,55 @@ def bunwulf_agricultural(_: invoke.Context):
 
 
 @invoke.task
-def bunwulf_librarian(_: invoke.Context):
+def bunwulf_educational(_: invoke.Context):
     recipe_changes = {
         r"Item\GeologyResearchPaperBasic.cs": {
-            "item": ["REMOVE-CLASS", "public partial class GeologyResearchPaperBasicItem"],
+            "item": ["REMOVE-CLASS", "class GeologyResearchPaperBasicItem"],
             "class": ["GeologyResearchPaperBasicRecipe", "LibrarianGeologyResearchPaperBasicRecipe"],
             "level": ["RequiresSkill(typeof(MiningSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Geology Research Paper',
-                'Localizer.DoStr("Librarian Geology Research Paper',
+                "Geology Research Paper",
+                "Librarian Geology Research Paper",
             ],
             "skill": ["MiningSkill", "LibrarianSkill"],
         },
         r"Item\CulinaryResearchPaperBasic.cs": {
-            "item": ["REMOVE-CLASS", "public partial class CulinaryResearchPaperBasicItem"],
+            "item": ["REMOVE-CLASS", " class CulinaryResearchPaperBasicItem"],
             "class": ["CulinaryResearchPaperBasicRecipe", "LibrarianCulinaryResearchPaperBasicRecipe"],
             "level": ["RequiresSkill(typeof(CampfireCookingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Culinary Research Paper',
-                'Localizer.DoStr("Librarian Culinary Research Paper',
+                "Culinary Research Paper",
+                "Librarian Culinary Research Paper",
             ],
             "skill": ["CampfireCookingSkill", "LibrarianSkill"],
         },
         r"Item\GatheringResearchPaperBasic.cs": {
-            "item": ["REMOVE-CLASS", "public partial class GatheringResearchPaperBasicItem"],
+            "item": ["REMOVE-CLASS", "class GatheringResearchPaperBasicItem"],
             "class": ["GatheringResearchPaperBasicRecipe", "LibrarianGatheringResearchPaperBasicRecipe"],
             "level": ["RequiresSkill(typeof(GatheringSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Gathering Research Paper',
-                'Localizer.DoStr("Librarian Gathering Research Paper',
+                "Gathering Research Paper",
+                "Librarian Gathering Research Paper",
             ],
             "skill": ["GatheringSkill", "LibrarianSkill"],
         },
         r"Item\DendrologyResearchPaperBasic.cs": {
-            "item": ["REMOVE-CLASS", "public partial class DendrologyResearchPaperBasicItem"],
+            "item": ["REMOVE-CLASS", "class DendrologyResearchPaperBasicItem"],
             "class": ["DendrologyResearchPaperBasicRecipe", "LibrarianDendrologyResearchPaperBasicRecipe"],
             "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Dendrology Research Paper',
-                'Localizer.DoStr("Librarian Dendrology Research Paper',
+                "Dendrology Research Paper",
+                "Librarian Dendrology Research Paper",
             ],
             "skill": ["LoggingSkill", "LibrarianSkill"],
         },
         r"Item\MetallurgyResearchPaperBasic.cs": {
-            "item": ["REMOVE-CLASS", "public partial class MetallurgyResearchPaperBasicItem"],
+            "item": ["REMOVE-CLASS", "class MetallurgyResearchPaperBasicItem"],
             "class": ["MetallurgyResearchPaperBasicRecipe", "LibrarianMetallurgyResearchPaperBasicRecipe"],
             "level": ["RequiresSkill(typeof(MiningSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Metallurgy Research Paper',
-                'Localizer.DoStr("Librarian Metallurgy Research Paper',
+                "Metallurgy Research Paper",
+                "Librarian Metallurgy Research Paper",
             ],
             "skill": ["MiningSkill", "LibrarianSkill"],
         },
@@ -355,8 +347,8 @@ def bunwulf_librarian(_: invoke.Context):
             "class": ["CulinaryResearchPaperBasicFishRecipe", "LibrarianCulinaryResearchPaperBasicFishRecipe"],
             "level": ["RequiresSkill(typeof(HuntingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Culinary Research Paper Basic Fish',
-                'Localizer.DoStr("Librarian Culinary Research Paper Basic Fish',
+                "Culinary Research Paper Basic Fish",
+                "Librarian Culinary Research Paper Basic Fish",
             ],
             "skill": ["HuntingSkill", "LibrarianSkill"],
         },
@@ -364,68 +356,68 @@ def bunwulf_librarian(_: invoke.Context):
             "class": ["CulinaryResearchPaperBasicMeatRecipe", "LibrarianCulinaryResearchPaperBasicMeatRecipe"],
             "level": ["RequiresSkill(typeof(HuntingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 1)"],
             "displayName": [
-                'Localizer.DoStr("Culinary Research Paper Basic Meat',
-                'Localizer.DoStr("Librarian Culinary Research Paper Basic Meat',
+                "Culinary Research Paper Basic Meat",
+                "Librarian Culinary Research Paper Basic Meat",
             ],
             "skill": ["HuntingSkill", "LibrarianSkill"],
         },
         r"Item\GeologyResearchPaperAdvanced.cs": {
-            "item": ["REMOVE-CLASS", "public partial class GeologyResearchPaperAdvancedItem"],
+            "item": ["REMOVE-CLASS", "class GeologyResearchPaperAdvancedItem"],
             "class": ["GeologyResearchPaperAdvancedRecipe", "LibrarianGeologyResearchPaperAdvancedRecipe"],
             "level": ["RequiresSkill(typeof(MasonrySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Geology Research Paper Advanced',
-                'Localizer.DoStr("Librarian Geology Research Paper Advanced',
+                "Geology Research Paper Advanced",
+                "Librarian Geology Research Paper Advanced",
             ],
             "skill": ["MasonrySkill", "LibrarianSkill"],
         },
         r"Item\CulinaryResearchPaperAdvanced.cs": {
-            "item": ["REMOVE-CLASS", "public partial class CulinaryResearchPaperAdvancedItem"],
+            "item": ["REMOVE-CLASS", "class CulinaryResearchPaperAdvancedItem"],
             "class": ["CulinaryResearchPaperAdvancedRecipe", "LibrarianCulinaryResearchPaperAdvancedRecipe"],
             "level": ["RequiresSkill(typeof(CookingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Culinary Research Paper Advanced',
-                'Localizer.DoStr("Librarian Culinary Research Paper Advanced',
+                "Culinary Research Paper Advanced",
+                "Librarian Culinary Research Paper Advanced",
             ],
             "skill": ["CookingSkill", "LibrarianSkill"],
         },
         r"Item\DendrologyResearchPaperAdvanced.cs": {
-            "item": ["REMOVE-CLASS", "public partial class DendrologyResearchPaperAdvancedItem"],
+            "item": ["REMOVE-CLASS", "class DendrologyResearchPaperAdvancedItem"],
             "class": ["DendrologyResearchPaperAdvancedRecipe", "LibrarianDendrologyResearchPaperAdvancedRecipe"],
             "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Dendrology Research Paper Advanced',
-                'Localizer.DoStr("Librarian Dendrology Research Paper Advanced',
+                "Dendrology Research Paper Advanced",
+                "Librarian Dendrology Research Paper Advanced",
             ],
             "skill": ["CarpentrySkill", "LibrarianSkill"],
         },
         r"Item\MetallurgyResearchPaperAdvanced.cs": {
-            "item": ["REMOVE-CLASS", "public partial class MetallurgyResearchPaperAdvancedItem"],
+            "item": ["REMOVE-CLASS", "class MetallurgyResearchPaperAdvancedItem"],
             "class": ["MetallurgyResearchPaperAdvancedRecipe", "LibrarianMetallurgyResearchPaperAdvancedRecipe"],
             "level": ["RequiresSkill(typeof(SmeltingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Metallurgy Research Paper Advanced',
-                'Localizer.DoStr("Librarian Metallurgy Research Paper Advanced',
+                "Metallurgy Research Paper Advanced",
+                "Librarian Metallurgy Research Paper Advanced",
             ],
             "skill": ["SmeltingSkill", "LibrarianSkill"],
         },
         r"Item\AgricultureResearchPaperAdvanced.cs": {
-            "item": ["REMOVE-CLASS", "public partial class AgricultureResearchPaperAdvancedItem"],
+            "item": ["REMOVE-CLASS", "class AgricultureResearchPaperAdvancedItem"],
             "class": ["AgricultureResearchPaperAdvancedRecipe", "LibrarianAgricultureResearchPaperAdvancedRecipe"],
             "level": ["RequiresSkill(typeof(FarmingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Agriculture Research Paper Advanced',
-                'Localizer.DoStr("Librarian Agriculture Research Paper Advanced',
+                "Agriculture Research Paper Advanced",
+                "Librarian Agriculture Research Paper Advanced",
             ],
             "skill": ["FarmingSkill", "LibrarianSkill"],
         },
         r"Item\EngineeringResearchPaperAdvanced.cs": {
-            "item": ["REMOVE-CLASS", "public partial class EngineeringResearchPaperAdvancedItem"],
+            "item": ["REMOVE-CLASS", "class EngineeringResearchPaperAdvancedItem"],
             "class": ["EngineeringResearchPaperAdvancedRecipe", "LibrarianEngineeringResearchPaperAdvancedRecipe"],
             "level": ["RequiresSkill(typeof(BasicEngineeringSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Engineering Research Paper Advanced',
-                'Localizer.DoStr("Librarian Engineering Research Paper Advanced',
+                "Engineering Research Paper Advanced",
+                "Librarian Engineering Research Paper Advanced",
             ],
             "skill": ["BasicEngineeringSkill", "LibrarianSkill"],
         },
@@ -433,68 +425,68 @@ def bunwulf_librarian(_: invoke.Context):
             "class": ["CulinaryResearchPaperAdvancedMeatRecipe", "LibrarianCulinaryResearchPaperAdvancedMeatRecipe"],
             "level": ["RequiresSkill(typeof(BakingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 2)"],
             "displayName": [
-                'Localizer.DoStr("Culinary Research Paper Advanced Meat',
-                'Localizer.DoStr("Librarian Culinary Research Paper Advanced Meat',
+                "Culinary Research Paper Advanced Meat",
+                "Librarian Culinary Research Paper Advanced Meat",
             ],
             "skill": ["BakingSkill", "LibrarianSkill"],
         },
         r"Item\GeologyResearchPaperModern.cs": {
-            "item": ["REMOVE-CLASS", "public partial class GeologyResearchPaperModernItem"],
+            "item": ["REMOVE-CLASS", "class GeologyResearchPaperModernItem"],
             "class": ["GeologyResearchPaperModernRecipe", "LibrarianGeologyResearchPaperModernRecipe"],
             "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Geology Research Paper Modern',
-                'Localizer.DoStr("Librarian Geology Research Paper Modern',
+                "Geology Research Paper Modern",
+                "Librarian Geology Research Paper Modern",
             ],
             "skill": ["PotterySkill", "LibrarianSkill"],
         },
         r"Item\CulinaryResearchPaperModern.cs": {
-            "item": ["REMOVE-CLASS", "public partial class CulinaryResearchPaperModernItem"],
+            "item": ["REMOVE-CLASS", "class CulinaryResearchPaperModernItem"],
             "class": ["CulinaryResearchPaperModernRecipe", "LibrarianCulinaryResearchPaperModernRecipe"],
             "level": ["RequiresSkill(typeof(AdvancedCookingSkill), 2)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Culinary Research Paper Modern',
-                'Localizer.DoStr("Librarian Culinary Research Paper Modern',
+                "Culinary Research Paper Modern",
+                "Librarian Culinary Research Paper Modern",
             ],
             "skill": ["AdvancedCookingSkill", "LibrarianSkill"],
         },
         r"Item\DendrologyResearchPaperModern.cs": {
-            "item": ["REMOVE-CLASS", "public partial class DendrologyResearchPaperModernItem"],
+            "item": ["REMOVE-CLASS", "class DendrologyResearchPaperModernItem"],
             "class": ["DendrologyResearchPaperModernRecipe", "LibrarianDendrologyResearchPaperModernRecipe"],
             "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Dendrology Research Paper Modern',
-                'Localizer.DoStr("Librarian Dendrology Research Paper Modern',
+                "Dendrology Research Paper Modern",
+                "Librarian Dendrology Research Paper Modern",
             ],
             "skill": ["CarpentrySkill", "LibrarianSkill"],
         },
         r"Item\MetallurgyResearchPaperModern.cs": {
-            "item": ["REMOVE-CLASS", "public partial class MetallurgyResearchPaperModernItem"],
+            "item": ["REMOVE-CLASS", "class MetallurgyResearchPaperModernItem"],
             "class": ["MetallurgyResearchPaperModernRecipe", "LibrarianMetallurgyResearchPaperModernRecipe"],
             "level": ["RequiresSkill(typeof(AdvancedSmeltingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Metallurgy Research Paper Modern',
-                'Localizer.DoStr("Librarian Metallurgy Research Paper Modern',
+                "Metallurgy Research Paper Modern",
+                "Librarian Metallurgy Research Paper Modern",
             ],
             "skill": ["AdvancedSmeltingSkill", "LibrarianSkill"],
         },
         r"Item\AgricultureResearchPaperModern.cs": {
-            "item": ["REMOVE-CLASS", "public partial class AgricultureResearchPaperModernItem"],
+            "item": ["REMOVE-CLASS", "class AgricultureResearchPaperModernItem"],
             "class": ["AgricultureResearchPaperModernRecipe", "LibrarianAgricultureResearchPaperModernRecipe"],
             "level": ["RequiresSkill(typeof(FertilizersSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Agriculture Research Paper Modern',
-                'Localizer.DoStr("Librarian Agriculture Research Paper Modern',
+                "Agriculture Research Paper Modern",
+                "Librarian Agriculture Research Paper Modern",
             ],
             "skill": ["FertilizersSkill", "LibrarianSkill"],
         },
         r"Item\EngineeringResearchPaperModern.cs": {
-            "item": ["REMOVE-CLASS", "public partial class EngineeringResearchPaperModernItem"],
+            "item": ["REMOVE-CLASS", "class EngineeringResearchPaperModernItem"],
             "class": ["EngineeringResearchPaperModernRecipe", "LibrarianEngineeringResearchPaperModernRecipe"],
             "level": ["RequiresSkill(typeof(MechanicsSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Engineering Research Paper Modern',
-                'Localizer.DoStr("Librarian Engineering Research Paper Modern',
+                "Engineering Research Paper Modern",
+                "Librarian Engineering Research Paper Modern",
             ],
             "skill": ["MechanicsSkill", "LibrarianSkill"],
         },
@@ -502,14 +494,14 @@ def bunwulf_librarian(_: invoke.Context):
             "class": ["GeologyResearchPaperModernGlassRecipe", "LibrarianGeologyResearchPaperModernGlassRecipe"],
             "level": ["RequiresSkill(typeof(GlassworkingSkill), 1)", "RequiresSkill(typeof(LibrarianSkill), 3)"],
             "displayName": [
-                'Localizer.DoStr("Geology Research Paper Modern Glass',
-                'Localizer.DoStr("Librarian Geology Research Paper Modern Glass',
+                "Geology Research Paper Modern Glass",
+                "Librarian Geology Research Paper Modern Glass",
             ],
             "skill": ["GlassworkingSkill", "LibrarianSkill"],
         },
     }
 
-    process_recipes(recipe_changes, BUNWULF_LIBRARIAN_PATH)
+    process_recipes(recipe_changes, BUNWULF_EDUCATIONAL_PATH)
 
 
 @invoke.task
@@ -517,7 +509,7 @@ def bunwulf_construction(_: invoke.Context):
     recipes_changes = {
         r"Block\Brick.cs": {
             "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Localizer.DoStr("Brick")', 'Localizer.DoStr("Builder Grade Brick")'],
+            "displayName": ['Brick")', 'Builder Grade Brick")'],
             "class": ["BrickRecipe", "ConstructionBrickRecipe"],
             "skill": ["PotterySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class BrickItem"],
@@ -526,7 +518,7 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Block\CopperPipe.cs": {
             "level": ["RequiresSkill(typeof(SmeltingSkill), 2)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
-            "displayName": ['Localizer.DoStr("Copper Pipe")', 'Localizer.DoStr("Builder Grade Copper Pipe")'],
+            "displayName": ['Copper Pipe")', 'Builder Grade Copper Pipe")'],
             "class": ["CopperPipeRecipe", "ConstructionCopperPipeRecipe"],
             "skill": ["SmeltingSkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class CopperPipeItem"],
@@ -534,14 +526,14 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Item\Dowel.cs": {
             "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "displayName": ['Localizer.DoStr("Dowel")', 'Localizer.DoStr("Builder Grade Dowel")'],
+            "displayName": ['Dowel")', 'Builder Grade Dowel")'],
             "class": ["DowelRecipe", "ConstructionDowelRecipe"],
             "skill": ["LoggingSkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class DowelItem"],
         },
         r"Block\Glass.cs": {
             "level": ["RequiresSkill(typeof(GlassworkingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Localizer.DoStr("Glass")', 'Localizer.DoStr("Builder Grade Glass")'],
+            "displayName": ['Glass")', 'Builder Grade Glass")'],
             "class": ["GlassRecipe", "ConstructionGlassRecipe"],
             "skill": ["GlassworkingSkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class GlassItem"],
@@ -550,7 +542,7 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Block\HewnLog.cs": {
             "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "displayName": ['Localizer.DoStr("Hewn Log")', 'Localizer.DoStr("Builder Grade Hewn Log")'],
+            "displayName": ['Hewn Log")', 'Builder Grade Hewn Log")'],
             "class": ["HewnLogRecipe", "ConstructionHewnLogRecipe"],
             "skill": ["LoggingSkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class HewnLogItem"],
@@ -559,7 +551,7 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Block\IronPipe.cs": {
             "level": ["RequiresSkill(typeof(SmeltingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
-            "displayName": ['Localizer.DoStr("Iron Pipe")', 'Localizer.DoStr("Builder Grade Iron Pipe")'],
+            "displayName": ['Iron Pipe")', 'Builder Grade Iron Pipe")'],
             "class": ["IronPipeRecipe", "ConstructionIronPipeRecipe"],
             "skill": ["SmeltingSkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class IronPipeItem"],
@@ -567,7 +559,7 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Block\Lumber.cs": {
             "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Localizer.DoStr("Lumber")', 'Localizer.DoStr("Builder Grade Lumber")'],
+            "displayName": ['Lumber")', 'Builder Grade Lumber")'],
             "class": ["LumberRecipe", "ConstructionLumberRecipe"],
             "skill": ["CarpentrySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class LumberItem"],
@@ -576,7 +568,7 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Block\MortaredStone.cs": {
             "level": ["RequiresSkill(typeof(MasonrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "displayName": ['Localizer.DoStr("Mortared Stone")', 'Localizer.DoStr("Builder Grade Mortared Stone")'],
+            "displayName": ['Mortared Stone")', 'Builder Grade Mortared Stone")'],
             "class": ["MortaredStoneRecipe", "ConstructionMortaredStoneRecipe"],
             "skill": ["MasonrySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class MortaredStoneItem"],
@@ -585,7 +577,7 @@ def bunwulf_construction(_: invoke.Context):
         },
         r"Item\WetBrick.cs": {
             "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "displayName": ['Localizer.DoStr("Wet Brick")', 'Localizer.DoStr("Builder Grade Wet Brick")'],
+            "displayName": ['Wet Brick")', 'Builder Grade Wet Brick")'],
             "class": ["WetBrickRecipe", "ConstructionWetBrickRecipe"],
             "skill": ["PotterySkill", "ConstructionSkill"],
             "item": ["REMOVE-CLASS", "public partial class WetBrickItem"],
