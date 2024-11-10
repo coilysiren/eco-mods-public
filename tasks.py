@@ -90,9 +90,9 @@ def zip_assets(ctx: invoke.Context, mod):
     ctx.run(f"zip -r {mod}.zip ./Mods/UserCode/{mod}")
 
 
-#######################
-# SPECIALITY SPECIFIC #
-#######################
+############################
+# SPECIALITY MOD FUNCTIONS #
+############################
 
 
 def process_recipes(recipes_changes, target_path):
@@ -237,37 +237,15 @@ def replace_key(recipe_data, file, key, configs):
     return recipe_data
 
 
+#######################
+# SPECIALITY SPECIFIC #
+#######################
+
+
 @invoke.task
 def bunwulf_agricultural(_: invoke.Context):
-    # plant_changes = {
-    #     "Ecopedia": ['[Ecopedia("Plants", "Plants", createAsSubPage: true)]', ""],
-    #     "PlantsTag": ['[Tag("Plants")]', ""],
-    #     "Localized": ["[Localized(false, true)]", ""],
-    #     "Species": ["static PlantSpecies species;", ""],
-    #     "PlantLayerSettings": [
-    #         "REMOVE-CLASS",
-    #         "PlantLayerSettings",
-    #         "unserialized",
-    #     ],
-    #     "PlantSpecies": ["REMOVE-CLASS", "public WheatSpecies() : base()", "unserialized"],
-    #     "ModsPostInitBracket": ["REMOVE-LINE", "ModsPostInitialize", 2],
-    #     "Serialized": ["[Serialized]", ""],
-    # }
-
     # recipe_changes = {
-    #     r"Plant\Wheat.cs": {
-    #         "PlantBlock": ["REMOVE-CLASS", "public partial class WheatBlock", "serialized"],
-    #         "WorldPosition3i": [
-    #             "public Wheat(WorldPosition3i mapPos, PlantPack plantPack) : base(species, mapPos, plantPack) { }",
-    #             "",
-    #         ],
-    #         "PreSpecies": ["public Wheat() { }", ""],
-    #         "ModsPostInit": [
-    #             "partial void ModsPostInitialize() {",
-    #             'partial void ModsPostInitialize() { MaturityAgeDays = MaturityAgeDays / 2; Name = "TOTALY NOT WHEAT"; }',
-    #         ],
-    #         **plant_changes,
-    #     },
+    #     # r"Plant\Wheat.cs": {},
     #     # r"Plant\Tomatoes.cs": {},
     #     # r"Plant\Taro.cs": {},
     #     # r"Plant\Beans.cs": {},
