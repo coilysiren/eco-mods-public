@@ -20,3 +20,278 @@ BunWulfAgricultural:
     - Plant\CookeinaMushroom.cs
     - Plant\Fireweed.cs
     - Plant\Fern.cs
+
+BunWulfEducational:
+  Item\GeologyResearchPaperBasic.cs:
+    replace-recipe:
+      - GeologyResearchPaperBasicRecipe
+      - LibrarianGeologyResearchPaperBasicRecipe
+    replace-level:
+      - RequiresSkill(typeof(MiningSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Geology Research Paper
+      - Librarian Geology Research Paper
+    replace-skill:
+      - MiningSkill
+      - LibrarianSkill
+  Item\CulinaryResearchPaperBasic.cs:
+    replace-recipe:
+      - CulinaryResearchPaperBasicRecipe
+      - LibrarianCulinaryResearchPaperBasicRecipe
+    replace-level:
+      - RequiresSkill(typeof(CampfireCookingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Culinary Research Paper
+      - Librarian Culinary Research Paper
+    replace-skill:
+      - CampfireCookingSkill
+      - LibrarianSkill
+  Item\GatheringResearchPaperBasic.cs:
+    replace-recipe:
+      - GatheringResearchPaperBasicRecipe
+      - LibrarianGatheringResearchPaperBasicRecipe
+    replace-level:
+      - RequiresSkill(typeof(GatheringSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Gathering Research Paper
+      - Librarian Gathering Research Paper
+    replace-skill:
+      - GatheringSkill
+      - LibrarianSkill
+  Item\DendrologyResearchPaperBasic.cs:
+    replace-recipe:
+      - DendrologyResearchPaperBasicRecipe
+      - LibrarianDendrologyResearchPaperBasicRecipe
+    replace-level:
+      - RequiresSkill(typeof(LoggingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Dendrology Research Paper
+      - Librarian Dendrology Research Paper
+    replace-skill:
+      - LoggingSkill
+      - LibrarianSkill
+  Item\MetallurgyResearchPaperBasic.cs:
+    replace-recipe:
+      - MetallurgyResearchPaperBasicRecipe
+      - LibrarianMetallurgyResearchPaperBasicRecipe
+    replace-level:
+      - RequiresSkill(typeof(MiningSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Metallurgy Research Paper
+      - Librarian Metallurgy Research Paper
+    replace-skill:
+      - MiningSkill
+      - LibrarianSkill
+  Recipe\CulinaryResearchPaperBasicFish.cs:
+    replace-recipe:
+      - CulinaryResearchPaperBasicFishRecipe
+      - LibrarianCulinaryResearchPaperBasicFishRecipe
+    replace-level:
+      - RequiresSkill(typeof(HuntingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Culinary Research Paper Basic Fish
+      - Librarian Culinary Research Paper Basic Fish
+    replace-skill:
+      - HuntingSkill
+      - LibrarianSkill
+  Recipe\CulinaryResearchPaperBasicMeat.cs:
+    replace-recipe:
+      - CulinaryResearchPaperBasicMeatRecipe
+      - LibrarianCulinaryResearchPaperBasicMeatRecipe
+    replace-level:
+      - RequiresSkill(typeof(HuntingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Culinary Research Paper Basic Meat
+      - Librarian Culinary Research Paper Basic Meat
+    replace-skill:
+      - HuntingSkill
+      - LibrarianSkill
+  Item\GeologyResearchPaperAdvanced.cs:
+    replace-recipe:
+      - GeologyResearchPaperAdvancedRecipe
+      - LibrarianGeologyResearchPaperAdvancedRecipe
+    replace-level:
+      - RequiresSkill(typeof(MasonrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Geology Research Paper
+      - Librarian Geology Research Paper
+    replace-skill:
+      - MasonrySkill
+      - LibrarianSkill
+  Item\DendrologyResearchPaperAdvanced.cs:
+    replace-recipe:
+      - DendrologyResearchPaperAdvancedRecipe
+      - LibrarianDendrologyResearchPaperAdvancedRecipe
+    replace-level:
+      - RequiresSkill(typeof(CarpentrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Dendrology Research Paper
+      - Librarian Dendrology Research Paper
+    replace-skill:
+      - CarpentrySkill
+      - LibrarianSkill
+  Item\MetallurgyResearchPaperAdvanced.cs:
+    replace-recipe:
+      - MetallurgyResearchPaperAdvancedRecipe
+      - LibrarianMetallurgyResearchPaperAdvancedRecipe
+    replace-level:
+      - RequiresSkill(typeof(SmeltingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Metallurgy Research Paper
+      - Librarian Metallurgy Research Paper
+    replace-skill:
+      - SmeltingSkill
+      - LibrarianSkill
+  Item\AgricultureResearchPaperAdvanced.cs:
+    replace-recipe:
+      - AgricultureResearchPaperAdvancedRecipe
+      - LibrarianAgricultureResearchPaperAdvancedRecipe
+    replace-level:
+      - RequiresSkill(typeof(FarmingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Agriculture Research Paper
+      - Librarian Agriculture Research Paper
+    replace-skill:
+      - FarmingSkill
+      - LibrarianSkill
+  Item\EngineeringResearchPaperAdvanced.cs:
+    replace-recipe:
+      - EngineeringResearchPaperAdvancedRecipe
+      - LibrarianEngineeringResearchPaperAdvancedRecipe
+    replace-level:
+      - RequiresSkill(typeof(BasicEngineeringSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Engineering Research Paper
+      - Librarian Engineering Research Paper
+    replace-skill:
+      - BasicEngineeringSkill
+      - LibrarianSkill
+  Item\CulinaryResearchPaperAdvanced.cs:
+    replace-recipe:
+      - CulinaryResearchPaperAdvancedRecipe
+      - LibrarianCulinaryResearchPaperAdvancedRecipe
+    replace-level:
+      - RequiresSkill(typeof(CookingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Culinary Research Paper
+      - Librarian Culinary Research Paper
+    replace-skill:
+      - CookingSkill
+      - LibrarianSkill
+  Recipe\CulinaryResearchPaperAdvancedMeat.cs:
+    replace-recipe:
+      - CulinaryResearchPaperAdvancedMeatRecipe
+      - LibrarianCulinaryResearchPaperAdvancedMeatRecipe
+    replace-level:
+      - RequiresSkill(typeof(BakingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
+    replace-display-name:
+      - Culinary Research Paper
+      - Librarian Culinary Research Paper
+    replace-skill:
+      - BakingSkill
+      - LibrarianSkill
+  Item\CulinaryResearchPaperModern.cs:
+    replace-recipe:
+      - CulinaryResearchPaperModernRecipe
+      - LibrarianCulinaryResearchPaperModernRecipe
+    replace-level:
+      - RequiresSkill(typeof(AdvancedCookingSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Culinary Research Paper
+      - Librarian Culinary Research Paper
+    replace-skill:
+      - AdvancedCookingSkill
+      - LibrarianSkill
+  Item\DendrologyResearchPaperModern.cs:
+    replace-recipe:
+      - DendrologyResearchPaperModernRecipe
+      - LibrarianDendrologyResearchPaperModernRecipe
+    replace-level:
+      - RequiresSkill(typeof(CarpentrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Dendrology Research Paper
+      - Librarian Dendrology Research Paper
+    replace-skill:
+      - CarpentrySkill
+      - LibrarianSkill
+  Item\MetallurgyResearchPaperModern.cs:
+    replace-recipe:
+      - MetallurgyResearchPaperModernRecipe
+      - LibrarianMetallurgyResearchPaperModernRecipe
+    replace-level:
+      - RequiresSkill(typeof(AdvancedSmeltingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Metallurgy Research Paper
+      - Librarian Metallurgy Research Paper
+    replace-skill:
+      - AdvancedSmeltingSkill
+      - LibrarianSkill
+  Item\AgricultureResearchPaperModern.cs:
+    replace-recipe:
+      - AgricultureResearchPaperModernRecipe
+      - LibrarianAgricultureResearchPaperModernRecipe
+    replace-level:
+      - RequiresSkill(typeof(FertilizersSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Agriculture Research Paper
+      - Librarian Agriculture Research Paper
+    replace-skill:
+      - FertilizersSkill
+      - LibrarianSkill
+  Item\EngineeringResearchPaperModern.cs:
+    replace-recipe:
+      - EngineeringResearchPaperModernRecipe
+      - LibrarianEngineeringResearchPaperModernRecipe
+    replace-level:
+      - RequiresSkill(typeof(MechanicsSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Engineering Research Paper
+      - Librarian Engineering Research Paper
+    replace-skill:
+      - MechanicsSkill
+      - LibrarianSkill
+  Item\GeologyResearchPaperModern.cs:
+    replace-recipe:
+      - GeologyResearchPaperModernRecipe
+      - LibrarianGeologyResearchPaperModernRecipe
+    replace-level:
+      - RequiresSkill(typeof(PotterySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Geology Research Paper
+      - Librarian Geology Research Paper
+    replace-skill:
+      - PotterySkill
+      - LibrarianSkill
+  Recipe\GeologyResearchPaperModernGlass.cs:
+    replace-recipe:
+      - GeologyResearchPaperModernGlassRecipe
+      - LibrarianGeologyResearchPaperModernGlassRecipe
+    replace-level:
+      - RequiresSkill(typeof(GlassworkingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 3)
+    replace-display-name:
+      - Geology Research Paper
+      - Librarian Geology Research Paper
+    replace-skill:
+      - GlassworkingSkill
+      - LibrarianSkill
