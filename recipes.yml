@@ -1,0 +1,22 @@
+BunWulfAgricultural:
+  template: plant.template
+  recipes:
+    - Plant\Wheat.cs
+    - Plant\Tomatoes.cs
+    - Plant\Taro.cs
+    - Plant\Beans.cs
+    - Plant\Rice.cs
+    - Plant\Camas.cs
+    - Plant\BoleteMushroom.cs
+    - Plant\Pumpkin.cs
+    - Plant\PricklyPear.cs
+    - Plant\Beets.cs
+    - Plant\Pineapple.cs
+    - Plant\Papaya.cs
+    - Plant\Agave.cs
+    - Plant\CriminiMushroom.cs
+    - Plant\Huckleberry.cs
+    - Plant\Corn.cs
+    - Plant\CookeinaMushroom.cs
+    - Plant\Fireweed.cs
+    - Plant\Fern.cs
