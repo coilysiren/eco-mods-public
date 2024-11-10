@@ -1,3 +1,5 @@
+import re
+
 import os
 import jinja2
 
@@ -22,15 +24,21 @@ class TextProcessingException(Exception):
 
 
 def process_recipes(recipes_changes, target_path):
+    item_pattern = r"\s+(public partial class \w+Item)"
+
     for file, changes in recipes_changes.items():
         print(f"Reading {file}")
         with open(os.path.join(AUTOGEN_PATH, file), "r", encoding=",utf-8") as f:
             recipe_data = f.read()
 
+        # Remove items, we never need to duplicate them.
+        recipes_lines = recipe_data.split("\n")
+        for line in recipes_lines:
+            if match := re.match(item_pattern, line):
+                recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
+
         for key, configs in changes.items():
-            if configs[0] == "REMOVE-CLASS":
-                recipe_data = remove_class(recipe_data, file, key, configs)
-            elif configs[0] == "REMOVE-CONSTRUCTABLE":
+            if configs[0] == "REMOVE-CONSTRUCTABLE":
                 recipe_data = remove_constructable(recipe_data, file, key, configs)
             elif configs[0] == "REMOVE-LINE":
                 recipe_data = remove_line(recipe_data, file, key, configs)
@@ -44,26 +52,26 @@ def process_recipes(recipes_changes, target_path):
             f.write(recipe_data)
 
 
-def remove_class(recipe_data, file, key, configs):
+def remove_class(recipe_data, file, key, class_name):
     recipe_lines = recipe_data.split("\n")
-    print(f'\tRemoving "{configs[1]}" from recipe')
+    print(f'\tRemoving "{class_name}" from recipe')
 
     # Step 1: Identify the line where the class starts.
     class_start_line = 0
     for line, value in enumerate(recipe_lines):
-        if configs[1] in value:
+        if class_name in value:
             class_start_line = line
             break
     if class_start_line == 0:
-        raise TextProcessingException(f"\t\tCouldn't find {configs[1]} in {file}:{key}")
-    print(f'\t\tFound "{configs[1]}" at line {class_start_line}')
+        raise TextProcessingException(f"\t\tCouldn't find {class_name} in {file}:{key}")
+    print(f'\t\tFound "{class_name}" at line {class_start_line}')
 
     # Step 2: Move class start line upwards if the class has any annotations.
     for index in range(class_start_line, 0, -1):
         line = recipe_lines[index].strip()
         if line.startswith("["):
             class_start_line = index
-        elif configs[1] in line:
+        elif class_name in line:
             continue
         else:
             break
@@ -73,7 +81,7 @@ def remove_class(recipe_data, file, key, configs):
     bracket_count = 0
     class_end_index = 0
     recipe_data = "\n".join(recipe_lines)
-    class_start_index = recipe_data.find(configs[1])
+    class_start_index = recipe_data.find(class_name)
     backets_started = False
     for index in range(class_start_index, len(recipe_data)):
         char = recipe_data[index]
