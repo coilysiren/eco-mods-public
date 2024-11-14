@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     public partial class BiochemistSkillScroll
         : SkillScroll<BiochemistSkill, BiochemistSkillBook> { }
 
-    [RequiresSkill(typeof(MechanicsSkill), 1)]
+    [RequiresSkill(typeof(FertilizersSkill), 1)]
     [Ecopedia("Professions", "Scientist", subPageName: "Biochemist Skill Book Item")]
     public partial class BiochemistSkillBookRecipe : RecipeFamily
     {
@@ -84,21 +84,21 @@ namespace Eco.Mods.TechTree
                 displayName: Localizer.DoStr("Biochemist Skill Book"),
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(CulinaryResearchPaperAdvancedItem), 10, typeof(MechanicsSkill)),
-                    new(typeof(AgricultureResearchPaperAdvancedItem), 10, typeof(MechanicsSkill)),
-                    new(typeof(EngineeringResearchPaperModernItem), 10, typeof(MechanicsSkill)),
-                    new(typeof(AgricultureResearchPaperModernItem), 10, typeof(MechanicsSkill)),
-                    new("Basic Research", 30, typeof(MechanicsSkill)),
-                    new("Advanced Research", 20, typeof(MechanicsSkill)),
+                    new(typeof(CulinaryResearchPaperAdvancedItem), 10, typeof(FertilizersSkill)),
+                    new(typeof(AgricultureResearchPaperAdvancedItem), 10, typeof(FertilizersSkill)),
+                    new(typeof(EngineeringResearchPaperModernItem), 10, typeof(FertilizersSkill)),
+                    new(typeof(AgricultureResearchPaperModernItem), 10, typeof(FertilizersSkill)),
+                    new("Basic Research", 30, typeof(FertilizersSkill)),
+                    new("Advanced Research", 20, typeof(FertilizersSkill)),
                 },
                 items: new List<CraftingElement> { new CraftingElement<BiochemistSkillBook>() }
             );
             Recipes = new List<Recipe> { recipe };
-            LaborInCalories = CreateLaborInCaloriesValue(600, typeof(MechanicsSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(600, typeof(FertilizersSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(BiochemistSkillBookRecipe),
                 start: 15,
-                skillType: typeof(MechanicsSkill)
+                skillType: typeof(FertilizersSkill)
             );
             Initialize(
                 displayText: Localizer.DoStr("Biochemist Skill Book"),
