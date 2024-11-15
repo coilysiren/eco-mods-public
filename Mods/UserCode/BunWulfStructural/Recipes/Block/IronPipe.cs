@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionIronPipeRecipe), start: 0.8f, skillType: typeof(ConstructionSkill), typeof(SmeltingFocusedSpeedTalent), typeof(SmeltingParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Iron Pipe"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Iron Pipe"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Iron Pipe"), recipeType: typeof(ConstructionIronPipeRecipe));
             this.ModsPostInitialize();

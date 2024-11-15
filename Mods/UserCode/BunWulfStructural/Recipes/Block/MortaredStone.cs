@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionMortaredStoneRecipe), start: 0.16f, skillType: typeof(ConstructionSkill), typeof(MasonryFocusedSpeedTalent), typeof(MasonryParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Mortared Stone"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Mortared Stone"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Mortared Stone"), recipeType: typeof(ConstructionMortaredStoneRecipe));
             this.ModsPostInitialize();

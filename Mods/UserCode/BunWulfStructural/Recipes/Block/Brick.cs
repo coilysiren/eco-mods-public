@@ -33,7 +33,7 @@ namespace Eco.Mods.TechTree
     /// <summary>Auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.</summary>
 
     /// <summary>
-    /// <para>Server side recipe definition for "Brick".</para>
+    /// <para>Server side recipe definition for "Builder Grade Brick".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "Brick",  //noloc
+                name: "Builder Grade Brick",  //noloc
                 displayName: Localizer.DoStr("Builder Grade Brick"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionBrickRecipe), start: 0.32f, skillType: typeof(ConstructionSkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Brick"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Brick"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Brick"), recipeType: typeof(ConstructionBrickRecipe));
             this.ModsPostInitialize();

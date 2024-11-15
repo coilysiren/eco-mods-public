@@ -112,61 +112,7 @@ def bunwulf_educational(_: invoke.Context):
 
 @invoke.task
 def bunwulf_structural(_: invoke.Context):
-    recipes_changes = {
-        r"Block\Brick.cs": {
-            "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "class": ["BrickRecipe", "ConstructionBrickRecipe"],
-            "displayName": ['Brick")', 'Builder Grade Brick")'],
-            "skill": ["PotterySkill", "ConstructionSkill"],
-        },
-        r"Block\CopperPipe.cs": {
-            "level": ["RequiresSkill(typeof(SmeltingSkill), 2)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
-            "class": ["CopperPipeRecipe", "ConstructionCopperPipeRecipe"],
-            "displayName": ['Copper Pipe")', 'Builder Grade Copper Pipe")'],
-            "skill": ["SmeltingSkill", "ConstructionSkill"],
-        },
-        r"Item\Dowel.cs": {
-            "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "class": ["DowelRecipe", "ConstructionDowelRecipe"],
-            "displayName": ['Dowel")', 'Builder Grade Dowel")'],
-            "skill": ["LoggingSkill", "ConstructionSkill"],
-        },
-        r"Block\Glass.cs": {
-            "level": ["RequiresSkill(typeof(GlassworkingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "class": ["GlassRecipe", "ConstructionGlassRecipe"],
-            "displayName": ['Glass")', 'Builder Grade Glass")'],
-            "skill": ["GlassworkingSkill", "ConstructionSkill"],
-        },
-        r"Block\HewnLog.cs": {
-            "level": ["RequiresSkill(typeof(LoggingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "class": ["HewnLogRecipe", "ConstructionHewnLogRecipe"],
-            "displayName": ['Hewn Log")', 'Builder Grade Hewn Log")'],
-            "skill": ["LoggingSkill", "ConstructionSkill"],
-        },
-        r"Block\IronPipe.cs": {
-            "level": ["RequiresSkill(typeof(SmeltingSkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 3)"],
-            "class": ["IronPipeRecipe", "ConstructionIronPipeRecipe"],
-            "displayName": ['Iron Pipe")', 'Builder Grade Iron Pipe")'],
-            "skill": ["SmeltingSkill", "ConstructionSkill"],
-        },
-        r"Block\Lumber.cs": {
-            "level": ["RequiresSkill(typeof(CarpentrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "class": ["LumberRecipe", "ConstructionLumberRecipe"],
-            "displayName": ['Lumber")', 'Builder Grade Lumber")'],
-            "skill": ["CarpentrySkill", "ConstructionSkill"],
-        },
-        r"Block\MortaredStone.cs": {
-            "level": ["RequiresSkill(typeof(MasonrySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 1)"],
-            "class": ["MortaredStoneRecipe", "ConstructionMortaredStoneRecipe"],
-            "displayName": ['Mortared Stone")', 'Builder Grade Mortared Stone")'],
-            "skill": ["MasonrySkill", "ConstructionSkill"],
-        },
-        r"Item\WetBrick.cs": {
-            "level": ["RequiresSkill(typeof(PotterySkill), 1)", "RequiresSkill(typeof(ConstructionSkill), 2)"],
-            "class": ["WetBrickRecipe", "ConstructionWetBrickRecipe"],
-            "displayName": ['Wet Brick")', 'Builder Grade Wet Brick")'],
-            "skill": ["PotterySkill", "ConstructionSkill"],
-        },
-    }
+    with open("recipes.yml", "r", encoding="utf-8") as recipes:
+        recipe_data = yaml.safe_load(recipes)["BunWulfStructural"]
 
-    util.process_recipes(recipes_changes, os.path.join(USERCODE_PATH, "BunWulfStructural", "Recipes"))
+    util.process_recipes(recipe_data, os.path.join(USERCODE_PATH, "BunWulfStructural", "Recipes"))

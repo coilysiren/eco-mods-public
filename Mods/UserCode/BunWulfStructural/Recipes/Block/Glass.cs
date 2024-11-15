@@ -33,7 +33,7 @@ namespace Eco.Mods.TechTree
     /// <summary>Auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.</summary>
 
     /// <summary>
-    /// <para>Server side recipe definition for "Glass".</para>
+    /// <para>Server side recipe definition for "Builder Grade Glass".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
@@ -48,7 +48,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "Glass",  //noloc
+                name: "Builder Grade Glass",  //noloc
                 displayName: Localizer.DoStr("Builder Grade Glass"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionGlassRecipe), start: 1.2f, skillType: typeof(ConstructionSkill), typeof(GlassworkingFocusedSpeedTalent), typeof(GlassworkingParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Glass"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Glass"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Glass"), recipeType: typeof(ConstructionGlassRecipe));
             this.ModsPostInitialize();

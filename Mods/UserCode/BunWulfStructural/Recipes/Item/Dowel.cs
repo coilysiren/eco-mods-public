@@ -29,7 +29,7 @@ namespace Eco.Mods.TechTree
 
 
     /// <summary>
-    /// <para>Server side recipe definition for "Dowel".</para>
+    /// <para>Server side recipe definition for "Builder Grade Dowel".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
@@ -44,7 +44,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "Dowel",  //noloc
+                name: "Builder Grade Dowel",  //noloc
                 displayName: Localizer.DoStr("Builder Grade Dowel"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionDowelRecipe), start: 0.4f, skillType: typeof(ConstructionSkill));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Dowel"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Dowel"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Dowel"), recipeType: typeof(ConstructionDowelRecipe));
             this.ModsPostInitialize();
@@ -87,7 +87,7 @@ namespace Eco.Mods.TechTree
     }
 
     /// <summary>
-    /// <para>Server side item definition for the "Dowel" item.</para>
+    /// <para>Server side item definition for the "Builder Grade Dowel" item.</para>
     /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.Item.html</para>
     /// </summary>
     /// <remarks>

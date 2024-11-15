@@ -73,7 +73,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionWetBrickRecipe), start: 0.5f, skillType: typeof(ConstructionSkill), typeof(PotteryFocusedSpeedTalent), typeof(PotteryParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Wet Brick"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Wet Brick"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Wet Brick"), recipeType: typeof(ConstructionWetBrickRecipe));
             this.ModsPostInitialize();

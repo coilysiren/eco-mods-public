@@ -24,750 +24,750 @@ BunWulfAgricultural:
 BunWulfEducational:
   # BASIC RESEARCH PAPERS
   Item\GeologyResearchPaperBasic.cs:
-    replace-recipe:
+    recipe:
       - GeologyResearchPaperBasicRecipe
       - LibrarianGeologyResearchPaperBasicRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MiningSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
-    replace-skill:
+    skill:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Item\CulinaryResearchPaperBasic.cs:
-    replace-recipe:
+    recipe:
       - CulinaryResearchPaperBasicRecipe
       - LibrarianCulinaryResearchPaperBasicRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CampfireCookingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
-    replace-skill:
+    skill:
       - typeof(CampfireCookingSkill)
       - typeof(LibrarianSkill)
   Item\GatheringResearchPaperBasic.cs:
-    replace-recipe:
+    recipe:
       - GatheringResearchPaperBasicRecipe
       - LibrarianGatheringResearchPaperBasicRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(GatheringSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Gathering Research Paper
       - Librarian Gathering Research Paper
-    replace-skill:
+    skill:
       - typeof(GatheringSkill)
       - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperBasic.cs:
-    replace-recipe:
+    recipe:
       - DendrologyResearchPaperBasicRecipe
       - LibrarianDendrologyResearchPaperBasicRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(LoggingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
-    replace-skill:
+    skill:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperBasic.cs:
-    replace-recipe:
+    recipe:
       - MetallurgyResearchPaperBasicRecipe
       - LibrarianMetallurgyResearchPaperBasicRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MiningSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
-    replace-skill:
+    skill:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperBasicFish.cs:
-    replace-recipe:
+    recipe:
       - CulinaryResearchPaperBasicFishRecipe
       - LibrarianCulinaryResearchPaperBasicFishRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(HuntingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Culinary Research Paper Basic Fish
       - Librarian Culinary Research Paper Basic Fish
-    replace-skill:
+    skill:
       - typeof(HuntingSkill)
       - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperBasicMeat.cs:
-    replace-recipe:
+    recipe:
       - CulinaryResearchPaperBasicMeatRecipe
       - LibrarianCulinaryResearchPaperBasicMeatRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(HuntingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 0)
-    replace-display-name:
+    display-name:
       - Culinary Research Paper Basic Meat
       - Librarian Culinary Research Paper Basic Meat
-    replace-skill:
+    skill:
       - typeof(HuntingSkill)
       - typeof(LibrarianSkill)
   # ADVANCED RESEARCH PAPERS
   Item\GeologyResearchPaperAdvanced.cs:
-    replace-recipe:
+    recipe:
       - GeologyResearchPaperAdvancedRecipe
       - LibrarianGeologyResearchPaperAdvancedRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MasonrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
-    replace-skill:
+    skill:
       - typeof(MasonrySkill)
       - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperAdvanced.cs:
-    replace-recipe:
+    recipe:
       - DendrologyResearchPaperAdvancedRecipe
       - LibrarianDendrologyResearchPaperAdvancedRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
-    replace-skill:
+    skill:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperAdvanced.cs:
-    replace-recipe:
+    recipe:
       - MetallurgyResearchPaperAdvancedRecipe
       - LibrarianMetallurgyResearchPaperAdvancedRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(SmeltingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
-    replace-skill:
+    skill:
       - typeof(SmeltingSkill)
       - typeof(LibrarianSkill)
   Item\AgricultureResearchPaperAdvanced.cs:
-    replace-recipe:
+    recipe:
       - AgricultureResearchPaperAdvancedRecipe
       - LibrarianAgricultureResearchPaperAdvancedRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(FarmingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Agriculture Research Paper
       - Librarian Agriculture Research Paper
-    replace-skill:
+    skill:
       - typeof(FarmingSkill)
       - typeof(LibrarianSkill)
   Item\EngineeringResearchPaperAdvanced.cs:
-    replace-recipe:
+    recipe:
       - EngineeringResearchPaperAdvancedRecipe
       - LibrarianEngineeringResearchPaperAdvancedRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(BasicEngineeringSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Engineering Research Paper
       - Librarian Engineering Research Paper
-    replace-skill:
+    skill:
       - typeof(BasicEngineeringSkill)
       - typeof(LibrarianSkill)
   Item\CulinaryResearchPaperAdvanced.cs:
-    replace-recipe:
+    recipe:
       - CulinaryResearchPaperAdvancedRecipe
       - LibrarianCulinaryResearchPaperAdvancedRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CookingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
-    replace-skill:
+    skill:
       - typeof(CookingSkill)
       - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperAdvancedMeat.cs:
-    replace-recipe:
+    recipe:
       - CulinaryResearchPaperAdvancedMeatRecipe
       - LibrarianCulinaryResearchPaperAdvancedMeatRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(BakingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
-    replace-skill:
+    skill:
       - typeof(BakingSkill)
       - typeof(LibrarianSkill)
   # MODERN RESEARCH PAPERS
   Item\CulinaryResearchPaperModern.cs:
-    replace-recipe:
+    recipe:
       - CulinaryResearchPaperModernRecipe
       - LibrarianCulinaryResearchPaperModernRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(AdvancedCookingSkill), 2)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
-    replace-skill:
+    skill:
       - typeof(AdvancedCookingSkill)
       - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperModern.cs:
-    replace-recipe:
+    recipe:
       - DendrologyResearchPaperModernRecipe
       - LibrarianDendrologyResearchPaperModernRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
-    replace-skill:
+    skill:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperModern.cs:
-    replace-recipe:
+    recipe:
       - MetallurgyResearchPaperModernRecipe
       - LibrarianMetallurgyResearchPaperModernRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(AdvancedSmeltingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
-    replace-skill:
+    skill:
       - typeof(AdvancedSmeltingSkill)
       - typeof(LibrarianSkill)
   Item\AgricultureResearchPaperModern.cs:
-    replace-recipe:
+    recipe:
       - AgricultureResearchPaperModernRecipe
       - LibrarianAgricultureResearchPaperModernRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(FertilizersSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Agriculture Research Paper
       - Librarian Agriculture Research Paper
-    replace-skill:
+    skill:
       - typeof(FertilizersSkill)
       - typeof(LibrarianSkill)
   Item\EngineeringResearchPaperModern.cs:
-    replace-recipe:
+    recipe:
       - EngineeringResearchPaperModernRecipe
       - LibrarianEngineeringResearchPaperModernRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MechanicsSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Engineering Research Paper
       - Librarian Engineering Research Paper
-    replace-skill:
+    skill:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Item\GeologyResearchPaperModern.cs:
-    replace-recipe:
+    recipe:
       - GeologyResearchPaperModernRecipe
       - LibrarianGeologyResearchPaperModernRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(PotterySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
-    replace-skill:
+    skill:
       - typeof(PotterySkill)
       - typeof(LibrarianSkill)
   Recipe\GeologyResearchPaperModernGlass.cs:
-    replace-recipe:
+    recipe:
       - GeologyResearchPaperModernGlassRecipe
       - LibrarianGeologyResearchPaperModernGlassRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(GlassworkingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
-    replace-skill:
+    skill:
       - typeof(GlassworkingSkill)
       - typeof(LibrarianSkill)
   # TIER 1 SKILLS
   Tech\Masonry.cs:
-    replace-recipe:
+    recipe:
       - MasonrySkillBookRecipe
       - LibrarianMasonrySkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MiningSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Masonry Skill Book
       - Librarian Masonry Skill Book
-    replace-skill:
+    skill:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Tech\Smelting.cs:
-    replace-recipe:
+    recipe:
       - SmeltingSkillBookRecipe
       - LibrarianSmeltingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MiningSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Smelting Skill Book
       - Librarian Smelting Skill Book
-    replace-skill:
+    skill:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Tech\Pottery.cs:
-    replace-recipe:
+    recipe:
       - PotterySkillBookRecipe
       - LibrarianPotterySkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MasonrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Pottery Skill Book
       - Librarian Pottery Skill Book
-    replace-skill:
+    skill:
       - typeof(MasonrySkill)
       - typeof(LibrarianSkill)
   Tech\Carpentry.cs:
-    replace-recipe:
+    recipe:
       - CarpentrySkillBookRecipe
       - LibrarianCarpentrySkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(LoggingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Carpentry Skill Book
       - Librarian Carpentry Skill Book
-    replace-skill:
+    skill:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
   Tech\Farming.cs:
-    replace-recipe:
+    recipe:
       - FarmingSkillBookRecipe
       - LibrarianFarmingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(GatheringSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Farming Skill Book
       - Librarian Farming Skill Book
-    replace-skill:
+    skill:
       - typeof(GatheringSkill)
       - typeof(LibrarianSkill)
   Tech\Cooking.cs:
-    replace-recipe:
+    recipe:
       - CookingSkillBookRecipe
       - LibrarianCookingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CampfireCookingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Cooking Skill Book
       - Librarian Cooking Skill Book
-    replace-skill:
+    skill:
       - typeof(CampfireCookingSkill)
       - typeof(LibrarianSkill)
   Tech\Baking.cs:
-    replace-recipe:
+    recipe:
       - BakingSkillBookRecipe
       - LibrarianBakingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CampfireCookingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Baking Skill Book
       - Librarian Baking Skill Book
-    replace-skill:
+    skill:
       - typeof(CampfireCookingSkill)
       - typeof(LibrarianSkill)
   Tech\Glassworking.cs:
-    replace-recipe:
+    recipe:
       - GlassworkingSkillBookRecipe
       - LibrarianGlassworkingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MasonrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Glassworking Skill Book
       - Librarian Glassworking Skill Book
-    replace-skill:
+    skill:
       - typeof(MasonrySkill)
       - typeof(LibrarianSkill)
   Tech\Fertilizers.cs:
-    replace-recipe:
+    recipe:
       - FertilizersSkillBookRecipe
       - LibrarianFertilizersSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(FarmingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Fertilizers Skill Book
       - Librarian Fertilizers Skill Book
-    replace-skill:
+    skill:
       - typeof(FarmingSkill)
       - typeof(LibrarianSkill)
   Tech\Butchery.cs:
-    replace-recipe:
+    recipe:
       - ButcherySkillBookRecipe
       - LibrarianButcherySkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(HuntingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Butchery Skill Book
       - Librarian Butchery Skill Book
-    replace-skill:
+    skill:
       - typeof(HuntingSkill)
       - typeof(LibrarianSkill)
   Tech\Tailoring.cs:
-    replace-recipe:
+    recipe:
       - TailoringSkillBookRecipe
       - LibrarianTailoringSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(GatheringSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Tailoring Skill Book
       - Librarian Tailoring Skill Book
-    replace-skill:
+    skill:
       - typeof(GatheringSkill)
       - typeof(LibrarianSkill)
   Tech\BasicEngineering.cs:
-    replace-recipe:
+    recipe:
       - BasicEngineeringSkillBookRecipe
       - LibrarianBasicEngineeringSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Basic Engineering Skill Book
       - Librarian Basic Engineering Skill Book
-    replace-skill:
+    skill:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Tech\Shipwright.cs:
-    replace-recipe:
+    recipe:
       - ShipwrightSkillBookRecipe
       - LibrarianShipwrightSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(LoggingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Shipwright Skill Book
       - Librarian Shipwright Skill Book
-    replace-skill:
+    skill:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
   Tech\PaperMilling.cs:
-    replace-recipe:
+    recipe:
       - PaperMillingSkillBookRecipe
       - LibrarianPaperMillingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Paper Milling Skill Book
       - Librarian Paper Milling Skill Book
-    replace-skill:
+    skill:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Tech\Milling.cs:
-    replace-recipe:
+    recipe:
       - MillingSkillBookRecipe
       - LibrarianMillingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(FarmingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 1)
-    replace-display-name:
+    display-name:
       - Milling Skill Book
       - Librarian Milling Skill Book
-    replace-skill:
+    skill:
       - typeof(FarmingSkill)
       - typeof(LibrarianSkill)
   # TIER 2 SKILLS
   Tech\AdvancedSmelting.cs:
-    replace-recipe:
+    recipe:
       - AdvancedSmeltingSkillBookRecipe
       - LibrarianAdvancedSmeltingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(SmeltingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Advanced Smelting Skill Book
       - Librarian Advanced Smelting Skill Book
-    replace-skill:
+    skill:
       - typeof(SmeltingSkill)
       - typeof(LibrarianSkill)
   Tech\Blacksmith.cs:
-    replace-recipe:
+    recipe:
       - BlacksmithSkillBookRecipe
       - LibrarianBlacksmithSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(SmeltingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Blacksmith Skill Book
       - Librarian Blacksmith Skill Book
-    replace-skill:
+    skill:
       - typeof(SmeltingSkill)
       - typeof(LibrarianSkill)
   Tech\Painting.cs:
-    replace-recipe:
+    recipe:
       - PaintingSkillBookRecipe
       - LibrarianPaintingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(BasicEngineeringSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Painting Skill Book
       - Librarian Painting Skill Book
-    replace-skill:
+    skill:
       - typeof(BasicEngineeringSkill)
       - typeof(LibrarianSkill)
   Tech\AdvancedCooking.cs:
-    replace-recipe:
+    recipe:
       - AdvancedCookingSkillBookRecipe
       - LibrarianAdvancedCookingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CookingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Advanced Cooking Skill Book
       - Librarian Advanced Cooking Skill Book
-    replace-skill:
+    skill:
       - typeof(CookingSkill)
       - typeof(LibrarianSkill)
   Tech\AdvancedBaking.cs:
-    replace-recipe:
+    recipe:
       - AdvancedBakingSkillBookRecipe
       - LibrarianAdvancedBakingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(BakingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Advanced Baking Skill Book
       - Librarian Advanced Baking Skill Book
-    replace-skill:
+    skill:
       - typeof(BakingSkill)
       - typeof(LibrarianSkill)
   Tech\Mechanics.cs:
-    replace-recipe:
+    recipe:
       - MechanicsSkillBookRecipe
       - LibrarianMechanicsSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(BasicEngineeringSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 2)
-    replace-display-name:
+    display-name:
       - Mechanics Skill Book
       - Librarian Mechanics Skill Book
-    replace-skill:
+    skill:
       - typeof(BasicEngineeringSkill)
       - typeof(LibrarianSkill)
   # TIER 3 SKILLS
   Tech\Industry.cs:
-    replace-recipe:
+    recipe:
       - IndustrySkillBookRecipe
       - LibrarianIndustrySkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MechanicsSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 3)
-    replace-display-name:
+    display-name:
       - Industry Skill Book
       - Librarian Industry Skill Book
-    replace-skill:
+    skill:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Tech\Electronics.cs:
-    replace-recipe:
+    recipe:
       - ElectronicsSkillBookRecipe
       - LibrarianElectronicsSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MechanicsSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 3)
-    replace-display-name:
+    display-name:
       - Electronics Skill Book
       - Librarian Electronics Skill Book
-    replace-skill:
+    skill:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Tech\CuttingEdgeCooking.cs:
-    replace-recipe:
+    recipe:
       - CuttingEdgeCookingSkillBookRecipe
       - LibrarianCuttingEdgeCookingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(AdvancedCookingSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 3)
-    replace-display-name:
+    display-name:
       - Cutting Edge Cooking Skill Book
       - Librarian Cutting Edge Cooking Skill Book
-    replace-skill:
+    skill:
       - typeof(AdvancedCookingSkill)
       - typeof(LibrarianSkill)
   Tech\Composites.cs:
-    replace-recipe:
+    recipe:
       - CompositesSkillBookRecipe
       - LibrarianCompositesSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 3)
-    replace-display-name:
+    display-name:
       - Composites Skill Book
       - Librarian Composites Skill Book
-    replace-skill:
+    skill:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Tech\OilDrilling.cs:
-    replace-recipe:
+    recipe:
       - OilDrillingSkillBookRecipe
       - LibrarianOilDrillingSkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(MechanicsSkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 3)
-    replace-display-name:
+    display-name:
       - Oil Drilling Skill Book
       - Librarian Oil Drilling Skill Book
-    replace-skill:
+    skill:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Tech\AdvancedMasonry.cs:
-    replace-recipe:
+    recipe:
       - AdvancedMasonrySkillBookRecipe
       - LibrarianAdvancedMasonrySkillBookRecipe
-    replace-level:
+    level:
       - RequiresSkill(typeof(PotterySkill), 1)
       - RequiresSkill(typeof(LibrarianSkill), 3)
-    replace-display-name:
+    display-name:
       - Advanced Masonry Skill Book
       - Librarian Advanced Masonry Skill Book
-    replace-skill:
+    skill:
       - typeof(PotterySkill)
       - typeof(LibrarianSkill)
 
 BunWulfStructural:
   Block\Brick.cs:
     level:
-      - "RequiresSkill(typeof(PotterySkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 2)"
+      - RequiresSkill(typeof(PotterySkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 2)
     class:
-      - "BrickRecipe"
-      - "ConstructionBrickRecipe"
-    displayName:
-      - "Brick"
-      - "Builder Grade Brick"
+      - BrickRecipe
+      - ConstructionBrickRecipe
+    display-name:
+      - '"Brick"'
+      - '"Builder Grade Brick"'
     skill:
-      - "PotterySkill"
-      - "ConstructionSkill"
+      - PotterySkill
+      - ConstructionSkill
   Block\CopperPipe.cs:
     level:
-      - "RequiresSkill(typeof(SmeltingSkill), 2)"
-      - "RequiresSkill(typeof(ConstructionSkill), 3)"
+      - RequiresSkill(typeof(SmeltingSkill), 2)
+      - RequiresSkill(typeof(ConstructionSkill), 3)
     class:
-      - "CopperPipeRecipe"
-      - "ConstructionCopperPipeRecipe"
-    displayName:
-      - "Copper Pipe"
-      - "Builder Grade Copper Pipe"
+      - CopperPipeRecipe
+      - ConstructionCopperPipeRecipe
+    display-name:
+      - '"Copper Pipe"'
+      - '"Builder Grade Copper Pipe"'
     skill:
-      - "SmeltingSkill"
-      - "ConstructionSkill"
+      - SmeltingSkill
+      - ConstructionSkill
   Item\Dowel.cs:
     level:
-      - "RequiresSkill(typeof(LoggingSkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 1)"
+      - RequiresSkill(typeof(LoggingSkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 1)
     class:
-      - "DowelRecipe"
-      - "ConstructionDowelRecipe"
-    displayName:
-      - "Dowel"
-      - "Builder Grade Dowel"
+      - DowelRecipe
+      - ConstructionDowelRecipe
+    display-name:
+      - '"Dowel"'
+      - '"Builder Grade Dowel"'
     skill:
-      - "LoggingSkill"
-      - "ConstructionSkill"
+      - LoggingSkill
+      - ConstructionSkill
   Block\Glass.cs:
     level:
-      - "RequiresSkill(typeof(GlassworkingSkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 2)"
+      - RequiresSkill(typeof(GlassworkingSkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 2)
     class:
-      - "GlassRecipe"
-      - "ConstructionGlassRecipe"
-    displayName:
-      - "Glass"
-      - "Builder Grade Glass"
+      - GlassRecipe
+      - ConstructionGlassRecipe
+    display-name:
+      - '"Glass"'
+      - '"Builder Grade Glass"'
     skill:
-      - "GlassworkingSkill"
-      - "ConstructionSkill"
+      - GlassworkingSkill
+      - ConstructionSkill
   Block\HewnLog.cs:
     level:
-      - "RequiresSkill(typeof(LoggingSkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 1)"
+      - RequiresSkill(typeof(LoggingSkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 1)
     class:
-      - "HewnLogRecipe"
-      - "ConstructionHewnLogRecipe"
-    displayName:
-      - "Hewn Log"
-      - "Builder Grade Hewn Log"
+      - HewnLogRecipe
+      - ConstructionHewnLogRecipe
+    display-name:
+      - '"Hewn Log"'
+      - '"Builder Grade Hewn Log"'
     skill:
-      - "LoggingSkill"
-      - "ConstructionSkill"
+      - LoggingSkill
+      - ConstructionSkill
   Block\IronPipe.cs:
     level:
-      - "RequiresSkill(typeof(SmeltingSkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 3)"
+      - RequiresSkill(typeof(SmeltingSkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 3)
     class:
-      - "IronPipeRecipe"
-      - "ConstructionIronPipeRecipe"
-    displayName:
-      - "Iron Pipe"
-      - "Builder Grade Iron Pipe"
+      - IronPipeRecipe
+      - ConstructionIronPipeRecipe
+    display-name:
+      - '"Iron Pipe"'
+      - '"Builder Grade Iron Pipe"'
     skill:
-      - "SmeltingSkill"
-      - "ConstructionSkill"
+      - SmeltingSkill
+      - ConstructionSkill
   Block\Lumber.cs:
     level:
-      - "RequiresSkill(typeof(CarpentrySkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 2)"
+      - RequiresSkill(typeof(CarpentrySkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 2)
     class:
-      - "LumberRecipe"
-      - "ConstructionLumberRecipe"
-    displayName:
-      - "Lumber"
-      - "Builder Grade Lumber"
+      - LumberRecipe
+      - ConstructionLumberRecipe
+    display-name:
+      - '"Lumber"'
+      - '"Builder Grade Lumber"'
     skill:
-      - "CarpentrySkill"
-      - "ConstructionSkill"
+      - CarpentrySkill
+      - ConstructionSkill
   Block\MortaredStone.cs:
     level:
-      - "RequiresSkill(typeof(MasonrySkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 1)"
+      - RequiresSkill(typeof(MasonrySkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 1)
     class:
-      - "MortaredStoneRecipe"
-      - "ConstructionMortaredStoneRecipe"
-    displayName:
-      - "Mortared Stone"
-      - "Builder Grade Mortared Stone"
+      - MortaredStoneRecipe
+      - ConstructionMortaredStoneRecipe
+    display-name:
+      - '"Mortared Stone"'
+      - '"Builder Grade Mortared Stone"'
     skill:
-      - "MasonrySkill"
-      - "ConstructionSkill"
+      - MasonrySkill
+      - ConstructionSkill
   Item\WetBrick.cs:
     level:
-      - "RequiresSkill(typeof(PotterySkill), 1)"
-      - "RequiresSkill(typeof(ConstructionSkill), 2)"
+      - RequiresSkill(typeof(PotterySkill), 1)
+      - RequiresSkill(typeof(ConstructionSkill), 2)
     class:
-      - "WetBrickRecipe"
-      - "ConstructionWetBrickRecipe"
-    displayName:
-      - "Wet Brick"
-      - "Builder Grade Wet Brick"
+      - WetBrickRecipe
+      - ConstructionWetBrickRecipe
+    display-name:
+      - '"Wet Brick"'
+      - '"Builder Grade Wet Brick"'
     skill:
-      - "PotterySkill"
-      - "ConstructionSkill"
+      - PotterySkill
+      - ConstructionSkill

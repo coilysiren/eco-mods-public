@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionHewnLogRecipe), start: 0.16f, skillType: typeof(ConstructionSkill));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Hewn Log"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Hewn Log"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Hewn Log"), recipeType: typeof(ConstructionHewnLogRecipe));
             this.ModsPostInitialize();

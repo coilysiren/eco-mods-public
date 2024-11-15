@@ -75,7 +75,7 @@ namespace Eco.Mods.TechTree
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(ConstructionCopperPipeRecipe), start: 0.8f, skillType: typeof(ConstructionSkill), typeof(SmeltingFocusedSpeedTalent), typeof(SmeltingParallelSpeedTalent));
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Copper Pipe"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Builder Grade Copper Pipe"
             this.ModsPreInitialize();
             this.Initialize(displayText: Localizer.DoStr("Builder Grade Copper Pipe"), recipeType: typeof(ConstructionCopperPipeRecipe));
             this.ModsPostInitialize();
@@ -90,6 +90,7 @@ namespace Eco.Mods.TechTree
         /// <summary>Hook for mods to customize RecipeFamily after initialization, but before registration. You can change skill requirements here.</summary>
         partial void ModsPostInitialize();
     }
+
 
 
 }
