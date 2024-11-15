@@ -24,8 +24,11 @@ class TextProcessingException(Exception):
 
 
 def process_recipes(recipes_changes, target_path):
-    item_pattern = r".*(class \w+Item).*"
-    block_pattern = r".*(class \w+Block).*"
+    item_pattern = r".*(class \w+Item) .*"
+    block_pattern = r".*(class \w+Block) .*"
+    skill_pattern = r".*(class \w+Skill) .*"
+    skill_book_pattern = r".*(class \w+SkillBook) .*"
+    skill_scroll_pattern = r".*(class \w+SkillScroll) .*"
 
     for file, changes in recipes_changes.items():
         print(f"Reading {file}")
@@ -33,18 +36,17 @@ def process_recipes(recipes_changes, target_path):
             recipe_data = f.read()
 
         # Remove items, we never need to duplicate them.
-        recipes_lines = recipe_data.split("\n")
-        for line in recipes_lines:
-            # print(f"{re.match(item_pattern, line)} => {line}")
-            if match := re.match(item_pattern, line):
-                recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
+        recipe_data = remove_pattern(recipe_data, file, item_pattern)
 
         # Remove blocks, we never need to duplicate them.
-        recipes_lines = recipe_data.split("\n")
-        for line in recipes_lines:
-            if match := re.match(block_pattern, line):
-                recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
+        recipe_data = remove_pattern(recipe_data, file, block_pattern)
 
+        # Remove skills / skill books / skill scrolls, we never need to duplicate them.
+        recipe_data = remove_pattern(recipe_data, file, skill_pattern)
+        recipe_data = remove_pattern(recipe_data, file, skill_book_pattern)
+        recipe_data = remove_pattern(recipe_data, file, skill_scroll_pattern)
+
+        # Replace keys in the recipe data.
         for key, configs in changes.items():
             recipe_data = replace_key(recipe_data, file, key, configs)
 
@@ -53,6 +55,14 @@ def process_recipes(recipes_changes, target_path):
         os.makedirs(os.path.join(target_path, folder), exist_ok=True)
         with open(os.path.join(target_path, file), "w", encoding="utf-8") as f:
             f.write(recipe_data)
+
+
+def remove_pattern(recipe_data, file, pattern):
+    recipes_lines = recipe_data.split("\n")
+    for line in recipes_lines:
+        if match := re.match(pattern, line):
+            recipe_data = remove_class(recipe_data, file, line.strip(), match.group(1))
+    return recipe_data
 
 
 def remove_class(recipe_data, file, key, class_name):

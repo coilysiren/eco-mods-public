@@ -298,6 +298,48 @@ BunWulfEducational:
     replace-skill:
       - GlassworkingSkill
       - LibrarianSkill
+  # TIER 1 SKILLS
+  Tech\Masonry.cs:
+    replace-recipe:
+      - MasonrySkillBookRecipe
+      - LibrarianMasonrySkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(MiningSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Masonry Skill Book
+      - Librarian Masonry Skill Book
+    replace-skill:
+      - MiningSkill
+      - LibrarianSkill
+  # Tech/Logging.cs: TODO
+  # Tech/Smelting.cs: TODO
+  # Tech/Pottery.cs: TODO
+  # Tech/Carpentry.cs: TODO
+  # Tech/Farming.cs: TODO
+  # Tech/Cooking.cs: TODO
+  # Tech/Baking.cs: TODO
+  # Tech/Glassworking.cs: TODO
+  # Tech/Baking.cs: TODO
+  # Tech/Fertilizers.cs: TODO
+  # Tech/Cooking.cs: TODO
+  # Tech/Butchery.cs: TODO
+  # Tech/CampfireCooking.cs: TODO
+  # Tech/BasicEngineering.cs: TODO
+  # # TIER 2 SKILLS
+  # Tech/AdvancedSmelting.cs: TODO
+  # Tech/Blacksmith.sc: TODO
+  # Tech/Painting.cs: TODO
+  # Tech/AdvancedCooking.cs: TODO
+  # Tech/AdvancedBaking.cs: TODO
+  # Tech/Mechanics.cs: TODO
+  # # TIER 3 SKILLS
+  # Tech/Inderstry.cs: TODO
+  # Tech/Electronics.cs: TODO
+  # Tech/CuttingEdgeCooking.cs: TODO
+  # Tech/Composites.cs: TODO
+  # Tech/OilDrilling.cs: TODO
+  # Tech/AdvancedMasonry.cs: TODO
 
 BunWulfStructural:
   Block\Brick.cs:
