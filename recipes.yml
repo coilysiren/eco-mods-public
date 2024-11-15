@@ -34,8 +34,8 @@ BunWulfEducational:
       - Geology Research Paper
       - Librarian Geology Research Paper
     replace-skill:
-      - MiningSkill
-      - LibrarianSkill
+      - typeof(MiningSkill)
+      - typeof(LibrarianSkill)
   Item\CulinaryResearchPaperBasic.cs:
     replace-recipe:
       - CulinaryResearchPaperBasicRecipe
@@ -47,8 +47,8 @@ BunWulfEducational:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
     replace-skill:
-      - CampfireCookingSkill
-      - LibrarianSkill
+      - typeof(CampfireCookingSkill)
+      - typeof(LibrarianSkill)
   Item\GatheringResearchPaperBasic.cs:
     replace-recipe:
       - GatheringResearchPaperBasicRecipe
@@ -60,8 +60,8 @@ BunWulfEducational:
       - Gathering Research Paper
       - Librarian Gathering Research Paper
     replace-skill:
-      - GatheringSkill
-      - LibrarianSkill
+      - typeof(GatheringSkill)
+      - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperBasic.cs:
     replace-recipe:
       - DendrologyResearchPaperBasicRecipe
@@ -73,8 +73,8 @@ BunWulfEducational:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
     replace-skill:
-      - LoggingSkill
-      - LibrarianSkill
+      - typeof(LoggingSkill)
+      - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperBasic.cs:
     replace-recipe:
       - MetallurgyResearchPaperBasicRecipe
@@ -86,8 +86,8 @@ BunWulfEducational:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
     replace-skill:
-      - MiningSkill
-      - LibrarianSkill
+      - typeof(MiningSkill)
+      - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperBasicFish.cs:
     replace-recipe:
       - CulinaryResearchPaperBasicFishRecipe
@@ -99,8 +99,8 @@ BunWulfEducational:
       - Culinary Research Paper Basic Fish
       - Librarian Culinary Research Paper Basic Fish
     replace-skill:
-      - HuntingSkill
-      - LibrarianSkill
+      - typeof(HuntingSkill)
+      - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperBasicMeat.cs:
     replace-recipe:
       - CulinaryResearchPaperBasicMeatRecipe
@@ -112,8 +112,8 @@ BunWulfEducational:
       - Culinary Research Paper Basic Meat
       - Librarian Culinary Research Paper Basic Meat
     replace-skill:
-      - HuntingSkill
-      - LibrarianSkill
+      - typeof(HuntingSkill)
+      - typeof(LibrarianSkill)
   # ADVANCED RESEARCH PAPERS
   Item\GeologyResearchPaperAdvanced.cs:
     replace-recipe:
@@ -126,8 +126,8 @@ BunWulfEducational:
       - Geology Research Paper
       - Librarian Geology Research Paper
     replace-skill:
-      - MasonrySkill
-      - LibrarianSkill
+      - typeof(MasonrySkill)
+      - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperAdvanced.cs:
     replace-recipe:
       - DendrologyResearchPaperAdvancedRecipe
@@ -139,8 +139,8 @@ BunWulfEducational:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
     replace-skill:
-      - CarpentrySkill
-      - LibrarianSkill
+      - typeof(CarpentrySkill)
+      - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperAdvanced.cs:
     replace-recipe:
       - MetallurgyResearchPaperAdvancedRecipe
@@ -152,8 +152,8 @@ BunWulfEducational:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
     replace-skill:
-      - SmeltingSkill
-      - LibrarianSkill
+      - typeof(SmeltingSkill)
+      - typeof(LibrarianSkill)
   Item\AgricultureResearchPaperAdvanced.cs:
     replace-recipe:
       - AgricultureResearchPaperAdvancedRecipe
@@ -165,8 +165,8 @@ BunWulfEducational:
       - Agriculture Research Paper
       - Librarian Agriculture Research Paper
     replace-skill:
-      - FarmingSkill
-      - LibrarianSkill
+      - typeof(FarmingSkill)
+      - typeof(LibrarianSkill)
   Item\EngineeringResearchPaperAdvanced.cs:
     replace-recipe:
       - EngineeringResearchPaperAdvancedRecipe
@@ -178,8 +178,8 @@ BunWulfEducational:
       - Engineering Research Paper
       - Librarian Engineering Research Paper
     replace-skill:
-      - BasicEngineeringSkill
-      - LibrarianSkill
+      - typeof(BasicEngineeringSkill)
+      - typeof(LibrarianSkill)
   Item\CulinaryResearchPaperAdvanced.cs:
     replace-recipe:
       - CulinaryResearchPaperAdvancedRecipe
@@ -191,8 +191,8 @@ BunWulfEducational:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
     replace-skill:
-      - CookingSkill
-      - LibrarianSkill
+      - typeof(CookingSkill)
+      - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperAdvancedMeat.cs:
     replace-recipe:
       - CulinaryResearchPaperAdvancedMeatRecipe
@@ -204,8 +204,8 @@ BunWulfEducational:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
     replace-skill:
-      - BakingSkill
-      - LibrarianSkill
+      - typeof(BakingSkill)
+      - typeof(LibrarianSkill)
   # MODERN RESEARCH PAPERS
   Item\CulinaryResearchPaperModern.cs:
     replace-recipe:
@@ -218,8 +218,8 @@ BunWulfEducational:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
     replace-skill:
-      - AdvancedCookingSkill
-      - LibrarianSkill
+      - typeof(AdvancedCookingSkill)
+      - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperModern.cs:
     replace-recipe:
       - DendrologyResearchPaperModernRecipe
@@ -231,8 +231,8 @@ BunWulfEducational:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
     replace-skill:
-      - CarpentrySkill
-      - LibrarianSkill
+      - typeof(CarpentrySkill)
+      - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperModern.cs:
     replace-recipe:
       - MetallurgyResearchPaperModernRecipe
@@ -244,8 +244,8 @@ BunWulfEducational:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
     replace-skill:
-      - AdvancedSmeltingSkill
-      - LibrarianSkill
+      - typeof(AdvancedSmeltingSkill)
+      - typeof(LibrarianSkill)
   Item\AgricultureResearchPaperModern.cs:
     replace-recipe:
       - AgricultureResearchPaperModernRecipe
@@ -257,8 +257,8 @@ BunWulfEducational:
       - Agriculture Research Paper
       - Librarian Agriculture Research Paper
     replace-skill:
-      - FertilizersSkill
-      - LibrarianSkill
+      - typeof(FertilizersSkill)
+      - typeof(LibrarianSkill)
   Item\EngineeringResearchPaperModern.cs:
     replace-recipe:
       - EngineeringResearchPaperModernRecipe
@@ -270,8 +270,8 @@ BunWulfEducational:
       - Engineering Research Paper
       - Librarian Engineering Research Paper
     replace-skill:
-      - MechanicsSkill
-      - LibrarianSkill
+      - typeof(MechanicsSkill)
+      - typeof(LibrarianSkill)
   Item\GeologyResearchPaperModern.cs:
     replace-recipe:
       - GeologyResearchPaperModernRecipe
@@ -283,8 +283,8 @@ BunWulfEducational:
       - Geology Research Paper
       - Librarian Geology Research Paper
     replace-skill:
-      - PotterySkill
-      - LibrarianSkill
+      - typeof(PotterySkill)
+      - typeof(LibrarianSkill)
   Recipe\GeologyResearchPaperModernGlass.cs:
     replace-recipe:
       - GeologyResearchPaperModernGlassRecipe
@@ -296,8 +296,8 @@ BunWulfEducational:
       - Geology Research Paper
       - Librarian Geology Research Paper
     replace-skill:
-      - GlassworkingSkill
-      - LibrarianSkill
+      - typeof(GlassworkingSkill)
+      - typeof(LibrarianSkill)
   # TIER 1 SKILLS
   Tech\Masonry.cs:
     replace-recipe:
@@ -310,8 +310,8 @@ BunWulfEducational:
       - Masonry Skill Book
       - Librarian Masonry Skill Book
     replace-skill:
-      - MiningSkill
-      - LibrarianSkill
+      - typeof(MiningSkill)
+      - typeof(LibrarianSkill)
   Tech\Smelting.cs:
     replace-recipe:
       - SmeltingSkillBookRecipe
@@ -323,8 +323,8 @@ BunWulfEducational:
       - Smelting Skill Book
       - Librarian Smelting Skill Book
     replace-skill:
-      - MiningSkill
-      - LibrarianSkill
+      - typeof(MiningSkill)
+      - typeof(LibrarianSkill)
   Tech\Pottery.cs:
     replace-recipe:
       - PotterySkillBookRecipe
@@ -336,8 +336,8 @@ BunWulfEducational:
       - Pottery Skill Book
       - Librarian Pottery Skill Book
     replace-skill:
-      - MasonrySkill
-      - LibrarianSkill
+      - typeof(MasonrySkill)
+      - typeof(LibrarianSkill)
   Tech\Carpentry.cs:
     replace-recipe:
       - CarpentrySkillBookRecipe
@@ -349,8 +349,8 @@ BunWulfEducational:
       - Carpentry Skill Book
       - Librarian Carpentry Skill Book
     replace-skill:
-      - LoggingSkill
-      - LibrarianSkill
+      - typeof(LoggingSkill)
+      - typeof(LibrarianSkill)
   Tech\Farming.cs:
     replace-recipe:
       - FarmingSkillBookRecipe
@@ -362,8 +362,8 @@ BunWulfEducational:
       - Farming Skill Book
       - Librarian Farming Skill Book
     replace-skill:
-      - GatheringSkill
-      - LibrarianSkill
+      - typeof(GatheringSkill)
+      - typeof(LibrarianSkill)
   Tech\Cooking.cs:
     replace-recipe:
       - CookingSkillBookRecipe
@@ -375,8 +375,8 @@ BunWulfEducational:
       - Cooking Skill Book
       - Librarian Cooking Skill Book
     replace-skill:
-      - CampfireCookingSkill
-      - LibrarianSkill
+      - typeof(CampfireCookingSkill)
+      - typeof(LibrarianSkill)
   Tech\Baking.cs:
     replace-recipe:
       - BakingSkillBookRecipe
@@ -388,8 +388,8 @@ BunWulfEducational:
       - Baking Skill Book
       - Librarian Baking Skill Book
     replace-skill:
-      - CampfireCookingSkill
-      - LibrarianSkill
+      - typeof(CampfireCookingSkill)
+      - typeof(LibrarianSkill)
   Tech\Glassworking.cs:
     replace-recipe:
       - GlassworkingSkillBookRecipe
@@ -401,8 +401,8 @@ BunWulfEducational:
       - Glassworking Skill Book
       - Librarian Glassworking Skill Book
     replace-skill:
-      - MasonrySkill
-      - LibrarianSkill
+      - typeof(MasonrySkill)
+      - typeof(LibrarianSkill)
   Tech\Fertilizers.cs:
     replace-recipe:
       - FertilizersSkillBookRecipe
@@ -414,8 +414,8 @@ BunWulfEducational:
       - Fertilizers Skill Book
       - Librarian Fertilizers Skill Book
     replace-skill:
-      - FarmingSkill
-      - LibrarianSkill
+      - typeof(FarmingSkill)
+      - typeof(LibrarianSkill)
   Tech\Butchery.cs:
     replace-recipe:
       - ButcherySkillBookRecipe
@@ -427,8 +427,8 @@ BunWulfEducational:
       - Butchery Skill Book
       - Librarian Butchery Skill Book
     replace-skill:
-      - HuntingSkill
-      - LibrarianSkill
+      - typeof(HuntingSkill)
+      - typeof(LibrarianSkill)
   Tech\Tailoring.cs:
     replace-recipe:
       - TailoringSkillBookRecipe
@@ -440,8 +440,8 @@ BunWulfEducational:
       - Tailoring Skill Book
       - Librarian Tailoring Skill Book
     replace-skill:
-      - GatheringSkill
-      - LibrarianSkill
+      - typeof(GatheringSkill)
+      - typeof(LibrarianSkill)
   Tech\BasicEngineering.cs:
     replace-recipe:
       - BasicEngineeringSkillBookRecipe
@@ -453,8 +453,8 @@ BunWulfEducational:
       - Basic Engineering Skill Book
       - Librarian Basic Engineering Skill Book
     replace-skill:
-      - CarpentrySkill
-      - LibrarianSkill
+      - typeof(CarpentrySkill)
+      - typeof(LibrarianSkill)
   Tech\Shipwright.cs:
     replace-recipe:
       - ShipwrightSkillBookRecipe
@@ -466,8 +466,8 @@ BunWulfEducational:
       - Shipwright Skill Book
       - Librarian Shipwright Skill Book
     replace-skill:
-      - LoggingSkill
-      - LibrarianSkill
+      - typeof(LoggingSkill)
+      - typeof(LibrarianSkill)
   Tech\PaperMilling.cs:
     replace-recipe:
       - PaperMillingSkillBookRecipe
@@ -479,8 +479,8 @@ BunWulfEducational:
       - Paper Milling Skill Book
       - Librarian Paper Milling Skill Book
     replace-skill:
-      - CarpentrySkill
-      - LibrarianSkill
+      - typeof(CarpentrySkill)
+      - typeof(LibrarianSkill)
   Tech\Milling.cs:
     replace-recipe:
       - MillingSkillBookRecipe
@@ -492,8 +492,8 @@ BunWulfEducational:
       - Milling Skill Book
       - Librarian Milling Skill Book
     replace-skill:
-      - FarmingSkill
-      - LibrarianSkill
+      - typeof(FarmingSkill)
+      - typeof(LibrarianSkill)
   # TIER 2 SKILLS
   Tech\AdvancedSmelting.cs:
     replace-recipe:
@@ -506,8 +506,8 @@ BunWulfEducational:
       - Advanced Smelting Skill Book
       - Librarian Advanced Smelting Skill Book
     replace-skill:
-      - SmeltingSkill
-      - LibrarianSkill
+      - typeof(SmeltingSkill)
+      - typeof(LibrarianSkill)
   Tech\Blacksmith.cs:
     replace-recipe:
       - BlacksmithSkillBookRecipe
@@ -519,8 +519,8 @@ BunWulfEducational:
       - Blacksmith Skill Book
       - Librarian Blacksmith Skill Book
     replace-skill:
-      - SmeltingSkill
-      - LibrarianSkill
+      - typeof(SmeltingSkill)
+      - typeof(LibrarianSkill)
   Tech\Painting.cs:
     replace-recipe:
       - PaintingSkillBookRecipe
@@ -532,8 +532,8 @@ BunWulfEducational:
       - Painting Skill Book
       - Librarian Painting Skill Book
     replace-skill:
-      - BasicEngineeringSkill
-      - LibrarianSkill
+      - typeof(BasicEngineeringSkill)
+      - typeof(LibrarianSkill)
   Tech\AdvancedCooking.cs:
     replace-recipe:
       - AdvancedCookingSkillBookRecipe
@@ -545,8 +545,8 @@ BunWulfEducational:
       - Advanced Cooking Skill Book
       - Librarian Advanced Cooking Skill Book
     replace-skill:
-      - CookingSkill
-      - LibrarianSkill
+      - typeof(CookingSkill)
+      - typeof(LibrarianSkill)
   Tech\AdvancedBaking.cs:
     replace-recipe:
       - AdvancedBakingSkillBookRecipe
@@ -558,8 +558,8 @@ BunWulfEducational:
       - Advanced Baking Skill Book
       - Librarian Advanced Baking Skill Book
     replace-skill:
-      - BakingSkill
-      - LibrarianSkill
+      - typeof(BakingSkill)
+      - typeof(LibrarianSkill)
   Tech\Mechanics.cs:
     replace-recipe:
       - MechanicsSkillBookRecipe
@@ -571,8 +571,8 @@ BunWulfEducational:
       - Mechanics Skill Book
       - Librarian Mechanics Skill Book
     replace-skill:
-      - BasicEngineeringSkill
-      - LibrarianSkill
+      - typeof(BasicEngineeringSkill)
+      - typeof(LibrarianSkill)
   # TIER 3 SKILLS
   Tech\Industry.cs:
     replace-recipe:
@@ -585,8 +585,8 @@ BunWulfEducational:
       - Industry Skill Book
       - Librarian Industry Skill Book
     replace-skill:
-      - MechanicsSkill
-      - LibrarianSkill
+      - typeof(MechanicsSkill)
+      - typeof(LibrarianSkill)
   Tech\Electronics.cs:
     replace-recipe:
       - ElectronicsSkillBookRecipe
@@ -598,8 +598,8 @@ BunWulfEducational:
       - Electronics Skill Book
       - Librarian Electronics Skill Book
     replace-skill:
-      - MechanicsSkill
-      - LibrarianSkill
+      - typeof(MechanicsSkill)
+      - typeof(LibrarianSkill)
   Tech\CuttingEdgeCooking.cs:
     replace-recipe:
       - CuttingEdgeCookingSkillBookRecipe
@@ -611,8 +611,8 @@ BunWulfEducational:
       - Cutting Edge Cooking Skill Book
       - Librarian Cutting Edge Cooking Skill Book
     replace-skill:
-      - AdvancedCookingSkill
-      - LibrarianSkill
+      - typeof(AdvancedCookingSkill)
+      - typeof(LibrarianSkill)
   Tech\Composites.cs:
     replace-recipe:
       - CompositesSkillBookRecipe
@@ -624,8 +624,8 @@ BunWulfEducational:
       - Composites Skill Book
       - Librarian Composites Skill Book
     replace-skill:
-      - CarpentrySkill
-      - LibrarianSkill
+      - typeof(CarpentrySkill)
+      - typeof(LibrarianSkill)
   Tech\OilDrilling.cs:
     replace-recipe:
       - OilDrillingSkillBookRecipe
@@ -637,8 +637,8 @@ BunWulfEducational:
       - Oil Drilling Skill Book
       - Librarian Oil Drilling Skill Book
     replace-skill:
-      - MechanicsSkill
-      - LibrarianSkill
+      - typeof(MechanicsSkill)
+      - typeof(LibrarianSkill)
   Tech\AdvancedMasonry.cs:
     replace-recipe:
       - AdvancedMasonrySkillBookRecipe
@@ -650,8 +650,8 @@ BunWulfEducational:
       - Advanced Masonry Skill Book
       - Librarian Advanced Masonry Skill Book
     replace-skill:
-      - PotterySkill
-      - LibrarianSkill
+      - typeof(PotterySkill)
+      - typeof(LibrarianSkill)
 
 BunWulfStructural:
   Block\Brick.cs:

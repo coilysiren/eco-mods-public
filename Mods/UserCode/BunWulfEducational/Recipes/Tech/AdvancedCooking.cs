@@ -43,9 +43,9 @@ namespace Eco.Mods.TechTree
     /// </remarks>
     [RequiresSkill(typeof(LibrarianSkill), 2)]
     [Ecopedia("Professions", "Chef", subPageName: "Librarian Advanced Cooking Skill Book Item")]
-    public partial class LibrarianAdvancedLibrarianSkillBookRecipe : RecipeFamily
+    public partial class LibrarianAdvancedCookingSkillBookRecipe : RecipeFamily
     {
-        public LibrarianAdvancedLibrarianSkillBookRecipe()
+        public LibrarianAdvancedCookingSkillBookRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
                 // to create.
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<AdvancedLibrarianSkillBook>()
+                    new CraftingElement<AdvancedCookingSkillBook>()
                 });
             this.Recipes = new List<Recipe> { recipe };
             
@@ -77,11 +77,11 @@ namespace Eco.Mods.TechTree
             this.LaborInCalories = CreateLaborInCaloriesValue(6000, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(LibrarianAdvancedLibrarianSkillBookRecipe), start: 30, skillType: typeof(LibrarianSkill));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(LibrarianAdvancedCookingSkillBookRecipe), start: 30, skillType: typeof(LibrarianSkill));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Advanced Cooking Skill Book"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Librarian Advanced Cooking Skill Book"), recipeType: typeof(LibrarianAdvancedLibrarianSkillBookRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Librarian Advanced Cooking Skill Book"), recipeType: typeof(LibrarianAdvancedCookingSkillBookRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
