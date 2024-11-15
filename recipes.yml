@@ -312,34 +312,202 @@ BunWulfEducational:
     replace-skill:
       - MiningSkill
       - LibrarianSkill
-  # Tech/Logging.cs: TODO
-  # Tech/Smelting.cs: TODO
-  # Tech/Pottery.cs: TODO
-  # Tech/Carpentry.cs: TODO
-  # Tech/Farming.cs: TODO
-  # Tech/Cooking.cs: TODO
-  # Tech/Baking.cs: TODO
-  # Tech/Glassworking.cs: TODO
-  # Tech/Baking.cs: TODO
-  # Tech/Fertilizers.cs: TODO
-  # Tech/Cooking.cs: TODO
-  # Tech/Butchery.cs: TODO
-  # Tech/CampfireCooking.cs: TODO
-  # Tech/BasicEngineering.cs: TODO
+  Tech\Smelting.cs:
+    replace-recipe:
+      - SmeltingSkillBookRecipe
+      - LibrarianSmeltingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(MiningSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Smelting Skill Book
+      - Librarian Smelting Skill Book
+    replace-skill:
+      - MiningSkill
+      - LibrarianSkill
+  Tech\Pottery.cs:
+    replace-recipe:
+      - PotterySkillBookRecipe
+      - LibrarianPotterySkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(MasonrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Pottery Skill Book
+      - Librarian Pottery Skill Book
+    replace-skill:
+      - MasonrySkill
+      - LibrarianSkill
+  Tech\Carpentry.cs:
+    replace-recipe:
+      - CarpentrySkillBookRecipe
+      - LibrarianCarpentrySkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(LoggingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Carpentry Skill Book
+      - Librarian Carpentry Skill Book
+    replace-skill:
+      - LoggingSkill
+      - LibrarianSkill
+  Tech\Farming.cs:
+    replace-recipe:
+      - FarmingSkillBookRecipe
+      - LibrarianFarmingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(GatheringSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Farming Skill Book
+      - Librarian Farming Skill Book
+    replace-skill:
+      - GatheringSkill
+      - LibrarianSkill
+  Tech\Cooking.cs:
+    replace-recipe:
+      - CookingSkillBookRecipe
+      - LibrarianCookingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(CampfireCookingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Cooking Skill Book
+      - Librarian Cooking Skill Book
+    replace-skill:
+      - CampfireCookingSkill
+      - LibrarianSkill
+  Tech\Baking.cs:
+    replace-recipe:
+      - BakingSkillBookRecipe
+      - LibrarianBakingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(CampfireCookingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Baking Skill Book
+      - Librarian Baking Skill Book
+    replace-skill:
+      - CampfireCookingSkill
+      - LibrarianSkill
+  Tech\Glassworking.cs:
+    replace-recipe:
+      - GlassworkingSkillBookRecipe
+      - LibrarianGlassworkingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(MasonrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Glassworking Skill Book
+      - Librarian Glassworking Skill Book
+    replace-skill:
+      - MasonrySkill
+      - LibrarianSkill
+  Tech\Fertilizers.cs:
+    replace-recipe:
+      - FertilizersSkillBookRecipe
+      - LibrarianFertilizersSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(FarmingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Fertilizers Skill Book
+      - Librarian Fertilizers Skill Book
+    replace-skill:
+      - FarmingSkill
+      - LibrarianSkill
+  Tech\Butchery.cs:
+    replace-recipe:
+      - ButcherySkillBookRecipe
+      - LibrarianButcherySkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(HuntingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Butchery Skill Book
+      - Librarian Butchery Skill Book
+    replace-skill:
+      - HuntingSkill
+      - LibrarianSkill
+  Tech\Tailoring.cs:
+    replace-recipe:
+      - TailoringSkillBookRecipe
+      - LibrarianTailoringSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(GatheringSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Tailoring Skill Book
+      - Librarian Tailoring Skill Book
+    replace-skill:
+      - GatheringSkill
+      - LibrarianSkill
+  Tech\BasicEngineering.cs:
+    replace-recipe:
+      - BasicEngineeringSkillBookRecipe
+      - LibrarianBasicEngineeringSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(CarpentrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Basic Engineering Skill Book
+      - Librarian Basic Engineering Skill Book
+    replace-skill:
+      - CarpentrySkill
+      - LibrarianSkill
+  Tech\Shipwright.cs:
+    replace-recipe:
+      - ShipwrightSkillBookRecipe
+      - LibrarianShipwrightSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(LoggingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Shipwright Skill Book
+      - Librarian Shipwright Skill Book
+    replace-skill:
+      - LoggingSkill
+      - LibrarianSkill
+  Tech\PaperMilling.cs:
+    replace-recipe:
+      - PaperMillingSkillBookRecipe
+      - LibrarianPaperMillingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(CarpentrySkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Paper Milling Skill Book
+      - Librarian Paper Milling Skill Book
+    replace-skill:
+      - CarpentrySkill
+      - LibrarianSkill
+  Tech\Milling.cs:
+    replace-recipe:
+      - MillingSkillBookRecipe
+      - LibrarianMillingSkillBookRecipe
+    replace-level:
+      - RequiresSkill(typeof(FarmingSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
+    replace-display-name:
+      - Milling Skill Book
+      - Librarian Milling Skill Book
+    replace-skill:
+      - FarmingSkill
+      - LibrarianSkill
   # # TIER 2 SKILLS
-  # Tech/AdvancedSmelting.cs: TODO
-  # Tech/Blacksmith.sc: TODO
-  # Tech/Painting.cs: TODO
-  # Tech/AdvancedCooking.cs: TODO
-  # Tech/AdvancedBaking.cs: TODO
-  # Tech/Mechanics.cs: TODO
+  # Tech\AdvancedSmelting.cs: TODO
+  # Tech\Blacksmith.sc: TODO
+  # Tech\Painting.cs: TODO
+  # Tech\AdvancedCooking.cs: TODO
+  # Tech\AdvancedBaking.cs: TODO
+  # Tech\Mechanics.cs: TODO
   # # TIER 3 SKILLS
-  # Tech/Inderstry.cs: TODO
-  # Tech/Electronics.cs: TODO
-  # Tech/CuttingEdgeCooking.cs: TODO
-  # Tech/Composites.cs: TODO
-  # Tech/OilDrilling.cs: TODO
-  # Tech/AdvancedMasonry.cs: TODO
+  # Tech\Inderstry.cs: TODO
+  # Tech\Electronics.cs: TODO
+  # Tech\CuttingEdgeCooking.cs: TODO
+  # Tech\Composites.cs: TODO
+  # Tech\OilDrilling.cs: TODO
+  # Tech\AdvancedMasonry.cs: TODO
 
 BunWulfStructural:
   Block\Brick.cs:
