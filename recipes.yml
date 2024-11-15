@@ -22,13 +22,14 @@ BunWulfAgricultural:
     - Plant\Fern.cs
 
 BunWulfEducational:
+  # BASIC RESEARCH PAPERS
   Item\GeologyResearchPaperBasic.cs:
     replace-recipe:
       - GeologyResearchPaperBasicRecipe
       - LibrarianGeologyResearchPaperBasicRecipe
     replace-level:
       - RequiresSkill(typeof(MiningSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
@@ -41,7 +42,7 @@ BunWulfEducational:
       - LibrarianCulinaryResearchPaperBasicRecipe
     replace-level:
       - RequiresSkill(typeof(CampfireCookingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
@@ -54,7 +55,7 @@ BunWulfEducational:
       - LibrarianGatheringResearchPaperBasicRecipe
     replace-level:
       - RequiresSkill(typeof(GatheringSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Gathering Research Paper
       - Librarian Gathering Research Paper
@@ -67,7 +68,7 @@ BunWulfEducational:
       - LibrarianDendrologyResearchPaperBasicRecipe
     replace-level:
       - RequiresSkill(typeof(LoggingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
@@ -80,7 +81,7 @@ BunWulfEducational:
       - LibrarianMetallurgyResearchPaperBasicRecipe
     replace-level:
       - RequiresSkill(typeof(MiningSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
@@ -93,7 +94,7 @@ BunWulfEducational:
       - LibrarianCulinaryResearchPaperBasicFishRecipe
     replace-level:
       - RequiresSkill(typeof(HuntingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Culinary Research Paper Basic Fish
       - Librarian Culinary Research Paper Basic Fish
@@ -106,20 +107,21 @@ BunWulfEducational:
       - LibrarianCulinaryResearchPaperBasicMeatRecipe
     replace-level:
       - RequiresSkill(typeof(HuntingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
+      - RequiresSkill(typeof(LibrarianSkill), 0)
     replace-display-name:
       - Culinary Research Paper Basic Meat
       - Librarian Culinary Research Paper Basic Meat
     replace-skill:
       - HuntingSkill
       - LibrarianSkill
+  # ADVANCED RESEARCH PAPERS
   Item\GeologyResearchPaperAdvanced.cs:
     replace-recipe:
       - GeologyResearchPaperAdvancedRecipe
       - LibrarianGeologyResearchPaperAdvancedRecipe
     replace-level:
       - RequiresSkill(typeof(MasonrySkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
@@ -132,7 +134,7 @@ BunWulfEducational:
       - LibrarianDendrologyResearchPaperAdvancedRecipe
     replace-level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
@@ -145,7 +147,7 @@ BunWulfEducational:
       - LibrarianMetallurgyResearchPaperAdvancedRecipe
     replace-level:
       - RequiresSkill(typeof(SmeltingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
@@ -158,7 +160,7 @@ BunWulfEducational:
       - LibrarianAgricultureResearchPaperAdvancedRecipe
     replace-level:
       - RequiresSkill(typeof(FarmingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Agriculture Research Paper
       - Librarian Agriculture Research Paper
@@ -171,7 +173,7 @@ BunWulfEducational:
       - LibrarianEngineeringResearchPaperAdvancedRecipe
     replace-level:
       - RequiresSkill(typeof(BasicEngineeringSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Engineering Research Paper
       - Librarian Engineering Research Paper
@@ -184,7 +186,7 @@ BunWulfEducational:
       - LibrarianCulinaryResearchPaperAdvancedRecipe
     replace-level:
       - RequiresSkill(typeof(CookingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
@@ -197,20 +199,21 @@ BunWulfEducational:
       - LibrarianCulinaryResearchPaperAdvancedMeatRecipe
     replace-level:
       - RequiresSkill(typeof(BakingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 2)
+      - RequiresSkill(typeof(LibrarianSkill), 1)
     replace-display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
     replace-skill:
       - BakingSkill
       - LibrarianSkill
+  # MODERN RESEARCH PAPERS
   Item\CulinaryResearchPaperModern.cs:
     replace-recipe:
       - CulinaryResearchPaperModernRecipe
       - LibrarianCulinaryResearchPaperModernRecipe
     replace-level:
       - RequiresSkill(typeof(AdvancedCookingSkill), 2)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Culinary Research Paper
       - Librarian Culinary Research Paper
@@ -223,7 +226,7 @@ BunWulfEducational:
       - LibrarianDendrologyResearchPaperModernRecipe
     replace-level:
       - RequiresSkill(typeof(CarpentrySkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Dendrology Research Paper
       - Librarian Dendrology Research Paper
@@ -236,7 +239,7 @@ BunWulfEducational:
       - LibrarianMetallurgyResearchPaperModernRecipe
     replace-level:
       - RequiresSkill(typeof(AdvancedSmeltingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Metallurgy Research Paper
       - Librarian Metallurgy Research Paper
@@ -249,7 +252,7 @@ BunWulfEducational:
       - LibrarianAgricultureResearchPaperModernRecipe
     replace-level:
       - RequiresSkill(typeof(FertilizersSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Agriculture Research Paper
       - Librarian Agriculture Research Paper
@@ -262,7 +265,7 @@ BunWulfEducational:
       - LibrarianEngineeringResearchPaperModernRecipe
     replace-level:
       - RequiresSkill(typeof(MechanicsSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Engineering Research Paper
       - Librarian Engineering Research Paper
@@ -275,7 +278,7 @@ BunWulfEducational:
       - LibrarianGeologyResearchPaperModernRecipe
     replace-level:
       - RequiresSkill(typeof(PotterySkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
@@ -288,7 +291,7 @@ BunWulfEducational:
       - LibrarianGeologyResearchPaperModernGlassRecipe
     replace-level:
       - RequiresSkill(typeof(GlassworkingSkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 3)
+      - RequiresSkill(typeof(LibrarianSkill), 2)
     replace-display-name:
       - Geology Research Paper
       - Librarian Geology Research Paper
