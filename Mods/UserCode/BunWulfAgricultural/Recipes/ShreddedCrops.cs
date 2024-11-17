@@ -9,7 +9,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(GatheringSkill), 1)]
+    [RequiresSkill(typeof(FarmingSkill), 1)]
     public partial class ShreddedCropsRecipe : RecipeFamily
     {
         public ShreddedCropsRecipe()
@@ -26,11 +26,11 @@ namespace Eco.Mods.TechTree
             );
             Recipes = new List<Recipe> { recipe };
             ExperienceOnCraft = 0.1f;
-            LaborInCalories = CreateLaborInCaloriesValue(200, typeof(GatheringSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(200, typeof(FarmingSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ShreddedCropsRecipe),
                 start: 0.5f,
-                skillType: typeof(GatheringSkill)
+                skillType: typeof(FarmingSkill)
             );
             Initialize(
                 displayText: Localizer.DoStr("Shredded Crops"),

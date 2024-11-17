@@ -9,7 +9,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(PaperMillingSkill), 1)]
+    [RequiresSkill(typeof(FarmingSkill), 1)]
     public partial class RicePaperRecipe : RecipeFamily
     {
         public RicePaperRecipe()
@@ -23,7 +23,7 @@ namespace Eco.Mods.TechTree
                     new(
                         typeof(RiceItem),
                         80,
-                        typeof(PaperMillingSkill),
+                        typeof(FarmingSkill),
                         typeof(PaperMillingLavishResourcesTalent)
                     ),
                 },
@@ -31,11 +31,11 @@ namespace Eco.Mods.TechTree
             );
             Recipes = new List<Recipe> { recipe };
             ExperienceOnCraft = 1;
-            LaborInCalories = CreateLaborInCaloriesValue(20, typeof(PaperMillingSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(20, typeof(FarmingSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(RicePaperRecipe),
                 start: 0.1f,
-                skillType: typeof(PaperMillingSkill),
+                skillType: typeof(FarmingSkill),
                 typeof(PaperMillingFocusedSpeedTalent),
                 typeof(PaperMillingParallelSpeedTalent)
             );
