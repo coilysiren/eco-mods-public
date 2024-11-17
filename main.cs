@@ -1,12 +1,21 @@
-// no-op main.cs file so we can compile the project
+using CommandLine;
 
-
-// The entry point of the program is global code; ignoring entry point
-#pragma warning disable CS8321
-#pragma warning disable CS7022
-static void Main()
+namespace CLI
 {
-    Console.WriteLine("Hello, World!");
+    public class Program
+    {
+        [Verb("BunWulfEducational")]
+        public class BunWulfEducational { }
+
+        [Verb("BunWulfStructural")]
+        public class BunWulfStructural { }
+
+        public static void Main(string[] args)
+        {
+            _ = Parser
+                .Default.ParseArguments<BunWulfEducational, BunWulfStructural>(args)
+                .WithParsed<BunWulfEducational>(opts => Console.WriteLine("Add command"))
+                .WithParsed<BunWulfStructural>(opts => Console.WriteLine("Add command"));
+        }
+    }
 }
-#pragma warning restore CS7022
-#pragma warning restore CS8321
