@@ -468,19 +468,19 @@ BunWulfEducational:
     skill:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
-  Tech\PaperMilling.cs:
-    recipe:
-      - PaperMillingSkillBookRecipe
-      - LibrarianPaperMillingSkillBookRecipe
-    level:
-      - RequiresSkill(typeof(CarpentrySkill), 1)
-      - RequiresSkill(typeof(LibrarianSkill), 1)
-    display-name:
-      - Paper Milling Skill Book
-      - Librarian Paper Milling Skill Book
-    skill:
-      - typeof(CarpentrySkill)
-      - typeof(LibrarianSkill)
+  # Tech\PaperMilling.cs:
+  #   recipe:
+  #     - PaperMillingSkillBookRecipe
+  #     - LibrarianPaperMillingSkillBookRecipe
+  #   level:
+  #     - RequiresSkill(typeof(CarpentrySkill), 1)
+  #     - RequiresSkill(typeof(LibrarianSkill), 1)
+  #   display-name:
+  #     - Paper Milling Skill Book
+  #     - Librarian Paper Milling Skill Book
+  #   skill:
+  #     - typeof(CarpentrySkill)
+  #     - typeof(LibrarianSkill)
   Tech\Milling.cs:
     recipe:
       - MillingSkillBookRecipe
