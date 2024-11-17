@@ -9,7 +9,7 @@ using Eco.Shared.Localization;
 
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(FarmingSkill), 1)]
+    [RequiresSkill(typeof(FarmingSkill), 6)]
     public partial class RicePaperRecipe : RecipeFamily
     {
         public RicePaperRecipe()
