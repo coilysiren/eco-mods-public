@@ -24,7 +24,7 @@ namespace Eco.Mods.TechTree
                         typeof(RiceItem),
                         80,
                         typeof(FarmingSkill),
-                        typeof(PaperMillingLavishResourcesTalent)
+                        typeof(FarmingLavishResourcesTalent)
                     ),
                 },
                 items: new List<CraftingElement> { new CraftingElement<PaperItem>() }
@@ -36,8 +36,8 @@ namespace Eco.Mods.TechTree
                 beneficiary: typeof(RicePaperRecipe),
                 start: 0.1f,
                 skillType: typeof(FarmingSkill),
-                typeof(PaperMillingFocusedSpeedTalent),
-                typeof(PaperMillingParallelSpeedTalent)
+                typeof(FarmingFocusedSpeedTalent),
+                typeof(FarmingParallelSpeedTalent)
             );
             Initialize(
                 displayText: Localizer.DoStr("Rice Paper"),
