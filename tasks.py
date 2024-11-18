@@ -107,7 +107,7 @@ def bunwulf_educational(ctx: invoke.Context):
     # tiny layer for when I forget that I rewrote this script in c#
     ctx.run("dotnet run -- BunWulfEducational", echo=True)
     # run a build to ensure that the previous run didn't generate broken files
-    ctx.run("dotnet build eco-mods.csproj", echo=True)
+    ctx.run("dotnet build bunwulf-educational.csproj", echo=True)
 
 
 @invoke.task

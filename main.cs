@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using CommandLine;
 using Eco.Core.Plugins.Interfaces;
+using Eco.Core.Utils;
 using Eco.Gameplay.Players;
 using Eco.Gameplay.Systems.Messaging.Chat.Commands;
 using Eco.Shared.Localization;
@@ -44,22 +45,34 @@ namespace BunWulfMods
         }
     }
 
-    public class EcoPluginEntrypoint : IModKitPlugin, IModInit
+    public class BunWulfEducationalPluginEntrypoint
+        : IModKitPlugin,
+            IServerPlugin,
+            IInitializablePlugin,
+            IModInit
     {
-        public static void Initialize() => BunWulfEducational.Initialize();
+        public void Initialize(TimedTask timer) => BunWulfEducational.Initialize();
 
-        public override string ToString() => Localizer.DoStr(this.GetType().Name);
+        public override string ToString() => "BunWulfEducational";
 
-        public string GetStatus() => "Loaded " + this.GetType().Name;
+        public string GetStatus() => "Loaded BunWulfEducational";
 
         public string GetCategory() => "BunWulf";
 
-        [ChatCommand(
-            "regenerates the BunWulfEducational mod",
-            "generate-bunwulf-educational",
-            ChatAuthorizationLevel.Admin
-        )]
-        public static void GenerateBunWulfEducational(User user) => BunWulfEducational.Initialize();
+        public static ModRegistration Register() =>
+            new()
+            {
+                ModName = "BunWulfEducational",
+                ModDescription = "TODO",
+                ModDisplayName = "BunWulf Educational",
+            };
+
+        // [ChatCommand(
+        //     "regenerates the BunWulfEducational mod",
+        //     "generate-bunwulf-educational",
+        //     ChatAuthorizationLevel.Admin
+        // )]
+        // public static void GenerateBunWulfEducational(User user) => BunWulfEducational.Initialize();
     }
 
     public static class BunWulfEducational
@@ -238,11 +251,11 @@ namespace BunWulfMods
                 }
                 else if (file.Contains("Advanced"))
                 {
-                    techLevel = 1;
+                    techLevel = 2;
                 }
                 else if (file.Contains("Modern"))
                 {
-                    techLevel = 2;
+                    techLevel = 4;
                 }
 
                 string fileData = File.ReadAllText(file);
