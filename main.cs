@@ -170,7 +170,7 @@ namespace BunWulfMods
                 );
 
                 string targetFilePath = Path.Combine(targetTechDirectory, fileName);
-                Console.WriteLine("[BunWulfEducational] writing " + targetFilePath);
+                Console.WriteLine("[BunWulfEducational] \twriting " + targetFilePath);
                 File.WriteAllText(targetFilePath, fileData);
             }
         }
@@ -228,8 +228,8 @@ namespace BunWulfMods
                 }
 
                 string fileName = Path.GetFileName(file);
-                string sourceFilePath = Path.Combine(coreDirectory, fileName);
-                Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
+                // string sourceFilePath = Path.Combine(coreDirectory, fileName);
+                // Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
 
                 int techLevel = 0;
                 if (file.Contains("Basic"))
@@ -271,7 +271,7 @@ namespace BunWulfMods
                 );
 
                 string targetFilePath = Path.Combine(targetDirectory, fileName);
-                Console.WriteLine("[BunWulfEducational] writing " + targetFilePath);
+                Console.WriteLine("[BunWulfEducational] \twriting " + targetFilePath);
                 File.WriteAllText(targetFilePath, fileData);
             }
         }
