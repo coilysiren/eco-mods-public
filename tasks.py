@@ -103,11 +103,9 @@ def bunwulf_agricultural(_: invoke.Context):
 
 
 @invoke.task
-def bunwulf_educational(_: invoke.Context):
-    with open("recipes.yml", "r", encoding="utf-8") as recipes:
-        recipe_data = yaml.safe_load(recipes)["BunWulfEducational"]
-
-    util.process_recipes(recipe_data, os.path.join(USERCODE_PATH, "BunWulfEducational", "Recipes"))
+def bunwulf_educational(ctx: invoke.Context):
+    # tiny redirection layer for when I forget that I rewrote this script in c#
+    ctx.run("dotnet run -- BunWulfEducational", echo=True)
 
 
 @invoke.task

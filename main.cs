@@ -10,8 +10,9 @@ using Eco.Shared.Localization;
 
 namespace BunWulfMods
 {
-    public class Constants
+    public class CLIEntryPoint
     {
+        // This only works on my machine >:D
         public static readonly string WindowsServerDirectory = Path.Combine(
             new string[]
             {
@@ -26,17 +27,6 @@ namespace BunWulfMods
             }
         );
 
-        public static readonly string LinuxServerDirectory = Directory.GetCurrentDirectory();
-
-        public static readonly string ItemPattern = @".*(class \w+Item) .*";
-        public static readonly string BlockPattern = @".*(class \w+Block) .*";
-        public static readonly string SkillPattern = @".*(class \w+Skill) .*";
-        public static readonly string SkillBookPattern = @".*(class \w+SkillBook) .*";
-        public static readonly string SkillScrollPattern = @".*(class \w+SkillScroll) .*";
-    }
-
-    public class CLIEntryPoint
-    {
         [Verb("BunWulfEducational")]
         public class BunWulfEducationalOpts { }
 
@@ -48,7 +38,7 @@ namespace BunWulfMods
             _ = Parser
                 .Default.ParseArguments<BunWulfEducationalOpts, BunWulfStructuralOpts>(args)
                 .WithParsed<BunWulfEducationalOpts>(_ =>
-                    BunWulfEducational.Initialize(Constants.WindowsServerDirectory)
+                    BunWulfEducational.Initialize(WindowsServerDirectory)
                 )
                 .WithParsed<BunWulfStructuralOpts>(_ => Console.WriteLine("TODO"));
         }
@@ -56,8 +46,7 @@ namespace BunWulfMods
 
     public class EcoPluginEntrypoint : IModKitPlugin, IModInit
     {
-        public static void Initialize() =>
-            BunWulfEducational.Initialize(Constants.LinuxServerDirectory);
+        public static void Initialize() => BunWulfEducational.Initialize();
 
         public override string ToString() => Localizer.DoStr(this.GetType().Name);
 
@@ -70,23 +59,41 @@ namespace BunWulfMods
             "generate-bunwulf-educational",
             ChatAuthorizationLevel.Admin
         )]
-        public static void GenerateBunWulfEducational(User user) =>
-            BunWulfEducational.Initialize(Constants.LinuxServerDirectory);
+        public static void GenerateBunWulfEducational(User user) => BunWulfEducational.Initialize();
     }
 
     public static class BunWulfEducational
     {
-        public static void Initialize(string directory)
+        // Tier Extraction then Skill Level Replacement
+        private static readonly string TierPattern = @".*Tier\((\d)\).*";
+        private static readonly string RequiresSkillLevelPattern = @"RequiresSkill.*?(\d)";
+        private static readonly string RequiresSkillLevelReplacement =
+            @"RequiresSkill(typeof(LibrarianSkill), $1";
+
+        // Recipe Replacement
+        private static readonly string RecipePattern = @"(\w+SkillBookRecipe)";
+        private static readonly string RecipeReplacement = "Librarian$1";
+
+        // Description Replacement
+        public static readonly string DescriptionPattern = @"([\w\s]+? Skill Book)";
+        private static readonly string DescriptionReplacement = "Librarian $1";
+
+        // Labor Replacement
+        private static readonly string LaborPattern = @"typeof\((?!LibrarianSkill)\w+Skill\)";
+        private static readonly string LaborReplacement = "typeof(LibrarianSkill)";
+
+        public static void Initialize(string? sourcebaseDirectory = null)
         {
+            sourcebaseDirectory ??= Directory.GetCurrentDirectory();
             string coreSourceDirectory = Path.Combine(
-                directory,
+                sourcebaseDirectory,
                 "Mods",
                 "__core__",
                 "AutoGen",
                 "Tech"
             );
             string targetDirectory = Path.Combine(
-                directory,
+                Directory.GetCurrentDirectory(),
                 "Mods",
                 "UserCode",
                 "BunWulfEducational",
@@ -102,18 +109,123 @@ namespace BunWulfMods
             foreach (string file in Directory.EnumerateFiles(coreSourceDirectory))
             {
                 string fileName = Path.GetFileName(file);
-                string sourceFilePath = Path.Combine(coreSourceDirectory, fileName);
-                Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
+                // string sourceFilePath = Path.Combine(coreSourceDirectory, fileName);
+                // Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
                 string fileData = File.ReadAllText(file);
 
-                fileData = RemovePattern(fileData, fileName, Constants.SkillPattern);
-                fileData = RemovePattern(fileData, fileName, Constants.SkillBookPattern);
-                fileData = RemovePattern(fileData, fileName, Constants.SkillScrollPattern);
+                fileData = TextProcessing.ExtractThenReplace(
+                    fileData,
+                    fileName,
+                    TierPattern,
+                    RequiresSkillLevelPattern,
+                    RequiresSkillLevelReplacement
+                );
+
+                fileData = TextProcessing.RemovePattern(
+                    fileData,
+                    fileName,
+                    TextProcessing.SkillPattern
+                );
+                fileData = TextProcessing.RemovePattern(
+                    fileData,
+                    fileName,
+                    TextProcessing.SkillBookPattern
+                );
+                fileData = TextProcessing.RemovePattern(
+                    fileData,
+                    fileName,
+                    TextProcessing.SkillScrollPattern
+                );
+
+                (fileData, bool found) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    LaborPattern,
+                    LaborReplacement
+                );
+                if (!found)
+                {
+                    // If the pattern is not found, we likely aren't in a recipe file
+                    // so we skip the file.
+                    // Console.WriteLine("[BunWulfEducational]\tskipping write for " + fileName);
+                    continue;
+                }
+
+                fileData = Regex.Replace(fileData, RecipePattern, RecipeReplacement);
+                fileData = Regex.Replace(fileData, DescriptionPattern, DescriptionReplacement);
 
                 string targetFilePath = Path.Combine(targetDirectory, fileName);
                 Console.WriteLine("[BunWulfEducational] writing " + targetFilePath);
                 File.WriteAllText(targetFilePath, fileData);
             }
+        }
+    }
+
+    public class TextProcessing
+    {
+        public static readonly string ItemPattern = @".*(class \w+Item) .*";
+        public static readonly string BlockPattern = @".*(class \w+Block) .*";
+        public static readonly string SkillPattern = @".*(class \w+Skill) .*";
+        public static readonly string SkillBookPattern = @".*(class \w+SkillBook) .*";
+        public static readonly string SkillScrollPattern = @".*(class \w+SkillScroll) .*";
+
+        public static (string, bool) StaticReplacePattern(
+            string recipeData,
+            string file,
+            string pattern,
+            string replacement
+        )
+        {
+            Match match = Regex.Match(recipeData, pattern);
+            if (match.Success)
+            {
+                // Console.WriteLine(
+                //     $"[BunWulfEducational]\tReplacing {match.Value} with {replacement}"
+                // );
+                recipeData = recipeData.Replace(match.Value, replacement);
+            }
+            else
+            {
+                // Console.WriteLine(
+                //     $"[BunWulfEducational]\tCouldn't find pattern {pattern} in {file}"
+                // );
+            }
+            return (recipeData, match.Success);
+        }
+
+        public static string ExtractThenReplace(
+            string recipeData,
+            string file,
+            string extractor,
+            string pattern,
+            string replacement
+        )
+        {
+            Match extractorMatch = Regex.Match(recipeData, extractor);
+            string extractedValue;
+
+            if (extractorMatch.Success)
+            {
+                extractedValue = extractorMatch.Groups[1].Value;
+            }
+            else
+            {
+                // Console.WriteLine(
+                //     $"[BunWulfEducational]\tCouldn't find extractor {extractor} in {file}"
+                // );
+                return recipeData;
+            }
+
+            // Inside of recipeData, replace pattern with replacement, using
+            // extractedValue as the input value into the replacement.
+
+            recipeData = Regex.Replace(
+                recipeData,
+                pattern,
+                replacement.Replace("$1", extractedValue)
+            );
+
+            return recipeData;
         }
 
         public static string RemovePattern(string recipeData, string file, string pattern)
@@ -139,7 +251,7 @@ namespace BunWulfMods
         {
             List<string> recipeLines =
                 new(recipeData.Split(new[] { '\n' }, StringSplitOptions.None));
-            Console.WriteLine($"[BunWulfEducational]\tRemoving \"{className}\" from recipe");
+            // Console.WriteLine($"[BunWulfEducational]\tRemoving \"{className}\" from recipe");
 
             // Step 1: Identify the line where the class starts.
             int classStartLine = -1;
@@ -153,13 +265,13 @@ namespace BunWulfMods
             }
             if (classStartLine == -1)
             {
-                throw new Exception(
-                    $"[BunWulfEducational]\t\tCouldn't find {className} in {file}:{key}"
-                );
+                // Console.WriteLine(
+                //     $"[BunWulfEducational]\t\tCouldn't find {className} in {file}:{key}"
+                // );
             }
-            Console.WriteLine(
-                $"[BunWulfEducational]\t\tFound \"{className}\" at line {classStartLine}"
-            );
+            // Console.WriteLine(
+            //     $"[BunWulfEducational]\t\tFound \"{className}\" at line {classStartLine}"
+            // );
 
             // Step 2: Move class start line upwards if the class has any annotations.
             for (int index = classStartLine; index >= 0; index--)
@@ -178,9 +290,9 @@ namespace BunWulfMods
                     break;
                 }
             }
-            Console.WriteLine(
-                $"[BunWulfEducational]\t\tMoved class start line to {classStartLine} due to annotations"
-            );
+            // Console.WriteLine(
+            //     $"[BunWulfEducational]\t\tMoved class start line to {classStartLine} due to annotations"
+            // );
 
             // Step 3: Count brackets to find the end of the class.
             int bracketCount = 0;
@@ -207,19 +319,19 @@ namespace BunWulfMods
             }
             if (bracketCount != 0 || classEndIndex == 0)
             {
-                throw new Exception(
-                    $"[BunWulfEducational]\t\tCouldn't find end of class in {file}:{key}"
-                );
+                // Console.WriteLine(
+                //     $"[BunWulfEducational]\t\tCouldn't find end of class in {file}:{key}"
+                // );
             }
             int classEndLine = recipeData[..classEndIndex].Split('\n').Length;
-            Console.WriteLine(
-                $"[BunWulfEducational]\t\tClass end bracket found at line {classEndLine}"
-            );
+            // Console.WriteLine(
+            //     $"[BunWulfEducational]\t\tClass end bracket found at line {classEndLine}"
+            // );
 
             // Step 4: Remove the lines from the start to the end of the class.
-            Console.WriteLine(
-                $"[BunWulfEducational]\t\tRemoving lines {classStartLine} to {classEndLine}"
-            );
+            // Console.WriteLine(
+            //     $"[BunWulfEducational]\t\tRemoving lines {classStartLine} to {classEndLine}"
+            // );
             recipeLines.RemoveRange(classStartLine, classEndLine - classStartLine);
 
             // Step -1: Join the lines back together to get a single string.
