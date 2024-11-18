@@ -104,8 +104,10 @@ def bunwulf_agricultural(_: invoke.Context):
 
 @invoke.task
 def bunwulf_educational(ctx: invoke.Context):
-    # tiny redirection layer for when I forget that I rewrote this script in c#
+    # tiny layer for when I forget that I rewrote this script in c#
     ctx.run("dotnet run -- BunWulfEducational", echo=True)
+    # run a build to ensure that the previous run didn't generate broken files
+    ctx.run("dotnet build eco-mods.csproj", echo=True)
 
 
 @invoke.task

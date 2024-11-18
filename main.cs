@@ -71,11 +71,14 @@ namespace BunWulfMods
             @"RequiresSkill(typeof(LibrarianSkill), $1";
 
         // Recipe Replacement
-        private static readonly string RecipePattern = @"(\w+SkillBookRecipe)";
+        private static readonly string SkillBookRecipePattern = @"(\w+SkillBookRecipe)";
+        private static readonly string ResearchPaperRecipePattern = @"(\w+Research\w+Recipe)";
         private static readonly string RecipeReplacement = "Librarian$1";
 
         // Description Replacement
-        public static readonly string DescriptionPattern = @"([\w\s]+? Skill Book)";
+        public static readonly string ResearchPaperDescriptionPattern =
+            @"([\w\s]+? Research Paper \w+?)";
+        public static readonly string SkillBookDescriptionPattern = @"([\w\s]+? Skill Book)";
         private static readonly string DescriptionReplacement = "Librarian $1";
 
         // Labor Replacement
@@ -85,14 +88,24 @@ namespace BunWulfMods
         public static void Initialize(string? sourcebaseDirectory = null)
         {
             sourcebaseDirectory ??= Directory.GetCurrentDirectory();
-            string coreSourceDirectory = Path.Combine(
+            Console.WriteLine(
+                "[BunWulfEducational] Initializing with base directory: " + sourcebaseDirectory
+            );
+            WriteTechDirectory(sourcebaseDirectory);
+            WriteItemDirectory(sourcebaseDirectory);
+            WriteRecipeDirectory(sourcebaseDirectory);
+        }
+
+        private static void WriteTechDirectory(string sourcebaseDirectory)
+        {
+            string coreTechDirectory = Path.Combine(
                 sourcebaseDirectory,
                 "Mods",
                 "__core__",
                 "AutoGen",
                 "Tech"
             );
-            string targetDirectory = Path.Combine(
+            string targetTechDirectory = Path.Combine(
                 Directory.GetCurrentDirectory(),
                 "Mods",
                 "UserCode",
@@ -101,15 +114,13 @@ namespace BunWulfMods
                 "Tech"
             );
 
-            Console.WriteLine("[BunWulfEducational] Initializing...");
-            Console.WriteLine("[BunWulfEducational] core source directory: " + coreSourceDirectory);
-            Console.WriteLine("[BunWulfEducational] target directory:      " + targetDirectory);
+            Console.WriteLine("[BunWulfEducational] core tech directory: " + coreTechDirectory);
+            Console.WriteLine("[BunWulfEducational] target tech directory: " + targetTechDirectory);
 
-            // Iterate the core source directory to find the files we want to copy
-            foreach (string file in Directory.EnumerateFiles(coreSourceDirectory))
+            foreach (string file in Directory.EnumerateFiles(coreTechDirectory))
             {
                 string fileName = Path.GetFileName(file);
-                // string sourceFilePath = Path.Combine(coreSourceDirectory, fileName);
+                // string sourceFilePath = Path.Combine(coreTechDirectory, fileName);
                 // Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
                 string fileData = File.ReadAllText(file);
 
@@ -151,8 +162,113 @@ namespace BunWulfMods
                     continue;
                 }
 
-                fileData = Regex.Replace(fileData, RecipePattern, RecipeReplacement);
-                fileData = Regex.Replace(fileData, DescriptionPattern, DescriptionReplacement);
+                fileData = Regex.Replace(fileData, SkillBookRecipePattern, RecipeReplacement);
+                fileData = Regex.Replace(
+                    fileData,
+                    SkillBookDescriptionPattern,
+                    DescriptionReplacement
+                );
+
+                string targetFilePath = Path.Combine(targetTechDirectory, fileName);
+                Console.WriteLine("[BunWulfEducational] writing " + targetFilePath);
+                File.WriteAllText(targetFilePath, fileData);
+            }
+        }
+
+        private static void WriteItemDirectory(string sourcebaseDirectory)
+        {
+            string coreItemDirectory = Path.Combine(
+                sourcebaseDirectory,
+                "Mods",
+                "__core__",
+                "AutoGen",
+                "Item"
+            );
+            string targetItemDirectory = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "Mods",
+                "UserCode",
+                "BunWulfEducational",
+                "Recipes",
+                "Item"
+            );
+            WriteResearchPapers(coreItemDirectory, targetItemDirectory);
+        }
+
+        private static void WriteRecipeDirectory(string sourcebaseDirectory)
+        {
+            string coreRecipeDirectory = Path.Combine(
+                sourcebaseDirectory,
+                "Mods",
+                "__core__",
+                "AutoGen",
+                "Recipe"
+            );
+            string targetRecipeDirectory = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "Mods",
+                "UserCode",
+                "BunWulfEducational",
+                "Recipes",
+                "Recipe"
+            );
+            WriteResearchPapers(coreRecipeDirectory, targetRecipeDirectory);
+        }
+
+        private static void WriteResearchPapers(string coreDirectory, string targetDirectory)
+        {
+            Console.WriteLine("[BunWulfEducational] core item directory: " + coreDirectory);
+            Console.WriteLine("[BunWulfEducational] target item directory: " + targetDirectory);
+
+            foreach (string file in Directory.EnumerateFiles(coreDirectory))
+            {
+                if (!file.Contains("ResearchPaper"))
+                {
+                    continue;
+                }
+
+                string fileName = Path.GetFileName(file);
+                string sourceFilePath = Path.Combine(coreDirectory, fileName);
+                Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
+
+                int techLevel = 0;
+                if (file.Contains("Basic"))
+                {
+                    techLevel = 0;
+                }
+                else if (file.Contains("Advanced"))
+                {
+                    techLevel = 1;
+                }
+                else if (file.Contains("Modern"))
+                {
+                    techLevel = 2;
+                }
+
+                string fileData = File.ReadAllText(file);
+
+                fileData = TextProcessing.RemovePattern(
+                    fileData,
+                    fileName,
+                    TextProcessing.ItemPattern
+                );
+                fileData = Regex.Replace(
+                    fileData,
+                    RequiresSkillLevelPattern,
+                    RequiresSkillLevelReplacement.Replace("$1", techLevel.ToString())
+                );
+                fileData = Regex.Replace(fileData, ResearchPaperRecipePattern, RecipeReplacement);
+                fileData = Regex.Replace(
+                    fileData,
+                    ResearchPaperDescriptionPattern,
+                    DescriptionReplacement
+                );
+                (fileData, _) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    LaborPattern,
+                    LaborReplacement
+                );
 
                 string targetFilePath = Path.Combine(targetDirectory, fileName);
                 Console.WriteLine("[BunWulfEducational] writing " + targetFilePath);
