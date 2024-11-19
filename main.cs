@@ -99,7 +99,8 @@ namespace BunWulfMods
         private static readonly string LaborReplacement = "typeof(LibrarianSkill)";
 
         // Experience Replacement
-        private static readonly string ExperiencePattern = @"this.ExperienceOnCraft = \d+(\.\d+f)?";
+        private static readonly string ExperiencePattern =
+            @"this.ExperienceOnCraft = \d+(\.\d+f?|f)?";
         private static readonly string ExperienceReplacement = "this.ExperienceOnCraft = $1";
 
         public static void Initialize(string? sourcebaseDirectory = null)
