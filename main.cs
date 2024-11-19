@@ -146,7 +146,7 @@ namespace BunWulfMods
                 if (tierMatch.Success)
                 {
                     string tier = tierMatch.Groups[1].Value;
-                    int experience = 100 * int.Parse(tier);
+                    int experience = 50 * int.Parse(tier);
                     fileData = fileData.Replace(
                         "this.LaborInCalories",
                         "this.ExperienceOnCraft = "
