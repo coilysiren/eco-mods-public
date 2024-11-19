@@ -38,9 +38,9 @@ namespace Eco.Mods.TechTree
     /// </remarks>
     [RequiresSkill(typeof(LibrarianSkill), 3)]
     [Ecopedia("Items", "Products", subPageName: "Paper Item")]
-    public partial class PaperRecipe : RecipeFamily
+    public partial class LibraryPaperRecipe : RecipeFamily
     {
-        public PaperRecipe()
+        public LibraryPaperRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
@@ -68,11 +68,11 @@ namespace Eco.Mods.TechTree
             this.LaborInCalories = CreateLaborInCaloriesValue(20, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(PaperRecipe), start: 0.1f, skillType: typeof(LibrarianSkill));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(LibraryPaperRecipe), start: 0.1f, skillType: typeof(LibrarianSkill));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Paper"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Library Paper"), recipeType: typeof(PaperRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Library Paper"), recipeType: typeof(LibraryPaperRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.

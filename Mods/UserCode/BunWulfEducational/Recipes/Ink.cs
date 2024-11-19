@@ -38,9 +38,9 @@ namespace Eco.Mods.TechTree
     /// </remarks>
     [RequiresSkill(typeof(LibrarianSkill), 3)]
     [Ecopedia("Items", "Products", subPageName: "Ink Item")]
-    public partial class InkRecipe : RecipeFamily
+    public partial class LibraryInkRecipe : RecipeFamily
     {
-        public InkRecipe()
+        public LibraryInkRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
@@ -70,11 +70,11 @@ namespace Eco.Mods.TechTree
             this.LaborInCalories = CreateLaborInCaloriesValue(180, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(InkRecipe), start: 1, skillType: typeof(LibrarianSkill));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(LibraryInkRecipe), start: 1, skillType: typeof(LibrarianSkill));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Ink"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Library Ink"), recipeType: typeof(InkRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Library Ink"), recipeType: typeof(LibraryInkRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
