@@ -265,15 +265,15 @@ namespace BunWulfMods
                 int experience = 0;
                 if (file.Contains("Basic"))
                 {
-                    experience = 4;
+                    experience = 2;
                 }
                 else if (file.Contains("Advanced"))
                 {
-                    experience = 20;
+                    experience = 10;
                 }
                 else if (file.Contains("Modern"))
                 {
-                    experience = 100;
+                    experience = 50;
                 }
 
                 string fileData = File.ReadAllText(file);
