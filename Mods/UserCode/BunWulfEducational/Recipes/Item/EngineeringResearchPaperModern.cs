@@ -66,7 +66,7 @@ namespace Eco.Mods.TechTree
                     new CraftingElement<EngineeringResearchPaperModernItem>()
                 });
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 50; // Defines how much experience is gained when crafted.
+            this.ExperienceOnCraft = 75; // Defines how much experience is gained when crafted.
             
             // Defines the amount of labor required and the required skill to add labor
             this.LaborInCalories = CreateLaborInCaloriesValue(600, typeof(LibrarianSkill));
