@@ -20,8 +20,8 @@ namespace Eco.Mods.TechTree
     [Serialized]
     [LocDisplayName("Librarian")]
     [LocDescription("TODO")]
-    [Ecopedia("Professions", "Survivalist", createAsSubPage: true)]
-    [RequiresSkill(typeof(SurvivalistSkill), 0), Tag("Survivalist Specialty"), Tier(3)]
+    [Ecopedia("Professions", "Scientist", createAsSubPage: true)]
+    [RequiresSkill(typeof(ScientistSkill), 0), Tag("Scientist Specialty"), Tier(1)]
     [Tag("Specialty")]
     [Tag("Teachable")]
     public partial class LibrarianSkill : Skill
@@ -72,7 +72,7 @@ namespace Eco.Mods.TechTree
     public partial class LibrarianSkillScroll : SkillScroll<LibrarianSkill, LibrarianSkillBook> { }
 
     [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    [Ecopedia("Professions", "Survivalist", subPageName: "Librarian Skill Book Item")]
+    [Ecopedia("Professions", "Scientist", subPageName: "Librarian Skill Book Item")]
     public partial class LibrarianSkillBookRecipe : RecipeFamily
     {
         public LibrarianSkillBookRecipe()
