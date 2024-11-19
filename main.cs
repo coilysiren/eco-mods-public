@@ -142,6 +142,19 @@ namespace BunWulfMods
                 // Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
                 string fileData = File.ReadAllText(file);
 
+                Match tierMatch = Regex.Match(fileData, TierPattern);
+                if (tierMatch.Success)
+                {
+                    string tier = tierMatch.Groups[1].Value;
+                    int experience = 4000 * int.Parse(tier);
+                    fileData = fileData.Replace(
+                        "this.LaborInCalories",
+                        "this.ExperienceOnCraft = "
+                            + experience
+                            + ";\n            this.LaborInCalories"
+                    );
+                }
+
                 fileData = TextProcessing.ExtractThenReplace(
                     fileData,
                     fileName,

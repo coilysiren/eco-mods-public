@@ -71,6 +71,7 @@ namespace Eco.Mods.TechTree
             this.Recipes = new List<Recipe> { recipe };
             
             // Defines the amount of labor required and the required skill to add labor
+            this.ExperienceOnCraft = 4000;
             this.LaborInCalories = CreateLaborInCaloriesValue(2400,typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
