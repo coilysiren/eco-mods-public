@@ -98,6 +98,10 @@ namespace BunWulfMods
         private static readonly string LaborPattern = @"typeof\((?!LibrarianSkill)\w+Skill\)";
         private static readonly string LaborReplacement = "typeof(LibrarianSkill)";
 
+        // Experience Replacement
+        private static readonly string ExperiencePattern = @"this.ExperienceOnCraft = \d+(\.\d+f)?";
+        private static readonly string ExperienceReplacement = "this.ExperienceOnCraft = $1";
+
         public static void Initialize(string? sourcebaseDirectory = null)
         {
             sourcebaseDirectory ??= Directory.GetCurrentDirectory();
@@ -258,6 +262,20 @@ namespace BunWulfMods
                     techLevel = 4;
                 }
 
+                int experience = 0;
+                if (file.Contains("Basic"))
+                {
+                    experience = 4;
+                }
+                else if (file.Contains("Advanced"))
+                {
+                    experience = 20;
+                }
+                else if (file.Contains("Modern"))
+                {
+                    experience = 100;
+                }
+
                 string fileData = File.ReadAllText(file);
 
                 fileData = TextProcessing.RemovePattern(
@@ -269,6 +287,11 @@ namespace BunWulfMods
                     fileData,
                     RequiresSkillLevelPattern,
                     RequiresSkillLevelReplacement.Replace("$1", techLevel.ToString())
+                );
+                fileData = Regex.Replace(
+                    fileData,
+                    ExperiencePattern,
+                    ExperienceReplacement.Replace("$1", experience.ToString())
                 );
                 fileData = Regex.Replace(fileData, ResearchPaperRecipePattern, RecipeReplacement);
                 fileData = Regex.Replace(
