@@ -1,23 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-using Eco.Core.Plugins.Interfaces;
-using Eco.Core.Utils;
-using Eco.Gameplay.Players;
-using Eco.Gameplay.Systems.Messaging.Chat.Commands;
-using Eco.Shared.Localization;
-using Eco.World;
-
 namespace WorldCounter
 {
+    using System;
+    using System.Collections.Generic;
+    using Eco.Core.Plugins.Interfaces;
+    using Eco.Core.Utils;
+    using Eco.World;
+
     public class BunWulfEducationalPluginEntrypoint
         : IModKitPlugin,
             IServerPlugin,
             IInitializablePlugin,
             IModInit
     {
-        public void Main() { }
+        public static void Main() { }
 
         public void Initialize(TimedTask timer)
         {
