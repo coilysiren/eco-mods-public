@@ -65,6 +65,14 @@ namespace WorldCounter
                 Dictionary<Type, int> blockCount = new();
                 foreach (PersistentChunk chunk in Chunks)
                 {
+                    if (chunk is null)
+                    {
+                        continue;
+                    }
+                    if (chunk.Blocks is null)
+                    {
+                        continue;
+                    }
                     foreach (Block? block in chunk.Blocks)
                     {
                         if (block is null)
