@@ -1,20 +1,18 @@
 namespace WorldCounter
 {
+    using System;
     using Eco.Core.Plugins.Interfaces;
-    using Eco.Core.Utils;
     using Eco.Shared.Localization;
     using Eco.Shared.Logging;
     using Eco.World;
+    using Eco.WorldGenerator;
+    using Vector3 = System.Numerics.Vector3;
 
-    public class BunWulfEducationalPluginEntrypoint
-        : IModKitPlugin,
-            IServerPlugin,
-            IInitializablePlugin,
-            IModInit
+    public class BunWulfEducationalPluginEntrypoint : IWorldGenFeature, IModKitPlugin
     {
         public static void Main() { }
 
-        public void Initialize(TimedTask timer)
+        public void Generate(Random seed, Vector3 voxelSize, WorldSettings settings)
         {
             Log.WriteLine(Localizer.DoStr("WorldCounter initializing"));
 
@@ -25,8 +23,6 @@ namespace WorldCounter
                 Log.WriteLine(Localizer.DoStr($"Chunk Type: {chunk.GetType().Name}"));
             }
         }
-
-        public override string ToString() => "WorldCounter";
 
         public string GetStatus() => "Loaded WorldCounter";
 
