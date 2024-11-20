@@ -16,13 +16,13 @@ namespace WorldCounter
 
         public void Initialize(TimedTask timer)
         {
-            Console.WriteLine("WorldCounter initializing");
+            System.Console.WriteLine("WorldCounter initializing");
 
             IEnumerable<PersistentChunk> Chunks = World.Chunks;
 
             foreach (PersistentChunk chunk in Chunks)
             {
-                Console.WriteLine($"Chunk Type: {chunk.GetType().Name}");
+                System.Console.WriteLine($"Chunk Type: {chunk.GetType().Name}");
             }
         }
 
