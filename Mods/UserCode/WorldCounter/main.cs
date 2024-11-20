@@ -1,9 +1,9 @@
 namespace WorldCounter
 {
-    using System;
-    using System.Collections.Generic;
     using Eco.Core.Plugins.Interfaces;
     using Eco.Core.Utils;
+    using Eco.Shared.Localization;
+    using Eco.Shared.Logging;
     using Eco.World;
 
     public class BunWulfEducationalPluginEntrypoint
@@ -16,13 +16,13 @@ namespace WorldCounter
 
         public void Initialize(TimedTask timer)
         {
-            System.Console.WriteLine("WorldCounter initializing");
+            Log.WriteLine(Localizer.DoStr("WorldCounter initializing"));
 
             IEnumerable<PersistentChunk> Chunks = World.Chunks;
 
             foreach (PersistentChunk chunk in Chunks)
             {
-                System.Console.WriteLine($"Chunk Type: {chunk.GetType().Name}");
+                Log.WriteLine(Localizer.DoStr($"Chunk Type: {chunk.GetType().Name}"));
             }
         }
 
