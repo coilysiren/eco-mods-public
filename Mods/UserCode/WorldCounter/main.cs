@@ -14,16 +14,19 @@ namespace WorldCounter
     using Eco.WorldGenerator;
     using Vector3 = System.Numerics.Vector3;
 
-    public class WorldCounterWorldGen : IWorldGenFeature, IModKitPlugin
+    public class Build
     {
         public static void Main() { }
+    }
 
+    public class WorldCounterWorldGen : IWorldGenFeature, IModKitPlugin
+    {
         public void Generate(Random seed, Vector3 voxelSize, WorldSettings settings)
         {
             Dictionary<Type, int> counts = CountWorld.GetCounts();
             foreach (KeyValuePair<Type, int> kvp in counts)
             {
-                Log.WriteLine(Localizer.DoStr($"{kvp.Key}: {kvp.Value}"));
+                Log.WriteLine(Localizer.DoStr($"[WorldCounter]: {kvp.Key}: {kvp.Value}"));
             }
         }
 
@@ -48,7 +51,7 @@ namespace WorldCounter
             Dictionary<Type, int> counts = CountWorld.GetCounts();
             foreach (KeyValuePair<Type, int> kvp in counts)
             {
-                chatClient.MsgLoc($"{kvp.Key}: {kvp.Value}");
+                chatClient.MsgLoc($"[WorldCounter]: {kvp.Key}: {kvp.Value}");
             }
         }
     }
@@ -58,26 +61,27 @@ namespace WorldCounter
         public static Dictionary<Type, int> GetCounts()
         {
             {
-                Log.WriteLine(Localizer.DoStr("WorldCounter starting"));
-
                 IEnumerable<PersistentChunk> Chunks = World.Chunks;
                 Dictionary<Type, int> blockCount = new();
-
                 foreach (PersistentChunk chunk in Chunks)
                 {
-                    Vector3i chunkPosition = chunk.Position;
-                    Block block = World.GetBlock(chunkPosition);
-                    Type type = block.GetType();
-                    if (blockCount.ContainsKey(type))
+                    foreach (Block? block in chunk.Blocks)
                     {
-                        blockCount[type] += 1;
-                    }
-                    else
-                    {
-                        blockCount[type] = 1;
+                        if (block is null)
+                        {
+                            continue;
+                        }
+                        Type type = block.GetType();
+                        if (blockCount.ContainsKey(type))
+                        {
+                            blockCount[type] += 1;
+                        }
+                        else
+                        {
+                            blockCount[type] = 1;
+                        }
                     }
                 }
-
                 return blockCount;
             }
         }
