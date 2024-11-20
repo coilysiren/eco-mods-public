@@ -1,6 +1,7 @@
 namespace WorldCounter
 {
     using System;
+    using System.Collections.Generic;
     using Eco.Core.Plugins.Interfaces;
     using Eco.Shared.Localization;
     using Eco.Shared.Logging;
