@@ -23,7 +23,7 @@ namespace WorldCounter
     {
         public void Generate(Random seed, Vector3 voxelSize, WorldSettings settings)
         {
-            Dictionary<Type, int> counts = CountWorld.GetCounts();
+            SortedDictionary<Type, int> counts = CountWorld.GetCounts();
             foreach (KeyValuePair<Type, int> kvp in counts)
             {
                 Log.WriteLine(Localizer.DoStr($"[WorldCounter]: {kvp.Key}: {kvp.Value}"));
@@ -48,7 +48,7 @@ namespace WorldCounter
         )]
         public static void Count(IChatClient chatClient)
         {
-            Dictionary<Type, int> counts = CountWorld.GetCounts();
+            SortedDictionary<Type, int> counts = CountWorld.GetCounts();
             foreach (KeyValuePair<Type, int> kvp in counts)
             {
                 chatClient.MsgLoc($"[WorldCounter]: {kvp.Key}: {kvp.Value}");
@@ -58,11 +58,11 @@ namespace WorldCounter
 
     public class CountWorld
     {
-        public static Dictionary<Type, int> GetCounts()
+        public static SortedDictionary<Type, int> GetCounts()
         {
             {
                 IEnumerable<PersistentChunk> Chunks = World.Chunks;
-                Dictionary<Type, int> blockCount = new();
+                SortedDictionary<Type, int> blockCount = new();
                 foreach (PersistentChunk chunk in Chunks)
                 {
                     if (chunk is null)
