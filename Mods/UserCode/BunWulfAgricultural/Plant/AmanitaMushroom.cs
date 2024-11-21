@@ -3,6 +3,7 @@ namespace Eco.Mods.Organisms
 {
     using System.Collections.Generic;
     using Eco.Mods.Organisms;
+    using Eco.Shared.Math;
 
     public partial class AmanitaMushroom
     {
