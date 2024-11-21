@@ -144,8 +144,6 @@ def bunwulf_agricultural(ctx: invoke.Context):
         with open(os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Plant", p), "w", encoding="utf-8") as f:
             f.write(content)
 
-    ctx.run("dotnet build bunwulf-educational.csproj", echo=True)
-
 
 @invoke.task
 def bunwulf_educational(ctx: invoke.Context):
