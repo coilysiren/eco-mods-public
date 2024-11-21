@@ -137,6 +137,10 @@ def bunwulf_agricultural(_: invoke.Context):
         if regex.match(tree_species_pattern, data, regex.DOTALL):
             continue
 
+        # Skip grass
+        if "CommonGrass" in p:
+            continue
+
         # Pull out all the data we need
         entity = regex.search(plant_entity_pattern, data, regex.DOTALL).group(1)
         species = regex.search(plant_species_pattern, data, regex.DOTALL).group(1)
