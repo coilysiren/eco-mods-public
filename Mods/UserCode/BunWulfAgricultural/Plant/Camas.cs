@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Camas : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Camas
     {
-        public partial class CamasSpecies : PlantSpecies
+        public partial class CamasSpecies
         {
             partial void ModsPostInitialize()
             {

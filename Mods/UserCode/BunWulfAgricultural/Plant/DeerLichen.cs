@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class DeerLichen : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class DeerLichen
     {
-        public partial class DeerLichenSpecies : PlantSpecies
+        public partial class DeerLichenSpecies
         {
             partial void ModsPostInitialize()
             {

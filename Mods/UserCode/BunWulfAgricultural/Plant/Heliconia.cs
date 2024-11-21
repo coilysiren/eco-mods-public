@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Heliconia : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Heliconia
     {
-        public partial class HeliconiaSpecies : PlantSpecies
+        public partial class HeliconiaSpecies
         {
             partial void ModsPostInitialize()
             {

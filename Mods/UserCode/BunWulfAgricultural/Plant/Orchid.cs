@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Orchid : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Orchid
     {
-        public partial class OrchidSpecies : PlantSpecies
+        public partial class OrchidSpecies
         {
             partial void ModsPostInitialize()
             {

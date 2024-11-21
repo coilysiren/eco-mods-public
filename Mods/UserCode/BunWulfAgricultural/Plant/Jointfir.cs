@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Jointfir : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Jointfir
     {
-        public partial class JointfirSpecies : PlantSpecies
+        public partial class JointfirSpecies
         {
             partial void ModsPostInitialize()
             {

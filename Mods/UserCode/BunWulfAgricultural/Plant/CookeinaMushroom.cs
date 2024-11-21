@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class CookeinaMushroom : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class CookeinaMushroom
     {
-        public partial class CookeinaMushroomSpecies : PlantSpecies
+        public partial class CookeinaMushroomSpecies
         {
             partial void ModsPostInitialize()
             {

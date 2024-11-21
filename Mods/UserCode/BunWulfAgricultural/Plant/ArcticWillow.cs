@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class ArcticWillow : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class ArcticWillow
     {
-        public partial class ArcticWillowSpecies : PlantSpecies
+        public partial class ArcticWillowSpecies
         {
             partial void ModsPostInitialize()
             {

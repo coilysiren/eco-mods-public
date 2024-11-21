@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class AmanitaMushroom : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class AmanitaMushroom
     {
-        public partial class AmanitaMushroomSpecies : PlantSpecies
+        public partial class AmanitaMushroomSpecies
         {
             partial void ModsPostInitialize()
             {

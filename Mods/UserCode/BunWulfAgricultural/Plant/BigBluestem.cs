@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class BigBluestem : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class BigBluestem
     {
-        public partial class BigBluestemSpecies : PlantSpecies
+        public partial class BigBluestemSpecies
         {
             partial void ModsPostInitialize()
             {

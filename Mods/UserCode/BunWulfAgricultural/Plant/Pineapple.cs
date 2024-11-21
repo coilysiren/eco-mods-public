@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Pineapple : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Pineapple
     {
-        public partial class PineappleSpecies : PlantSpecies
+        public partial class PineappleSpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Urchin : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Urchin
     {
-        public partial class UrchinSpecies : PlantSpecies
+        public partial class UrchinSpecies
         {
             partial void ModsPostInitialize()
             {

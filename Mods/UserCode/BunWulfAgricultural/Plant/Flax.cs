@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Flax : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Flax
     {
-        public partial class FlaxSpecies : PlantSpecies
+        public partial class FlaxSpecies
         {
             partial void ModsPostInitialize()
             {

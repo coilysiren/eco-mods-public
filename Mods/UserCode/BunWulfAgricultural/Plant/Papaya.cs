@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Papaya : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Papaya
     {
-        public partial class PapayaSpecies : PlantSpecies
+        public partial class PapayaSpecies
         {
             partial void ModsPostInitialize()
             {

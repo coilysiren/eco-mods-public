@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Huckleberry : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Huckleberry
     {
-        public partial class HuckleberrySpecies : PlantSpecies
+        public partial class HuckleberrySpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class WhiteBursage : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class WhiteBursage
     {
-        public partial class WhiteBursageSpecies : PlantSpecies
+        public partial class WhiteBursageSpecies
         {
             partial void ModsPostInitialize()
             {

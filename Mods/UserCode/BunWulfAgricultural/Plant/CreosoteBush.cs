@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class CreosoteBush : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class CreosoteBush
     {
-        public partial class CreosoteBushSpecies : PlantSpecies
+        public partial class CreosoteBushSpecies
         {
             partial void ModsPostInitialize()
             {

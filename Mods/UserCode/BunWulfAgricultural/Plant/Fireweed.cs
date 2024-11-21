@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Fireweed : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Fireweed
     {
-        public partial class FireweedSpecies : PlantSpecies
+        public partial class FireweedSpecies
         {
             partial void ModsPostInitialize()
             {

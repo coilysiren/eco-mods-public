@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class DwarfWillow : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class DwarfWillow
     {
-        public partial class DwarfWillowSpecies : PlantSpecies
+        public partial class DwarfWillowSpecies
         {
             partial void ModsPostInitialize()
             {

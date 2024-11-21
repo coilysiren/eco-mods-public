@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class CommonGrass : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class CommonGrass
     {
-        public partial class CommonGrassSpecies : PlantSpecies
+        public partial class CommonGrassSpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class {{ entity }} : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class {{ entity }}
     {
-        public partial class {{ species }} : PlantSpecies
+        public partial class {{ species }}
         {
             partial void ModsPostInitialize()
             {

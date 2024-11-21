@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class PricklyPear : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class PricklyPear
     {
-        public partial class PricklyPearSpecies : PlantSpecies
+        public partial class PricklyPearSpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class FilmyFern : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class FilmyFern
     {
-        public partial class FilmyFernSpecies : PlantSpecies
+        public partial class FilmyFernSpecies
         {
             partial void ModsPostInitialize()
             {

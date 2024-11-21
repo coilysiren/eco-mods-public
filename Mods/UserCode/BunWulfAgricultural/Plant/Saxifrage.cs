@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Saxifrage : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Saxifrage
     {
-        public partial class SaxifrageSpecies : PlantSpecies
+        public partial class SaxifrageSpecies
         {
             partial void ModsPostInitialize()
             {

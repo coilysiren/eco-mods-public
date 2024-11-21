@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class CriminiMushroom : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class CriminiMushroom
     {
-        public partial class CriminiMushroomSpecies : PlantSpecies
+        public partial class CriminiMushroomSpecies
         {
             partial void ModsPostInitialize()
             {

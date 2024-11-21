@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Beets : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Beets
     {
-        public partial class BeetsSpecies : PlantSpecies
+        public partial class BeetsSpecies
         {
             partial void ModsPostInitialize()
             {

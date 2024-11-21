@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class KingFern : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class KingFern
     {
-        public partial class KingFernSpecies : PlantSpecies
+        public partial class KingFernSpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Switchgrass : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Switchgrass
     {
-        public partial class SwitchgrassSpecies : PlantSpecies
+        public partial class SwitchgrassSpecies
         {
             partial void ModsPostInitialize()
             {

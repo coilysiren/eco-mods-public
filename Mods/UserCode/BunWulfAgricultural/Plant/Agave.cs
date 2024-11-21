@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Agave : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Agave
     {
-        public partial class AgaveSpecies : PlantSpecies
+        public partial class AgaveSpecies
         {
             partial void ModsPostInitialize()
             {

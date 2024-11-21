@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Lupine : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Lupine
     {
-        public partial class LupineSpecies : PlantSpecies
+        public partial class LupineSpecies
         {
             partial void ModsPostInitialize()
             {

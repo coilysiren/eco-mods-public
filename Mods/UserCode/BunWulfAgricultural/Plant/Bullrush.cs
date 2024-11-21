@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Bullrush : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Bullrush
     {
-        public partial class BullrushSpecies : PlantSpecies
+        public partial class BullrushSpecies
         {
             partial void ModsPostInitialize()
             {

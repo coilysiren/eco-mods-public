@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class LatticeMushroom : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class LatticeMushroom
     {
-        public partial class LatticeMushroomSpecies : PlantSpecies
+        public partial class LatticeMushroomSpecies
         {
             partial void ModsPostInitialize()
             {

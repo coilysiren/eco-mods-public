@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Taro : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Taro
     {
-        public partial class TaroSpecies : PlantSpecies
+        public partial class TaroSpecies
         {
             partial void ModsPostInitialize()
             {

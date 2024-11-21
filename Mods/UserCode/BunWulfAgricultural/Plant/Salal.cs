@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Salal : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Salal
     {
-        public partial class SalalSpecies : PlantSpecies
+        public partial class SalalSpecies
         {
             partial void ModsPostInitialize()
             {

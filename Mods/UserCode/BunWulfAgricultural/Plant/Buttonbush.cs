@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Buttonbush : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Buttonbush
     {
-        public partial class ButtonbushSpecies : PlantSpecies
+        public partial class ButtonbushSpecies
         {
             partial void ModsPostInitialize()
             {

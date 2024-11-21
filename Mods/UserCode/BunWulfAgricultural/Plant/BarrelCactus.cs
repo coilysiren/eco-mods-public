@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class BarrelCactus : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class BarrelCactus
     {
-        public partial class BarrelCactusSpecies : PlantSpecies
+        public partial class BarrelCactusSpecies
         {
             partial void ModsPostInitialize()
             {

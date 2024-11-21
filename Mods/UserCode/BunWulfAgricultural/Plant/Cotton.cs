@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Cotton : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Cotton
     {
-        public partial class CottonSpecies : PlantSpecies
+        public partial class CottonSpecies
         {
             partial void ModsPostInitialize()
             {

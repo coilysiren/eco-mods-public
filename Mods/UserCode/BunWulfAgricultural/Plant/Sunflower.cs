@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Sunflower : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Sunflower
     {
-        public partial class SunflowerSpecies : PlantSpecies
+        public partial class SunflowerSpecies
         {
             partial void ModsPostInitialize()
             {

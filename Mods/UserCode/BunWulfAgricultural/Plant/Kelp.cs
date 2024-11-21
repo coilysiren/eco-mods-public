@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Kelp : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Kelp
     {
-        public partial class KelpSpecies : PlantSpecies
+        public partial class KelpSpecies
         {
             partial void ModsPostInitialize()
             {

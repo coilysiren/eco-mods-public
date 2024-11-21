@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class PitcherPlant : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class PitcherPlant
     {
-        public partial class PitcherPlantSpecies : PlantSpecies
+        public partial class PitcherPlantSpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class OceanSpray : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class OceanSpray
     {
-        public partial class OceanSpraySpecies : PlantSpecies
+        public partial class OceanSpraySpecies
         {
             partial void ModsPostInitialize()
             {

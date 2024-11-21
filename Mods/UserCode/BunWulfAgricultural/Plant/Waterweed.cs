@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Waterweed : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Waterweed
     {
-        public partial class WaterweedSpecies : PlantSpecies
+        public partial class WaterweedSpecies
         {
             partial void ModsPostInitialize()
             {

@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Rice : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Rice
     {
-        public partial class RiceSpecies : PlantSpecies
+        public partial class RiceSpecies
         {
             partial void ModsPostInitialize()
             {

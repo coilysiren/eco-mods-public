@@ -1,10 +1,11 @@
-using Eco.Mods.Organisms;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class Trillium : PlantEntity
+    using Eco.Mods.Organisms;
+
+    public partial class Trillium
     {
-        public partial class TrilliumSpecies : PlantSpecies
+        public partial class TrilliumSpecies
         {
             partial void ModsPostInitialize()
             {
