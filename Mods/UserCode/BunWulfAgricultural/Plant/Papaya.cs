@@ -15,14 +15,10 @@ namespace Eco.Mods.Organisms
                 this.SeedingArea = this.SeedingArea * 10;
                 this.SeedsCount = this.SeedsCount * 10;
                 this.GenerationDefinitions.StartBiomes = "";
-                this.CapacityConstraints = new List<CapacityConstraint>()
-                {
-                    
-                        new CapacityConstraint() { CapacityLayerName = "FertileGround", ConsumedCapacityPerPop = 0.35f },
-                    
-                        new CapacityConstraint() { CapacityLayerName = "ShrubSpace", ConsumedCapacityPerPop = 0.35f }
-                    
-                };
+                this.GenerationDefinitions.CountOfClusters = new Range(
+                    this.GenerationDefinitions.CountOfClusters.min * 5,
+                    this.GenerationDefinitions.CountOfClusters.max * 5
+                );
             }
         }
     }
