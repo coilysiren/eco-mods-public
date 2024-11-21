@@ -1,8 +1,10 @@
 import os
+import regex
 import shutil
 import stat
 
 import invoke
+import jinja2
 import yaml
 
 import util
@@ -18,6 +20,33 @@ BUNWULF_CONSTRUCTION_PATH = os.path.join(
 BUNWULF_EDUCATIONAL_PATH = os.path.join(
     "C:\\", "Users", USERNAME, "projects", "eco-mods-public", "Mods", "UserCode", "BunWulfEducational", "Recipes"
 )
+
+LINUX_SERVER_PATH = os.path.join(
+    "/home",
+    "kai",
+    "Steam",
+    "steamapps",
+    "common",
+    "EcoServer",
+).replace("\\", "/")
+
+WINDOWS_SERVER_PATH = os.path.join(
+    "C:\\",
+    "Program Files (x86)",
+    "Steam",
+    "steamapps",
+    "common",
+    "Eco",
+    "Eco_Data",
+    "Server",
+)
+
+
+def server_path():
+    if "windows" in os.getenv("OS", "").lower():
+        return WINDOWS_SERVER_PATH
+    else:
+        return LINUX_SERVER_PATH
 
 
 class RemovalException(Exception):
@@ -86,20 +115,45 @@ def push_asset(ctx: invoke.Context, mod):
 
 @invoke.task
 def bunwulf_agricultural(_: invoke.Context):
-    with open("recipes.yml", "r", encoding="utf-8") as recipes:
-        recipe_data = yaml.safe_load(recipes)["BunWulfAgricultural"]
+    plants = os.path.join(server_path(), "Mods", "__core__", "AutoGen", "Plant")
+    plant = os.listdir(plants)
 
-    recipes_templates = {
-        template: {
-            "plant": template.split("\\")[-1].split(".")[0],
-            "species": template.split("\\")[-1].split(".")[0] + "Species",
-        }
-        for template in recipe_data["recipes"]
-    }
-
-    util.template_recipes(
-        recipes_templates, recipe_data["template"], os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Recipes")
+    plant_entity_pattern = r".*public partial class (\w+) : PlantEntity.*"
+    plant_species_pattern = r".*public partial class (\w+) : PlantSpecies.*"
+    tree_species_pattern = r".*public partial class (\w+) : TreeSpecies.*"
+    constraints_pattern = (
+        r"new CapacityConstraint\(\) \{ CapacityLayerName = \"(\w+)\", ConsumedCapacityPerPop = (\d+\.?\d*)f?"
     )
+
+    templates = jinja2.Environment(loader=jinja2.FileSystemLoader("templates/"))
+    template = templates.get_template("plant.template")
+
+    # Read in every plant file
+    for p in plant:
+        with open(os.path.join(plants, p), "r", encoding="utf-8") as f:
+            data = f.read()
+
+        # Skip trees
+        if regex.match(tree_species_pattern, data, regex.DOTALL):
+            continue
+
+        # Skip grass
+        if "CommonGrass" in p:
+            continue
+
+        # Pull out all the data we need
+        entity = regex.search(plant_entity_pattern, data, regex.DOTALL).group(1)
+        species = regex.search(plant_species_pattern, data, regex.DOTALL).group(1)
+        constraints_raw = regex.findall(constraints_pattern, data, regex.DOTALL)
+        constraints_list = [
+            {"CapacityLayerName": c[0], "ConsumedCapacityPerPop": f"{float(c[1]) / 10}f"} for c in constraints_raw
+        ]
+
+        # Render and write the template
+        print(f"Writing {entity} to BunWulfAgricultural")
+        content = template.render(entity=entity, species=species, constraints=constraints_list)
+        with open(os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Plant", p), "w", encoding="utf-8") as f:
+            f.write(content)
 
 
 @invoke.task

@@ -4,9 +4,9 @@ namespace Eco.Mods.Organisms
     using System.Collections.Generic;
     using Eco.Mods.Organisms;
 
-    public partial class {{ entity }}
+    public partial class Seagrass
     {
-        public partial class {{ species }}
+        public partial class SeagrassSpecies
         {
             partial void ModsPostInitialize()
             {
@@ -17,9 +17,9 @@ namespace Eco.Mods.Organisms
                 this.GenerationDefinitions.StartBiomes = "";
                 this.CapacityConstraints = new List<CapacityConstraint>()
                 {
-                    {% for constraint in constraints %}
-                        new CapacityConstraint() { CapacityLayerName = "{{ constraint.CapacityLayerName }}", ConsumedCapacityPerPop = {{ constraint.ConsumedCapacityPerPop }} }{% if not loop.last %},{% endif %}
-                    {% endfor %}
+                    
+                        new CapacityConstraint() { CapacityLayerName = "UnderwaterFertileGround", ConsumedCapacityPerPop = 0.4f }
+                    
                 };
             }
         }
