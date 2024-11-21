@@ -114,19 +114,22 @@ def push_asset(ctx: invoke.Context, mod):
 
 
 @invoke.task
-def bunwulf_agricultural(ctx: invoke.Context):
+def bunwulf_agricultural(_: invoke.Context):
     plants = os.path.join(server_path(), "Mods", "__core__", "AutoGen", "Plant")
     plant = os.listdir(plants)
 
     plant_entity_pattern = r".*public partial class (\w+) : PlantEntity.*"
     plant_species_pattern = r".*public partial class (\w+) : PlantSpecies.*"
     tree_species_pattern = r".*public partial class (\w+) : TreeSpecies.*"
+    constraints_pattern = (
+        r"new CapacityConstraint\(\) \{ CapacityLayerName = \"(\w+)\", ConsumedCapacityPerPop = (\d+\.?\d*)f?"
+    )
 
     templates = jinja2.Environment(loader=jinja2.FileSystemLoader("templates/"))
     template = templates.get_template("plant.template")
 
+    # Read in every plant file
     for p in plant:
-        print(f"Reading {p}")
         with open(os.path.join(plants, p), "r", encoding="utf-8") as f:
             data = f.read()
 
@@ -134,13 +137,17 @@ def bunwulf_agricultural(ctx: invoke.Context):
         if regex.match(tree_species_pattern, data, regex.DOTALL):
             continue
 
-        # Extract entity and species names, we want this to explode if it doesn't match
+        # Pull out all the data we need
         entity = regex.search(plant_entity_pattern, data, regex.DOTALL).group(1)
         species = regex.search(plant_species_pattern, data, regex.DOTALL).group(1)
+        constraints_raw = regex.findall(constraints_pattern, data, regex.DOTALL)
+        constraints_list = [
+            {"CapacityLayerName": c[0], "ConsumedCapacityPerPop": f"{float(c[1]) / 10}f"} for c in constraints_raw
+        ]
 
-        content = template.render(entity=entity, species=species)
-
-        print(f"Writing {p}")
+        # Render and write the template
+        print(f"Writing {entity} to BunWulfAgricultural")
+        content = template.render(entity=entity, species=species, constraints=constraints_list)
         with open(os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Plant", p), "w", encoding="utf-8") as f:
             f.write(content)
 

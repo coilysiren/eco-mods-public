@@ -10,12 +10,15 @@ namespace Eco.Mods.Organisms
         {
             partial void ModsPostInitialize()
             {
+                this.MaxGrowthRate = this.MaxGrowthRate * 10;
+                this.SpreadRate = this.SpreadRate * 10;
                 this.SeedingArea = this.SeedingArea * 10;
                 this.SeedsCount = this.SeedsCount * 10;
+                this.GenerationDefinitions.StartBiomes = "";
                 this.CapacityConstraints = new List<CapacityConstraint>()
                 {
                     {% for constraint in constraints %}
-                        new CapacityConstraint() { {{ constraint }} }{% if not loop.last %},{% endif %}
+                        new CapacityConstraint() { CapacityLayerName = "{{ constraint.CapacityLayerName }}", ConsumedCapacityPerPop = {{ constraint.ConsumedCapacityPerPop }} }{% if not loop.last %},{% endif %}
                     {% endfor %}
                 };
             }
