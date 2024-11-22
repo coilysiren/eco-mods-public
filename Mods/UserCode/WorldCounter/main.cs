@@ -2,13 +2,13 @@ namespace WorldCounter
 {
     using System;
     using System.Collections.Generic;
+    using System.Text.RegularExpressions;
     using Eco.Core.Plugins.Interfaces;
     using Eco.Gameplay.Players;
     using Eco.Gameplay.Systems.Chat;
     using Eco.Gameplay.Systems.Messaging.Chat.Commands;
     using Eco.Shared.Localization;
     using Eco.Shared.Logging;
-    using Eco.Shared.Math;
     using Eco.World;
     using Eco.World.Blocks;
     using Eco.WorldGenerator;
@@ -23,8 +23,8 @@ namespace WorldCounter
     {
         public void Generate(Random seed, Vector3 voxelSize, WorldSettings settings)
         {
-            SortedDictionary<Type, int> counts = CountWorld.GetCounts();
-            foreach (KeyValuePair<Type, int> kvp in counts)
+            SortedDictionary<string, int> counts = CountWorld.GetCounts();
+            foreach (KeyValuePair<string, int> kvp in counts)
             {
                 Log.WriteLine(Localizer.DoStr($"[WorldCounter]: {kvp.Key}: {kvp.Value}"));
             }
@@ -48,21 +48,23 @@ namespace WorldCounter
         )]
         public static void Count(IChatClient chatClient)
         {
-            SortedDictionary<Type, int> counts = CountWorld.GetCounts();
-            foreach (KeyValuePair<Type, int> kvp in counts)
+            SortedDictionary<string, int> counts = CountWorld.GetCounts();
+            foreach (KeyValuePair<string, int> kvp in counts)
             {
-                chatClient.MsgLoc($"[WorldCounter]: {kvp.Key}: {kvp.Value}");
+                // Add spaces between capital letters
+                string name = Regex.Replace(kvp.Key, "(\\B[A-Z])", " $1");
+                chatClient.MsgLoc($"[WorldCounter]: {kvp.Key}: {name}");
             }
         }
     }
 
     public class CountWorld
     {
-        public static SortedDictionary<Type, int> GetCounts()
+        public static SortedDictionary<string, int> GetCounts()
         {
             {
                 IEnumerable<PersistentChunk> Chunks = World.Chunks;
-                SortedDictionary<Type, int> blockCount = new();
+                SortedDictionary<string, int> blockCount = new();
                 foreach (PersistentChunk chunk in Chunks)
                 {
                     if (chunk is null)
@@ -79,7 +81,7 @@ namespace WorldCounter
                         {
                             continue;
                         }
-                        Type type = block.GetType();
+                        string type = block.GetType().ToString();
                         if (blockCount.ContainsKey(type))
                         {
                             blockCount[type] += 1;
