@@ -42,8 +42,9 @@ namespace WorldCounter
         {
             if (this.status != null)
             {
-                SortedDictionary<string, int> counts = Counter.GetCounts();
-                string message = "Blocks:\n";
+                Vector3 position = this.Parent.Position;
+                SortedDictionary<string, int> counts = Counter.GetCounts(position);
+                string message = "Nearby blocks:\n";
                 foreach (KeyValuePair<string, int> kvp in counts)
                 {
                     message += $"\t{kvp.Key}: {kvp.Value}\n";
