@@ -2,13 +2,12 @@ namespace WorldCounter
 {
     using System;
     using System.Collections.Generic;
-    using System.Numerics;
     using Eco.World;
     using Eco.World.Blocks;
 
     public class Counter
     {
-        public static SortedDictionary<string, int> GetCounts(Vector3 position, int radius = 100)
+        public static SortedDictionary<string, int> GetCounts()
         {
             {
                 IEnumerable<PersistentChunk> Chunks = World.Chunks;
@@ -25,17 +24,17 @@ namespace WorldCounter
                         continue;
                     }
 
-                    // check if within radius...
-                    // ...this should be checking against the block positions, not the chunk position
-                    if (
-                        Vector3.Distance(
-                            new Vector3(position.X, 0, position.Z),
-                            new Vector3(chunk.Position.X, 0, chunk.Position.Z)
-                        ) > radius
-                    )
-                    {
-                        continue;
-                    }
+                    // // check if within radius...
+                    // // ...this should be checking against the block positions, not the chunk position
+                    // if (
+                    //     Vector3.Distance(
+                    //         new Vector3(position.X, 0, position.Z),
+                    //         new Vector3(chunk.Position.X, 0, chunk.Position.Z)
+                    //     ) > radius
+                    // )
+                    // {
+                    //     continue;
+                    // }
 
                     foreach (Block? block in chunk.Blocks)
                     {

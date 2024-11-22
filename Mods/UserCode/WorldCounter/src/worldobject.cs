@@ -31,7 +31,7 @@ namespace WorldCounter
         public override void Tick()
         {
             base.Tick();
-            if (DateTime.Now - this.LastRun > TimeSpan.FromMinutes(5))
+            if (DateTime.Now - this.LastRun > TimeSpan.FromMinutes(1))
             {
                 this.LastRun = DateTime.Now;
                 this.UpdateStatus();
@@ -42,9 +42,8 @@ namespace WorldCounter
         {
             if (this.status != null)
             {
-                Vector3 position = this.Parent.Position;
-                SortedDictionary<string, int> counts = Counter.GetCounts(position);
-                string message = "Nearby Blocks:\n";
+                SortedDictionary<string, int> counts = Counter.GetCounts();
+                string message = "Blocks:\n";
                 foreach (KeyValuePair<string, int> kvp in counts)
                 {
                     message += $"\t{kvp.Key}: {kvp.Value}\n";
