@@ -71,7 +71,7 @@ namespace WorldCounter
         {
             // Get a list of Vector3s that are within a 3d radius of the input position
             List<WrappedWorldPosition3i> positionsToCheck = new();
-            WrappedWorldPosition3i wrappedPosition = WrappedWorldPosition3i.Create(
+            WrappedWorldPosition3i wrappedPosition = WrappedWorldPosition3iCreate(
                 position.X,
                 position.Y,
                 position.Z
@@ -82,9 +82,9 @@ namespace WorldCounter
                 for (int z = -radius; z <= radius; z++)
                 {
                     Vector2i XZ = new(x, z);
-                    for (int y = 0; y <= World.GetTopBlockY(XZ); y++)
+                    for (int y = 0; y <= GetTopBlockY(XZ); y++)
                     {
-                        WrappedWorldPosition3i positionToCheck = WrappedWorldPosition3i.Create(
+                        WrappedWorldPosition3i positionToCheck = WrappedWorldPosition3iCreate(
                             wrappedPosition.X + x,
                             y,
                             wrappedPosition.Z + z
@@ -140,5 +140,14 @@ namespace WorldCounter
             // Return empty if you can't find a UILink
             return "";
         }
+
+        // Tiny wrapped methods to enable unit testing
+        private static WrappedWorldPosition3i WrappedWorldPosition3iCreate(
+            float x,
+            float y,
+            float z
+        ) => WrappedWorldPosition3i.Create(x, y, z);
+
+        private static int GetTopBlockY(Vector2i worldPos) => World.GetTopBlockY(worldPos);
     }
 }

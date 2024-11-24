@@ -22,7 +22,7 @@ namespace WorldCounter
         private StatusElement? progressElement;
         private StatusElement? countsElement;
         private DateTime LastRun = DateTime.MinValue;
-        private readonly Dictionary<WrappedWorldPosition3i, (string, int)> countValues = new();
+        private readonly Dictionary<WrappedWorldPosition3i, (string, int)> countPositions = new();
 
         public override void Initialize()
         {
@@ -50,29 +50,43 @@ namespace WorldCounter
             if (this.countsElement != null && this.progressElement != null)
             {
                 // Generate progress value
-                float progress = (float)time / 60;
+                int progress = RoundNumber(100 * time / 60);
 
                 // Generate progress message, assign to element
                 string progressMessage = Localizer.DoStr($"Bookkeeping progress: {progress}%");
                 this.progressElement.SetStatusMessage(true, Localizer.DoStr(progressMessage));
 
-                // Generate counts values
+                // Generate retrieve count positions
                 Dictionary<WrappedWorldPosition3i, (string, int)> newCounts = Counter.GetCounts(
                     this.Parent.Position,
                     time
                 );
                 foreach (KeyValuePair<WrappedWorldPosition3i, (string, int)> kvp in newCounts)
                 {
-                    this.countValues[kvp.Key] = kvp.Value;
+                    this.countPositions[kvp.Key] = kvp.Value;
+                }
+
+                // Aggregate counts from the various positions
+                SortedDictionary<string, int> countsValues = new();
+                foreach (
+                    KeyValuePair<WrappedWorldPosition3i, (string, int)> kvp in this.countPositions
+                )
+                {
+                    if (countsValues.ContainsKey(kvp.Value.Item1))
+                    {
+                        countsValues[kvp.Value.Item1] += kvp.Value.Item2;
+                    }
+                    else
+                    {
+                        countsValues[kvp.Value.Item1] = kvp.Value.Item2;
+                    }
                 }
 
                 // Generate counts message, assign to element
                 string countsMessage = "Nearby blocks:\n";
-                foreach (
-                    KeyValuePair<WrappedWorldPosition3i, (string, int)> kvp in this.countValues
-                )
+                foreach (KeyValuePair<string, int> kvp in countsValues)
                 {
-                    countsMessage += $"\t{kvp.Value.Item1}: {RoundNumber(kvp.Value.Item2)}\n";
+                    countsMessage += $"\t{kvp.Key}: {RoundNumber(kvp.Value)}\n";
                 }
                 this.countsElement.SetStatusMessage(true, Localizer.DoStr(countsMessage));
             }
