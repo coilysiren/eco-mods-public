@@ -8,23 +8,29 @@ namespace WorldCounter
     using Eco.Gameplay.Plants;
     using Eco.Gameplay.Systems.NewTooltip;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Shared.Math;
     using Eco.Shared.Utils;
     using Eco.Simulation.Types;
     using Eco.World;
     using Eco.World.Blocks;
-    using Eco.WorldGenerator;
 
     public class Counter
     {
-        public static SortedDictionary<string, int> GetCounts(Vector3 position, int radius = 100)
+        public static Dictionary<WrappedWorldPosition3i, (string, int)> GetCounts(
+            Vector3 position,
+            int radius = 60
+        )
         {
-            List<Vector3> blockLocations = GeneratePositionsToCheck(position, radius);
+            List<WrappedWorldPosition3i> blockLocations = GeneratePositionsToCheck(
+                position,
+                radius
+            );
+            Dictionary<WrappedWorldPosition3i, (string, int)> blockCounts = new();
 
             // Count the number of each block type in the area
-            SortedDictionary<string, int> blockCount = new();
-            foreach (Vector3 blockLocation in blockLocations)
+            foreach (WrappedWorldPosition3i blockLocation in blockLocations)
             {
-                Block block = World.GetBlock((Eco.Shared.Math.Vector3i)blockLocation);
+                Block block = World.GetBlock(blockLocation);
                 if (block != null)
                 {
                     // Skip blocks that should be excluded
@@ -41,82 +47,53 @@ namespace WorldCounter
                     }
 
                     // Increment the count of the block
-                    if (blockCount.ContainsKey(displayName))
+                    blockCounts[blockLocation] = (displayName, 1);
+                    if (blockCounts.ContainsKey(blockLocation))
                     {
-                        blockCount[displayName] += 1;
+                        blockCounts[blockLocation] = (
+                            displayName,
+                            blockCounts[blockLocation].Item2 + 1
+                        );
                     }
                     else
                     {
-                        blockCount[displayName] = 1;
+                        blockCounts[blockLocation] = (displayName, 1);
                     }
                 }
             }
-
-            // Round block counts to 2 significant figures
-            SortedDictionary<string, int> roundedBlockCount = new();
-            foreach (KeyValuePair<string, int> kvp in blockCount)
-            {
-                roundedBlockCount[kvp.Key] = RoundNumber(kvp.Value);
-            }
-            return roundedBlockCount;
+            return blockCounts;
         }
 
-        private static List<Vector3> GeneratePositionsToCheck(Vector3 position, int radius)
+        private static List<WrappedWorldPosition3i> GeneratePositionsToCheck(
+            Vector3 position,
+            int radius
+        )
         {
             // Get a list of Vector3s that are within a 3d radius of the input position
-            List<Vector3> positionsToCheck = new();
-
-            // I assume x is the width and z is the length, but that may be wrong
-            int worldWidth = WorldGeneratorPlugin.Settings.Dimensions.WorldWidth;
-            int WorldLength = WorldGeneratorPlugin.Settings.Dimensions.WorldLength;
+            List<WrappedWorldPosition3i> positionsToCheck = new();
+            WrappedWorldPosition3i wrappedPosition = WrappedWorldPosition3i.Create(
+                position.X,
+                position.Y,
+                position.Z
+            );
 
             for (int x = -radius; x <= radius; x++)
             {
                 for (int z = -radius; z <= radius; z++)
                 {
-                    for (int y = 0; y <= 160; y++)
+                    Vector2i XZ = new(x, z);
+                    for (int y = 0; y <= World.GetTopBlockY(XZ); y++)
                     {
-                        Vector3 offset = new(x, y, z);
-                        if (offset.Length() <= radius)
-                        {
-                            Vector3 newPosition = position + offset;
-
-                            // Wrap around the x-coordinate based on world width
-                            if (newPosition.X < 0)
-                            {
-                                newPosition.X += worldWidth;
-                            }
-                            else if (newPosition.X >= worldWidth)
-                            {
-                                newPosition.X -= worldWidth;
-                            }
-
-                            // Wrap around the z-coordinate based on world length
-                            if (newPosition.Z < 0)
-                            {
-                                newPosition.Z += WorldLength;
-                            }
-                            else if (newPosition.Z >= WorldLength)
-                            {
-                                newPosition.Z -= WorldLength;
-                            }
-
-                            positionsToCheck.Add(newPosition);
-                        }
+                        WrappedWorldPosition3i positionToCheck = WrappedWorldPosition3i.Create(
+                            wrappedPosition.X + x,
+                            y,
+                            wrappedPosition.Z + z
+                        );
+                        positionsToCheck.Add(positionToCheck);
                     }
                 }
             }
             return positionsToCheck;
-        }
-
-        private static int RoundNumber(int number)
-        {
-            if (number < 100)
-            {
-                return number;
-            }
-            int magnitude = (int)Math.Pow(10, (int)Math.Log10(number) - 1);
-            return number / magnitude * magnitude;
         }
 
         private static bool ExcludeBlock(Block block)

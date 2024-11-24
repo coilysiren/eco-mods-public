@@ -19,38 +19,73 @@ namespace WorldCounter
     [RequireComponent(typeof(StatusComponent), null)]
     public class WorldCounterComponent : WorldObjectComponent
     {
-        private StatusElement? status;
+        private StatusElement? progressElement;
+        private StatusElement? countsElement;
         private DateTime LastRun = DateTime.MinValue;
+        private readonly Dictionary<WrappedWorldPosition3i, (string, int)> countValues = new();
 
         public override void Initialize()
         {
-            this.status = this.Parent.GetComponent<StatusComponent>(null).CreateStatusElement();
-            this.UpdateStatus();
+            this.progressElement = this
+                .Parent.GetComponent<StatusComponent>(null)
+                .CreateStatusElement();
+            this.countsElement = this
+                .Parent.GetComponent<StatusComponent>(null)
+                .CreateStatusElement();
         }
 
         public override void Tick()
         {
             base.Tick();
-            if (DateTime.Now - this.LastRun > TimeSpan.FromMinutes(1))
+            // Swap "Second" for "Minute" to before release
+            if (DateTime.Now.Second != this.LastRun.Second)
             {
                 this.LastRun = DateTime.Now;
-                this.UpdateStatus();
+                this.UpdateCounts(this.LastRun.Second);
             }
         }
 
-        private void UpdateStatus()
+        private void UpdateCounts(int time)
         {
-            if (this.status != null)
+            if (this.countsElement != null && this.progressElement != null)
             {
-                Vector3 position = this.Parent.Position;
-                SortedDictionary<string, int> counts = Counter.GetCounts(position);
-                string message = "Nearby blocks:\n";
-                foreach (KeyValuePair<string, int> kvp in counts)
+                // Generate progress value
+                float progress = (float)time / 60;
+
+                // Generate progress message, assign to element
+                string progressMessage = Localizer.DoStr($"Bookkeeping progress: {progress}%");
+                this.progressElement.SetStatusMessage(true, Localizer.DoStr(progressMessage));
+
+                // Generate counts values
+                Dictionary<WrappedWorldPosition3i, (string, int)> newCounts = Counter.GetCounts(
+                    this.Parent.Position,
+                    time
+                );
+                foreach (KeyValuePair<WrappedWorldPosition3i, (string, int)> kvp in newCounts)
                 {
-                    message += $"\t{kvp.Key}: {kvp.Value}\n";
+                    this.countValues[kvp.Key] = kvp.Value;
                 }
-                this.status.SetStatusMessage(true, Localizer.DoStr(message));
+
+                // Generate counts message, assign to element
+                string countsMessage = "Nearby blocks:\n";
+                foreach (
+                    KeyValuePair<WrappedWorldPosition3i, (string, int)> kvp in this.countValues
+                )
+                {
+                    countsMessage += $"\t{kvp.Value.Item1}: {RoundNumber(kvp.Value.Item2)}\n";
+                }
+                this.countsElement.SetStatusMessage(true, Localizer.DoStr(countsMessage));
             }
+        }
+
+        private static int RoundNumber(int number)
+        {
+            if (number < 100)
+            {
+                return number;
+            }
+            int magnitude = (int)Math.Pow(10, (int)Math.Log10(number) - 1);
+            return number / magnitude * magnitude;
         }
     }
 
