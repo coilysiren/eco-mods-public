@@ -66,13 +66,6 @@ namespace BunWulfMods
                 ModDescription = "TODO",
                 ModDisplayName = "BunWulf Educational",
             };
-
-        // [ChatCommand(
-        //     "regenerates the BunWulfEducational mod",
-        //     "generate-bunwulf-educational",
-        //     ChatAuthorizationLevel.Admin
-        // )]
-        // public static void GenerateBunWulfEducational(User user) => BunWulfEducational.Initialize();
     }
 
     public static class BunWulfEducational
@@ -265,15 +258,15 @@ namespace BunWulfMods
                 int techLevel = 0;
                 if (file.Contains("Basic"))
                 {
-                    techLevel = 0;
+                    techLevel = 1;
                 }
                 else if (file.Contains("Advanced"))
                 {
-                    techLevel = 2;
+                    techLevel = 3;
                 }
                 else if (file.Contains("Modern"))
                 {
-                    techLevel = 4;
+                    techLevel = 5;
                 }
 
                 int experience = 0;
@@ -368,11 +361,14 @@ namespace BunWulfMods
         )
         {
             Match extractorMatch = Regex.Match(recipeData, extractor);
-            string extractedValue;
+            int extractedValue;
 
             if (extractorMatch.Success)
             {
-                extractedValue = extractorMatch.Groups[1].Value;
+                extractedValue = int.Parse(extractorMatch.Groups[1].Value);
+                // This line is used to scale librarian so it's more balanced
+                // We should move this logic elsewhere so it's more abstract
+                extractedValue = 1 + extractedValue;
             }
             else
             {
@@ -388,7 +384,7 @@ namespace BunWulfMods
             recipeData = Regex.Replace(
                 recipeData,
                 pattern,
-                replacement.Replace("$1", extractedValue)
+                replacement.Replace("$1", extractedValue.ToString())
             );
 
             return recipeData;
