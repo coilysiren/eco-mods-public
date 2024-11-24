@@ -11,6 +11,7 @@
     <ItemGroup>
         <PackageReference Include="CommandLineParser" Version="2.9.1" />
         <PackageReference Include="Eco.ReferenceAssemblies" Version="0.11.1.2-beta-release-767" />
+        <PackageReference Include="xUNit" Version="2.9.2" />
     </ItemGroup>
 
 </Project>
