@@ -2,6 +2,7 @@ namespace WorldCounter
 {
     using System;
     using System.Collections.Generic;
+    using System.Numerics;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Objects;
     using Eco.Shared.Localization;
@@ -50,8 +51,8 @@ namespace WorldCounter
 
                 // Generate retrieve count positions
                 Dictionary<WrappedWorldPosition3i, (string, int)> newCounts = Counter.GetCounts(
-                    this.Parent.Position,
-                    time
+                    this.GetPosition(),
+                    this.GetRadius(time)
                 );
                 foreach (KeyValuePair<WrappedWorldPosition3i, (string, int)> kvp in newCounts)
                 {
@@ -83,6 +84,12 @@ namespace WorldCounter
                 this.countsElement.SetStatusMessage(true, Localizer.DoStr(countsMessage));
             }
         }
+
+        // TODO: get the position of the settlement's town foundation
+        private Vector3 GetPosition() => this.Parent.Position;
+
+        // TODO: get the radius of the settlement
+        private int GetRadius(int time) => time;
 
         private static int RoundNumber(int number)
         {
