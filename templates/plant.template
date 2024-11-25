@@ -1,28 +1,25 @@
-using System.Collections.Generic;
-using Eco.Core.Items;
-using Eco.Gameplay.Blocks;
-using Eco.Gameplay.Plants;
-using Eco.Mods.Organisms;
-using Eco.Mods.TechTree;
-using Eco.Shared.Localization;
-using Eco.Shared.Math;
-using Eco.Shared.Serialization;
-using Eco.Shared.SharedTypes;
-using Eco.Simulation;
-using Eco.Simulation.Types;
-using Eco.World.Blocks;
 
 namespace Eco.Mods.Organisms
 {
-    public partial class {{ plant }}
+    using System.Collections.Generic;
+    using Eco.Mods.Organisms;
+    using Eco.Shared.Math;
+
+    public partial class {{ entity }}
     {
         public partial class {{ species }}
         {
             partial void ModsPostInitialize()
             {
-                this.MaturityAgeDays = this.MaturityAgeDays / 2;
-                this.SeedingArea = this.SeedingArea * 2;
-                this.SeedsCount = this.SeedsCount * 2;
+                this.MaxGrowthRate = this.MaxGrowthRate * 10;
+                this.SpreadRate = this.SpreadRate * 10;
+                this.SeedingArea = this.SeedingArea * 10;
+                this.SeedsCount = this.SeedsCount * 10;
+                this.GenerationDefinitions.StartBiomes = "";
+                this.GenerationDefinitions.CountOfClusters = new Range(
+                    this.GenerationDefinitions.CountOfClusters.min * 5,
+                    this.GenerationDefinitions.CountOfClusters.max * 5
+                );
             }
         }
     }
