@@ -14,7 +14,7 @@ namespace Mineshafts
     using Eco.Shared.Serialization;
 
     [Serialized]
-    [RequireComponent(typeof(WorldCounterComponent))]
+    [RequireComponent(typeof(IronMineshaftComponent))]
     [Tag("Usable")]
     public partial class MineshaftObject : WorldObject, IRepresentsItem
     {

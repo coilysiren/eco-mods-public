@@ -1,55 +1,68 @@
 namespace Mineshafts
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Eco.Gameplay.Components;
+    using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
+    using Eco.Gameplay.Systems.NewTooltip;
+    using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
+    using Eco.Shared.Serialization;
+    using Eco.World.Blocks;
 
-    // using Eco.Shared.Serialization;
-
-    // [Serialized]
-    [RequireComponent(typeof(StatusComponent), null)]
-    public class WorldCounterComponent : WorldObjectComponent
+    public class MineshaftComponent : WorldObjectComponent
     {
-        private StatusElement? foundIronStatus;
-        private StatusElement? foundSandstoneStatus;
+        private readonly Dictionary<string, StatusElement> blockStatusMap = new();
+        private readonly Dictionary<string, string> blockTypeMap = new();
+
+        public MineshaftComponent(Dictionary<string, string> blockTypeMap)
+        {
+            this.blockTypeMap = blockTypeMap;
+        }
 
         public override void Initialize()
         {
-            this.foundIronStatus = this
-                .Parent.GetComponent<StatusComponent>(null)
-                .CreateStatusElement();
-            this.foundSandstoneStatus = this
-                .Parent.GetComponent<StatusComponent>(null)
-                .CreateStatusElement();
+            foreach (KeyValuePair<string, string> block in this.blockTypeMap)
+            {
+                this.blockStatusMap[block.Key] = this
+                    .Parent.GetComponent<StatusComponent>(null)
+                    .CreateStatusElement();
+            }
             this.FindBlocks();
         }
 
         private void FindBlocks()
         {
-            if (this.foundIronStatus != null)
+            foreach (KeyValuePair<string, StatusElement> blockStatus in this.blockStatusMap)
             {
-                bool foundIron = Mineshaft.FindBlock(
-                    this.Parent.Position,
-                    "Eco.Mods.TechTree.IronOreBlock",
-                    2
-                );
-                this.foundIronStatus.SetStatusMessage(
-                    foundIron,
-                    Localizer.DoStr(foundIron ? "Iron Ore found" : "Iron Ore not found")
-                );
-            }
-            if (this.foundSandstoneStatus != null)
-            {
-                bool foundSandstone = Mineshaft.FindBlock(
-                    this.Parent.Position,
-                    "Eco.Mods.TechTree.SandstoneBlock",
-                    2
-                );
-                this.foundSandstoneStatus.SetStatusMessage(
-                    foundSandstone,
-                    Localizer.DoStr(foundSandstone ? "Sandstone found" : "Sandstone not found")
-                );
+                StatusElement statusElement = blockStatus.Value;
+                if (statusElement != null)
+                {
+                    bool found = Mineshaft.FindBlock(this.Parent.Position, blockStatus.Key, 2);
+                    string itemUILink = this.blockTypeMap[blockStatus.Key];
+                    blockStatus.Value.SetStatusMessage(
+                        found,
+                        Localizer.DoStr(found ? $"{itemUILink} found" : $"{itemUILink} not found")
+                    );
+                }
             }
         }
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(StatusComponent), null)]
+    public class IronMineshaftComponent : MineshaftComponent
+    {
+        public IronMineshaftComponent()
+            : base(
+                new Dictionary<string, string>
+                {
+                    { "Eco.Mods.TechTree.IronOreBlock", Item.Get<IronOreItem>().UILink() },
+                    { "Eco.Mods.TechTree.SandstoneBlock", Item.Get<SandstoneItem>().UILink() },
+                }
+            ) { }
     }
 }
