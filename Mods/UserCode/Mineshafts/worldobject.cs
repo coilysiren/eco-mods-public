@@ -2,29 +2,36 @@ namespace Mineshafts
 {
     using System;
     using System.Collections.Generic;
-    using Eco.Core.Controller;
     using Eco.Core.Items;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Components.Auth;
+    using Eco.Gameplay.Components.Storage;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Occupancy;
-    using Eco.Gameplay.Systems.NewTooltip;
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
 
     [Serialized]
-    [RequireComponent(typeof(IronMineshaftComponent))]
+    [RequireComponent(typeof(OnOffComponent))]
+    [RequireComponent(typeof(PropertyAuthComponent))]
+    [RequireComponent(typeof(CrudeIronMineshaftComponent))]
+    [RequireComponent(typeof(CraftingComponent))]
+    [RequireComponent(typeof(PublicStorageComponent))]
+    [RequireComponent(typeof(MinimapComponent))]
+    [RequireComponent(typeof(LinkComponent))]
     [Tag("Usable")]
-    public partial class MineshaftObject : WorldObject, IRepresentsItem
+    public partial class CrudeIronMineshaftObject : WorldObject, IRepresentsItem
     {
-        public virtual Type RepresentedItemType => typeof(MineshaftItem);
-        public override LocString DisplayName => Localizer.DoStr("Mineshaft");
+        public virtual Type RepresentedItemType => typeof(CrudeIronMineshaftItem);
+        public override LocString DisplayName => Localizer.DoStr("Crude Iron Mineshaft");
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
 
-        static MineshaftObject()
+        static CrudeIronMineshaftObject()
         {
-            AddOccupancy<MineshaftObject>(
+            AddOccupancy<CrudeIronMineshaftObject>(
                 new List<BlockOccupancy>()
                 {
                     new(new Vector3i(0, 0, 0)),
@@ -36,22 +43,21 @@ namespace Mineshafts
                 }
             );
         }
+
+        protected override void Initialize()
+        {
+            PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
+            storage.Initialize(16);
+        }
     }
 
     [Serialized]
-    public partial class MineshaftItem : WorldObjectItem<MineshaftObject>, IPersistentData
+    public partial class CrudeIronMineshaftItem : WorldObjectItem<CrudeIronMineshaftObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
             new SideAttachedContext(
                 0 | DirectionAxisFlags.Down,
                 WorldObject.GetOccupancyInfo(this.WorldObjectType)
             );
-
-        [
-            Serialized,
-            SyncToView,
-            NewTooltipChildren(CacheAs.Instance, flags: TTFlags.AllowNonControllerTypeForChildren)
-        ]
-        public object? PersistentData { get; set; }
     }
 }

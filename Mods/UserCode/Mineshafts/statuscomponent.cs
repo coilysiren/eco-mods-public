@@ -1,6 +1,5 @@
 namespace Mineshafts
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Eco.Gameplay.Components;
@@ -11,16 +10,19 @@ namespace Mineshafts
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.World.Blocks;
 
     public class MineshaftComponent : WorldObjectComponent
     {
         private readonly Dictionary<string, StatusElement> blockStatusMap = new();
         private readonly Dictionary<string, string> blockTypeMap = new();
+        private readonly Dictionary<string, bool> blockFoundMap = new();
+        private readonly int radius;
+        public override bool Enabled => this.blockFoundMap.Values.All(found => found);
 
-        public MineshaftComponent(Dictionary<string, string> blockTypeMap)
+        public MineshaftComponent(Dictionary<string, string> blockTypeMap, int radius)
         {
             this.blockTypeMap = blockTypeMap;
+            this.radius = radius;
         }
 
         public override void Initialize()
@@ -41,12 +43,17 @@ namespace Mineshafts
                 StatusElement statusElement = blockStatus.Value;
                 if (statusElement != null)
                 {
-                    bool found = Mineshaft.FindBlock(this.Parent.Position, blockStatus.Key, 2);
-                    string itemUILink = this.blockTypeMap[blockStatus.Key];
+                    bool found = Mineshaft.FindBlock(
+                        this.Parent.Position,
+                        blockStatus.Key,
+                        this.radius
+                    );
+                    string displayName = this.blockTypeMap[blockStatus.Key];
                     blockStatus.Value.SetStatusMessage(
                         found,
-                        Localizer.DoStr(found ? $"{itemUILink} found" : $"{itemUILink} not found")
+                        Localizer.DoStr(found ? $"{displayName} found" : $"{displayName} not found")
                     );
+                    this.blockFoundMap[blockStatus.Key] = found;
                 }
             }
         }
@@ -54,15 +61,16 @@ namespace Mineshafts
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class IronMineshaftComponent : MineshaftComponent
+    public class CrudeIronMineshaftComponent : MineshaftComponent
     {
-        public IronMineshaftComponent()
+        public CrudeIronMineshaftComponent()
             : base(
-                new Dictionary<string, string>
+                blockTypeMap: new Dictionary<string, string>
                 {
                     { "Eco.Mods.TechTree.IronOreBlock", Item.Get<IronOreItem>().UILink() },
                     { "Eco.Mods.TechTree.SandstoneBlock", Item.Get<SandstoneItem>().UILink() },
-                }
+                },
+                radius: 3
             ) { }
     }
 }

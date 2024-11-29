@@ -61,7 +61,6 @@ namespace Mineshafts
             return positionsToCheck;
         }
 
-        // Tiny wrapped methods to enable unit testing
         private static WrappedWorldPosition3i WrappedWorldPosition3iCreate(
             float x,
             float y,
