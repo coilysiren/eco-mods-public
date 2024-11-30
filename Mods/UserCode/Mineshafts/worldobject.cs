@@ -19,6 +19,8 @@ namespace Mineshafts
     [Serialized]
     [RequireComponent(typeof(OnOffComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
+    [RequireComponent(typeof(PluginModulesComponent))]
+    [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
@@ -38,15 +40,7 @@ namespace Mineshafts
         static CrudeIronMineshaftObject()
         {
             AddOccupancy<CrudeIronMineshaftObject>(
-                new List<BlockOccupancy>()
-                {
-                    new(new Vector3i(0, 0, 0)),
-                    new(new Vector3i(1, 0, 0)),
-                    new(new Vector3i(2, 0, 0)),
-                    new(new Vector3i(0, 1, 0)),
-                    new(new Vector3i(1, 1, 0)),
-                    new(new Vector3i(2, 1, 0)),
-                }
+                new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) }
             );
         }
     }
@@ -76,15 +70,7 @@ namespace Mineshafts
         static IronMineshaftObject()
         {
             AddOccupancy<IronMineshaftObject>(
-                new List<BlockOccupancy>()
-                {
-                    new(new Vector3i(0, 0, 0)),
-                    new(new Vector3i(1, 0, 0)),
-                    new(new Vector3i(2, 0, 0)),
-                    new(new Vector3i(0, 1, 0)),
-                    new(new Vector3i(1, 1, 0)),
-                    new(new Vector3i(2, 1, 0)),
-                }
+                new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) }
             );
         }
 
@@ -120,15 +106,7 @@ namespace Mineshafts
         static CopperMineshaftObject()
         {
             AddOccupancy<CopperMineshaftObject>(
-                new List<BlockOccupancy>()
-                {
-                    new(new Vector3i(0, 0, 0)),
-                    new(new Vector3i(1, 0, 0)),
-                    new(new Vector3i(2, 0, 0)),
-                    new(new Vector3i(0, 1, 0)),
-                    new(new Vector3i(1, 1, 0)),
-                    new(new Vector3i(2, 1, 0)),
-                }
+                new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) }
             );
         }
 
@@ -164,15 +142,7 @@ namespace Mineshafts
         static GoldMineshaftObject()
         {
             AddOccupancy<GoldMineshaftObject>(
-                new List<BlockOccupancy>()
-                {
-                    new(new Vector3i(0, 0, 0)),
-                    new(new Vector3i(1, 0, 0)),
-                    new(new Vector3i(2, 0, 0)),
-                    new(new Vector3i(0, 1, 0)),
-                    new(new Vector3i(1, 1, 0)),
-                    new(new Vector3i(2, 1, 0)),
-                }
+                new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) }
             );
         }
 

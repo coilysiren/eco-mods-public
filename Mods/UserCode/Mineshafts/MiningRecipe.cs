@@ -32,7 +32,7 @@ namespace Mineshafts
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CrudeIronOreMining),
-                start: 3.33f,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CrudeIronOreMining));
@@ -65,7 +65,7 @@ namespace Mineshafts
             this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronOreMining),
-                start: 1.66f,
+                start: 2,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreMining));
@@ -85,13 +85,13 @@ namespace Mineshafts
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HewnLogItem), 35, typeof(MiningSkill)),
-                    new(typeof(HempMooringRopeItem), 35, typeof(MiningSkill)),
+                    new(typeof(HewnLogItem), 25, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 25, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CopperOreItem>(20),
-                    new CraftingElement<GraniteItem>(120),
+                    new CraftingElement<GraniteItem>(80),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -118,20 +118,20 @@ namespace Mineshafts
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HewnLogItem), 45, typeof(MiningSkill)),
-                    new(typeof(HempMooringRopeItem), 45, typeof(MiningSkill)),
+                    new(typeof(HewnLogItem), 25, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 25, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<GoldOreItem>(20),
-                    new CraftingElement<GneissItem>(160),
+                    new CraftingElement<GraniteItem>(80),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1800, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldOreMining),
-                start: 17,
+                start: 12,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldOreMining));
