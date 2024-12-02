@@ -1,4 +1,4 @@
-namespace Mineshafts
+namespace Mines
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,8 +12,9 @@ namespace Mineshafts
     using Eco.Shared.IoC;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+    using Mineshafts;
 
-    public class MineshaftComponent : WorldObjectComponent
+    public class MineComponent : WorldObjectComponent
     {
         private readonly Dictionary<string, StatusElement> blockStatusMap = new();
         private readonly Dictionary<string, string> blockTypeMap = new();
@@ -24,7 +25,7 @@ namespace Mineshafts
         private readonly int minProximity;
         public override bool Enabled => this.validChecks.Values.All(found => found);
 
-        public MineshaftComponent(
+        public MineComponent(
             Dictionary<string, string> blockTypeMap,
             int searchRadius,
             int minProximity
@@ -57,7 +58,7 @@ namespace Mineshafts
                 StatusElement statusElement = blockStatus.Value;
                 if (statusElement != null)
                 {
-                    bool found = Mineshaft.FindBlock(
+                    bool found = Mine.FindBlock(
                         this.Parent.Position,
                         blockStatus.Key,
                         this.searchRadius
@@ -75,7 +76,7 @@ namespace Mineshafts
         // private void CheckProximity()
         // {
         //     ServiceHolder<IWorldObjectManager>
-        //         .Obj.All.Where(obj => obj is MineshaftObject)
+        //         .Obj.All.Where(obj => obj is MineObject)
         //         .ToList()
         //         .ForEach(obj =>
         //         {
@@ -85,7 +86,7 @@ namespace Mineshafts
         //                 this.proximityStatus?.SetStatusMessage(
         //                     false,
         //                     Localizer.DoStr(
-        //                         $"The nearest mineshaft must be {this.minProximity}m away"
+        //                         $"The nearest Mine must be {this.minProximity}m away"
         //                     )
         //                 );
         //                 return;
@@ -94,16 +95,16 @@ namespace Mineshafts
         //     this.validChecks["validProximity"] = true;
         //     this.proximityStatus?.SetStatusMessage(
         //         true,
-        //         Localizer.DoStr("Far enough from other mineshafts")
+        //         Localizer.DoStr("Far enough from other Mines")
         //     );
         // }
     }
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class CrudeIronMineshaftComponent : MineshaftComponent
+    public class CrudeIronMineComponent : MineComponent
     {
-        public CrudeIronMineshaftComponent()
+        public CrudeIronMineComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
@@ -117,9 +118,9 @@ namespace Mineshafts
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class IronMineshaftComponent : MineshaftComponent
+    public class IronMineComponent : MineComponent
     {
-        public IronMineshaftComponent()
+        public IronMineComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
@@ -133,9 +134,9 @@ namespace Mineshafts
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class CopperMineshaftComponent : MineshaftComponent
+    public class CopperMineComponent : MineComponent
     {
-        public CopperMineshaftComponent()
+        public CopperMineComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
@@ -149,9 +150,9 @@ namespace Mineshafts
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class GoldMineshaftComponent : MineshaftComponent
+    public class GoldMineComponent : MineComponent
     {
-        public GoldMineshaftComponent()
+        public GoldMineComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
