@@ -1,4 +1,4 @@
-namespace Mines
+namespace Mineshafts
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -12,9 +12,8 @@ namespace Mines
     using Eco.Shared.IoC;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Mineshafts;
 
-    public class MineComponent : WorldObjectComponent
+    public class MineshaftComponent : WorldObjectComponent
     {
         private readonly Dictionary<string, StatusElement> blockStatusMap = new();
         private readonly Dictionary<string, string> blockTypeMap = new();
@@ -25,7 +24,7 @@ namespace Mines
         private readonly int minProximity;
         public override bool Enabled => this.validChecks.Values.All(found => found);
 
-        public MineComponent(
+        public MineshaftComponent(
             Dictionary<string, string> blockTypeMap,
             int searchRadius,
             int minProximity
@@ -58,7 +57,7 @@ namespace Mines
                 StatusElement statusElement = blockStatus.Value;
                 if (statusElement != null)
                 {
-                    bool found = Mine.FindBlock(
+                    bool found = Mineshaft.FindBlock(
                         this.Parent.Position,
                         blockStatus.Key,
                         this.searchRadius
@@ -76,7 +75,7 @@ namespace Mines
         // private void CheckProximity()
         // {
         //     ServiceHolder<IWorldObjectManager>
-        //         .Obj.All.Where(obj => obj is MineObject)
+        //         .Obj.All.Where(obj => obj is MineshaftObject)
         //         .ToList()
         //         .ForEach(obj =>
         //         {
@@ -86,7 +85,7 @@ namespace Mines
         //                 this.proximityStatus?.SetStatusMessage(
         //                     false,
         //                     Localizer.DoStr(
-        //                         $"The nearest Mine must be {this.minProximity}m away"
+        //                         $"The nearest mineshaft must be {this.minProximity}m away"
         //                     )
         //                 );
         //                 return;
@@ -95,16 +94,16 @@ namespace Mines
         //     this.validChecks["validProximity"] = true;
         //     this.proximityStatus?.SetStatusMessage(
         //         true,
-        //         Localizer.DoStr("Far enough from other Mines")
+        //         Localizer.DoStr("Far enough from other mineshafts")
         //     );
         // }
     }
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class CrudeIronMineComponent : MineComponent
+    public class CrudeIronMineshaftComponent : MineshaftComponent
     {
-        public CrudeIronMineComponent()
+        public CrudeIronMineshaftComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
@@ -118,9 +117,9 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class IronMineComponent : MineComponent
+    public class IronMineshaftComponent : MineshaftComponent
     {
-        public IronMineComponent()
+        public IronMineshaftComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
@@ -134,9 +133,9 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class CopperMineComponent : MineComponent
+    public class CopperMineshaftComponent : MineshaftComponent
     {
-        public CopperMineComponent()
+        public CopperMineshaftComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
@@ -150,9 +149,9 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class GoldMineComponent : MineComponent
+    public class GoldMineshaftComponent : MineshaftComponent
     {
-        public GoldMineComponent()
+        public GoldMineshaftComponent()
             : base(
                 blockTypeMap: new Dictionary<string, string>
                 {
