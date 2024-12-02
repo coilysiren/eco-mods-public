@@ -6,7 +6,7 @@ namespace Mineshafts
     using Eco.World;
     using Eco.World.Blocks;
 
-    public class Mineshaft
+    public class Mine
     {
         public static bool FindBlock(Vector3 position, string blockType, int radius)
         {
