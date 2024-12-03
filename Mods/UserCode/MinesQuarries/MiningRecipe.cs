@@ -20,7 +20,7 @@ namespace Mines
     //             ingredients: new List<IngredientElement>
     //             {
     //                 new(typeof(AdobeItem), 12, typeof(MiningSkill)),
-    //                 new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
+    //                 new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
     //             },
     //             items: new List<CraftingElement>
     //             {
@@ -52,7 +52,7 @@ namespace Mines
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -84,7 +84,7 @@ namespace Mines
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -116,7 +116,7 @@ namespace Mines
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
