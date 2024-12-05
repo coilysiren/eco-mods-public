@@ -80,7 +80,7 @@ namespace Mines
             minimap.SetCategory(Localizer.DoStr("Crafting"));
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(25); // same as a stockpile
+            storage.Initialize(50); // 2x a stockpile
 
             this.GetComponent<PartsComponent>()
                 .Config(
@@ -127,7 +127,7 @@ namespace Mines
             minimap.SetCategory(Localizer.DoStr("Crafting"));
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(25); // same as a stockpile
+            storage.Initialize(50); // 2x a stockpile
 
             PartsComponent parts = this.GetComponent<PartsComponent>();
             parts.Config(
@@ -172,7 +172,7 @@ namespace Mines
             minimap.SetCategory(Localizer.DoStr("Crafting"));
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(25); // same as a stockpile
+            storage.Initialize(50); // 2x a stockpile
 
             this.GetComponent<PartsComponent>()
                 .Config(
