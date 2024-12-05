@@ -10,6 +10,7 @@ namespace Mines
     using Eco.Gameplay.Modules;
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Occupancy;
+    using Eco.Gameplay.Skills;
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
@@ -25,6 +26,7 @@ namespace Mines
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
     [RequireComponent(typeof(PartsComponent))]
+    [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
     [Tag("Usable")]
     public partial class MineObject : WorldObject
     {
@@ -85,7 +87,7 @@ namespace Mines
                     () => LocString.Empty,
                     new PartsComponent.PartInfo[]
                     {
-                        new() { TypeName = nameof(HempMooringRopeItem), Quantity = 1 },
+                        new() { TypeName = nameof(GearboxItem), Quantity = 4 },
                     }
                 );
         }
@@ -127,14 +129,14 @@ namespace Mines
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25); // same as a stockpile
 
-            this.GetComponent<PartsComponent>()
-                .Config(
-                    () => LocString.Empty,
-                    new PartsComponent.PartInfo[]
-                    {
-                        new() { TypeName = nameof(HempMooringRopeItem), Quantity = 1 },
-                    }
-                );
+            PartsComponent parts = this.GetComponent<PartsComponent>();
+            parts.Config(
+                () => LocString.Empty,
+                new PartsComponent.PartInfo[]
+                {
+                    new() { TypeName = nameof(GearboxItem), Quantity = 4 },
+                }
+            );
         }
     }
 
@@ -177,7 +179,7 @@ namespace Mines
                     () => LocString.Empty,
                     new PartsComponent.PartInfo[]
                     {
-                        new() { TypeName = nameof(HempMooringRopeItem), Quantity = 1 },
+                        new() { TypeName = nameof(GearboxItem), Quantity = 4 },
                     }
                 );
         }
