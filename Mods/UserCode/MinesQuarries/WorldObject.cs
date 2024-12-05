@@ -21,7 +21,6 @@ namespace Mines
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(PublicStorageComponent))]
     [RequireComponent(typeof(PluginModulesComponent))]
-    [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
