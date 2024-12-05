@@ -19,6 +19,7 @@ namespace Mines
     [Serialized]
     [RequireComponent(typeof(OnOffComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
+    [RequireComponent(typeof(PublicStorageComponent))]
     [RequireComponent(typeof(PluginModulesComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(CraftingComponent))]
@@ -62,7 +63,6 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(IronMineComponent))]
-    [RequireComponent(typeof(PublicStorageComponent))]
     public partial class IronMineObject : MineObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(IronMineItem);
@@ -75,8 +75,12 @@ namespace Mines
 
         protected override void Initialize()
         {
+            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
+            minimap.SetCategory(Localizer.DoStr("Crafting"));
+
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25); // same as a stockpile
+
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
@@ -104,7 +108,6 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(CopperMineComponent))]
-    [RequireComponent(typeof(PublicStorageComponent))]
     public partial class CopperMineObject : MineObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(CopperMineItem);
@@ -119,8 +122,12 @@ namespace Mines
 
         protected override void Initialize()
         {
+            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
+            minimap.SetCategory(Localizer.DoStr("Crafting"));
+
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25); // same as a stockpile
+
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
@@ -148,7 +155,6 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(GoldMineComponent))]
-    [RequireComponent(typeof(PublicStorageComponent))]
     public partial class GoldMineObject : MineObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(GoldMineItem);
@@ -161,8 +167,12 @@ namespace Mines
 
         protected override void Initialize()
         {
+            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
+            minimap.SetCategory(Localizer.DoStr("Crafting"));
+
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25); // same as a stockpile
+
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
