@@ -116,7 +116,7 @@ namespace Mines
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 12, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
