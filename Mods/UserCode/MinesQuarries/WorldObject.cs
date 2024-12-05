@@ -20,7 +20,6 @@ namespace Mines
     [RequireComponent(typeof(OnOffComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(PluginModulesComponent))]
-    [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
