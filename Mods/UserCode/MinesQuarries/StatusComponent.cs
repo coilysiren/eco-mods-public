@@ -157,7 +157,7 @@ namespace Mines
                 blockTypeMap: new Dictionary<string, string>
                 {
                     { "Eco.Mods.TechTree.GoldOreBlock", Item.Get<GoldOreItem>().UILink() },
-                    { "Eco.Mods.TechTree.GraniteBlock", Item.Get<GneissItem>().UILink() },
+                    { "Eco.Mods.TechTree.GraniteBlock", Item.Get<GraniteItem>().UILink() },
                 },
                 searchRadius: 3,
                 minProximity: 15
