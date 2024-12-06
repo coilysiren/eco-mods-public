@@ -7,30 +7,6 @@ namespace Mines
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
-    // public partial class CrudeIronMine : RecipeFamily
-    // {
-    //     public CrudeIronMine()
-    //     {
-    //         Recipe recipe = new();
-    //         LocString displayName = Localizer.DoStr("Crude Iron Mine");
-    //         recipe.Init(
-    //             name: this.GetType().Name,
-    //             displayName: displayName,
-    //             ingredients: new List<IngredientElement>
-    //             {
-    //                 new(typeof(StonePickaxeItem), 1, staticIngredient: true),
-    //                 new(typeof(HempMooringRopeItem), 5, staticIngredient: true),
-    //             },
-    //             items: new List<CraftingElement> { new CraftingElement<CrudeIronMineItem>() }
-    //         );
-    //         this.Recipes = new List<Recipe> { recipe };
-    //         this.LaborInCalories = CreateLaborInCaloriesValue(100);
-    //         this.CraftMinutes = CreateCraftTimeValue(start: 10);
-    //         this.Initialize(displayText: displayName, recipeType: typeof(CrudeIronMine));
-    //         CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipe: this);
-    //     }
-    // }
-
     [RequiresSkill(typeof(MechanicsSkill), 1)]
     public partial class IronMine : RecipeFamily
     {

@@ -33,35 +33,6 @@ namespace Mines
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
     }
 
-    // [Serialized]
-    // [RequireComponent(typeof(CrudeIronMineComponent))]
-    // public partial class CrudeIronMineObject : MineObject, IRepresentsItem
-    // {
-    //     public virtual Type RepresentedItemType => typeof(CrudeIronMineItem);
-    //     public override LocString DisplayName => Localizer.DoStr("Crude Iron Mine");
-
-    //     static CrudeIronMineObject()
-    //     {
-    //         AddOccupancy<CrudeIronMineObject>(
-    //             new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) }
-    //         );
-    //     }
-    // }
-
-    // [Serialized]
-    // [AllowPluginModules(
-    //     Tags = new[] { "AdvancedUpgrade" },
-    //     ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
-    // )]
-    // public partial class CrudeIronMineItem : WorldObjectItem<CrudeIronMineObject>
-    // {
-    //     protected override OccupancyContext GetOccupancyContext =>
-    //         new SideAttachedContext(
-    //             0 | DirectionAxisFlags.Down,
-    //             WorldObject.GetOccupancyInfo(this.WorldObjectType)
-    //         );
-    // }
-
     [Serialized]
     [RequireComponent(typeof(IronMineComponent))]
     public partial class IronMineObject : MineObject, IRepresentsItem

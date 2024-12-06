@@ -18,18 +18,12 @@ namespace Mines
         private readonly Dictionary<string, string> blockTypeMap = new();
         private readonly Dictionary<string, bool> validChecks = new();
         private readonly int searchRadius;
-        private readonly int minProximity;
         public override bool Enabled => this.validChecks.Values.All(found => found);
 
-        public MineComponent(
-            Dictionary<string, string> blockTypeMap,
-            int searchRadius,
-            int minProximity
-        )
+        public MineComponent(Dictionary<string, string> blockTypeMap, int searchRadius)
         {
             this.blockTypeMap = blockTypeMap;
             this.searchRadius = searchRadius;
-            this.minProximity = minProximity;
         }
 
         public override void Initialize()
@@ -68,22 +62,6 @@ namespace Mines
 
     [Serialized]
     [RequireComponent(typeof(StatusComponent), null)]
-    public class CrudeIronMineComponent : MineComponent
-    {
-        public CrudeIronMineComponent()
-            : base(
-                blockTypeMap: new Dictionary<string, string>
-                {
-                    { "Eco.Mods.TechTree.IronOreBlock", Item.Get<IronOreItem>().UILink() },
-                    { "Eco.Mods.TechTree.SandstoneBlock", Item.Get<SandstoneItem>().UILink() },
-                },
-                searchRadius: 1, // must be right on top of the ore
-                minProximity: 10
-            ) { }
-    }
-
-    [Serialized]
-    [RequireComponent(typeof(StatusComponent), null)]
     public class IronMineComponent : MineComponent
     {
         public IronMineComponent()
@@ -93,8 +71,7 @@ namespace Mines
                     { "Eco.Mods.TechTree.IronOreBlock", Item.Get<IronOreItem>().UILink() },
                     { "Eco.Mods.TechTree.SandstoneBlock", Item.Get<SandstoneItem>().UILink() },
                 },
-                searchRadius: 3,
-                minProximity: 15 // really only larger than the crude variant because the object is larger
+                searchRadius: 3
             ) { }
     }
 
@@ -109,8 +86,7 @@ namespace Mines
                     { "Eco.Mods.TechTree.CopperOreBlock", Item.Get<CopperOreItem>().UILink() },
                     { "Eco.Mods.TechTree.GraniteBlock", Item.Get<GraniteItem>().UILink() },
                 },
-                searchRadius: 3,
-                minProximity: 15
+                searchRadius: 3
             ) { }
     }
 
@@ -125,8 +101,7 @@ namespace Mines
                     { "Eco.Mods.TechTree.GoldOreBlock", Item.Get<GoldOreItem>().UILink() },
                     { "Eco.Mods.TechTree.GraniteBlock", Item.Get<GraniteItem>().UILink() },
                 },
-                searchRadius: 3,
-                minProximity: 15
+                searchRadius: 3
             ) { }
     }
 }

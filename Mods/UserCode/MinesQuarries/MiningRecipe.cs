@@ -7,39 +7,6 @@ namespace Mines
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
-    // [RequiresSkill(typeof(MiningSkill), 6)]
-    // public partial class CrudeIronOreMining : RecipeFamily
-    // {
-    //     public CrudeIronOreMining()
-    //     {
-    //         Recipe recipe = new();
-    //         LocString displayName = Localizer.DoStr("Crude Iron Ore Mining");
-    //         recipe.Init(
-    //             name: this.GetType().Name,
-    //             displayName: displayName,
-    //             ingredients: new List<IngredientElement>
-    //             {
-    //                 new(typeof(AdobeItem), 12, typeof(MiningSkill)),
-    //                 new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
-    //             },
-    //             items: new List<CraftingElement>
-    //             {
-    //                 new CraftingElement<IronOreItem>(20),
-    //                 new CraftingElement<SandstoneItem>(80),
-    //             }
-    //         );
-    //         this.Recipes = new List<Recipe> { recipe };
-    //         this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
-    //         this.CraftMinutes = CreateCraftTimeValue(
-    //             beneficiary: typeof(CrudeIronOreMining),
-    //             start: 4,
-    //             skillType: typeof(MiningSkill)
-    //         );
-    //         this.Initialize(displayText: displayName, recipeType: typeof(CrudeIronOreMining));
-    //         CraftingComponent.AddRecipe(tableType: typeof(CrudeIronMineObject), recipe: this);
-    //     }
-    // }
-
     [RequiresSkill(typeof(MiningSkill), 6)]
     public partial class IronOreMining : RecipeFamily
     {
