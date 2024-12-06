@@ -98,6 +98,13 @@ def copy_assets(ctx: invoke.Context, branch=""):
 def zip_assets(ctx: invoke.Context, mod):
     if os.path.exists(f"{mod}.zip"):
         os.remove(f"{mod}.zip")
+
+    if os.path.exists(os.path.join("./Mods/UserCode", mod, "bin")):
+        shutil.rmtree(f"./Mods/UserCode/{mod}/bin", ignore_errors=False, onerror=handleRemoveReadonly)
+
+    if os.path.exists(os.path.join("./Mods/UserCode", mod, "obj")):
+        shutil.rmtree(f"./Mods/UserCode/{mod}/obj", ignore_errors=False, onerror=handleRemoveReadonly)
+
     ctx.run(f"zip -r {mod}.zip ./Mods/UserCode/{mod}")
 
 
