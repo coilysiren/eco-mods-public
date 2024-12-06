@@ -69,6 +69,8 @@ namespace Mines
         Tags = new[] { "AdvancedUpgrade" },
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
+    [LocDisplayName("Iron Mine")]
+    [LocDescription("For the extraction of iron ore.")]
     public partial class IronMineItem : WorldObjectItem<IronMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -116,6 +118,8 @@ namespace Mines
         Tags = new[] { "AdvancedUpgrade" },
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
+    [LocDisplayName("Copper Mine")]
+    [LocDescription("For the extraction of copper ore.")]
     public partial class CopperMineItem : WorldObjectItem<CopperMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -161,6 +165,8 @@ namespace Mines
         Tags = new[] { "AdvancedUpgrade" },
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
+    [LocDisplayName("Gold Mine")]
+    [LocDescription("For the extraction of gold ore.")]
     public partial class GoldMineItem : WorldObjectItem<GoldMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
