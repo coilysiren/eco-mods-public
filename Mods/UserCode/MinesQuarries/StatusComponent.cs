@@ -2,14 +2,12 @@ namespace Mines
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Numerics;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Systems.NewTooltip;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Mods.TechTree;
-    using Eco.Shared.IoC;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Mineshafts;
@@ -19,8 +17,6 @@ namespace Mines
         private readonly Dictionary<string, StatusElement> blockStatusMap = new();
         private readonly Dictionary<string, string> blockTypeMap = new();
         private readonly Dictionary<string, bool> validChecks = new();
-
-        // private StatusElement? proximityStatus;
         private readonly int searchRadius;
         private readonly int minProximity;
         public override bool Enabled => this.validChecks.Values.All(found => found);
@@ -43,12 +39,8 @@ namespace Mines
                 this.blockStatusMap[block.Key] = this
                     .Parent.GetComponent<StatusComponent>(null)
                     .CreateStatusElement();
-                // this.proximityStatus = this
-                //     .Parent.GetComponent<StatusComponent>(null)
-                //     .CreateStatusElement();
             }
             this.FindBlocks();
-            // this.CheckProximity();
         }
 
         private void FindBlocks()
@@ -72,32 +64,6 @@ namespace Mines
                 }
             }
         }
-
-        // private void CheckProximity()
-        // {
-        //     ServiceHolder<IWorldObjectManager>
-        //         .Obj.All.Where(obj => obj is MineObject)
-        //         .ToList()
-        //         .ForEach(obj =>
-        //         {
-        //             if (Vector3.Distance(obj.Position, this.Parent.Position) < this.minProximity)
-        //             {
-        //                 this.validChecks["validProximity"] = false;
-        //                 this.proximityStatus?.SetStatusMessage(
-        //                     false,
-        //                     Localizer.DoStr(
-        //                         $"The nearest Mine must be {this.minProximity}m away"
-        //                     )
-        //                 );
-        //                 return;
-        //             }
-        //         });
-        //     this.validChecks["validProximity"] = true;
-        //     this.proximityStatus?.SetStatusMessage(
-        //         true,
-        //         Localizer.DoStr("Far enough from other Mines")
-        //     );
-        // }
     }
 
     [Serialized]
