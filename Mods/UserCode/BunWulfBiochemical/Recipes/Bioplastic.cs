@@ -36,7 +36,9 @@ namespace Eco.Mods.TechTree
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<PlasticItem>(6),
-                    // sold @ 50% profit = 6 / 6 = 1 per plastic
+                    // sold @ 50% profit = 6 / 6 = 1    per plastic
+                    // sold @ 0%  profit = 4 / 6 = 0.66 per plastic
+                    // with 0 cost crops = 3 / 6 = 0.5  per plastic
                 }
             );
             Recipes = new List<Recipe> { recipe };

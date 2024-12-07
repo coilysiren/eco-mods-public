@@ -36,7 +36,8 @@ namespace Eco.Mods.TechTree
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<SyntheticRubberItem>(30),
-                    // sold @ 50% profit = 30 / 30 = 1 per rubber
+                    // sold @ 50% profit = 30 / 30 = 1    per rubber
+                    // sold @ 0%  profit = 20 / 30 = 0.66 per rubber
                 }
             );
             Recipes = new List<Recipe> { recipe };

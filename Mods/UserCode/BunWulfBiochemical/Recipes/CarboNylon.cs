@@ -35,8 +35,9 @@ namespace Eco.Mods.TechTree
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<NylonItem>(16),
-                    // sold @ 50% profit = 6 / 24 = 0.5 per nylon
+                    new CraftingElement<NylonItem>(18),
+                    // sold @ 50% profit = 6 / 18 = 0.33 per nylon
+                    // sold @ 0%  profit = 4 / 18 = 0.22 per nylon
                 }
             );
             Recipes = new List<Recipe> { recipe };

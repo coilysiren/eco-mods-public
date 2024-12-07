@@ -19,19 +19,21 @@ namespace Eco.Mods.TechTree
                 {
                     // priced at 1 x 2 = 2
                     new(typeof(EthanolItem), 2, staticIngredient: true),
-                    // priced at 0.2 x 2 = 0.4
+                    // priced at 0.5 x 2 = 1
                     new(
                         typeof(PlasticItem),
                         2,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
-                    // ingredient cost = 2.4
+                    // ingredient cost = 3
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<BiodieselItem>(1),
-                    // sold @ 50% profit = 3.6 per biodiesel
+                    new CraftingElement<BiodieselItem>(2),
+                    // sold @ 50% profit   = 4.5 / 2 = 2.25 per biodiesel
+                    // sold @ 0%  profit   = 3 / 2   = 1.5 per biodiesel
+                    // you can make both the plastic and ethanol from scratch... so pure profit!
                 }
             );
             Recipes = new List<Recipe> { recipe };

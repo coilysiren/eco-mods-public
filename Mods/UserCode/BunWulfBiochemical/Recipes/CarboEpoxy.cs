@@ -36,7 +36,8 @@ namespace Eco.Mods.TechTree
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<EpoxyItem>(6),
-                    // sold @ 50% profit = 6 / 6 = 1 per epoxy
+                    // sold @ 50% profit = 6 / 6 = 1    per epoxy
+                    // sold @ 0%  profit = 4 / 6 = 0.66 per epoxy
                 }
             );
             Recipes = new List<Recipe> { recipe };
