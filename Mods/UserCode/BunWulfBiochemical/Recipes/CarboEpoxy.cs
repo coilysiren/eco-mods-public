@@ -24,19 +24,19 @@ namespace Eco.Mods.TechTree
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
-                    // priced at 0.15 x 10 = 1.5
+                    // priced at 0.3 x 10 = 3
                     new(
                         "Fat",
                         10,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
-                    // ingredient cost = 2.5
+                    // ingredient cost = 4
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<EpoxyItem>(2),
-                    // sold @ 50% profit = 3.75 / 2 = 1.9 per epoxy (two significant digits)
+                    new CraftingElement<EpoxyItem>(6),
+                    // sold @ 50% profit = 6 / 6 = 1 per epoxy
                 }
             );
             Recipes = new List<Recipe> { recipe };
