@@ -69,7 +69,8 @@ namespace Eco.Mods.TechTree
 
         protected override void Initialize()
         {
-            GetComponent<PartsComponent>()
+            this.GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Crafting"));
+            this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
                     new PartInfo[]
