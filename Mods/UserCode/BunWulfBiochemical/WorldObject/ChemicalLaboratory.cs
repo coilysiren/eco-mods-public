@@ -44,12 +44,12 @@ namespace Eco.Mods.TechTree
         typeof(BiochemistFrugalReqTalent)
     )]
     [Tag("Usable")]
-    [Ecopedia("Work Stations", "Researching", subPageName: "Chemical Laboratory Item")]
+    [Ecopedia("Work Stations", "Researching", subPageName: "Chemlab Item")]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
     public partial class ChemicalLaboratoryObject : WorldObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(ChemicalLaboratoryItem);
-        public override LocString DisplayName => Localizer.DoStr("Chemical Laboratory");
+        public override LocString DisplayName => Localizer.DoStr("Chemlab");
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
 
         static ChemicalLaboratoryObject()
@@ -82,11 +82,11 @@ namespace Eco.Mods.TechTree
     }
 
     [Serialized]
-    [LocDisplayName("Chemical Laboratory")]
+    [LocDisplayName("Chemlab")]
     [LocDescription("For more advanced research and manufacturing. Science rules!")]
     [IconGroup("World Object Minimap")]
     [Ecopedia("Work Stations", "Researching", createAsSubPage: true)]
-    [Weight(2000)] // Defines how heavy Chemical Laboratory is.
+    [Weight(2000)] // Defines how heavy Chemlab is.
     [Tag(nameof(SurfaceTags.CanBeOnRug))]
     [AllowPluginModules(
         Tags = new[] { "ModernUpgrade" },
@@ -111,15 +111,15 @@ namespace Eco.Mods.TechTree
     }
 
     [RequiresSkill(typeof(MechanicsSkill), 1)]
-    [Ecopedia("Work Stations", "Researching", subPageName: "Chemical Laboratory Item")]
+    [Ecopedia("Work Stations", "Researching", subPageName: "Chemlab Item")]
     public partial class ChemicalLaboratoryRecipe : RecipeFamily
     {
         public ChemicalLaboratoryRecipe()
         {
             Recipe recipe = new();
             recipe.Init(
-                name: "Chemical Laboratory", //noloc
-                displayName: Localizer.DoStr("Chemical Laboratory"),
+                name: "Chemlab", //noloc
+                displayName: Localizer.DoStr("Chemlab"),
                 ingredients: new List<IngredientElement>
                 {
                     new(
@@ -160,7 +160,7 @@ namespace Eco.Mods.TechTree
                 typeof(MechanicsParallelSpeedTalent)
             );
             Initialize(
-                displayText: Localizer.DoStr("Chemical Laboratory"),
+                displayText: Localizer.DoStr("Chemlab"),
                 recipeType: typeof(ChemicalLaboratoryRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
