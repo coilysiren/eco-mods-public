@@ -7,7 +7,7 @@ namespace Mines
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
-    [RequiresSkill(typeof(MiningSkill), 6)]
+    [RequiresSkill(typeof(MiningSkill), 5)]
     public partial class IronOreMining : RecipeFamily
     {
         public IronOreMining()
@@ -71,7 +71,7 @@ namespace Mines
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 6)]
+    [RequiresSkill(typeof(MiningSkill), 5)]
     public partial class CopperOreMining : RecipeFamily
     {
         public CopperOreMining()
@@ -135,7 +135,7 @@ namespace Mines
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 6)]
+    [RequiresSkill(typeof(MiningSkill), 5)]
     public partial class GoldOreMining : RecipeFamily
     {
         public GoldOreMining()
@@ -199,7 +199,7 @@ namespace Mines
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 6)]
+    [RequiresSkill(typeof(MiningSkill), 5)]
     public partial class CoalMining : RecipeFamily
     {
         public CoalMining()
