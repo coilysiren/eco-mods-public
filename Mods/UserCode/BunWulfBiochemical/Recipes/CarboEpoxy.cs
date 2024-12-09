@@ -1,17 +1,11 @@
-#pragma warning disable IDE0005
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-#pragma warning restore IDE0005
-
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Items.Recipes;
-using Eco.Gameplay.Skills;
-using Eco.Shared.Localization;
-
 namespace Eco.Mods.TechTree
 {
+    using System.Collections.Generic;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
+
     [RequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class CarboEpoxyRecipe : RecipeFamily
     {
@@ -30,19 +24,20 @@ namespace Eco.Mods.TechTree
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
-                    // priced at 0.15 x 10 = 1.5
+                    // priced at 0.3 x 10 = 3
                     new(
                         "Fat",
                         10,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
-                    // ingredient cost = 2.5
+                    // ingredient cost = 4
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<EpoxyItem>(2),
-                    // sold @ 50% profit = 3.75 / 2 = 1.9 per epoxy (two significant digits)
+                    new CraftingElement<EpoxyItem>(6),
+                    // sold @ 50% profit = 6 / 6 = 1    per epoxy
+                    // sold @ 0%  profit = 4 / 6 = 0.66 per epoxy
                 }
             );
             Recipes = new List<Recipe> { recipe };

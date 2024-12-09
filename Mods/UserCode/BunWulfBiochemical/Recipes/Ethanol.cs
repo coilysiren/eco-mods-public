@@ -1,17 +1,11 @@
-#pragma warning disable IDE0005
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-#pragma warning restore IDE0005
-
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Items.Recipes;
-using Eco.Gameplay.Skills;
-using Eco.Shared.Localization;
-
 namespace Eco.Mods.TechTree
 {
+    using System.Collections.Generic;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
+
     [RequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class VegetableEthanolRecipe : RecipeFamily
     {

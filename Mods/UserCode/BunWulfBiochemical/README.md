@@ -12,33 +12,23 @@ Unzip the archive into the server root directory (where the executable lives). T
 
 ### Plastic Container Biofuel, 50% Ethanol
 
-This recipe is strictly superior to the Oil Drilling recipe Biofuel, due to requiring "50%" of the ethanol that Oil Drilling requires, and doesn't require two professions to make. The recipe also uses a plastic container, presumably a plant based plastic container, to take iron out of the equation.
-
-The recipe is 2 ethanol, 2 plastic => 1 biodiesel
+This recipe is strictly superior to the Oil Drilling recipe Biofuel, due to requiring "50%" of the ethanol that Oil Drilling requires, and doesn't require two professions to make. The recipe also uses a plastic container, presumably a plant based plastic container, to take iron out of the equation. The recipe is ethanol, plastic => biodiesel.
 
 ### Plant Based Bioplastic
 
-Uses vegetable and fat to replicate something like corn based PLA. It uses vegetable tag instead of corn to make the recipe easier to use. This recipe idea was what spawned the entire idea of this mod.
-
-The recipe is 10 vegetable, 10 fat => 2 plastic
+Uses vegetable and fat to replicate something like corn based PLA. It uses vegetable tag instead of corn to make the recipe easier to use. This recipe idea was what spawned the entire idea of this mod. The recipe is vegetables, fat => plastic.
 
 ### Tree Rubber
 
-A more complex recipe requiring Eco's largest tree type. This recipe uses Ceiba logs and fat to produce synthetic rubber.
-
-The recipe is 40 ceiba log, 40 fat => 10 rubber
+A more complex recipe requiring Eco's largest tree type. This recipe uses Ceiba logs and fat to produce synthetic rubber. The recipe is ceiba log, fat => rubber.
 
 ### Coal Fat Epoxy
 
-This recipe uses coal and fat to make a more accessible version of Oil Drilling's Epoxy. Coal and fat were chosen to approximate some kind of "sticky" substance.
-
-The recipe is 1 coal, 10 fat => 2 epoxy
+This recipe uses coal and fat to make a more accessible version of Oil Drilling's Epoxy. Coal and fat were chosen to approximate some kind of "sticky" substance. The recipe is coal, fat => epoxy.
 
 ### Coal Based Nylon
 
-This recipe again uses coal and fat to create nylon. This recipe is based on the idea that nylon is a synthetic carbon based material.
-
-The recipe is 1 coal, 10 fat => 8 nylon
+This recipe again uses coal and fat to create nylon. This recipe is based on the idea that nylon is a synthetic carbon based material. The recipe is coal, fat => nylon
 
 ### Ethanol
 
