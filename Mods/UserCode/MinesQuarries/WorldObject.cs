@@ -1,7 +1,6 @@
 namespace Mines
 {
     using System;
-    using System.Collections.Generic;
     using Eco.Core.Items;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
@@ -26,24 +25,12 @@ namespace Mines
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
     [RequireComponent(typeof(PartsComponent))]
+    [RequireComponent(typeof(AirPollutionComponent))]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
     [Tag("Usable")]
     public partial class MineObject : WorldObject
     {
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
-    }
-
-    [Serialized]
-    [RequireComponent(typeof(IronMineComponent))]
-    public partial class IronMineObject : MineObject, IRepresentsItem
-    {
-        public virtual Type RepresentedItemType => typeof(IronMineItem);
-        public override LocString DisplayName => Localizer.DoStr("Iron Mine");
-
-        static IronMineObject()
-        {
-            AddOccupancy<IronMineObject>(new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) });
-        }
 
         protected override void Initialize()
         {
@@ -61,7 +48,18 @@ namespace Mines
                         new() { TypeName = nameof(GearboxItem), Quantity = 4 },
                     }
                 );
+
+            this.GetComponent<AirPollutionComponent>()
+                .Initialize(this.GetComponent<MineComponent>());
         }
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(IronMineComponent))]
+    public partial class IronMineObject : MineObject, IRepresentsItem
+    {
+        public virtual Type RepresentedItemType => typeof(IronMineItem);
+        public override LocString DisplayName => Localizer.DoStr("Iron Mine");
     }
 
     [Serialized]
@@ -86,31 +84,6 @@ namespace Mines
     {
         public virtual Type RepresentedItemType => typeof(CopperMineItem);
         public override LocString DisplayName => Localizer.DoStr("Copper Mine");
-
-        static CopperMineObject()
-        {
-            AddOccupancy<CopperMineObject>(
-                new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) }
-            );
-        }
-
-        protected override void Initialize()
-        {
-            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
-            minimap.SetCategory(Localizer.DoStr("Crafting"));
-
-            PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(50); // 2x a stockpile
-
-            PartsComponent parts = this.GetComponent<PartsComponent>();
-            parts.Config(
-                () => LocString.Empty,
-                new PartsComponent.PartInfo[]
-                {
-                    new() { TypeName = nameof(GearboxItem), Quantity = 4 },
-                }
-            );
-        }
     }
 
     [Serialized]
@@ -135,29 +108,6 @@ namespace Mines
     {
         public virtual Type RepresentedItemType => typeof(GoldMineItem);
         public override LocString DisplayName => Localizer.DoStr("Gold Mine");
-
-        static GoldMineObject()
-        {
-            AddOccupancy<GoldMineObject>(new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) });
-        }
-
-        protected override void Initialize()
-        {
-            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
-            minimap.SetCategory(Localizer.DoStr("Crafting"));
-
-            PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(50); // 2x a stockpile
-
-            this.GetComponent<PartsComponent>()
-                .Config(
-                    () => LocString.Empty,
-                    new PartsComponent.PartInfo[]
-                    {
-                        new() { TypeName = nameof(GearboxItem), Quantity = 4 },
-                    }
-                );
-        }
     }
 
     [Serialized]
@@ -182,29 +132,6 @@ namespace Mines
     {
         public virtual Type RepresentedItemType => typeof(CoalMineItem);
         public override LocString DisplayName => Localizer.DoStr("Coal Mine");
-
-        static CoalMineObject()
-        {
-            AddOccupancy<CoalMineObject>(new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) });
-        }
-
-        protected override void Initialize()
-        {
-            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
-            minimap.SetCategory(Localizer.DoStr("Crafting"));
-
-            PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(50); // 2x a stockpile
-
-            this.GetComponent<PartsComponent>()
-                .Config(
-                    () => LocString.Empty,
-                    new PartsComponent.PartInfo[]
-                    {
-                        new() { TypeName = nameof(GearboxItem), Quantity = 4 },
-                    }
-                );
-        }
     }
 
     [Serialized]
