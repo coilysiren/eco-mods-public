@@ -7,7 +7,7 @@ namespace Mines
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
-    [RequiresSkill(typeof(MechanicsSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 1)]
     public partial class IronMine : RecipeFamily
     {
         public IronMine()
@@ -29,14 +29,14 @@ namespace Mines
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronMine),
                 start: 10,
-                skillType: typeof(MechanicsSkill)
+                skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronMine));
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
         }
     }
 
-    [RequiresSkill(typeof(MechanicsSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 1)]
     public partial class CopperMine : RecipeFamily
     {
         public CopperMine()
@@ -58,14 +58,14 @@ namespace Mines
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperMine),
                 start: 10,
-                skillType: typeof(MechanicsSkill)
+                skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperMine));
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
         }
     }
 
-    [RequiresSkill(typeof(MechanicsSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 1)]
     public partial class GoldMine : RecipeFamily
     {
         public GoldMine()
@@ -87,14 +87,14 @@ namespace Mines
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldMine),
                 start: 10,
-                skillType: typeof(MechanicsSkill)
+                skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldMine));
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
         }
     }
 
-    [RequiresSkill(typeof(MechanicsSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 1)]
     public partial class CoalMine : RecipeFamily
     {
         public CoalMine()
@@ -116,7 +116,7 @@ namespace Mines
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CoalMine),
                 start: 10,
-                skillType: typeof(MechanicsSkill)
+                skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalMine));
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
