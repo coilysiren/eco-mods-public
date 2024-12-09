@@ -198,4 +198,68 @@ namespace Mines
             CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipe: this);
         }
     }
+
+    [RequiresSkill(typeof(MiningSkill), 6)]
+    public partial class CoalMining : RecipeFamily
+    {
+        public CoalMining()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Coal Mining");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<CoalItem>(20),
+                    new CraftingElement<SlagItem>(60),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(1800, typeof(MiningSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(CoalMining),
+                start: 12,
+                skillType: typeof(MiningSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(CoalMining));
+            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipe: this);
+        }
+    }
+
+    [RequiresSkill(typeof(MiningSkill), 6)]
+    public partial class CoalBlasting : RecipeFamily
+    {
+        public CoalBlasting()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Coal Blasting");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(DynamiteItem), 2, typeof(MiningSkill)),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<CrushedCoalItem>(20),
+                    new CraftingElement<CrushedSlagItem>(40),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(1800, typeof(MiningSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(CoalBlasting),
+                start: 12,
+                skillType: typeof(MiningSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(CoalBlasting));
+            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipe: this);
+        }
+    }
 }

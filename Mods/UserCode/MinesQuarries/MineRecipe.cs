@@ -93,4 +93,33 @@ namespace Mines
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
         }
     }
+
+    [RequiresSkill(typeof(MechanicsSkill), 1)]
+    public partial class CoalMine : RecipeFamily
+    {
+        public CoalMine()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Coal Mine");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(IronPickaxeItem), 1, staticIngredient: true),
+                    new(typeof(WoodenElevatorItem), 1, staticIngredient: true),
+                },
+                items: new List<CraftingElement> { new CraftingElement<CoalMineItem>() }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(CoalMine),
+                start: 10,
+                skillType: typeof(MechanicsSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(CoalMine));
+            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+        }
+    }
 }

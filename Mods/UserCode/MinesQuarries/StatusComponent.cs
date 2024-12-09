@@ -104,4 +104,18 @@ namespace Mines
                 searchRadius: 3
             ) { }
     }
+
+    [Serialized]
+    [RequireComponent(typeof(StatusComponent), null)]
+    public class CoalMineComponent : MineComponent
+    {
+        public CoalMineComponent()
+            : base(
+                blockTypeMap: new Dictionary<string, string>
+                {
+                    { "Eco.Mods.TechTree.CoalBlock", Item.Get<CoalItem>().UILink() },
+                },
+                searchRadius: 3
+            ) { }
+    }
 }

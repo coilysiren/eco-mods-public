@@ -175,4 +175,51 @@ namespace Mines
                 WorldObject.GetOccupancyInfo(this.WorldObjectType)
             );
     }
+
+    [Serialized]
+    [RequireComponent(typeof(CoalMineComponent))]
+    public partial class CoalMineObject : MineObject, IRepresentsItem
+    {
+        public virtual Type RepresentedItemType => typeof(CoalMineItem);
+        public override LocString DisplayName => Localizer.DoStr("Coal Mine");
+
+        static CoalMineObject()
+        {
+            AddOccupancy<CoalMineObject>(new List<BlockOccupancy>() { new(new Vector3i(0, 0, 0)) });
+        }
+
+        protected override void Initialize()
+        {
+            MinimapComponent minimap = this.GetComponent<MinimapComponent>();
+            minimap.SetCategory(Localizer.DoStr("Crafting"));
+
+            PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
+            storage.Initialize(50); // 2x a stockpile
+
+            this.GetComponent<PartsComponent>()
+                .Config(
+                    () => LocString.Empty,
+                    new PartsComponent.PartInfo[]
+                    {
+                        new() { TypeName = nameof(GearboxItem), Quantity = 4 },
+                    }
+                );
+        }
+    }
+
+    [Serialized]
+    [AllowPluginModules(
+        Tags = new[] { "AdvancedUpgrade" },
+        ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
+    )]
+    [LocDisplayName("Coal Mine")]
+    [LocDescription("For the extraction of coal.")]
+    public partial class CoalMineItem : WorldObjectItem<CoalMineObject>
+    {
+        protected override OccupancyContext GetOccupancyContext =>
+            new SideAttachedContext(
+                0 | DirectionAxisFlags.Down,
+                WorldObject.GetOccupancyInfo(this.WorldObjectType)
+            );
+    }
 }
