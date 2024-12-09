@@ -19,7 +19,7 @@ namespace Mines
         private readonly Dictionary<string, string> blockTypeMap = new();
         private readonly Dictionary<string, bool> validChecks = new();
         private readonly int searchRadius;
-        private readonly float pollutionTonsPerHour = 0.5f;
+        private readonly float pollutionTonsPerHour = 2;
         public override bool Enabled => this.validChecks.Values.All(found => found);
 
         public MineComponent(Dictionary<string, string> blockTypeMap, int searchRadius)
