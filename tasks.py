@@ -111,8 +111,8 @@ def zip_assets(ctx: invoke.Context, mod):
 @invoke.task
 def push_asset(ctx: invoke.Context, mod):
     zip_assets(ctx, mod)
-    ctx.run(f"scp {mod}.zip kai@kai-server:{server_path()}")
-    ctx.run(f'ssh -t kai@kai-server "cd {server_path()} && unzip -o {mod}.zip"')
+    ctx.run(f"scp {mod}.zip kai@kai-server:{LINUX_SERVER_PATH}")
+    ctx.run(f'ssh -t kai@kai-server "cd {LINUX_SERVER_PATH} && unzip -o {mod}.zip"')
 
 
 #######################
