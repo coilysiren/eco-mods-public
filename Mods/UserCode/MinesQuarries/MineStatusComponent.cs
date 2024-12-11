@@ -1,4 +1,4 @@
-namespace Mines
+namespace MinesQuarries
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -11,7 +11,6 @@ namespace Mines
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
     using Eco.Simulation.Settings;
-    using Mineshafts;
 
     public class MineComponent : WorldObjectComponent, IPolluter
     {
@@ -53,17 +52,19 @@ namespace Mines
                 StatusElement statusElement = blockStatus.Value;
                 if (statusElement != null)
                 {
-                    bool found = Mine.FindBlock(
+                    (bool, float) found = Search.FindBlocks(
                         this.Parent.Position,
                         blockStatus.Key,
                         this.searchRadius
                     );
                     string displayName = this.blockTypeMap[blockStatus.Key];
                     blockStatus.Value.SetStatusMessage(
-                        found,
-                        Localizer.DoStr(found ? $"{displayName} found" : $"{displayName} not found")
+                        found.Item1,
+                        Localizer.DoStr(
+                            found.Item1 ? $"{displayName} found" : $"{displayName} not found"
+                        )
                     );
-                    this.validChecks[blockStatus.Key] = found;
+                    this.validChecks[blockStatus.Key] = found.Item1;
                 }
             }
         }

@@ -1,4 +1,4 @@
-namespace Mines
+namespace MinesQuarries
 {
     using System;
     using Eco.Core.Items;

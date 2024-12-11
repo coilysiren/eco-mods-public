@@ -1,4 +1,4 @@
-namespace Mines
+namespace MinesQuarries
 {
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
