@@ -52,19 +52,17 @@ namespace MinesQuarries
                 StatusElement statusElement = blockStatus.Value;
                 if (statusElement != null)
                 {
-                    (bool, float) found = Search.FindBlocks(
+                    bool found = Search.FindBlock(
                         this.Parent.Position,
                         blockStatus.Key,
                         this.searchRadius
                     );
                     string displayName = this.blockTypeMap[blockStatus.Key];
                     blockStatus.Value.SetStatusMessage(
-                        found.Item1,
-                        Localizer.DoStr(
-                            found.Item1 ? $"{displayName} found" : $"{displayName} not found"
-                        )
+                        found,
+                        Localizer.DoStr(found ? $"{displayName} found" : $"{displayName} not found")
                     );
-                    this.validChecks[blockStatus.Key] = found.Item1;
+                    this.validChecks[blockStatus.Key] = found;
                 }
             }
         }
