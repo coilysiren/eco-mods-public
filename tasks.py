@@ -98,14 +98,21 @@ def copy_assets(ctx: invoke.Context, branch=""):
 def zip_assets(ctx: invoke.Context, mod):
     if os.path.exists(f"{mod}.zip"):
         os.remove(f"{mod}.zip")
+
+    if os.path.exists(os.path.join("./Mods/UserCode", mod, "bin")):
+        shutil.rmtree(f"./Mods/UserCode/{mod}/bin", ignore_errors=False, onerror=handleRemoveReadonly)
+
+    if os.path.exists(os.path.join("./Mods/UserCode", mod, "obj")):
+        shutil.rmtree(f"./Mods/UserCode/{mod}/obj", ignore_errors=False, onerror=handleRemoveReadonly)
+
     ctx.run(f"zip -r {mod}.zip ./Mods/UserCode/{mod}")
 
 
 @invoke.task
 def push_asset(ctx: invoke.Context, mod):
-    remote_path = "/home/kai/.local/share/Steam/steamapps/common/Eco/Eco_Data/Server"
-    ctx.run(f"scp {mod}.zip kai@kai-server:{remote_path}")
-    ctx.run(f'ssh -t kai@kai-server "cd {remote_path} && unzip -o {mod}.zip"')
+    zip_assets(ctx, mod)
+    ctx.run(f"scp {mod}.zip kai@kai-server:{LINUX_SERVER_PATH}")
+    ctx.run(f'ssh -t kai@kai-server "cd {LINUX_SERVER_PATH} && unzip -o {mod}.zip"')
 
 
 #######################
