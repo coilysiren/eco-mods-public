@@ -24,14 +24,14 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(1000) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill)); // TODO!!!
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SandstoneQuarrying),
-                start: 4, // TODO!!!
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SandstoneQuarrying));
-            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(SandstoneQuarryObject), recipe: this);
         }
     }
 }

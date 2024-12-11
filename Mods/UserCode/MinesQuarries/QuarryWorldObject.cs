@@ -34,15 +34,15 @@ namespace MinesQuarries
             minimap.SetCategory(Localizer.DoStr("Crafting"));
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
+            storage.Initialize(25);
             storage.Storage.AddInvRestriction(new NoBuildingRestriction());
             storage.Storage.AddInvRestriction(new DiggableExcavatableRestriction());
-            storage.Initialize(25);
         }
     }
 
     [Serialized]
     [RequireComponent(typeof(SandstoneQuarryComponent))]
-    public partial class SandstoneQuarryObject : MineObject, IRepresentsItem
+    public partial class SandstoneQuarryObject : QuarryObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(SandstoneQuarryItem);
         public override LocString DisplayName => Localizer.DoStr("Sandstone Quarry");

@@ -38,9 +38,9 @@ namespace MinesQuarries
             minimap.SetCategory(Localizer.DoStr("Crafting"));
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
+            storage.Initialize(25);
             storage.Storage.AddInvRestriction(new NoBuildingRestriction());
             storage.Storage.AddInvRestriction(new DiggableExcavatableRestriction());
-            storage.Initialize(25);
 
             this.GetComponent<PartsComponent>()
                 .Config(
@@ -51,8 +51,8 @@ namespace MinesQuarries
                     }
                 );
 
-            this.GetComponent<AirPollutionComponent>()
-                .Initialize(this.GetComponent<MineComponent>());
+            AirPollutionComponent airPollution = this.GetComponent<AirPollutionComponent>();
+            airPollution.Initialize(1);
         }
     }
 

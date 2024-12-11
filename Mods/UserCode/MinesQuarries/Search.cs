@@ -17,7 +17,7 @@ namespace MinesQuarries
             List<WrappedWorldPosition3i> blockLocations = GeneratePositionsToCheck(
                 position,
                 radius,
-                infiniteYAxis: true
+                maximumYAxis: true
             );
 
             foreach (WrappedWorldPosition3i blockLocation in blockLocations)
@@ -35,12 +35,15 @@ namespace MinesQuarries
             return false;
         }
 
-        public static Dictionary<string, float> FindBlockCounts(Vector3 position, int radius)
+        public static Dictionary<string, float> FindBlockConcentrations(
+            Vector3 position,
+            int radius
+        )
         {
             List<WrappedWorldPosition3i> blockLocations = GeneratePositionsToCheck(
                 position,
                 radius,
-                infiniteYAxis: false
+                maximumYAxis: false
             );
 
             Dictionary<string, float> blockCounts = new();
@@ -61,11 +64,9 @@ namespace MinesQuarries
                         continue;
                     }
 
-                    // Turns "Eco.Mods.TechTree.SulfurBlock" into "SulfurItem"
-                    string itemName = blockName.Split(".")[3].Replace("Block", "Item");
-
-                    // Skip anything without a UILink (example: Air)
-                    if (GetItemUILink(itemName) == new LocString())
+                    // Skip anything that doesn't have a UI link
+                    string itemName = GetDisplayName(blockName);
+                    if (itemName == "")
                     {
                         continue;
                     }
@@ -94,7 +95,7 @@ namespace MinesQuarries
         private static List<WrappedWorldPosition3i> GeneratePositionsToCheck(
             Vector3 position,
             int radius,
-            bool infiniteYAxis
+            bool maximumYAxis
         )
         {
             // Get a list of Vector3s that are within a 3d radius of the input position
@@ -110,11 +111,15 @@ namespace MinesQuarries
                 for (int z = -radius; z <= radius; z++)
                 {
                     Vector2i XZ = new(x, z);
-                    for (int y = 0; y <= (infiniteYAxis ? World.GetTopBlockY(XZ) : radius); y++)
+                    for (
+                        int y = maximumYAxis ? 0 : -radius;
+                        y <= (maximumYAxis ? World.GetTopBlockY(XZ) : radius);
+                        y++
+                    )
                     {
                         WrappedWorldPosition3i positionToCheck = WrappedWorldPosition3i.Create(
                             wrappedPosition.X + x,
-                            y,
+                            maximumYAxis ? y : wrappedPosition.Y + y,
                             wrappedPosition.Z + z
                         );
                         positionsToCheck.Add(positionToCheck);
@@ -124,12 +129,24 @@ namespace MinesQuarries
             return positionsToCheck;
         }
 
-        public static LocString GetItemUILink(string itemName)
+        public static LocString GetDisplayName(string blockName)
         {
+            // Skip empty block, specifically. This is a mine / quarry / pit, we don't care about empty space.
+            if (blockName.Contains("EmptyBlock"))
+            {
+                return new LocString("");
+            }
+
+            // Turn "Eco.Mods.TechTree.SulfurBlock" into "SulfurItem"
+            string itemName = blockName.Split(".")[^1].Replace("Block", "Item");
+
+            // Look for a "rich" UI link (example: ... <icon name="SandstoneItem"> ...)
             Item? item = Item.AllItemsExceptHidden.FirstOrDefault(i =>
-                itemName == i.DisplayName.ToString()!.ToLower()
+                itemName.ToLower() == i.Name.ToString()!.ToLower()
             );
-            return item.UILink();
+            LocString itemDisplayName = item.UILink();
+
+            return itemDisplayName;
         }
     }
 }

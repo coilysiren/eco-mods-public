@@ -10,28 +10,19 @@ namespace MinesQuarries
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
-    using Eco.Simulation.Settings;
 
-    public class MineComponent : WorldObjectComponent, IPolluter
+    public class MineComponent : WorldObjectComponent
     {
         private readonly Dictionary<string, StatusElement> blockStatusMap = new();
         private readonly Dictionary<string, string> blockTypeMap = new();
         private readonly Dictionary<string, bool> validChecks = new();
         private readonly int searchRadius;
-        private readonly float pollutionTonsPerHour = 2;
         public override bool Enabled => this.validChecks.Values.All(found => found);
 
         public MineComponent(Dictionary<string, string> blockTypeMap, int searchRadius)
         {
             this.blockTypeMap = blockTypeMap;
             this.searchRadius = searchRadius;
-        }
-
-        public float GetPollutionTonsPerHour()
-        {
-            return this.Enabled
-                ? this.pollutionTonsPerHour * EcoDef.Obj.ClimateSettings.PollutionMultiplier
-                : 0f;
         }
 
         public override void Initialize()

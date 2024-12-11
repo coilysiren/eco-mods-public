@@ -1,5 +1,6 @@
 namespace MinesQuarries
 {
+    using System;
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Objects;
@@ -25,7 +26,7 @@ namespace MinesQuarries
 
         private void FindBlocks()
         {
-            Dictionary<string, float> blocks = Search.FindBlockCounts(
+            Dictionary<string, float> blocks = Search.FindBlockConcentrations(
                 this.Parent.Position,
                 this.searchRadius
             );
@@ -33,7 +34,7 @@ namespace MinesQuarries
             bool foundAnyBlocks = false;
             foreach (KeyValuePair<string, float> block in blocks)
             {
-                LocString itemUILink = Search.GetItemUILink(block.Key);
+                LocString itemDisplayName = Search.GetDisplayName(block.Key);
                 StatusElement statusElement = this
                     .Parent.GetComponent<StatusComponent>(null)
                     .CreateStatusElement();
@@ -44,25 +45,39 @@ namespace MinesQuarries
                     bool foundEnoughBlocks = block.Value > this.percentage;
                     statusElement.SetStatusMessage(
                         foundEnoughBlocks,
-                        Localizer.DoStr($"{itemUILink}: {block.Value * 100}% concentration")
+                        Localizer.DoStr(
+                            $"{itemDisplayName}: {Math.Round(block.Value * 100)}% concentration (required: {Math.Round(this.percentage * 100)}%)"
+                        )
                     );
                     this.Status = foundEnoughBlocks;
                     foundAnyBlocks = true;
                 }
-
-                // Otherwise, just display that we found the block
-                statusElement.SetStatusMessage(
-                    true,
-                    Localizer.DoStr($"{itemUILink}: {block.Value * 100}% concentration")
-                );
+                else
+                {
+                    if (block.Value > 0.01)
+                    {
+                        // Otherwise, just display that we found the block
+                        statusElement.SetStatusMessage(
+                            true,
+                            Localizer.DoStr(
+                                $"{itemDisplayName}: {Math.Round(block.Value * 100)}% concentration"
+                            )
+                        );
+                    }
+                }
             }
             if (!foundAnyBlocks)
             {
-                LocString itemUILink = Search.GetItemUILink(this.blockType);
+                LocString itemDisplayName = Search.GetDisplayName(this.blockType);
                 StatusElement statusElement = this
                     .Parent.GetComponent<StatusComponent>(null)
                     .CreateStatusElement();
-                statusElement.SetStatusMessage(false, Localizer.DoStr($"{itemUILink}: not found"));
+                statusElement.SetStatusMessage(
+                    false,
+                    Localizer.DoStr(
+                        $"{itemDisplayName}: not found (required: {Math.Round(this.percentage * 100)}%"
+                    )
+                );
             }
         }
     }
@@ -74,8 +89,8 @@ namespace MinesQuarries
         public SandstoneQuarryComponent()
             : base(
                 blockType: "Eco.Mods.TechTree.SandstoneBlock",
-                searchRadius: 5,
-                percentage: 0.333f
+                searchRadius: 3,
+                percentage: 0.50f
             ) { }
     }
 }
