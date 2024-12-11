@@ -35,14 +35,14 @@ namespace MinesQuarries
             foreach (KeyValuePair<string, float> block in blocks)
             {
                 LocString itemDisplayName = Search.GetDisplayName(block.Key);
-                StatusElement statusElement = this
-                    .Parent.GetComponent<StatusComponent>(null)
-                    .CreateStatusElement();
 
                 // If this is the block we are looking for, check if it is above the percentage threshold
                 if (block.Key == this.blockType)
                 {
                     bool foundEnoughBlocks = block.Value > this.percentage;
+                    StatusElement statusElement = this
+                        .Parent.GetComponent<StatusComponent>(null)
+                        .CreateStatusElement();
                     statusElement.SetStatusMessage(
                         foundEnoughBlocks,
                         Localizer.DoStr(
@@ -52,11 +52,14 @@ namespace MinesQuarries
                     this.Status = foundEnoughBlocks;
                     foundAnyBlocks = true;
                 }
+                // Otherwise, just display that we found the block
                 else
                 {
                     if (block.Value > 0.01)
                     {
-                        // Otherwise, just display that we found the block
+                        StatusElement statusElement = this
+                            .Parent.GetComponent<StatusComponent>(null)
+                            .CreateStatusElement();
                         statusElement.SetStatusMessage(
                             true,
                             Localizer.DoStr(
@@ -75,7 +78,7 @@ namespace MinesQuarries
                 statusElement.SetStatusMessage(
                     false,
                     Localizer.DoStr(
-                        $"{itemDisplayName}: not found (required: {Math.Round(this.percentage * 100)}%"
+                        $"{itemDisplayName}: not found (required: {Math.Round(this.percentage * 100)}%)"
                     )
                 );
             }
