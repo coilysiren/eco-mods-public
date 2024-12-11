@@ -127,4 +127,18 @@ namespace Mines
                 searchRadius: 3
             ) { }
     }
+
+    [Serialized]
+    [RequireComponent(typeof(StatusComponent), null)]
+    public class SulfurMineComponent : MineComponent
+    {
+        public SulfurMineComponent()
+            : base(
+                blockTypeMap: new Dictionary<string, string>
+                {
+                    { "Eco.Mods.TechTree.SulfurBlock", Item.Get<SulfurItem>().UILink() },
+                },
+                searchRadius: 3
+            ) { }
+    }
 }

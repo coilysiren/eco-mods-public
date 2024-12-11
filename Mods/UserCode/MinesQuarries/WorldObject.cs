@@ -38,14 +38,16 @@ namespace Mines
             minimap.SetCategory(Localizer.DoStr("Crafting"));
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
-            storage.Initialize(50); // 2x a stockpile
+            storage.Storage.AddInvRestriction(new NoBuildingRestriction());
+            storage.Storage.AddInvRestriction(new DiggableExcavatableRestriction());
+            storage.Initialize(25);
 
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
                     new PartsComponent.PartInfo[]
                     {
-                        new() { TypeName = nameof(GearboxItem), Quantity = 4 },
+                        new() { TypeName = nameof(GearboxItem), Quantity = 2 },
                     }
                 );
 
@@ -142,6 +144,30 @@ namespace Mines
     [LocDisplayName("Coal Mine")]
     [LocDescription("For the extraction of coal.")]
     public partial class CoalMineItem : WorldObjectItem<CoalMineObject>
+    {
+        protected override OccupancyContext GetOccupancyContext =>
+            new SideAttachedContext(
+                0 | DirectionAxisFlags.Down,
+                WorldObject.GetOccupancyInfo(this.WorldObjectType)
+            );
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(SulfurMineComponent))]
+    public partial class SulfurMineObject : MineObject, IRepresentsItem
+    {
+        public virtual Type RepresentedItemType => typeof(SulfurMineItem);
+        public override LocString DisplayName => Localizer.DoStr("Sulfur Mine");
+    }
+
+    [Serialized]
+    [AllowPluginModules(
+        Tags = new[] { "AdvancedUpgrade" },
+        ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
+    )]
+    [LocDisplayName("Sulfure Mine")]
+    [LocDescription("For the extraction of sulfur.")]
+    public partial class SulfurMineItem : WorldObjectItem<SulfurMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
             new SideAttachedContext(

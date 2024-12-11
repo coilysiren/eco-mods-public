@@ -374,4 +374,96 @@ namespace Mines
             CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipe: this);
         }
     }
+
+    [RequiresSkill(typeof(MiningSkill), 5)]
+    public partial class SulfurMining : RecipeFamily
+    {
+        public SulfurMining()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Sulfur Mining");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<SulfurItem>(20),
+                    new CraftingElement<SlagItem>(60),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(SulfurMining),
+                start: 4,
+                skillType: typeof(MiningSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(SulfurMining));
+            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipe: this);
+        }
+    }
+
+    [RequiresSkill(typeof(MiningSkill), 6)]
+    public partial class SulfurBlasting : RecipeFamily
+    {
+        public SulfurBlasting()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Sulfur Blasting");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(DynamiteItem), 4, typeof(MiningSkill)),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<CrushedSulfurItem>(20),
+                    new CraftingElement<CrushedSlagItem>(40),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(SulfurBlasting),
+                start: 4,
+                skillType: typeof(MiningSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(SulfurBlasting));
+            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipe: this);
+        }
+    }
+
+    [RequiresSkill(typeof(MiningSkill), 7)]
+    public partial class SulfurBoring : RecipeFamily
+    {
+        public SulfurBoring()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Sulfur Boring");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
+                },
+                items: new List<CraftingElement> { new CraftingElement<CrushedSulfurItem>(20) }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(SulfurBoring),
+                start: 4,
+                skillType: typeof(MiningSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(SulfurBoring));
+            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipe: this);
+        }
+    }
 }

@@ -122,4 +122,33 @@ namespace Mines
             CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
         }
     }
+
+    [RequiresSkill(typeof(MiningSkill), 4)]
+    public partial class SulfurMine : RecipeFamily
+    {
+        public SulfurMine()
+        {
+            Recipe recipe = new();
+            LocString displayName = Localizer.DoStr("Sulfur Mine");
+            recipe.Init(
+                name: this.GetType().Name,
+                displayName: displayName,
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(IronPickaxeItem), 1, staticIngredient: true),
+                    new(typeof(WoodenElevatorItem), 1, staticIngredient: true),
+                },
+                items: new List<CraftingElement> { new CraftingElement<SulfurMineItem>() }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(SulfurMine),
+                start: 10,
+                skillType: typeof(MiningSkill)
+            );
+            this.Initialize(displayText: displayName, recipeType: typeof(SulfurMine));
+            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+        }
+    }
 }
