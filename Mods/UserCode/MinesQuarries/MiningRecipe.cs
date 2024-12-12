@@ -19,12 +19,12 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<IronOreItem>(20),
-                    new CraftingElement<SandstoneItem>(60),
+                    new CraftingElement<SandstoneItem>(40),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -56,7 +56,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CrushedIronOreItem>(20),
-                    new CraftingElement<CrushedSandstoneItem>(40),
+                    new CraftingElement<CrushedSandstoneItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -111,12 +111,12 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CopperOreItem>(20),
-                    new CraftingElement<GraniteItem>(60),
+                    new CraftingElement<GraniteItem>(40),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -148,7 +148,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CrushedCopperOreItem>(20),
-                    new CraftingElement<CrushedGraniteItem>(40),
+                    new CraftingElement<CrushedGraniteItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -203,12 +203,12 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 8, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<GoldOreItem>(20),
-                    new CraftingElement<GraniteItem>(60),
+                    new CraftingElement<GraniteItem>(40),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -235,12 +235,12 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(DynamiteItem), 8, typeof(MiningSkill)),
+                    new(typeof(DynamiteItem), 4, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CrushedGoldOreItem>(20),
-                    new CraftingElement<CrushedGraniteItem>(40),
+                    new CraftingElement<CrushedGraniteItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -267,7 +267,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(MiningChargeItem), 4, typeof(MiningSkill)),
+                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement> { new CraftingElement<CrushedGoldOreItem>(20) }
             );
@@ -295,7 +295,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -387,7 +387,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(HempMooringRopeItem), 4, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 6, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
