@@ -46,7 +46,7 @@ namespace MinesQuarries
                     statusElement.SetStatusMessage(
                         foundEnoughBlocks,
                         Localizer.DoStr(
-                            $"{itemDisplayName}: {Math.Round(block.Value * 100)}% concentration (required: {Math.Round(this.percentage * 100)}%)"
+                            $"{itemDisplayName}: {Math.Round(block.Value * 100)}% concentration (required: >{Math.Round(this.percentage * 100)}%)"
                         )
                     );
                     this.Status = foundEnoughBlocks;
@@ -78,7 +78,7 @@ namespace MinesQuarries
                 statusElement.SetStatusMessage(
                     false,
                     Localizer.DoStr(
-                        $"{itemDisplayName}: not found (required: {Math.Round(this.percentage * 100)}%)"
+                        $"{itemDisplayName}: not found (required: >{Math.Round(this.percentage * 100)}%)"
                     )
                 );
             }
