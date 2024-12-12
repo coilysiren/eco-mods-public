@@ -63,4 +63,76 @@ namespace MinesQuarries
                 WorldObject.GetOccupancyInfo(this.WorldObjectType)
             );
     }
+
+    [Serialized]
+    [RequireComponent(typeof(LimestoneQuarryComponent))]
+    public partial class LimestoneQuarryObject : QuarryObject, IRepresentsItem
+    {
+        public virtual Type RepresentedItemType => typeof(LimestoneQuarryItem);
+        public override LocString DisplayName => Localizer.DoStr("Limestone Quarry");
+    }
+
+    [Serialized]
+    [AllowPluginModules(
+        Tags = new[] { "BasicUpgrade" },
+        ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
+    )]
+    [LocDisplayName("Limestone Quarry")]
+    [LocDescription("For the extraction of limestone.")]
+    public partial class LimestoneQuarryItem : WorldObjectItem<LimestoneQuarryObject>
+    {
+        protected override OccupancyContext GetOccupancyContext =>
+            new SideAttachedContext(
+                0 | DirectionAxisFlags.Down,
+                WorldObject.GetOccupancyInfo(this.WorldObjectType)
+            );
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(GraniteQuarryComponent))]
+    public partial class GraniteQuarryObject : QuarryObject, IRepresentsItem
+    {
+        public virtual Type RepresentedItemType => typeof(GraniteQuarryItem);
+        public override LocString DisplayName => Localizer.DoStr("Granite Quarry");
+    }
+
+    [Serialized]
+    [AllowPluginModules(
+        Tags = new[] { "BasicUpgrade" },
+        ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
+    )]
+    [LocDisplayName("Granite Quarry")]
+    [LocDescription("For the extraction of granite.")]
+    public partial class GraniteQuarryItem : WorldObjectItem<GraniteQuarryObject>
+    {
+        protected override OccupancyContext GetOccupancyContext =>
+            new SideAttachedContext(
+                0 | DirectionAxisFlags.Down,
+                WorldObject.GetOccupancyInfo(this.WorldObjectType)
+            );
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(ShaleQuarryComponent))]
+    public partial class ShaleQuarryObject : QuarryObject, IRepresentsItem
+    {
+        public virtual Type RepresentedItemType => typeof(ShaleQuarryItem);
+        public override LocString DisplayName => Localizer.DoStr("Shale Quarry");
+    }
+
+    [Serialized]
+    [AllowPluginModules(
+        Tags = new[] { "BasicUpgrade" },
+        ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
+    )]
+    [LocDisplayName("Shale Quarry")]
+    [LocDescription("For the extraction of shale.")]
+    public partial class ShaleQuarryItem : WorldObjectItem<ShaleQuarryObject>
+    {
+        protected override OccupancyContext GetOccupancyContext =>
+            new SideAttachedContext(
+                0 | DirectionAxisFlags.Down,
+                WorldObject.GetOccupancyInfo(this.WorldObjectType)
+            );
+    }
 }

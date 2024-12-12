@@ -96,4 +96,40 @@ namespace MinesQuarries
                 percentage: 0.50f
             ) { }
     }
+
+    [Serialized]
+    [RequireComponent(typeof(StatusComponent), null)]
+    public class LimestoneQuarryComponent : QuarryComponent
+    {
+        public LimestoneQuarryComponent()
+            : base(
+                blockType: "Eco.Mods.TechTree.LimestoneBlock",
+                searchRadius: 3,
+                percentage: 0.50f
+            ) { }
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(StatusComponent), null)]
+    public class GraniteQuarryComponent : QuarryComponent
+    {
+        public GraniteQuarryComponent()
+            : base(
+                blockType: "Eco.Mods.TechTree.GraniteBlock", //
+                searchRadius: 3,
+                percentage: 0.50f
+            ) { }
+    }
+
+    [Serialized]
+    [RequireComponent(typeof(StatusComponent), null)]
+    public class ShaleQuarryComponent : QuarryComponent
+    {
+        public ShaleQuarryComponent()
+            : base(
+                blockType: "Eco.Mods.TechTree.ShaleBlock", //
+                searchRadius: 3,
+                percentage: 0.50f
+            ) { }
+    }
 }
