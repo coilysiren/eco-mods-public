@@ -24,7 +24,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(800) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SandstoneQuarrying),
                 start: 10,
@@ -52,7 +52,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(800) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(LimestoneQuarrying),
                 start: 10,
@@ -80,7 +80,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<GraniteItem>(800) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GraniteQuarrying),
                 start: 10,
@@ -108,7 +108,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<ShaleItem>(800) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ShaleQuarrying),
                 start: 10,
