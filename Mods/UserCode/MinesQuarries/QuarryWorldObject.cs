@@ -54,7 +54,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
     )]
     [LocDisplayName("Sandstone Quarry")]
-    [LocDescription("For the extraction of sandstone.")]
+    [LocDescription(
+        "For the extraction of sandstone. Must be placed on a sandstone deposit. Doesn't exhaust the deposit."
+    )]
     public partial class SandstoneQuarryItem : WorldObjectItem<SandstoneQuarryObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -78,7 +80,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
     )]
     [LocDisplayName("Limestone Quarry")]
-    [LocDescription("For the extraction of limestone.")]
+    [LocDescription(
+        "For the extraction of limestone. Must be placed on a limestone deposit. Doesn't exhaust the deposit."
+    )]
     public partial class LimestoneQuarryItem : WorldObjectItem<LimestoneQuarryObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -102,7 +106,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
     )]
     [LocDisplayName("Granite Quarry")]
-    [LocDescription("For the extraction of granite.")]
+    [LocDescription(
+        "For the extraction of granite. Must be placed on a granite deposit. Doesn't exhaust the deposit."
+    )]
     public partial class GraniteQuarryItem : WorldObjectItem<GraniteQuarryObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -126,7 +132,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningBasicUpgradeItem) }
     )]
     [LocDisplayName("Shale Quarry")]
-    [LocDescription("For the extraction of shale.")]
+    [LocDescription(
+        "For the extraction of shale. Must be placed on a shale deposit. Doesn't exhaust the deposit."
+    )]
     public partial class ShaleQuarryItem : WorldObjectItem<ShaleQuarryObject>
     {
         protected override OccupancyContext GetOccupancyContext =>

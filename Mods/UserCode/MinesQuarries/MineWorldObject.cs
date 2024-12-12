@@ -70,7 +70,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
     [LocDisplayName("Iron Mine")]
-    [LocDescription("For the extraction of iron ore.")]
+    [LocDescription(
+        "For the extraction of iron ore. Must be placed above an iron deposit. Produces waste rock and pollution. Doesn't exhaust the deposit."
+    )]
     public partial class IronMineItem : WorldObjectItem<IronMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -94,7 +96,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
     [LocDisplayName("Copper Mine")]
-    [LocDescription("For the extraction of copper ore.")]
+    [LocDescription(
+        "For the extraction of copper ore. Must be placed above a copper deposit. Produces waste rock and pollution. Doesn't exhaust the deposit."
+    )]
     public partial class CopperMineItem : WorldObjectItem<CopperMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -118,7 +122,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
     [LocDisplayName("Gold Mine")]
-    [LocDescription("For the extraction of gold ore.")]
+    [LocDescription(
+        "For the extraction of gold ore. Must be placed above a gold deposit. Produces waste rock and pollution. Doesn't exhaust the deposit."
+    )]
     public partial class GoldMineItem : WorldObjectItem<GoldMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -142,7 +148,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
     [LocDisplayName("Coal Mine")]
-    [LocDescription("For the extraction of coal.")]
+    [LocDescription(
+        "For the extraction of coal. Must be placed above a coal deposit. Produces waste rock and pollution. Doesn't exhaust the deposit."
+    )]
     public partial class CoalMineItem : WorldObjectItem<CoalMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>
@@ -166,7 +174,9 @@ namespace MinesQuarries
         ItemTypes = new[] { typeof(MiningAdvancedUpgradeItem) }
     )]
     [LocDisplayName("Sulfure Mine")]
-    [LocDescription("For the extraction of sulfur.")]
+    [LocDescription(
+        "For the extraction of sulfur. Must be placed above a sulfur deposit. Produces waste rock and pollution. Doesn't exhaust the deposit."
+    )]
     public partial class SulfurMineItem : WorldObjectItem<SulfurMineObject>
     {
         protected override OccupancyContext GetOccupancyContext =>

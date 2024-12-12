@@ -77,9 +77,7 @@ namespace MinesQuarries
                     .CreateStatusElement();
                 statusElement.SetStatusMessage(
                     false,
-                    Localizer.DoStr(
-                        $"{itemDisplayName}: not found (required: >{Math.Round(this.percentage * 100)}%)"
-                    )
+                    Localizer.DoStr($"{itemDisplayName}: not found")
                 );
             }
         }
