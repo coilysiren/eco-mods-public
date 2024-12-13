@@ -300,7 +300,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CoalItem>(20),
-                    new CraftingElement<SlagItem>(40),
+                    new CraftingElement<ShaleItem>(40),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -332,7 +332,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CrushedCoalItem>(20),
-                    new CraftingElement<CrushedSlagItem>(20),
+                    new CraftingElement<CrushedShaleItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -392,7 +392,8 @@ namespace MinesQuarries
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<SulfurItem>(20),
-                    new CraftingElement<SlagItem>(40),
+                    new CraftingElement<SandstoneItem>(20),
+                    new CraftingElement<LimestoneItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -424,7 +425,8 @@ namespace MinesQuarries
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<CrushedSulfurItem>(20),
-                    new CraftingElement<CrushedSlagItem>(20),
+                    new CraftingElement<CrushedSandstoneItem>(10),
+                    new CraftingElement<CrushedLimestoneItem>(10),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };

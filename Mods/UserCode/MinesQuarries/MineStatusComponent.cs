@@ -113,6 +113,7 @@ namespace MinesQuarries
                 blockTypeMap: new Dictionary<string, string>
                 {
                     { "Eco.Mods.TechTree.CoalBlock", Item.Get<CoalItem>().UILink() },
+                    { "Eco.Mods.TechTree.ShaleBlock", Item.Get<ShaleItem>().UILink() },
                 },
                 searchRadius: 3
             ) { }
@@ -127,6 +128,8 @@ namespace MinesQuarries
                 blockTypeMap: new Dictionary<string, string>
                 {
                     { "Eco.Mods.TechTree.SulfurBlock", Item.Get<SulfurItem>().UILink() },
+                    { "Eco.Mods.TechTree.SandstoneBlock", Item.Get<SandstoneItem>().UILink() },
+                    { "Eco.Mods.TechTree.LimestoneBlock", Item.Get<LimestoneItem>().UILink() },
                 },
                 searchRadius: 3
             ) { }
