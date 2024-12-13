@@ -46,6 +46,7 @@ namespace Eco.Mods.TechTree
     [Tag("Usable")]
     [Ecopedia("Work Stations", "Researching", subPageName: "Chemlab Item")]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
+    [RepairRequiresSkill(typeof(SelfImprovementSkill), 5)]
     public partial class ChemicalLaboratoryObject : WorldObject, IRepresentsItem
     {
         public virtual Type RepresentedItemType => typeof(ChemicalLaboratoryItem);
