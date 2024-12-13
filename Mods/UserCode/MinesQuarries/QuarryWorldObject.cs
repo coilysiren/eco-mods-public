@@ -1,6 +1,7 @@
 namespace MinesQuarries
 {
     using System;
+    using System.Collections.Generic;
     using Eco.Core.Items;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
@@ -30,7 +31,31 @@ namespace MinesQuarries
 
         static QuarryObject()
         {
-            AddOccupancy<QuarryObject>(new List<BlockOccupancy>() { new(new Vector3i(3, 2, 3)) });
+            AddOccupancy<QuarryObject>(
+                new List<BlockOccupancy>()
+                {
+                    // first layer, 3x1x3 @ y=0
+                    new(new Vector3i(0, 0, 0)),
+                    new(new Vector3i(1, 0, 0)),
+                    new(new Vector3i(2, 0, 0)),
+                    new(new Vector3i(0, 0, 1)),
+                    new(new Vector3i(1, 0, 1)),
+                    new(new Vector3i(2, 0, 1)),
+                    new(new Vector3i(0, 0, 2)),
+                    new(new Vector3i(1, 0, 2)),
+                    new(new Vector3i(2, 0, 2)),
+                    // second layer, 3x1x3 @ y=1
+                    new(new Vector3i(0, 1, 0)),
+                    new(new Vector3i(1, 1, 0)),
+                    new(new Vector3i(2, 1, 0)),
+                    new(new Vector3i(0, 1, 1)),
+                    new(new Vector3i(1, 1, 1)),
+                    new(new Vector3i(2, 1, 1)),
+                    new(new Vector3i(0, 1, 2)),
+                    new(new Vector3i(1, 1, 2)),
+                    new(new Vector3i(2, 1, 2)),
+                }
+            );
         }
 
         protected override void Initialize()

@@ -7,7 +7,7 @@ namespace MinesQuarries
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
-    [RequiresSkill(typeof(MiningSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 4)]
     public partial class SandstoneQuarry : RecipeFamily
     {
         public SandstoneQuarry()
@@ -36,7 +36,7 @@ namespace MinesQuarries
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 4)]
     public partial class LimestoneQuarry : RecipeFamily
     {
         public LimestoneQuarry()
@@ -65,7 +65,7 @@ namespace MinesQuarries
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 4)]
     public partial class GraniteQuarry : RecipeFamily
     {
         public GraniteQuarry()
@@ -94,7 +94,7 @@ namespace MinesQuarries
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 1)]
+    [RequiresSkill(typeof(MiningSkill), 4)]
     public partial class ShaleQuarry : RecipeFamily
     {
         public ShaleQuarry()
