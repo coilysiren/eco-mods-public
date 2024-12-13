@@ -28,6 +28,11 @@ namespace MinesQuarries
     {
         public override TableTextureMode TableTexture => TableTextureMode.Stone;
 
+        static QuarryObject()
+        {
+            AddOccupancy<QuarryObject>(new List<BlockOccupancy>() { new(new Vector3i(3, 2, 3)) });
+        }
+
         protected override void Initialize()
         {
             MinimapComponent minimap = this.GetComponent<MinimapComponent>();
