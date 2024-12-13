@@ -20,7 +20,7 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
-                    new("MortaredStone", 20, staticIngredient: true),
+                    new("MortaredStone", 80, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<SandstoneQuarryItem>() }
             );
@@ -49,7 +49,7 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
-                    new("MortaredStone", 20, staticIngredient: true),
+                    new("MortaredStone", 80, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<LimestoneQuarryItem>() }
             );
@@ -78,7 +78,7 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
-                    new("MortaredStone", 20, staticIngredient: true),
+                    new("MortaredStone", 80, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<GraniteQuarryItem>() }
             );
@@ -107,7 +107,7 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
-                    new("MortaredStone", 20, staticIngredient: true),
+                    new("MortaredStone", 80, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<ShaleQuarryItem>() }
             );
