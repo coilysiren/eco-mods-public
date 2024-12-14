@@ -85,7 +85,7 @@ namespace MinesQuarries
                 {
                     new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<CrushedIronOreItem>(10) }
+                items: new List<CraftingElement> { new CraftingElement<CrushedIronOreItem>(80) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
@@ -177,7 +177,7 @@ namespace MinesQuarries
                 {
                     new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<CrushedCopperOreItem>(10) }
+                items: new List<CraftingElement> { new CraftingElement<CrushedCopperOreItem>(80) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
@@ -269,7 +269,7 @@ namespace MinesQuarries
                 {
                     new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<CrushedGoldOreItem>(10) }
+                items: new List<CraftingElement> { new CraftingElement<CrushedGoldOreItem>(80) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
@@ -361,7 +361,7 @@ namespace MinesQuarries
                 {
                     new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<CrushedCoalItem>(10) }
+                items: new List<CraftingElement> { new CraftingElement<CrushedCoalItem>(80) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
@@ -455,7 +455,7 @@ namespace MinesQuarries
                 {
                     new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<CrushedSulfurItem>(10) }
+                items: new List<CraftingElement> { new CraftingElement<CrushedSulfurItem>(80) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(1200, typeof(MiningSkill));
