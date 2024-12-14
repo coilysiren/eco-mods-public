@@ -29,34 +29,36 @@ namespace MinesQuarries
     {
         public override TableTextureMode TableTexture => TableTextureMode.Stone;
 
-        static QuarryObject()
-        {
-            AddOccupancy<QuarryObject>(
-                new List<BlockOccupancy>()
-                {
-                    // first layer, 3x1x3 @ y=0
-                    new(new Vector3i(0, 0, 0)),
-                    new(new Vector3i(1, 0, 0)),
-                    new(new Vector3i(2, 0, 0)),
-                    new(new Vector3i(0, 0, 1)),
-                    new(new Vector3i(1, 0, 1)),
-                    new(new Vector3i(2, 0, 1)),
-                    new(new Vector3i(0, 0, 2)),
-                    new(new Vector3i(1, 0, 2)),
-                    new(new Vector3i(2, 0, 2)),
-                    // second layer, 3x1x3 @ y=1
-                    new(new Vector3i(0, 1, 0)),
-                    new(new Vector3i(1, 1, 0)),
-                    new(new Vector3i(2, 1, 0)),
-                    new(new Vector3i(0, 1, 1)),
-                    new(new Vector3i(1, 1, 1)),
-                    new(new Vector3i(2, 1, 1)),
-                    new(new Vector3i(0, 1, 2)),
-                    new(new Vector3i(1, 1, 2)),
-                    new(new Vector3i(2, 1, 2)),
-                }
-            );
-        }
+        public static List<BlockOccupancy> blockOccupancies =
+            new()
+            {
+                // first layer, 3x1x3 @ y=0
+                // row 1, z=0
+                new(new Vector3i(0, 0, 0)),
+                new(new Vector3i(1, 0, 0)),
+                new(new Vector3i(2, 0, 0)),
+                // row 2, z=1
+                new(new Vector3i(2, 0, 1)),
+                new(new Vector3i(1, 0, 1)),
+                new(new Vector3i(0, 0, 1)),
+                // row 3, z=2
+                new(new Vector3i(0, 0, 2)),
+                new(new Vector3i(1, 0, 2)),
+                new(new Vector3i(2, 0, 2)),
+                // second layer, 3x1x3 @ y=1
+                // row 3, z=2
+                new(new Vector3i(2, 1, 2)),
+                new(new Vector3i(1, 1, 2)),
+                new(new Vector3i(0, 1, 2)),
+                // row 2, z=1
+                new(new Vector3i(0, 1, 1)),
+                new(new Vector3i(1, 1, 1)),
+                new(new Vector3i(2, 1, 1)),
+                // row 1, z=0
+                new(new Vector3i(2, 1, 0)),
+                new(new Vector3i(1, 1, 0)),
+                new(new Vector3i(0, 1, 0)),
+            };
 
         protected override void Initialize()
         {
@@ -76,6 +78,11 @@ namespace MinesQuarries
     {
         public virtual Type RepresentedItemType => typeof(SandstoneQuarryItem);
         public override LocString DisplayName => Localizer.DoStr("Sandstone Quarry");
+
+        static SandstoneQuarryObject()
+        {
+            AddOccupancy<SandstoneQuarryObject>(blockOccupancies);
+        }
     }
 
     [Serialized]
@@ -102,6 +109,11 @@ namespace MinesQuarries
     {
         public virtual Type RepresentedItemType => typeof(LimestoneQuarryItem);
         public override LocString DisplayName => Localizer.DoStr("Limestone Quarry");
+
+        static LimestoneQuarryObject()
+        {
+            AddOccupancy<LimestoneQuarryObject>(blockOccupancies);
+        }
     }
 
     [Serialized]
@@ -128,6 +140,11 @@ namespace MinesQuarries
     {
         public virtual Type RepresentedItemType => typeof(GraniteQuarryItem);
         public override LocString DisplayName => Localizer.DoStr("Granite Quarry");
+
+        static GraniteQuarryObject()
+        {
+            AddOccupancy<GraniteQuarryObject>(blockOccupancies);
+        }
     }
 
     [Serialized]
@@ -154,6 +171,11 @@ namespace MinesQuarries
     {
         public virtual Type RepresentedItemType => typeof(ShaleQuarryItem);
         public override LocString DisplayName => Localizer.DoStr("Shale Quarry");
+
+        static ShaleQuarryObject()
+        {
+            AddOccupancy<ShaleQuarryObject>(blockOccupancies);
+        }
     }
 
     [Serialized]
