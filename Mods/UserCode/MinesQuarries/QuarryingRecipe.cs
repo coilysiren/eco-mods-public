@@ -21,7 +21,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(800) }
+                items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
@@ -49,7 +49,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(800) }
+                items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
@@ -77,7 +77,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<GraniteItem>(800) }
+                items: new List<CraftingElement> { new CraftingElement<GraniteItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
@@ -105,7 +105,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<ShaleItem>(800) }
+                items: new List<CraftingElement> { new CraftingElement<ShaleItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(8000, typeof(MiningSkill));
