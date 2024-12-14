@@ -23,8 +23,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<IronOreItem>(20),
-                    new CraftingElement<SandstoneItem>(40),
+                    new CraftingElement<IronOreItem>(10),
+                    new CraftingElement<SandstoneItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -115,8 +115,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CopperOreItem>(20),
-                    new CraftingElement<GraniteItem>(40),
+                    new CraftingElement<CopperOreItem>(10),
+                    new CraftingElement<GraniteItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -207,8 +207,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<GoldOreItem>(20),
-                    new CraftingElement<GraniteItem>(40),
+                    new CraftingElement<GoldOreItem>(10),
+                    new CraftingElement<GraniteItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -299,8 +299,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CoalItem>(20),
-                    new CraftingElement<ShaleItem>(40),
+                    new CraftingElement<CoalItem>(10),
+                    new CraftingElement<ShaleItem>(20),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -391,9 +391,9 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<SulfurItem>(20),
-                    new CraftingElement<SandstoneItem>(20),
-                    new CraftingElement<LimestoneItem>(20),
+                    new CraftingElement<SulfurItem>(10),
+                    new CraftingElement<SandstoneItem>(10),
+                    new CraftingElement<LimestoneItem>(10),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
