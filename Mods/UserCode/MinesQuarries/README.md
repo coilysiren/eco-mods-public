@@ -1,6 +1,6 @@
 ## Mines and Quarries
 
-Mines are Quarries are a sustainable, if resouce and calorie intensive, way to setup a continuous mining operation. No longer will you have to continuously mine further and further away from your claim in order to get more limestone and gold. You can place a mine or quarry down, and harvest those recipes infinitely. Don't jump on this too quickly though, using these objects in non-ideal ways could very well end up making you profit negative in the long run...
+Mines are Quarries are a sustainable, if resource and calorie intensive, way to setup a continuous mining operation. No longer will you have to continuously mine further and further away from your claim in order to get more limestone and gold. You can place a mine or quarry down, and harvest those recipes infinitely. Don't jump on this too quickly though, using these objects in non-ideal ways could very well end up making you profit negative in the long run...
 
 ### Copyright
 
