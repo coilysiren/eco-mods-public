@@ -15,12 +15,14 @@ namespace MinesQuarries
     using Eco.Shared.Localization;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
+    using Eco.Shared.SharedTypes;
 
     [Serialized]
     [RequireComponent(typeof(OnOffComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(PublicStorageComponent))]
     [RequireComponent(typeof(PluginModulesComponent))]
+    [RequireComponent(typeof(OccupancyRequirementComponent))]
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
@@ -31,6 +33,7 @@ namespace MinesQuarries
     public partial class MineObject : WorldObject
     {
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
+        public override InteractionTargetPriority TargetPriority => InteractionTargetPriority.High;
 
         protected override void Initialize()
         {
@@ -40,7 +43,7 @@ namespace MinesQuarries
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25);
             storage.Storage.AddInvRestriction(new NoBuildingRestriction());
-            storage.Storage.AddInvRestriction(new DiggableExcavatableRestriction());
+            storage.Storage.AddInvRestriction(new ExcavatableRestriction());
 
             this.GetComponent<PartsComponent>()
                 .Config(

@@ -15,19 +15,23 @@ namespace MinesQuarries
     using Eco.Shared.Localization;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
+    using Eco.Shared.SharedTypes;
 
     [Serialized]
     [RequireComponent(typeof(OnOffComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
     [RequireComponent(typeof(PublicStorageComponent))]
     [RequireComponent(typeof(PluginModulesComponent))]
+    [RequireComponent(typeof(OccupancyRequirementComponent))]
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
     [Tag("Usable")]
     public partial class QuarryObject : WorldObject
     {
+        public static readonly Vector3i DefaultDim = new(3, 2, 3);
         public override TableTextureMode TableTexture => TableTextureMode.Stone;
+        public override InteractionTargetPriority TargetPriority => InteractionTargetPriority.High;
 
         public static List<BlockOccupancy> blockOccupancies =
             new()
@@ -68,7 +72,7 @@ namespace MinesQuarries
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25);
             storage.Storage.AddInvRestriction(new NoBuildingRestriction());
-            storage.Storage.AddInvRestriction(new DiggableExcavatableRestriction());
+            storage.Storage.AddInvRestriction(new ExcavatableRestriction());
         }
     }
 

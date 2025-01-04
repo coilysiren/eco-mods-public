@@ -6,6 +6,7 @@ namespace MinesQuarries
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Systems.TextLinks;
     using Eco.Shared.Localization;
+    using Eco.Shared.Logging;
     using Eco.Shared.Math;
     using Eco.World;
     using Eco.World.Blocks;
@@ -90,6 +91,31 @@ namespace MinesQuarries
             }
 
             return blockPercentages;
+        }
+
+        public static int FindBlockCount(Vector3 position, int radius, string blockType)
+        {
+            List<WrappedWorldPosition3i> blockLocations = GeneratePositionsToCheck(
+                position,
+                radius,
+                maximumYAxis: false
+            );
+
+            int blockCount = 0;
+            foreach (WrappedWorldPosition3i blockLocation in blockLocations)
+            {
+                Block block = World.GetBlock(blockLocation);
+                if (block != null)
+                {
+                    string blockName = block.GetType().FullName ?? "";
+                    Log.Debug($"Block name: {blockName}");
+                    if (blockName == blockType)
+                    {
+                        blockCount++;
+                    }
+                }
+            }
+            return blockCount;
         }
 
         private static List<WrappedWorldPosition3i> GeneratePositionsToCheck(

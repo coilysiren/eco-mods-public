@@ -18,6 +18,12 @@ Each mine has 3 recipes: mooring rope, dynamite, and mining charge. These recipe
 
 Quarries are objects that can infinitely harvest a particular type of stone. Unlock mines, quarries produce 1 type of stone so there isn't any waste rock. Qaurries can be created with mortared stone, so they are available on day 1 ~ day 2.
 
-There are 5 types of quarry available right now: Sandstone, Limestone, Granite, Shale. Placement of quarries is more strict than placement of mines. The quarry must be placed in an area that is primarily composed of the rock being harvested. In general you will not be able to place a quarry on a single limestone block. Instead you will need to place it against a limestone cliffside. 
+There are 4 types of quarry available: Sandstone, Limestone, Granite, Shale. Placement of quarries is more strict than placement of mines. The quarry must be placed in an area that is primarily composed of the rock being harvested. In general you will not be able to place a quarry on a single limestone block. Instead you will need to place it against a limestone cliffside.
 
 The quarries take in stone pickaxes and produce their respective rock type. While this seems amazingly powerful on its face, you must also consider that it is a slow recipe with high calorie cost. As such, you will lose money on the average quarry at BU0 mining granite. You should become profitable at BU5 harvesting limestone, by contrast. Vertical integration is also key here. Being able to turn the rocks into products (mortared stone, limestone animals) will increase your profit margins, as will playing in a duo with someone who produces cooked food.
+
+### Pits
+
+TODO
+
+There are 3 types of pit available: Sand, Dirt, Clay.

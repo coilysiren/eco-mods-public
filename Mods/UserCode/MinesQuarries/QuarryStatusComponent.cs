@@ -39,7 +39,8 @@ namespace MinesQuarries
                 // If this is the block we are looking for, check if it is above the percentage threshold
                 if (block.Key == this.blockType)
                 {
-                    bool foundEnoughBlocks = block.Value > this.percentage;
+                    bool foundEnoughBlocks =
+                        Math.Round(block.Value * 100) >= Math.Round(this.percentage * 100);
                     StatusElement statusElement = this
                         .Parent.GetComponent<StatusComponent>(null)
                         .CreateStatusElement();

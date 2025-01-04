@@ -21,7 +21,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(10000, typeof(MiningSkill));
@@ -49,7 +49,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(10000, typeof(MiningSkill));
@@ -77,7 +77,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<GraniteItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<GraniteItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(10000, typeof(MiningSkill));
@@ -105,7 +105,7 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<ShaleItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<ShaleItem>(400) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(10000, typeof(MiningSkill));
