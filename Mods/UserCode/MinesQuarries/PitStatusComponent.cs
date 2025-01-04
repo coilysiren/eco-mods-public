@@ -74,7 +74,7 @@ namespace MinesQuarries
     {
         public SandPitComponent()
             : base(
-                blockType: "Eco.Mods.TechTree.SandBlock", //
+                blockType: "Eco.World.Blocks.SandBlock", //
                 searchRadius: 5,
                 minimumBlocks: 30
             ) { }
