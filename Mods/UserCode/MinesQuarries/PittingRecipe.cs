@@ -29,7 +29,7 @@ namespace MinesQuarries
             );
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(DirtDigging),
-                start: 4,
+                start: 2,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(DirtDigging));
