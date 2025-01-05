@@ -64,7 +64,7 @@ namespace MinesQuarries
             : base(
                 blockType: "Eco.World.Blocks.DirtBlock", //
                 searchRadius: 5,
-                minimumBlocks: 20
+                minimumBlocks: 30
             ) { }
     }
 
@@ -76,7 +76,7 @@ namespace MinesQuarries
             : base(
                 blockType: "Eco.World.Blocks.SandBlock", //
                 searchRadius: 5,
-                minimumBlocks: 30
+                minimumBlocks: 40
             ) { }
     }
 
@@ -88,7 +88,7 @@ namespace MinesQuarries
             : base(
                 blockType: "Eco.Mods.TechTree.ClayBlock", //
                 searchRadius: 5,
-                minimumBlocks: 40
+                minimumBlocks: 50
             ) { }
     }
 }
