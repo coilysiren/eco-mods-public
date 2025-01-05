@@ -19,12 +19,12 @@ namespace MinesQuarries
                 {
                     new(typeof(WoodenShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<DirtItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<DirtItem>(100) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                10000,
+                5000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
@@ -50,12 +50,12 @@ namespace MinesQuarries
                 {
                     new(typeof(WoodenShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<SandItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<SandItem>(100) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                10000,
+                5000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
@@ -81,12 +81,12 @@ namespace MinesQuarries
                 {
                     new(typeof(WoodenShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<ClayItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<ClayItem>(100) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                10000,
+                5000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
