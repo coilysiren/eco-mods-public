@@ -19,7 +19,7 @@ namespace MinesQuarries
                 {
                     new(typeof(WoodenShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<DirtItem>(50) }
+                items: new List<CraftingElement> { new CraftingElement<DirtItem>(100) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
