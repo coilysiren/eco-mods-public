@@ -22,7 +22,7 @@ namespace Eco.Mods.TechTree
                 {
                     new(
                         typeof(RiceItem),
-                        80,
+                        20,
                         typeof(FarmingSkill),
                         typeof(FarmingLavishResourcesTalent)
                     ),
