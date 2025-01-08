@@ -23,7 +23,6 @@ namespace MinesQuarries
     [RequireComponent(typeof(PublicStorageComponent))]
     [RequireComponent(typeof(StockpileComponent))]
     [RequireComponent(typeof(WorldStockpileComponent))]
-    [RequireComponent(typeof(PluginModulesComponent))]
     [RequireComponent(typeof(CraftingComponent))]
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
@@ -201,7 +200,6 @@ namespace MinesQuarries
     }
 
     [Serialized]
-    [AllowPluginModules(Tags = new[] { "BasicUpgrade" })]
     [LocDisplayName("Dirt Pit")]
     [LocDescription(
         "For the extraction of Dirt. Must be placed on a Dirt deposit. Doesn't exhaust the deposit."
@@ -229,7 +227,6 @@ namespace MinesQuarries
     }
 
     [Serialized]
-    [AllowPluginModules(Tags = new[] { "BasicUpgrade" })]
     [LocDisplayName("Sand Pit")]
     [LocDescription(
         "For the extraction of Sand. Must be placed on a Sand deposit. Doesn't exhaust the deposit."
@@ -257,7 +254,6 @@ namespace MinesQuarries
     }
 
     [Serialized]
-    [AllowPluginModules(Tags = new[] { "BasicUpgrade" })]
     [LocDisplayName("Clay Pit")]
     [LocDescription(
         "For the extraction of Clay. Must be placed on a Clay deposit. Doesn't exhaust the deposit."
