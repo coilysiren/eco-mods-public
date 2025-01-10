@@ -21,12 +21,12 @@ namespace Eco.Mods.TechTree
                     new(
                         typeof(TailingsItem),
                         1,
-                        staticIngredient: true,
+                        staticIngredient: true
                     ),
                     new(
                         typeof(DirtItem),
                         1,
-                        staticIngredient: true,
+                        staticIngredient: true
                     ),
                     new(
                         typeof(CompostFertilizerItem),
