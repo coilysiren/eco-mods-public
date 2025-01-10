@@ -40,6 +40,7 @@ namespace Eco.Mods.TechTree
                 }
             );
             Recipes = new List<Recipe> { recipe };
+            ExperienceOnCraft = 2;
             LaborInCalories = CreateLaborInCaloriesValue(40, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(DryHyperPhyto),
@@ -90,7 +91,7 @@ namespace Eco.Mods.TechTree
                 }
             );
             Recipes = new List<Recipe> { recipe };
-            ExperienceOnCraft = 5;
+            ExperienceOnCraft = 2;
             LaborInCalories = CreateLaborInCaloriesValue(40, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(WetHyperPhyto),
