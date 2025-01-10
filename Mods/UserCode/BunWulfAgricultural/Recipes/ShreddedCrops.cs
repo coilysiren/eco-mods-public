@@ -20,7 +20,7 @@ namespace Eco.Mods.TechTree
                 displayName: Localizer.DoStr("Shredded Crops"),
                 ingredients: new List<IngredientElement>
                 {
-                    new("Vegetable", 1, staticIngredient: true),
+                    new("Vegetable", 1, typeof(FarmingSkill), typeof(FarmingLavishResourcesTalent)),
                 },
                 items: new List<CraftingElement> { new CraftingElement<PlantFibersItem>(5) }
             );
