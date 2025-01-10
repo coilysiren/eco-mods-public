@@ -37,8 +37,7 @@ namespace Eco.Mods.TechTree
                 }
             );
             Recipes = new List<Recipe> { recipe };
-            // BiodieselRecipe.ExperienceOnCraft
-            ExperienceOnCraft = 0.5f;
+            ExperienceOnCraft = 5;
             // BiodieselRecipe.LaborInCalories / 4
             LaborInCalories = CreateLaborInCaloriesValue(20, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(

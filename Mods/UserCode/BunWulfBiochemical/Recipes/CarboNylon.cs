@@ -41,8 +41,7 @@ namespace Eco.Mods.TechTree
                 }
             );
             Recipes = new List<Recipe> { recipe };
-            // NylonRecipe.ExperienceOnCraft
-            ExperienceOnCraft = 1;
+            ExperienceOnCraft = 5;
             // NylonRecipe.LaborInCalories / 4
             LaborInCalories = CreateLaborInCaloriesValue(45, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(

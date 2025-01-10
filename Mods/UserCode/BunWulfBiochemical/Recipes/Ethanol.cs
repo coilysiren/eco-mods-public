@@ -27,7 +27,7 @@ namespace Eco.Mods.TechTree
                 items: new List<CraftingElement> { new CraftingElement<EthanolItem>(1) }
             );
             Recipes = new List<Recipe> { recipe };
-            ExperienceOnCraft = 0.5f; // Defines how much experience is gained when crafted.
+            ExperienceOnCraft = 5;
             LaborInCalories = CreateLaborInCaloriesValue(60, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(VegetableEthanolRecipe),

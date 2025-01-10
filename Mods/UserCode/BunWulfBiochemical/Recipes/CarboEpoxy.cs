@@ -41,8 +41,7 @@ namespace Eco.Mods.TechTree
                 }
             );
             Recipes = new List<Recipe> { recipe };
-            // EpoxyRecipe.ExperienceOnCraft
-            ExperienceOnCraft = 1;
+            ExperienceOnCraft = 5;
             // EpoxyRecipe.LaborInCalories / 4
             LaborInCalories = CreateLaborInCaloriesValue(45, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
