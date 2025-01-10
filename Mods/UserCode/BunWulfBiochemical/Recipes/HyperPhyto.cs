@@ -18,16 +18,8 @@ namespace Eco.Mods.TechTree
                 displayName: Localizer.DoStr("Dry Hyperaccumulator Phytoremediation"),
                 ingredients: new List<IngredientElement>
                 {
-                    new(
-                        typeof(TailingsItem),
-                        1,
-                        staticIngredient: true
-                    ),
-                    new(
-                        typeof(DirtItem),
-                        1,
-                        staticIngredient: true
-                    ),
+                    new(typeof(TailingsItem), 1, staticIngredient: true),
+                    new(typeof(DirtItem), 1, staticIngredient: true),
                     new(
                         typeof(CompostFertilizerItem),
                         1,
@@ -41,9 +33,10 @@ namespace Eco.Mods.TechTree
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                 },
-                items: new List<CraftingElement> {
+                items: new List<CraftingElement>
+                {
                     new CraftingElement<DirtItem>(2),
-                    new CraftingElement<SunflowerItem>(10)
+                    new CraftingElement<SunflowerItem>(10),
                 }
             );
             Recipes = new List<Recipe> { recipe };
@@ -75,16 +68,8 @@ namespace Eco.Mods.TechTree
                 displayName: Localizer.DoStr("Wet Hyperaccumulator Phytoremediation"),
                 ingredients: new List<IngredientElement>
                 {
-                    new(
-                        typeof(TailingsItem),
-                        1,
-                        staticIngredient: true,
-                    ),
-                    new(
-                        typeof(DirtItem),
-                        1,
-                        staticIngredient: true,
-                    ),
+                    new(typeof(TailingsItem), 1, staticIngredient: true),
+                    new(typeof(DirtItem), 1, staticIngredient: true),
                     new(
                         typeof(CompostFertilizerItem),
                         1,
@@ -98,9 +83,10 @@ namespace Eco.Mods.TechTree
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                 },
-                items: new List<CraftingElement> {
+                items: new List<CraftingElement>
+                {
                     new CraftingElement<DirtItem>(2),
-                    new CraftingElement<SunflowerItem>(10)
+                    new CraftingElement<SunflowerItem>(10),
                 }
             );
             Recipes = new List<Recipe> { recipe };
