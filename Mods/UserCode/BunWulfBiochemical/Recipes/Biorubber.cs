@@ -41,7 +41,7 @@ namespace Eco.Mods.TechTree
                 }
             );
             Recipes = new List<Recipe> { recipe };
-            ExperienceOnCraft = 2;
+            ExperienceOnCraft = 1;
             // SyntheticRubberRecipe.LaborInCalories / 4
             LaborInCalories = CreateLaborInCaloriesValue(45, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
