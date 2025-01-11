@@ -69,7 +69,7 @@ namespace Eco.Mods.TechTree
                 displayName: Localizer.DoStr("Wet Hyperaccumulator Phytoremediation"),
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(TailingsItem), 1, staticIngredient: true),
+                    new(typeof(WetTailingsItem), 1, staticIngredient: true),
                     new(typeof(DirtItem), 1, staticIngredient: true),
                     new(
                         typeof(CompostFertilizerItem),

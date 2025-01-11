@@ -1,14 +1,11 @@
-#pragma warning disable IDE0005
-using System.Collections.Generic;
-#pragma warning restore IDE0005
-
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Items.Recipes;
-using Eco.Gameplay.Skills;
-using Eco.Shared.Localization;
-
 namespace Eco.Mods.TechTree
 {
+    using System.Collections.Generic;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
+
     [RequiresSkill(typeof(FarmingSkill), 3)]
     public partial class CompostDecompositionRecipe : RecipeFamily
     {

@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-using CommandLine;
-using Eco.Core.Plugins.Interfaces;
-using Eco.Core.Utils;
-using Eco.Gameplay.Players;
-using Eco.Gameplay.Systems.Messaging.Chat.Commands;
-using Eco.Shared.Localization;
-
 namespace BunWulfMods
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text.RegularExpressions;
+    using CommandLine;
+    using Eco.Core.Plugins.Interfaces;
+    using Eco.Core.Utils;
+
     public class CLIEntryPoint
     {
         // This only works on my machine >:D
