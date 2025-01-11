@@ -117,7 +117,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Scholars Advanced Upgrade 1"),
                 recipeType: typeof(ScholarsAdvancedUpgradeLvl1Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
         }
     }
 
@@ -153,7 +153,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Scholars Advanced Upgrade 2"),
                 recipeType: typeof(ScholarsAdvancedUpgradeLvl2Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
         }
     }
 
@@ -189,7 +189,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Scholars Advanced Upgrade 3"),
                 recipeType: typeof(ScholarsAdvancedUpgradeLvl3Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
         }
     }
 
@@ -225,7 +225,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Scholars Advanced Upgrade 4"),
                 recipeType: typeof(ScholarsAdvancedUpgradeLvl4Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
         }
     }
 }
