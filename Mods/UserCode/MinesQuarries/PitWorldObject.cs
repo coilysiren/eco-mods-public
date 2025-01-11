@@ -7,7 +7,6 @@ namespace MinesQuarries
     using Eco.Gameplay.Components.Auth;
     using Eco.Gameplay.Components.Storage;
     using Eco.Gameplay.Items;
-    using Eco.Gameplay.Modules;
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Occupancy;
     using Eco.Shared.Items;
@@ -170,9 +169,10 @@ namespace MinesQuarries
 
             PublicStorageComponent storage = this.GetComponent<PublicStorageComponent>();
             storage.Initialize(25);
-            storage.Storage.AddInvRestriction(new NoBuildingRestriction());
-            storage.Storage.AddInvRestriction(new DiggableRestriction());
+            storage.Storage.AddInvRestriction(this.InventoryRestrictionImpl());
         }
+
+        protected virtual InventoryRestriction? InventoryRestrictionImpl() => null;
 
         protected override void OnCreatePostInitialize()
         {
@@ -192,6 +192,8 @@ namespace MinesQuarries
     {
         public virtual Type RepresentedItemType => typeof(DirtPitItem);
         public override LocString DisplayName => Localizer.DoStr("Dirt Pit");
+
+        protected override InventoryRestriction InventoryRestrictionImpl() => new DirtRestriction();
 
         static DirtPitObject()
         {
@@ -220,6 +222,8 @@ namespace MinesQuarries
         public virtual Type RepresentedItemType => typeof(SandPitItem);
         public override LocString DisplayName => Localizer.DoStr("Sand Pit");
 
+        protected override InventoryRestriction InventoryRestrictionImpl() => new SandRestriction();
+
         static SandPitObject()
         {
             AddOccupancy<SandPitObject>(blockOccupancies);
@@ -246,6 +250,8 @@ namespace MinesQuarries
     {
         public virtual Type RepresentedItemType => typeof(ClayPitItem);
         public override LocString DisplayName => Localizer.DoStr("Clay Pit");
+
+        protected override InventoryRestriction InventoryRestrictionImpl() => new ClayRestriction();
 
         static ClayPitObject()
         {

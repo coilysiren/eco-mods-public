@@ -63,8 +63,8 @@ namespace MinesQuarries
         public DirtPitComponent()
             : base(
                 blockType: "Eco.World.Blocks.DirtBlock", //
-                searchRadius: 5,
-                minimumBlocks: 20
+                searchRadius: 10,
+                minimumBlocks: 40
             ) { }
     }
 
