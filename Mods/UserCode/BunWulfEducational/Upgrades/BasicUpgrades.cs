@@ -12,7 +12,9 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 1")]
-    [LocDescription("A thinking Econian's Basic Upgrade that increases crafting efficiency.")]
+    [LocDescription(
+        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+    )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
@@ -28,7 +30,9 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 2")]
-    [LocDescription("A thinking Econian's Basic Upgrade that increases crafting efficiency.")]
+    [LocDescription(
+        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+    )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
@@ -44,7 +48,9 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 3")]
-    [LocDescription("A thinking Econian's Basic Upgrade that increases crafting efficiency.")]
+    [LocDescription(
+        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+    )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
@@ -60,7 +66,9 @@ namespace Eco.Mods.TechTree
 
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 4")]
-    [LocDescription("A thinking Econian's Basic Upgrade that increases crafting efficiency.")]
+    [LocDescription(
+        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade. As powerful as a specialist upgrade, but more flexible."
+    )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
@@ -81,7 +89,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "ScholarsBasicUpgradeLvl1", //noloc
+                name: "ScholarsBasicUpgradeLvl1",
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 1"),
                 ingredients: new List<IngredientElement>
                 {
@@ -116,7 +124,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "ScholarsBasicUpgradeLvl2", //noloc
+                name: "ScholarsBasicUpgradeLvl2",
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 2"),
                 ingredients: new List<IngredientElement>
                 {
@@ -152,7 +160,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "ScholarsBasicUpgradeLvl3", //noloc
+                name: "ScholarsBasicUpgradeLvl3",
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 3"),
                 ingredients: new List<IngredientElement>
                 {
@@ -188,7 +196,7 @@ namespace Eco.Mods.TechTree
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "ScholarsBasicUpgradeLvl4", //noloc
+                name: "ScholarsBasicUpgradeLvl4",
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 4"),
                 ingredients: new List<IngredientElement>
                 {
