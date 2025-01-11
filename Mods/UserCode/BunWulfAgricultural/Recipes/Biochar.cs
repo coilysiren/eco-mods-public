@@ -33,12 +33,8 @@ namespace Eco.Mods.TechTree
                 },
                 items: new List<CraftingElement>
                 {
-                    // 1 x 5 = 5 value
-                    new CraftingElement<CharcoalItem>(5),
-                    // 0.3 x 3 = 0.9 value
-                    new CraftingElement<OilItem>(3),
-                    // total value = 5.9
-                    // intentionally losing some value in the process
+                    new CraftingElement<CharcoalItem>(6),
+                    new CraftingElement<OilItem>(6),
                 }
             );
             Recipes = new List<Recipe> { recipe };

@@ -1,15 +1,12 @@
-#pragma warning disable IDE0005
-using System.Collections.Generic;
-#pragma warning restore IDE0005
-
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Items.Recipes;
-using Eco.Gameplay.Skills;
-using Eco.Shared.Localization;
-
 namespace Eco.Mods.TechTree
 {
-    [RequiresSkill(typeof(FarmingSkill), 6)]
+    using System.Collections.Generic;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
+
+    [RequiresSkill(typeof(PaperMillingSkill), 1)]
     public partial class RicePaperRecipe : RecipeFamily
     {
         public RicePaperRecipe()
@@ -23,21 +20,21 @@ namespace Eco.Mods.TechTree
                     new(
                         typeof(RiceItem),
                         40,
-                        typeof(FarmingSkill),
-                        typeof(FarmingLavishResourcesTalent)
+                        typeof(PaperMillingSkill),
+                        typeof(PaperMillingLavishResourcesTalent)
                     ),
                 },
                 items: new List<CraftingElement> { new CraftingElement<PaperItem>() }
             );
             Recipes = new List<Recipe> { recipe };
             ExperienceOnCraft = 1;
-            LaborInCalories = CreateLaborInCaloriesValue(20, typeof(FarmingSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(20, typeof(PaperMillingSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(RicePaperRecipe),
                 start: 0.1f,
-                skillType: typeof(FarmingSkill),
-                typeof(FarmingFocusedSpeedTalent),
-                typeof(FarmingParallelSpeedTalent)
+                skillType: typeof(PaperMillingSkill),
+                typeof(PaperMillingFocusedSpeedTalent),
+                typeof(PaperMillingParallelSpeedTalent)
             );
             Initialize(
                 displayText: Localizer.DoStr("Rice Paper"),
