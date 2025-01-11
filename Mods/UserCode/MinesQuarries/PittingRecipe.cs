@@ -24,7 +24,7 @@ namespace MinesQuarries
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                2500,
+                5000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
@@ -55,7 +55,7 @@ namespace MinesQuarries
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                2500,
+                5000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
@@ -86,7 +86,7 @@ namespace MinesQuarries
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                2500,
+                5000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
