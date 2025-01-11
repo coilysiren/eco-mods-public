@@ -1,6 +1,6 @@
-namespace Mineshafts
+namespace Librarian
 {
-    public class Build
+    public class Librarian
     {
         public static void Main()
         {
