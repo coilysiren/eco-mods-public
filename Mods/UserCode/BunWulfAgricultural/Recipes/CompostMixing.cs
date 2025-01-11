@@ -36,7 +36,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Berry Extract Fertilizer Mixing"),
                 recipeType: typeof(BerryExtractFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
         }
     }
 
@@ -70,7 +70,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Blood Meal Fertilizer Mixing"),
                 recipeType: typeof(BloodMealFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
         }
     }
 
@@ -104,7 +104,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Camas Ash Fertilizer Mixing"),
                 recipeType: typeof(CamasAshFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
         }
     }
 
@@ -138,7 +138,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Hide Ash Fertilizer Mixing"),
                 recipeType: typeof(HideAshFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
         }
     }
 
@@ -172,7 +172,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Pelt Fertilizer Mixing"),
                 recipeType: typeof(PeltFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
         }
     }
 
@@ -206,7 +206,7 @@ namespace Eco.Mods.TechTree
                 displayText: Localizer.DoStr("Phosphate Fertilizer Mixing"),
                 recipeType: typeof(PhosphateFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
         }
     }
 }
