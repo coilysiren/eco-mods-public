@@ -27,7 +27,6 @@ namespace MinesQuarries
     [RequireComponent(typeof(MinimapComponent))]
     [RequireComponent(typeof(LinkComponent))]
     [RequireComponent(typeof(PartsComponent))]
-    [RequireComponent(typeof(AirPollutionComponent))]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
     [Tag("Usable")]
     public partial class MineObject : WorldObject
@@ -53,9 +52,6 @@ namespace MinesQuarries
                         new() { TypeName = nameof(GearboxItem), Quantity = 2 },
                     }
                 );
-
-            AirPollutionComponent airPollution = this.GetComponent<AirPollutionComponent>();
-            airPollution.Initialize(1);
         }
     }
 
