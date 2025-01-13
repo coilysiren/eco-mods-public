@@ -1,6 +1,7 @@
 namespace DirectCarbonCapture
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Objects;
     using Eco.Shared.Math;
