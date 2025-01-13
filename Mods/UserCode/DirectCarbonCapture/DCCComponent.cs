@@ -31,6 +31,8 @@ namespace DirectCarbonCapture
 
         public override void Initialize() => this.ClearPollution();
 
+        public override void Tick() => this.ClearPollution();
+
         public void ChunksChanged() => this.ClearPollution();
 
         // Get a list of Vector3s that are within a 3d radius of the parent's position
