@@ -7,8 +7,10 @@ namespace DirectCarbonCapture
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Occupancy;
+    using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.NewTooltip;
     using Eco.Gameplay.Systems.TextLinks;
+    using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Math;
@@ -32,12 +34,13 @@ namespace DirectCarbonCapture
                 WorldObject.GetOccupancyInfo(this.WorldObjectType)
             );
         public override HomeFurnishingValue HomeValue => homeValue;
-        public static readonly HomeFurnishingValue homeValue = new HomeFurnishingValue()
-        {
-            ObjectName = typeof(DirectCarbonCaptureObject).UILink(),
-            Category = HousingConfig.GetRoomCategory("Industrial"),
-            TypeForRoomLimit = Localizer.DoStr(""),
-        };
+        public static readonly HomeFurnishingValue homeValue =
+            new()
+            {
+                ObjectName = typeof(DirectCarbonCaptureObject).UILink(),
+                Category = HousingConfig.GetRoomCategory("Industrial"),
+                TypeForRoomLimit = Localizer.DoStr(""),
+            };
 
         [NewTooltip(CacheAs.SubType, 7)]
         public static LocString PowerConsumptionTooltip() =>
@@ -48,7 +51,7 @@ namespace DirectCarbonCapture
             SyncToView,
             NewTooltipChildren(CacheAs.Instance, flags: TTFlags.AllowNonControllerTypeForChildren)
         ]
-        public required object PersistentData { get; set; }
+        public object? PersistentData { get; set; }
     }
 
     [Serialized]
@@ -57,11 +60,19 @@ namespace DirectCarbonCapture
     [LocDescription(
         "Carbon filters are used to remove carbon dioxide (CO2) from the air. They are used in direct carbon capture systems."
     )]
+    [RepairRequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class CarbonFilterItem : PartItem
     {
+        private static SkillModifiedValue skilledRepairCost =
+            new(
+                2,
+                BiochemistSkill.MultiplicativeStrategy,
+                typeof(BiochemistSkill),
+                typeof(CarbonFilterItem),
+                Localizer.DoStr("repair cost"),
+                DynamicValueType.Efficiency
+            );
         public override IDynamicValue SkilledRepairCost => skilledRepairCost;
-        private static IDynamicValue skilledRepairCost = new ConstantValue(1);
-
         public float ReduceMaxDurabilityByPercent => 0.05f;
     }
 }
