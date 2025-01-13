@@ -44,7 +44,7 @@ namespace DirectCarbonCapture
 
         [NewTooltip(CacheAs.SubType, 7)]
         public static LocString PowerConsumptionTooltip() =>
-            Localizer.Do($"Consumes: {Text.Info(500)}w of {new ElectricPower().Name} power.");
+            Localizer.Do($"Consumes: {Text.Info(2000)}w of {new ElectricPower().Name} power.");
 
         [
             Serialized,
