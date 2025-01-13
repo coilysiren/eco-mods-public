@@ -92,6 +92,7 @@ namespace DirectCarbonCapture
             this.GetComponent<PowerConsumptionComponent>().Initialize(2000);
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
             this.GetComponent<HousingComponent>().HomeValue = PumpJackItem.homeValue;
+            this.GetComponent<AirPollutionComponent>().Initialize(0);
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
