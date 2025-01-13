@@ -17,9 +17,9 @@ namespace DirectCarbonCapture
     {
         private readonly int radius = 10;
 
-        public float UpdateFrequencySec => 60;
+        public float UpdateFrequencySec => 1;
 
-        public float MaxQueuedChunkUpdateTime => 300f;
+        public float MaxQueuedChunkUpdateTime => 60;
 
         public double QueuedChunkUpdateTime { get; set; }
 
