@@ -5,11 +5,14 @@ namespace DirectCarbonCapture
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Objects;
     using Eco.Shared.Math;
+    using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
     using Eco.Simulation.WorldLayers;
     using Eco.Simulation.WorldLayers.Layers;
     using Eco.World;
 
+    [Serialized]
+    [RequireComponent(typeof(ChunkSubscriberComponent))]
     public class CarbonCaptureComponent : WorldObjectComponent, IChunkSubscriber
     {
         private readonly int radius = 10;
