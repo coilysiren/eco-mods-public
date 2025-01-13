@@ -26,6 +26,7 @@ namespace DirectCarbonCapture
     [RequireComponent(typeof(PartsComponent))]
     [RequireComponent(typeof(OccupancyRequirementComponent))]
     [RequireComponent(typeof(HousingComponent))]
+    [RequireComponent(typeof(AirPollutionComponent))]
     [RequireComponent(typeof(PowerConsumptionComponent))]
     [RequireComponent(typeof(PowerGridComponent))]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]

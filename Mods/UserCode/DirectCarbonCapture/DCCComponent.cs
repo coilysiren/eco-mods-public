@@ -60,12 +60,19 @@ namespace DirectCarbonCapture
                     }
                 }
             }
-            return (IEnumerable<Vector3i>)positions;
+
+            List<Vector3i> plainPositions = new();
+            foreach (WrappedWorldPosition3i position in positions)
+            {
+                plainPositions.Add(new Vector3i(position.X, position.Y, position.Z));
+            }
+
+            return plainPositions.AsEnumerable();
         }
 
         private void ClearPollution()
         {
-            WorldLayer pollution = WorldLayerManager.Obj.GetLayer(LayerNames.GroundPollutionSpread);
+            WorldLayer pollution = WorldLayerManager.Obj.GetLayer(LayerNames.AirPollutionSpread);
             this.RelevantChunkPositions().ForEach(pos => pollution.SetAtWorldPos(pos.XZ, 0f));
             pollution.Modify();
         }
