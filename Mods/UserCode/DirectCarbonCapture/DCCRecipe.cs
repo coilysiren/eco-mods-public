@@ -77,7 +77,7 @@ namespace DirectCarbonCapture
                         typeof(MechanicsLavishResourcesTalent)
                     ),
                 },
-                items: new List<CraftingElement> { new CraftingElement<PumpJackItem>() }
+                items: new List<CraftingElement> { new CraftingElement<DirectCarbonCaptureItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 25;
