@@ -89,7 +89,7 @@ namespace DirectCarbonCapture
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Power"));
-            this.GetComponent<PowerConsumptionComponent>().Initialize(2000);
+            this.GetComponent<PowerConsumptionComponent>().Initialize(1000);
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
             this.GetComponent<HousingComponent>().HomeValue = PumpJackItem.homeValue;
             this.GetComponent<AirPollutionComponent>().Initialize(-1);
