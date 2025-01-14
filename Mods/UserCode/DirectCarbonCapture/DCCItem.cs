@@ -24,6 +24,7 @@ namespace DirectCarbonCapture
         "Direct carbon Capture removes carbon dioxide (CO2) directly from the ambient air, essentially sucking it out of the atmosphere, and storing it in geological formations."
     )]
     [IconGroup("World Object Minimap")]
+    [AirPollution(-1)]
     public partial class DirectCarbonCaptureItem
         : WorldObjectItem<DirectCarbonCaptureObject>,
             IPersistentData
