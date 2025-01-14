@@ -78,9 +78,14 @@ namespace DirectCarbonCapture
 
         private void ClearPollution()
         {
-            WorldLayer pollution = WorldLayerManager.Obj.GetLayer(LayerNames.AirPollutionSpread);
-            this.RelevantChunkPositions().ForEach(pos => pollution.SetAtWorldPos(pos.XZ, 0f));
-            pollution.Modify();
+            if (this.Enabled)
+            {
+                WorldLayer pollution = WorldLayerManager.Obj.GetLayer(
+                    LayerNames.AirPollutionSpread
+                );
+                this.RelevantChunkPositions().ForEach(pos => pollution.SetAtWorldPos(pos.XZ, 0f));
+                pollution.Modify();
+            }
         }
     }
 }
