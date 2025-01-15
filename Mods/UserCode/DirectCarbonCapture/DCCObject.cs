@@ -37,6 +37,11 @@ namespace DirectCarbonCapture
         public override LocString DisplayName => Localizer.DoStr("Direct Carbon Capture Pump Jack");
         public virtual Type RepresentedItemType => typeof(DirectCarbonCaptureItem);
 
+        // Balancing Configuration
+        public static readonly int pollutionTonsPerHour = -1;
+        public static readonly int pollutionClearRadius = 25;
+        public static readonly int powerConsumption = 1000;
+
         static DirectCarbonCaptureObject()
         {
             AddOccupancy<DirectCarbonCaptureObject>(
@@ -89,10 +94,12 @@ namespace DirectCarbonCapture
         protected override void Initialize()
         {
             this.GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Power"));
-            this.GetComponent<PowerConsumptionComponent>().Initialize(1000);
+            this.GetComponent<PowerConsumptionComponent>().Initialize(powerConsumption);
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
-            this.GetComponent<HousingComponent>().HomeValue = PumpJackItem.homeValue;
-            this.GetComponent<AirPollutionComponent>().Initialize(-1);
+            this.GetComponent<HousingComponent>().HomeValue = DirectCarbonCaptureItem.homeValue;
+            this.GetComponent<AirPollutionComponent>().Initialize(this.pollutionTonsPerHour);
+            this.GetComponent<CarbonCaptureComponent>()
+                .Initialize(this.pollutionTonsPerHour, pollutionClearRadius);
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,

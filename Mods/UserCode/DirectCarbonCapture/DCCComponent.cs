@@ -4,9 +4,6 @@ namespace DirectCarbonCapture
     using System.Linq;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Objects;
-    using Eco.ModKit.Internal.Weaving;
-    using Eco.Shared.Localization;
-    using Eco.Shared.Logging;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
@@ -18,10 +15,11 @@ namespace DirectCarbonCapture
     [RequireComponent(typeof(ChunkSubscriberComponent))]
     public class CarbonCaptureComponent : WorldObjectComponent, IChunkSubscriber
     {
-        private readonly int radius = 25;
+        private int radius;
         private double lastCapture = 0;
+        private int pollutionTonsPerHour;
 
-        public float UpdateFrequencySec => 1;
+        public float UpdateFrequencySec => 60;
 
         public float MaxQueuedChunkUpdateTime => 60;
 
@@ -33,27 +31,35 @@ namespace DirectCarbonCapture
 
         public bool IgnorePlantUpdates { get; }
 
-        public override void Initialize() => this.ClearPollution();
+        public void Initialize(int pollutionTonsPerHour, int radius)
+        {
+            this.pollutionTonsPerHour = pollutionTonsPerHour;
+            this.radius = radius;
+        }
 
         public override void Tick() => this.ClearPollution();
 
-        public void ChunksChanged() => this.ClearPollution();
-
         private void ClearPollution()
         {
-            if (this.Enabled && WorldTime.Seconds > this.lastCapture + 60)
+            if (this.Enabled && WorldTime.Seconds > this.lastCapture + this.UpdateFrequencySec)
             {
-                WorldLayer pollution = WorldLayerManager.Obj.GetLayer(
+                // Clear localized air pollution
+                WorldLayer airPollution = WorldLayerManager.Obj.GetLayer(
                     LayerNames.AirPollutionSpread
                 );
-                this.RelevantChunkPositions().ForEach(pos => pollution.SetAtWorldPos(pos.XZ, 0f));
-                pollution.Modify();
+                this.RelevantPositions().ForEach(pos => airPollution.SetAtWorldPos(pos.XZ, 0f));
+                airPollution.Modify();
+                // Lower global CO2 levels
+                WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
+                    this.Parent.Position3i,
+                    this.pollutionTonsPerHour * this.UpdateFrequencySec / 3600
+                );
+                // Record the current time so we don't clear pollution too often
                 this.lastCapture = WorldTime.Seconds;
-                Log.Write(new LocString("Cleared pollution"));
             }
         }
 
-        public IEnumerable<Vector3i> RelevantChunkPositions()
+        public IEnumerable<Vector3i> RelevantPositions()
         {
             List<WrappedWorldPosition3i> positions = new();
             WrappedWorldPosition3i wrappedPosition = WrappedWorldPosition3i.Create(
