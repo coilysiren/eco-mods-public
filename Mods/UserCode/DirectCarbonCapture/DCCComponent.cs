@@ -38,7 +38,6 @@ namespace DirectCarbonCapture
         // Get a list of Vector3s that are within a 3d radius of the parent's position
         public IEnumerable<Vector3i> RelevantChunkPositions()
         {
-            bool maximumYAxis = true;
             List<WrappedWorldPosition3i> positions = new();
             WrappedWorldPosition3i wrappedPosition = WrappedWorldPosition3i.Create(
                 this.Parent.Position3i.X,
@@ -50,20 +49,12 @@ namespace DirectCarbonCapture
             {
                 for (int z = -this.radius; z <= this.radius; z++)
                 {
-                    Vector2i XZ = new(x, z);
-                    for (
-                        int y = maximumYAxis ? 0 : -this.radius;
-                        y <= (maximumYAxis ? World.GetTopBlockY(XZ) : this.radius);
-                        y++
-                    )
-                    {
-                        WrappedWorldPosition3i positionToCheck = WrappedWorldPosition3i.Create(
-                            wrappedPosition.X + x,
-                            maximumYAxis ? y : wrappedPosition.Y + y,
-                            wrappedPosition.Z + z
-                        );
-                        positions.Add(positionToCheck);
-                    }
+                    WrappedWorldPosition3i positionToCheck = WrappedWorldPosition3i.Create(
+                        wrappedPosition.X + x,
+                        0,
+                        wrappedPosition.Z + z
+                    );
+                    positions.Add(positionToCheck);
                 }
             }
 
