@@ -13,7 +13,7 @@ namespace DirectCarbonCapture
 
     [Serialized]
     [RequireComponent(typeof(ChunkSubscriberComponent))]
-    public class CarbonCaptureComponent : WorldObjectComponent, IChunkSubscriber
+    public class CarbonCaptureComponent : WorldObjectComponent
     {
         private int radius;
         private double lastCapture = 0;
