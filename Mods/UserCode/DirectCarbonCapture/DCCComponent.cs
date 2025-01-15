@@ -4,18 +4,22 @@ namespace DirectCarbonCapture
     using System.Linq;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Objects;
+    using Eco.ModKit.Internal.Weaving;
+    using Eco.Shared.Localization;
+    using Eco.Shared.Logging;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
     using Eco.Shared.Utils;
+    using Eco.Simulation.Time;
     using Eco.Simulation.WorldLayers;
     using Eco.Simulation.WorldLayers.Layers;
-    using Eco.World;
 
     [Serialized]
     [RequireComponent(typeof(ChunkSubscriberComponent))]
     public class CarbonCaptureComponent : WorldObjectComponent, IChunkSubscriber
     {
         private readonly int radius = 25;
+        private double lastCapture = 0;
 
         public float UpdateFrequencySec => 1;
 
@@ -35,13 +39,26 @@ namespace DirectCarbonCapture
 
         public void ChunksChanged() => this.ClearPollution();
 
-        // Get a list of Vector3s that are within a 3d radius of the parent's position
+        private void ClearPollution()
+        {
+            if (this.Enabled && WorldTime.Seconds > this.lastCapture + 60)
+            {
+                WorldLayer pollution = WorldLayerManager.Obj.GetLayer(
+                    LayerNames.AirPollutionSpread
+                );
+                this.RelevantChunkPositions().ForEach(pos => pollution.SetAtWorldPos(pos.XZ, 0f));
+                pollution.Modify();
+                this.lastCapture = WorldTime.Seconds;
+                Log.Write(new LocString("Cleared pollution"));
+            }
+        }
+
         public IEnumerable<Vector3i> RelevantChunkPositions()
         {
             List<WrappedWorldPosition3i> positions = new();
             WrappedWorldPosition3i wrappedPosition = WrappedWorldPosition3i.Create(
                 this.Parent.Position3i.X,
-                this.Parent.Position3i.Y,
+                0,
                 this.Parent.Position3i.Z
             );
 
@@ -65,18 +82,6 @@ namespace DirectCarbonCapture
             }
 
             return plainPositions.AsEnumerable();
-        }
-
-        private void ClearPollution()
-        {
-            if (this.Enabled)
-            {
-                WorldLayer pollution = WorldLayerManager.Obj.GetLayer(
-                    LayerNames.AirPollutionSpread
-                );
-                this.RelevantChunkPositions().ForEach(pos => pollution.SetAtWorldPos(pos.XZ, 0f));
-                pollution.Modify();
-            }
         }
     }
 }
