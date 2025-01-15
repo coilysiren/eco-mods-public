@@ -2,11 +2,12 @@
 namespace Eco.Mods.Organisms
 {
     using System.Collections.Generic;
+    using Eco.Mods.Organisms;
     using Eco.Shared.Math;
 
-    public partial class {{ entity }}
+    public partial class Trillium
     {
-        public partial class {{ species }}
+        public partial class TrilliumSpecies
         {
             partial void ModsPostInitialize()
             {
@@ -14,6 +15,7 @@ namespace Eco.Mods.Organisms
                 this.SpreadRate = this.SpreadRate * 10;
                 this.SeedingArea = this.SeedingArea * 10;
                 this.SeedsCount = this.SeedsCount * 10;
+                this.GenerationDefinitions.StartBiomes = "";
                 this.GenerationDefinitions.CountOfClusters = new Range(
                     this.GenerationDefinitions.CountOfClusters.min * 5,
                     this.GenerationDefinitions.CountOfClusters.max * 5
