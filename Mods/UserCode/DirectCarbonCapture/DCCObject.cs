@@ -15,6 +15,7 @@ namespace DirectCarbonCapture
     using Eco.Shared.Localization;
     using Eco.Shared.Math;
     using Eco.Shared.Serialization;
+    using Eco.Simulation.Settings;
 
     [Serialized]
     [Tag("Usable")]
@@ -38,8 +39,19 @@ namespace DirectCarbonCapture
         public virtual Type RepresentedItemType => typeof(DirectCarbonCaptureItem);
 
         // Balancing Configuration
-        public static readonly int pollutionTonsPerHour = -1;
+
+        // The DCC decomes less effective at higher pollution multipliers!
+        // At 1x pollution multiplier, 2 DCC can offset 1 combustion generator.
+        // At 2x pollution is 3 DCC to 1 combustion generator.
+        public static readonly float pollutionTonsPerHour = (float)(
+            -1 * Math.Sqrt(EcoDef.Obj.ClimateSettings.PollutionMultiplier)
+        );
+
+        // This range should should be roughly 2x the size of the pollution spread radius.
         public static readonly int pollutionClearRadius = 25;
+
+        // The DCC should use significant % of the power a combustion generator produces.
+        // Something like 1/10th is probably a good target.
         public static readonly int powerConsumption = 1000;
 
         static DirectCarbonCaptureObject()
@@ -110,6 +122,12 @@ namespace DirectCarbonCapture
                         new() { TypeName = nameof(BoilerItem), Quantity = 1 },
                     }
                 );
+        }
+
+        public override void Tick()
+        {
+            base.Tick();
+            this.SetAnimatedState("Operating", this.Operating);
         }
     }
 }

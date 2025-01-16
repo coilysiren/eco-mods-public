@@ -17,7 +17,7 @@ namespace DirectCarbonCapture
     {
         private int radius;
         private double lastCapture = 0;
-        private int pollutionTonsPerHour;
+        private float pollutionTonsPerHour;
 
         public float UpdateFrequencySec => 60;
 
@@ -31,13 +31,17 @@ namespace DirectCarbonCapture
 
         public bool IgnorePlantUpdates { get; }
 
-        public void Initialize(int pollutionTonsPerHour, int radius)
+        public void Initialize(float pollutionTonsPerHour, int radius)
         {
             this.pollutionTonsPerHour = pollutionTonsPerHour;
             this.radius = radius;
         }
 
-        public override void Tick() => this.ClearPollution();
+        public override void Tick()
+        {
+            base.Tick();
+            this.ClearPollution();
+        }
 
         private void ClearPollution()
         {
