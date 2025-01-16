@@ -23,10 +23,10 @@ namespace Eco.Mods.TechTree
             );
             Recipes = new List<Recipe> { recipe };
             ExperienceOnCraft = 0.1f;
-            LaborInCalories = CreateLaborInCaloriesValue(200, typeof(FarmingSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(5, typeof(FarmingSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CompostDecompositionRecipe),
-                start: 0.5f,
+                start: 2,
                 skillType: typeof(FarmingSkill)
             );
             Initialize(
