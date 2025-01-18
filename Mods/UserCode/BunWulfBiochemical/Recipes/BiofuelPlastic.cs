@@ -42,8 +42,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(20, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(PlasticBiofuel),
-                // BiodieselRecipe.CraftMinutes * 8, rounded
-                start: 6,
+                start: 4,
                 skillType: typeof(BiochemistSkill),
                 typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)
