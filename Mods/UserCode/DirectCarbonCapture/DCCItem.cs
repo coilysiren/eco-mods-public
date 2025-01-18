@@ -21,7 +21,7 @@ namespace DirectCarbonCapture
     [Weight(10000)]
     [LocDisplayName("Direct Carbon Capture Pump Jack")]
     [LocDescription(
-        "Direct carbon Capture removes carbon dioxide (CO2) directly from the ambient air, essentially sucking it out of the atmosphere, and storing it in geological formations."
+        "Direct carbon Capture removes carbon dioxide (CO2) directly from the ambient air, sucking it out of the atmosphere. Do not use in enclosed spaces or near plant life."
     )]
     [IconGroup("World Object Minimap")]
     [AirPollution(-1)]

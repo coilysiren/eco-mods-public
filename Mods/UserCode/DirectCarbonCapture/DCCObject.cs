@@ -48,7 +48,7 @@ namespace DirectCarbonCapture
         );
 
         // This range should should be roughly 2x the size of the pollution spread radius.
-        public static readonly int pollutionClearRadius = 25;
+        public static readonly int pollutionClearRadius = 15;
 
         // The DCC should use significant % of the power a combustion generator produces.
         // Something like 1/10th is probably a good target.
@@ -108,6 +108,7 @@ namespace DirectCarbonCapture
             this.GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Power"));
             this.GetComponent<PowerConsumptionComponent>().Initialize(powerConsumption);
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
+            this.GetComponent<PowerGridComponent>().DurabilityUsedPerHourOfUse = 1;
             this.GetComponent<HousingComponent>().HomeValue = DirectCarbonCaptureItem.homeValue;
             this.GetComponent<AirPollutionComponent>().Initialize(pollutionTonsPerHour);
             this.GetComponent<CarbonCaptureComponent>()
