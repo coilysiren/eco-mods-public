@@ -17,7 +17,7 @@ namespace Eco.Mods.TechTree
                 displayName: Localizer.DoStr("Biochar Charcoal Burning"),
                 ingredients: new List<IngredientElement>
                 {
-                    // 1 x 4 = 4 cost
+                    // 0.5 x 4 = 2 cost
                     new(typeof(CharcoalItem), 4, staticIngredient: true),
                     // 0.1 x 20 = 2 cost
                     new(
@@ -26,12 +26,15 @@ namespace Eco.Mods.TechTree
                         typeof(FarmingSkill),
                         typeof(FarmingLavishResourcesTalent)
                     ),
-                    // ingredient cost = 6
+                    // ingredient cost = 4
                 },
                 items: new List<CraftingElement>
                 {
+                    // 0.4 * 6 = 3.2
                     new CraftingElement<CharcoalItem>(6),
-                    new CraftingElement<OilItem>(6),
+                    // 0.2 * 4 = 0.8
+                    new CraftingElement<OilItem>(4),
+                    // products value = 4
                 }
             );
             Recipes = new List<Recipe> { recipe };
