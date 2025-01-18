@@ -30,11 +30,11 @@ namespace Eco.Mods.TechTree
                 },
                 items: new List<CraftingElement>
                 {
-                    // 0.4 * 6 = 3.2
+                    // 0.5 * 6 = 3
                     new CraftingElement<CharcoalItem>(6),
                     // 0.2 * 4 = 0.8
                     new CraftingElement<OilItem>(4),
-                    // products value = 4
+                    // products value = 3.8
                 }
             );
             Recipes = new List<Recipe> { recipe };
@@ -42,7 +42,7 @@ namespace Eco.Mods.TechTree
             LaborInCalories = CreateLaborInCaloriesValue(25, typeof(FarmingSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(BiocharRecipe),
-                start: 1.2f,
+                start: 1,
                 skillType: typeof(FarmingSkill),
                 typeof(FarmingFocusedSpeedTalent),
                 typeof(FarmingParallelSpeedTalent)
