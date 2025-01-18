@@ -48,7 +48,7 @@ namespace DirectCarbonCapture
         );
 
         // This range should should be roughly 2x the size of the pollution spread radius.
-        public static readonly int pollutionClearRadius = 15;
+        public static readonly int pollutionClearRadius = 20;
 
         // The DCC should use significant % of the power a combustion generator produces.
         // Something like 1/10th is probably a good target.
