@@ -24,13 +24,15 @@ namespace Eco.Mods.TechTree
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
-                    // priced at 0.3 x 10 = 3
+                    // priced at 0.2 x 10 = 2
                     new(
                         "Fat",
                         10,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
+                    // priced at 1
+                    new(typeof(EthanolItem), 1, true),
                     // ingredient cost = 4
                 },
                 items: new List<CraftingElement>
