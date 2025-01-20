@@ -21,13 +21,13 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<SandstoneItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(5000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SandstoneQuarrying),
-                start: 8,
+                start: 20,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SandstoneQuarrying));
@@ -49,13 +49,13 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<LimestoneItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(5000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(LimestoneQuarrying),
-                start: 8,
+                start: 20,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(LimestoneQuarrying));
@@ -77,13 +77,13 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<GraniteItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<GraniteItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(5000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GraniteQuarrying),
-                start: 8,
+                start: 20,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GraniteQuarrying));
@@ -105,13 +105,13 @@ namespace MinesQuarries
                 {
                     new(typeof(StonePickaxeItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<ShaleItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<ShaleItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(5000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ShaleQuarrying),
-                start: 8,
+                start: 20,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(ShaleQuarrying));
