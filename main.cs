@@ -89,8 +89,18 @@ namespace BunWulfMods
         private static readonly string LaborReplacement = "typeof(LibrarianSkill)";
 
         // Namespace replacement
-        private static readonly string NamespacePattern = @"namespace \w+";
+        private static readonly string NamespacePattern = @"namespace .*";
         private static readonly string NamespaceReplacement = "namespace BunWulfEducational";
+
+        // Using replacement
+        private static readonly string FirstGameplayUsingPattern =
+            @"using Eco.Gameplay.Items.Recipes;";
+        private static readonly string FirstGameplayUsingReplacement =
+            "using Eco.Gameplay.Items.Recipes;\n    using Eco.Mods.TechTree;";
+        private static readonly string SecondGameplayUsingPattern =
+            @"using Gameplay.Systems.TextLinks;";
+        private static readonly string SecondGameplayUsingReplacement =
+            @"using Eco.Gameplay.Systems.TextLinks;";
 
         // Experience Replacement
         private static readonly string ExperiencePattern =
@@ -201,14 +211,28 @@ namespace BunWulfMods
                     );
                 }
 
+                (fileData, found) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    FirstGameplayUsingPattern,
+                    FirstGameplayUsingReplacement
+                );
+                if (!found)
+                {
+                    throw new InvalidOperationException($"Using pattern not found in {fileName}");
+                }
+
                 fileData = Regex.Replace(
                     fileData,
                     SkillBookDescriptionPattern,
                     DescriptionReplacement
                 );
 
+                fileData = Regex.Replace(fileData, SkillBookRecipePattern, RecipeReplacement);
+
                 string targetFilePath = Path.Combine(targetTechDirectory, fileName);
                 Console.WriteLine("[BunWulfEducational] \twriting " + targetFilePath);
+                _ = Directory.CreateDirectory(targetTechDirectory);
                 File.WriteAllText(targetFilePath, fileData);
             }
         }
@@ -260,6 +284,7 @@ namespace BunWulfMods
 
             foreach (string file in Directory.EnumerateFiles(coreDirectory))
             {
+                bool found;
                 if (!file.Contains("ResearchPaper"))
                 {
                     continue;
@@ -276,11 +301,11 @@ namespace BunWulfMods
                 }
                 else if (file.Contains("Advanced"))
                 {
-                    techLevel = 2;
+                    techLevel = 3;
                 }
                 else if (file.Contains("Modern"))
                 {
-                    techLevel = 4;
+                    techLevel = 5;
                 }
 
                 int experience = 0;
@@ -326,9 +351,39 @@ namespace BunWulfMods
                     LaborPattern,
                     LaborReplacement
                 );
+                (fileData, found) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    NamespacePattern,
+                    NamespaceReplacement
+                );
+                if (!found)
+                {
+                    throw new InvalidOperationException(
+                        $"Namespace pattern not found in {fileName}"
+                    );
+                }
+                (fileData, found) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    FirstGameplayUsingPattern,
+                    FirstGameplayUsingReplacement
+                );
+                if (!found)
+                {
+                    throw new InvalidOperationException($"Using pattern not found in {fileName}");
+                }
+                (fileData, found) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    SecondGameplayUsingPattern,
+                    SecondGameplayUsingReplacement
+                );
+                if (!found) { }
 
                 string targetFilePath = Path.Combine(targetDirectory, fileName);
                 Console.WriteLine("[BunWulfEducational] \twriting " + targetFilePath);
+                _ = Directory.CreateDirectory(targetDirectory);
                 File.WriteAllText(targetFilePath, fileData);
             }
         }
