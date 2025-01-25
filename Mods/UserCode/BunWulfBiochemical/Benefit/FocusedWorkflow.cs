@@ -1,16 +1,11 @@
-#pragma warning disable IDE0005
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-#pragma warning restore IDE0005
-
-using Eco.Gameplay.Skills;
-using Eco.Shared.Localization;
-using Eco.Shared.Serialization;
-
-namespace Eco.Mods.TechTree
+namespace BunWulfBioChemical
 {
+    using System;
+    using Eco.Gameplay.Skills;
+    using Eco.Mods.TechTree;
+    using Eco.Shared.Localization;
+    using Eco.Shared.Serialization;
+
     [Serialized]
     [LocDisplayName("Focused Workflow: Biochemist")]
     [LocDescription("Doubles the speed of related tables when alone.")]

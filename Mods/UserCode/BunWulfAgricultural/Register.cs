@@ -1,14 +1,7 @@
 using Eco.Core.Plugins.Interfaces;
 
-#pragma warning disable IDE0022
-
 public class BunWulfAgricultural : IModInit
 {
-    public static void Main()
-    {
-        // give dotnet an arbitrary entrypoint so it builds the rest of the project
-    }
-
     public static ModRegistration Register() =>
         new()
         {

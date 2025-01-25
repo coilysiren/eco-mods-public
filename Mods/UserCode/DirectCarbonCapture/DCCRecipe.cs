@@ -1,6 +1,7 @@
 namespace DirectCarbonCapture
 {
     using System.Collections.Generic;
+    using BunWulfBioChemical;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Items.Recipes;
     using Eco.Gameplay.Skills;

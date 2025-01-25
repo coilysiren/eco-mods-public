@@ -1,5 +1,6 @@
 namespace DirectCarbonCapture
 {
+    using BunWulfBioChemical;
     using Eco.Core.Controller;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.DynamicValues;
@@ -10,7 +11,6 @@ namespace DirectCarbonCapture
     using Eco.Gameplay.Skills;
     using Eco.Gameplay.Systems.NewTooltip;
     using Eco.Gameplay.Systems.TextLinks;
-    using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Math;

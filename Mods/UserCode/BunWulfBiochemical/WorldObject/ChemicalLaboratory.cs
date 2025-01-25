@@ -1,30 +1,25 @@
-#pragma warning disable IDE0005
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-#pragma warning restore IDE0005
-
-using Eco.Core.Controller;
-using Eco.Core.Items;
-using Eco.Gameplay.Components;
-using Eco.Gameplay.Components.Auth;
-using Eco.Gameplay.Items;
-using Eco.Gameplay.Items.Recipes;
-using Eco.Gameplay.Modules;
-using Eco.Gameplay.Objects;
-using Eco.Gameplay.Occupancy;
-using Eco.Gameplay.Property;
-using Eco.Gameplay.Skills;
-using Eco.Gameplay.Systems.NewTooltip;
-using Eco.Shared.Items;
-using Eco.Shared.Localization;
-using Eco.Shared.Math;
-using Eco.Shared.Serialization;
-using static Eco.Gameplay.Components.PartsComponent; // would like to remove the static import, but not sure how to do it
-
-namespace Eco.Mods.TechTree
+namespace BunWulfBioChemical
 {
+    using System;
+    using System.Collections.Generic;
+    using Eco.Core.Controller;
+    using Eco.Core.Items;
+    using Eco.Gameplay.Components;
+    using Eco.Gameplay.Components.Auth;
+    using Eco.Gameplay.Items;
+    using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Modules;
+    using Eco.Gameplay.Objects;
+    using Eco.Gameplay.Occupancy;
+    using Eco.Gameplay.Property;
+    using Eco.Gameplay.Skills;
+    using Eco.Gameplay.Systems.NewTooltip;
+    using Eco.Mods.TechTree;
+    using Eco.Shared.Items;
+    using Eco.Shared.Localization;
+    using Eco.Shared.Math;
+    using Eco.Shared.Serialization;
+
     [Serialized]
     [RequireComponent(typeof(OnOffComponent))]
     [RequireComponent(typeof(PropertyAuthComponent))]
@@ -74,10 +69,7 @@ namespace Eco.Mods.TechTree
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
-                    new PartInfo[]
-                    {
-                        new() { TypeName = nameof(PaperItem), Quantity = 10 },
-                    }
+                    [new() { TypeName = nameof(PaperItem), Quantity = 10 }]
                 );
         }
     }
