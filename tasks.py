@@ -142,27 +142,28 @@ def bunwulf_agricultural(_: invoke.Context):
         with open(os.path.join(plants, p), "r", encoding="utf-8") as f:
             data = f.read()
 
+        # Skip anything produces plant fibers
+        if "PlantFibersItem" in data:
+            continue
+
         # Skip trees
         if regex.match(tree_species_pattern, data, regex.DOTALL):
             continue
 
-        # Skip grass
-        if "CommonGrass" in p:
-            continue
+        else:
+            # Pull out all the data we need
+            plant_entity = regex.search(plant_entity_pattern, data, regex.DOTALL).group(1)
+            plant_species = regex.search(plant_species_pattern, data, regex.DOTALL).group(1)
+            # constraints_raw = regex.findall(constraints_pattern, data, regex.DOTALL)
+            # constraints_list = [
+            #     {"CapacityLayerName": c[0], "ConsumedCapacityPerPop": f"{float(c[1]) / 10}f"} for c in constraints_raw
+            # ]
 
-        # Pull out all the data we need
-        entity = regex.search(plant_entity_pattern, data, regex.DOTALL).group(1)
-        species = regex.search(plant_species_pattern, data, regex.DOTALL).group(1)
-        # constraints_raw = regex.findall(constraints_pattern, data, regex.DOTALL)
-        # constraints_list = [
-        #     {"CapacityLayerName": c[0], "ConsumedCapacityPerPop": f"{float(c[1]) / 10}f"} for c in constraints_raw
-        # ]
-
-        # Render and write the template
-        print(f"Writing {entity} to BunWulfAgricultural")
-        content = template.render(entity=entity, species=species)
-        with open(os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Plant", p), "w", encoding="utf-8") as f:
-            f.write(content)
+            # Render and write the template
+            print(f"Writing {plant_entity} to BunWulfAgricultural")
+            content = template.render(entity=plant_entity, species=plant_species)
+            with open(os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Plant", p), "w", encoding="utf-8") as f:
+                f.write(content)
 
 
 @invoke.task
