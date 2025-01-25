@@ -1,4 +1,4 @@
-namespace Eco.Mods.TechTree
+namespace BunWulfEducational
 {
     using System.Collections.Generic;
     using Eco.Core.Items;
@@ -7,6 +7,7 @@ namespace Eco.Mods.TechTree
     using Eco.Gameplay.Items.Recipes;
     using Eco.Gameplay.Modules;
     using Eco.Gameplay.Skills;
+    using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
 

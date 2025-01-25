@@ -88,6 +88,10 @@ namespace BunWulfMods
         private static readonly string LaborPattern = @"typeof\((?!LibrarianSkill)\w+Skill\)";
         private static readonly string LaborReplacement = "typeof(LibrarianSkill)";
 
+        // Namespace replacement
+        private static readonly string NamespacePattern = @"namespace \w+";
+        private static readonly string NamespaceReplacement = "namespace BunWulfEducational";
+
         // Experience Replacement
         private static readonly string ExperiencePattern =
             @"this.ExperienceOnCraft = \d+(\.\d+f?|f)?";
@@ -127,6 +131,7 @@ namespace BunWulfMods
 
             foreach (string file in Directory.EnumerateFiles(coreTechDirectory))
             {
+                bool found;
                 string fileName = Path.GetFileName(file);
                 // string sourceFilePath = Path.Combine(coreTechDirectory, fileName);
                 // Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
@@ -169,7 +174,7 @@ namespace BunWulfMods
                     TextProcessing.SkillScrollPattern
                 );
 
-                (fileData, bool found) = TextProcessing.StaticReplacePattern(
+                (fileData, found) = TextProcessing.StaticReplacePattern(
                     fileData,
                     fileName,
                     LaborPattern,
@@ -183,7 +188,19 @@ namespace BunWulfMods
                     continue;
                 }
 
-                fileData = Regex.Replace(fileData, SkillBookRecipePattern, RecipeReplacement);
+                (fileData, found) = TextProcessing.StaticReplacePattern(
+                    fileData,
+                    fileName,
+                    NamespacePattern,
+                    NamespaceReplacement
+                );
+                if (!found)
+                {
+                    throw new InvalidOperationException(
+                        $"Namespace pattern not found in {fileName}"
+                    );
+                }
+
                 fileData = Regex.Replace(
                     fileData,
                     SkillBookDescriptionPattern,
@@ -259,25 +276,25 @@ namespace BunWulfMods
                 }
                 else if (file.Contains("Advanced"))
                 {
-                    techLevel = 3;
+                    techLevel = 2;
                 }
                 else if (file.Contains("Modern"))
                 {
-                    techLevel = 5;
+                    techLevel = 4;
                 }
 
                 int experience = 0;
                 if (file.Contains("Basic"))
                 {
-                    experience = 3;
+                    experience = 2;
                 }
                 else if (file.Contains("Advanced"))
                 {
-                    experience = 15;
+                    experience = 4;
                 }
                 else if (file.Contains("Modern"))
                 {
-                    experience = 75;
+                    experience = 16;
                 }
 
                 string fileData = File.ReadAllText(file);
