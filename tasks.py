@@ -129,10 +129,6 @@ def bunwulf_agricultural(_: invoke.Context):
     plant_entity_pattern = r".*public partial class (\w+) : PlantEntity.*"
     plant_species_pattern = r".*public partial class (\w+) : PlantSpecies.*"
     tree_species_pattern = r".*public partial class (\w+) : TreeSpecies.*"
-    # cluster_count_pattern = r"CountOfClusters = new Range\((\d+\.?\d*f?), (\d+\.?\d*f?)\)"
-    # constraints_pattern = (
-    #     r"new CapacityConstraint\(\) \{ CapacityLayerName = \"(\w+)\", ConsumedCapacityPerPop = (\d+\.?\d*)f?"
-    # )
 
     templates = jinja2.Environment(loader=jinja2.FileSystemLoader("templates/"))
     template = templates.get_template("plant.template")
@@ -154,14 +150,10 @@ def bunwulf_agricultural(_: invoke.Context):
             # Pull out all the data we need
             plant_entity = regex.search(plant_entity_pattern, data, regex.DOTALL).group(1)
             plant_species = regex.search(plant_species_pattern, data, regex.DOTALL).group(1)
-            # constraints_raw = regex.findall(constraints_pattern, data, regex.DOTALL)
-            # constraints_list = [
-            #     {"CapacityLayerName": c[0], "ConsumedCapacityPerPop": f"{float(c[1]) / 10}f"} for c in constraints_raw
-            # ]
 
             # Render and write the template
             print(f"Writing {plant_entity} to BunWulfAgricultural")
-            content = template.render(entity=plant_entity, species=plant_species)
+            content = template.render(plant_entity=plant_entity, plant_species=plant_species)
             with open(os.path.join(USERCODE_PATH, "BunWulfAgricultural", "Plant", p), "w", encoding="utf-8") as f:
                 f.write(content)
 

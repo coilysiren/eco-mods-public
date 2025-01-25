@@ -5,9 +5,9 @@ namespace Eco.Mods.Organisms
     using Eco.Mods.Organisms;
     using Eco.Shared.Math;
 
-    public partial class {{ entity }}
+    public partial class {{ plant_entity }}
     {
-        public partial class {{ species }}
+        public partial class {{ plant_species }}
         {
             partial void ModsPostInitialize()
             {
