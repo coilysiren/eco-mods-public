@@ -1,4 +1,4 @@
-namespace BunWulfMods
+namespace BunWulfModsPublic
 {
     using System;
     using System.Collections.Generic;
