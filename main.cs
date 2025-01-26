@@ -160,6 +160,7 @@ namespace BunWulfModsPublic
                     );
                 }
 
+                // Set the RequiresSkill level to the tier, and replace with LibrarianSkill
                 fileData = TextProcessing.ExtractThenReplace(
                     fileData,
                     fileName,
@@ -168,22 +169,28 @@ namespace BunWulfModsPublic
                     RequiresSkillLevelReplacement
                 );
 
+                // Remove the skill itself so we don't duplicate
                 fileData = TextProcessing.RemovePattern(
                     fileData,
                     fileName,
                     TextProcessing.SkillPattern
                 );
+
+                // Remove the skill book so we don't duplicate
                 fileData = TextProcessing.RemovePattern(
                     fileData,
                     fileName,
                     TextProcessing.SkillBookPattern
                 );
+
+                // Remove the skill scroll so we don't duplicate
                 fileData = TextProcessing.RemovePattern(
                     fileData,
                     fileName,
                     TextProcessing.SkillScrollPattern
                 );
 
+                // Replace with LibrarianSkill labor
                 (fileData, found) = TextProcessing.StaticReplacePattern(
                     fileData,
                     fileName,
@@ -198,6 +205,7 @@ namespace BunWulfModsPublic
                     continue;
                 }
 
+                // Replace the namespace with BunWulfEducational
                 (fileData, found) = TextProcessing.StaticReplacePattern(
                     fileData,
                     fileName,
@@ -211,6 +219,7 @@ namespace BunWulfModsPublic
                     );
                 }
 
+                // Fixes using statements
                 (fileData, found) = TextProcessing.StaticReplacePattern(
                     fileData,
                     fileName,
@@ -222,6 +231,7 @@ namespace BunWulfModsPublic
                     throw new InvalidOperationException($"Using pattern not found in {fileName}");
                 }
 
+                // Updates description
                 fileData = Regex.Replace(
                     fileData,
                     SkillBookDescriptionPattern,
