@@ -69,7 +69,10 @@ namespace BunWulfBioChemical
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
-                    [new() { TypeName = nameof(PaperItem), Quantity = 10 }]
+                    new PartsComponent.PartInfo[]
+                    {
+                        new() { TypeName = nameof(PaperItem), Quantity = 10 },
+                    }
                 );
         }
     }
