@@ -1,34 +1,59 @@
 namespace Eco.Mods.TechTree
 {
+    using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Items.Recipes;
+    using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
 
-    public partial class StreetlampRecipe : RecipeFamily
+    [RequiresSkill(typeof(MechanicsSkill), 5)]
+    public partial class LowTechStreetlampRecipe : RecipeFamily
     {
-        public void ModsPreInitialize()
+        public LowTechStreetlampRecipe()
         {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-            List<IngredientElement> ingredients = this.Recipes.FirstOrDefault().Ingredients;
-            foreach (IngredientElement ingredient in this.Recipes.FirstOrDefault().Ingredients)
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
-            {
-                if (ingredient.Item.GetType() == typeof(SteelBarItem))
+            Recipe recipe = new();
+            recipe.Init(
+                name: "Low Tech Streetlamp",
+                displayName: Localizer.DoStr("Low Tech Streetlamp"),
+                ingredients: new List<IngredientElement>
                 {
-                    _ = ingredients.Remove(ingredient);
-                    ingredients.Add(
-                        new IngredientElement(
-                            typeof(IronBarItem),
-                            ingredient.Quantity.GetBaseValue,
-                            true
-                        )
-                    );
-                }
-            }
-        }
-
-        public void ModsPostInitialize()
-        {
-            CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineItem), recipe: this);
+                    new(
+                        typeof(IronBarItem),
+                        12,
+                        typeof(MechanicsSkill),
+                        typeof(MechanicsLavishResourcesTalent)
+                    ),
+                    new(
+                        typeof(GlassItem),
+                        5,
+                        typeof(MechanicsSkill),
+                        typeof(MechanicsLavishResourcesTalent)
+                    ),
+                    new(
+                        typeof(CopperWiringItem),
+                        5,
+                        typeof(MechanicsSkill),
+                        typeof(MechanicsLavishResourcesTalent)
+                    ),
+                    new(typeof(LightBulbItem), 1, true),
+                },
+                items: new List<CraftingElement> { new CraftingElement<StreetlampItem>() }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.ExperienceOnCraft = 5;
+            this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(MechanicsSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(LowTechStreetlampRecipe),
+                start: 6,
+                skillType: typeof(MechanicsSkill),
+                typeof(MechanicsFocusedSpeedTalent),
+                typeof(MechanicsParallelSpeedTalent)
+            );
+            this.Initialize(
+                displayText: Localizer.DoStr("Low Tech Streetlamp"),
+                recipeType: typeof(LowTechStreetlampRecipe)
+            );
+            CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipe: this);
         }
     }
 }
