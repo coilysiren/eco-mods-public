@@ -5,6 +5,7 @@ namespace DirectCarbonCapture
     using Eco.Core.Items;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Components.Auth;
+    using Eco.Gameplay.Components.Storage;
     using Eco.Gameplay.Housing;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
@@ -30,13 +31,16 @@ namespace DirectCarbonCapture
     [RequireComponent(typeof(AirPollutionComponent))]
     [RequireComponent(typeof(PowerConsumptionComponent))]
     [RequireComponent(typeof(PowerGridComponent))]
+    [RequireComponent(typeof(FuelConsumptionComponent))]
+    [RequireComponent(typeof(FuelSupplyComponent))]
     [RepairRequiresSkill(typeof(MechanicsSkill), 1)]
     [RepairRequiresSkill(typeof(SelfImprovementSkill), 5)]
     public partial class DirectCarbonCaptureObject : WorldObject, IRepresentsItem
     {
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
-        public override LocString DisplayName => Localizer.DoStr("Direct Carbon Capture Pump Jack");
+        public override LocString DisplayName => Localizer.DoStr("Direct Air Capture Pump");
         public virtual Type RepresentedItemType => typeof(DirectCarbonCaptureItem);
+        private static readonly string[] fuelTagList = new[] { "Filter" }; //noloc
 
         // Balancing Configuration
 
@@ -54,57 +58,38 @@ namespace DirectCarbonCapture
         // Something like 1/10th is probably a good target.
         public static readonly int powerConsumption = 1000;
 
+        // Controls how frequently the DCC burns through carbon filters.
+        public static readonly int joulesPerSecond = 25;
+
         static DirectCarbonCaptureObject()
         {
             AddOccupancy<DirectCarbonCaptureObject>(
                 new List<BlockOccupancy>()
                 {
                     new(new Vector3i(0, 0, 0)),
-                    new(new Vector3i(0, 0, 1)),
-                    new(new Vector3i(0, 1, 0)),
-                    new(new Vector3i(0, 1, 1)),
-                    new(new Vector3i(0, 2, 0)),
-                    new(new Vector3i(0, 2, 1)),
-                    new(new Vector3i(0, 3, 0)),
-                    new(new Vector3i(0, 3, 1)),
                     new(new Vector3i(1, 0, 0)),
                     new(new Vector3i(1, 0, 1)),
-                    new(new Vector3i(1, 1, 0)),
+                    new(new Vector3i(0, 0, 1)),
+                    new(new Vector3i(0, 1, 1)),
                     new(new Vector3i(1, 1, 1)),
+                    new(new Vector3i(1, 1, 0)),
+                    new(new Vector3i(0, 1, 0)),
+                    new(new Vector3i(0, 2, 0)),
                     new(new Vector3i(1, 2, 0)),
                     new(new Vector3i(1, 2, 1)),
-                    new(new Vector3i(1, 3, 0)),
+                    new(new Vector3i(0, 2, 1)),
+                    new(new Vector3i(0, 3, 1)),
                     new(new Vector3i(1, 3, 1)),
-                    new(new Vector3i(2, 0, 0)),
-                    new(new Vector3i(2, 0, 1)),
-                    new(new Vector3i(2, 1, 0)),
-                    new(new Vector3i(2, 1, 1)),
-                    new(new Vector3i(2, 2, 0)),
-                    new(new Vector3i(2, 2, 1)),
-                    new(new Vector3i(2, 3, 0)),
-                    new(new Vector3i(2, 3, 1)),
-                    new(new Vector3i(3, 0, 0)),
-                    new(new Vector3i(3, 0, 1)),
-                    new(new Vector3i(3, 1, 0)),
-                    new(new Vector3i(3, 1, 1)),
-                    new(new Vector3i(3, 2, 0)),
-                    new(new Vector3i(3, 2, 1)),
-                    new(new Vector3i(3, 3, 0)),
-                    new(new Vector3i(3, 3, 1)),
-                    new(new Vector3i(4, 0, 0)),
-                    new(new Vector3i(4, 0, 1)),
-                    new(new Vector3i(4, 1, 0)),
-                    new(new Vector3i(4, 1, 1)),
-                    new(new Vector3i(4, 2, 0)),
-                    new(new Vector3i(4, 2, 1)),
-                    new(new Vector3i(4, 3, 0)),
-                    new(new Vector3i(4, 3, 1)),
+                    new(new Vector3i(1, 3, 0)),
+                    new(new Vector3i(0, 3, 0)),
                 }
             );
         }
 
         protected override void Initialize()
         {
+            this.GetComponent<FuelSupplyComponent>().Initialize(2, fuelTagList);
+            this.GetComponent<FuelConsumptionComponent>().Initialize(joulesPerSecond);
             this.GetComponent<MinimapComponent>().SetCategory(Localizer.DoStr("Power"));
             this.GetComponent<PowerConsumptionComponent>().Initialize(powerConsumption);
             this.GetComponent<PowerGridComponent>().Initialize(10, new ElectricPower());
@@ -118,8 +103,7 @@ namespace DirectCarbonCapture
                     () => LocString.Empty,
                     new PartsComponent.PartInfo[]
                     {
-                        new() { TypeName = nameof(CarbonFilterItem), Quantity = 10 },
-                        new() { TypeName = nameof(PistonItem), Quantity = 1 },
+                        new() { TypeName = nameof(PistonItem), Quantity = 4 },
                         new() { TypeName = nameof(BoilerItem), Quantity = 1 },
                     }
                 );

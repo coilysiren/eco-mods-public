@@ -65,18 +65,13 @@ namespace DirectCarbonCapture
         {
             Recipe recipe = new();
             recipe.Init(
-                name: "Direct Carbon Capture Pump Jack",
-                displayName: Localizer.DoStr("Direct Carbon Capture Pump Jack"),
+                name: "Direct Air Capture Pump",
+                displayName: Localizer.DoStr("Direct Air Capture Pump"),
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(PumpJackItem), 1, staticIngredient: true),
                     new(typeof(BoilerItem), 1, staticIngredient: true),
-                    new(
-                        typeof(CarbonFilterItem),
-                        10,
-                        typeof(MechanicsSkill),
-                        typeof(MechanicsLavishResourcesTalent)
-                    ),
+                    new(typeof(PistonItem), 4, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<DirectCarbonCaptureItem>() }
             );
@@ -91,7 +86,7 @@ namespace DirectCarbonCapture
                 typeof(MechanicsParallelSpeedTalent)
             );
             this.Initialize(
-                displayText: Localizer.DoStr("Direct Carbon Capture Pump Jack"),
+                displayText: Localizer.DoStr("Direct Air Capture Pump"),
                 recipeType: typeof(DirectCarbonCaptureRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipe: this);

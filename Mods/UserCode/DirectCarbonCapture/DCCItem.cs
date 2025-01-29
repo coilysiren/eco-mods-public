@@ -1,9 +1,10 @@
 namespace DirectCarbonCapture
 {
+    using System.ComponentModel;
     using BunWulfBioChemical;
     using Eco.Core.Controller;
+    using Eco.Core.Items;
     using Eco.Gameplay.Components;
-    using Eco.Gameplay.DynamicValues;
     using Eco.Gameplay.Housing.PropertyValues;
     using Eco.Gameplay.Items;
     using Eco.Gameplay.Objects;
@@ -19,9 +20,9 @@ namespace DirectCarbonCapture
 
     [Serialized]
     [Weight(10000)]
-    [LocDisplayName("Direct Carbon Capture Pump Jack")]
+    [LocDisplayName("Direct Air Capture Fan")]
     [LocDescription(
-        "Direct carbon Capture removes carbon dioxide (CO2) directly from the ambient air, sucking it out of the atmosphere. Do not use in enclosed spaces or near plant life."
+        "Direct Air Capture removes carbon dioxide (CO2) directly from the ambient air, sucking it out of the atmosphere. The CO2 is then pumped into nearby porous rock, such as limestone. Do not use in enclosed spaces or near plant life."
     )]
     [IconGroup("World Object Minimap")]
     [AirPollution(-1)]
@@ -61,21 +62,25 @@ namespace DirectCarbonCapture
     [Weight(1)]
     [LocDisplayName("Carbon Filter")]
     [LocDescription(
-        "Carbon filters are used to remove carbon dioxide (CO2) from the air. They are used in direct carbon capture systems."
+        "Carbon filters are used to remove carbon dioxide (CO2) from the air. They are used in direct air capture systems."
     )]
+    [Fuel(100000)]
+    [Tag("Filter")]
     [RepairRequiresSkill(typeof(BiochemistSkill), 1)]
-    public partial class CarbonFilterItem : PartItem
+    public partial class CarbonFilterItem : Item
     {
-        private static SkillModifiedValue skilledRepairCost =
-            new(
-                2,
-                BiochemistSkill.MultiplicativeStrategy,
-                typeof(BiochemistSkill),
-                typeof(CarbonFilterItem),
-                Localizer.DoStr("repair cost"),
-                DynamicValueType.Efficiency
-            );
-        public override IDynamicValue SkilledRepairCost => skilledRepairCost;
-        public float ReduceMaxDurabilityByPercent => 0.05f;
+        public override LocString DisplayNamePlural => Localizer.DoStr("Carbon Filters");
+    }
+
+    [Serialized]
+    [Category("Hidden")]
+    [Tag("Filter")]
+    [LocDisplayName("Filter")]
+    [LocDescription(
+        "Carbon filters are used to remove carbon dioxide (CO2) from the air. They are used in direct air capture systems."
+    )]
+    public partial class FilterItem : Item
+    {
+        public override LocString DisplayNamePlural => Localizer.DoStr("Filters");
     }
 }
