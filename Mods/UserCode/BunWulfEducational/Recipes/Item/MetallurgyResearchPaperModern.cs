@@ -52,8 +52,8 @@ namespace BunWulfEducational
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(RebarItem), 6, typeof(LibrarianSkill), typeof(AdvancedSmeltingLavishResourcesTalent)),
-                    new IngredientElement(typeof(SteelBarItem), 10, typeof(LibrarianSkill), typeof(AdvancedSmeltingLavishResourcesTalent)),
+                    new IngredientElement(typeof(RebarItem), 6, typeof(LibrarianSkill)),
+                    new IngredientElement(typeof(SteelBarItem), 10, typeof(LibrarianSkill)),
                     new IngredientElement(typeof(InkItem), 4, true),
                     new IngredientElement(typeof(PaperItem), 20, true),
                 },

@@ -68,10 +68,14 @@ namespace BunWulfModsPublic
     public static class BunWulfEducational
     {
         // Tier Extraction then Skill Level Replacement
-        private static readonly string TierPattern = @".*Tier\((\d)\).*";
+        private static readonly string TierExtractionPattern = @".*Tier\((\d)\).*";
         private static readonly string RequiresSkillLevelPattern = @"RequiresSkill.*?(\d)";
         private static readonly string RequiresSkillLevelReplacement =
             @"RequiresSkill(typeof(LibrarianSkill), $1";
+
+        // Skill Extraction then Skill Replacement
+        private static readonly string SkillExtractionPattern = @"(\w+)LavishResourcesTalent";
+        private static readonly string SkillReplacement = "Librarian";
 
         // Recipe Replacement
         private static readonly string SkillBookRecipePattern = @"(\w+SkillBookRecipe)";
@@ -147,7 +151,7 @@ namespace BunWulfModsPublic
                 // Console.WriteLine("[BunWulfEducational] reading " + sourceFilePath);
                 string fileData = File.ReadAllText(file);
 
-                Match tierMatch = Regex.Match(fileData, TierPattern);
+                Match tierMatch = Regex.Match(fileData, TierExtractionPattern);
                 if (tierMatch.Success)
                 {
                     string tier = tierMatch.Groups[1].Value;
@@ -161,10 +165,11 @@ namespace BunWulfModsPublic
                 }
 
                 // Set the RequiresSkill level to the tier, and replace with LibrarianSkill
-                fileData = TextProcessing.ExtractThenReplace(
+                fileData = TextProcessing.ExtractThenReplaceRegex(
                     fileData,
                     fileName,
-                    TierPattern,
+                    TierExtractionPattern,
+                    extractedValue => (int.Parse(extractedValue) + 1).ToString(),
                     RequiresSkillLevelPattern,
                     RequiresSkillLevelReplacement
                 );
@@ -390,6 +395,19 @@ namespace BunWulfModsPublic
                     SecondGameplayUsingReplacement
                 );
                 if (!found) { }
+                // Replace Skill => Librarian, requires an extractor though
+                fileData = TextProcessing.ExtractThenReplaceString(
+                    fileData,
+                    fileName,
+                    SkillExtractionPattern,
+                    SkillReplacement
+                );
+                // Remove Lavish Resources, which librarian does not have
+                fileData = fileData.Replace(", typeof(LibrarianLavishResourcesTalent)", "");
+                // Remove Focused Speed, which librarian does not have
+                fileData = fileData.Replace(", typeof(LibrarianFocusedSpeedTalent)", "");
+                // Remove Parallel Spped, which librarian does not have
+                fileData = fileData.Replace(", typeof(LibrarianParallelSpeedTalent)", "");
 
                 string targetFilePath = Path.Combine(targetDirectory, fileName);
                 Console.WriteLine("[BunWulfEducational] \twriting " + targetFilePath);
@@ -431,40 +449,58 @@ namespace BunWulfModsPublic
             return (recipeData, match.Success);
         }
 
-        public static string ExtractThenReplace(
+        public static string ExtractThenReplaceRegex(
             string recipeData,
             string file,
             string extractor,
+            Func<string, string> extractionProcessor,
             string pattern,
             string replacement
         )
         {
             Match extractorMatch = Regex.Match(recipeData, extractor);
-            int extractedValue;
+            string extractedValue;
 
             if (extractorMatch.Success)
             {
-                extractedValue = int.Parse(extractorMatch.Groups[1].Value);
-                // This line is used to scale librarian so it's more balanced
-                // We should move this logic elsewhere so it's more abstract
-                extractedValue = 1 + extractedValue;
+                extractedValue = extractionProcessor(extractorMatch.Groups[1].Value);
             }
             else
             {
-                // Console.WriteLine(
-                //     $"[BunWulfEducational]\tCouldn't find extractor {extractor} in {file}"
-                // );
                 return recipeData;
             }
 
             // Inside of recipeData, replace pattern with replacement, using
             // extractedValue as the input value into the replacement.
 
-            recipeData = Regex.Replace(
-                recipeData,
-                pattern,
-                replacement.Replace("$1", extractedValue.ToString())
-            );
+            string replacementReplaced = replacement.Replace("$1", extractedValue);
+            recipeData = Regex.Replace(recipeData, pattern, replacementReplaced);
+
+            return recipeData;
+        }
+
+        public static string ExtractThenReplaceString(
+            string recipeData,
+            string file,
+            string extractor,
+            string pattern
+        )
+        {
+            Console.WriteLine($"working on {file}");
+
+            Match extractorMatch = Regex.Match(recipeData, extractor);
+            string extractedValue;
+
+            if (extractorMatch.Success)
+            {
+                extractedValue = extractorMatch.Groups[1].Value;
+            }
+            else
+            {
+                return recipeData;
+            }
+
+            recipeData = recipeData.Replace(extractedValue, pattern);
 
             return recipeData;
         }
@@ -490,8 +526,9 @@ namespace BunWulfModsPublic
             string className
         )
         {
-            List<string> recipeLines =
-                new(recipeData.Split(new[] { '\n' }, StringSplitOptions.None));
+            List<string> recipeLines = new(
+                recipeData.Split(new[] { '\n' }, StringSplitOptions.None)
+            );
             // Console.WriteLine($"[BunWulfEducational]\tRemoving \"{className}\" from recipe");
 
             // Step 1: Identify the line where the class starts.

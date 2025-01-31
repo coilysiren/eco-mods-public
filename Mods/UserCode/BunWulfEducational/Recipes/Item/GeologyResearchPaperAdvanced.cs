@@ -52,7 +52,7 @@ namespace BunWulfEducational
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement("MortaredStone", 20, typeof(LibrarianSkill), typeof(MasonryLavishResourcesTalent)), //noloc
+                    new IngredientElement("MortaredStone", 20, typeof(LibrarianSkill)), //noloc
                 },
 
                 // Define our recipe output items.

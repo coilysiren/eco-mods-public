@@ -52,8 +52,8 @@ namespace BunWulfEducational
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement("BakedVegetable", 16, typeof(LibrarianSkill), typeof(CookingLavishResourcesTalent)), //noloc
-                    new IngredientElement("Salad", 10, typeof(LibrarianSkill), typeof(CookingLavishResourcesTalent)), //noloc
+                    new IngredientElement("BakedVegetable", 16, typeof(LibrarianSkill)), //noloc
+                    new IngredientElement("Salad", 10, typeof(LibrarianSkill)), //noloc
                 },
 
                 // Define our recipe output items.

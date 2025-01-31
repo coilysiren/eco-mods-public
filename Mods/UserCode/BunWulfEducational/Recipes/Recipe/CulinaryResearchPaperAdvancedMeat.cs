@@ -44,8 +44,8 @@ namespace BunWulfEducational
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(BakedMeatItem), 20, typeof(LibrarianSkill), typeof(BakingLavishResourcesTalent)),
-                    new IngredientElement(typeof( SimmeredMeatItem), 10, typeof(LibrarianSkill), typeof(BakingLavishResourcesTalent)),
+                    new IngredientElement(typeof(BakedMeatItem), 20, typeof(LibrarianSkill)),
+                    new IngredientElement(typeof( SimmeredMeatItem), 10, typeof(LibrarianSkill)),
                 },
 
                 // Define our recipe output items.
@@ -62,7 +62,7 @@ namespace BunWulfEducational
             this.LaborInCalories = CreateLaborInCaloriesValue(120, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
-            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(LibrarianCulinaryResearchPaperAdvancedMeatRecipe), start: 1, skillType: typeof(LibrarianSkill), typeof(BakingFocusedSpeedTalent), typeof(BakingParallelSpeedTalent));
+            this.CraftMinutes = CreateCraftTimeValue(beneficiary: typeof(LibrarianCulinaryResearchPaperAdvancedMeatRecipe), start: 1, skillType: typeof(LibrarianSkill));
 
             // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Culinary Research Paper Advanced Meat"
             this.ModsPreInitialize();
