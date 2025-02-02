@@ -120,13 +120,22 @@ namespace BunWulfModsPublic
         private static readonly string LaserPattern =
             @"RecipeVariant.RegisterDefault<LaserRecipe>(DifficultySettingsConfig.EndgameRecipesNormal);";
 
-        // Skill Book Replacement
+        // Default Skill Book Replacement
+        // The "" + is for readability, it's a no-op
         private static readonly string DefaultSkillBookExtractor =
-            @"RegisterDefault<(?!Librarian)(\w+)SkillBookRecipe>";
-        private static readonly string DefaultSkillBookReplacement =
-            "RegisterDefault<Librarian$1SkillBookRecipe>";
+            "" + @"RegisterDefault<(?!Librarian)(\w+)SkillBookRecipe>";
         private static readonly string DefaultSkillBookPattern =
-            @"RegisterDefault<$1SkillBookRecipe>";
+            "" + @"RegisterDefault<$1SkillBookRecipe>";
+        private static readonly string DefaultSkillBookReplacement =
+            "" + "RegisterDefault<Librarian$1SkillBookRecipe>";
+
+        // Expensive Skill Book Replacement
+        private static readonly string ExpensiveSkillBookExtractor =
+            "" + @"Register<(?!Librarian)(\w+)SkillBookRecipe>";
+        private static readonly string ExpensiveSkillBookPattern =
+            "" + @"Register<$1SkillBookRecipe>";
+        private static readonly string ExpensiveSkillBookReplacement =
+            "" + "Register<Librarian$1SkillBookRecipe>";
 
         public static void Initialize(string? sourcebaseDirectory = null)
         {
@@ -293,8 +302,8 @@ namespace BunWulfModsPublic
 
             string fileData = File.ReadAllText(sourceFilePath);
 
-            fileData = fileData.Replace(ComputerLabPattern, "");
-            fileData = fileData.Replace(LaserPattern, "");
+            // fileData = fileData.Replace(ComputerLabPattern, "");
+            // fileData = fileData.Replace(LaserPattern, "");
 
             while (true)
             {
@@ -307,6 +316,24 @@ namespace BunWulfModsPublic
                     extractedValue => extractedValue,
                     DefaultSkillBookPattern,
                     DefaultSkillBookReplacement
+                );
+                if (fileData == previousFileData)
+                {
+                    break;
+                }
+            }
+
+            while (true)
+            {
+                // keep replacing until the data stops changing
+                string previousFileData = fileData;
+                fileData = TextProcessing.ExtractThenReplaceRegex(
+                    fileData,
+                    sourceFilePath,
+                    ExpensiveSkillBookExtractor,
+                    extractedValue => extractedValue,
+                    ExpensiveSkillBookPattern,
+                    ExpensiveSkillBookReplacement
                 );
                 if (fileData == previousFileData)
                 {

@@ -15,8 +15,8 @@ namespace BunWulfEducational
         {
             // Normal recipe for lower collaboration settings. Uses defaults found in Tech Tree
 			// Endgame Goal world object recipes
-            
-            
+            RecipeVariant.RegisterDefault<ComputerLabRecipe>(DifficultySettingsConfig.EndgameRecipesNormal);
+            RecipeVariant.RegisterDefault<LaserRecipe>(DifficultySettingsConfig.EndgameRecipesNormal);
             // Techtree skillbook recipes
             RecipeVariant.RegisterDefault<LibrarianAdvancedBakingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesNormal);
             RecipeVariant.RegisterDefault<LibrarianAdvancedCookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesNormal);
@@ -72,7 +72,7 @@ namespace BunWulfEducational
                 new IngredientElement(typeof(RadiatorItem), 10, true)
             });
 			// Expensive skill book recipes for higher collaboration settings. All costs are static
-			RecipeVariant.Register<AdvancedBakingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianAdvancedBakingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(CulinaryResearchPaperAdvancedItem), 30, true),
                 new IngredientElement(typeof(DendrologyResearchPaperModernItem), 15, true),
@@ -81,7 +81,7 @@ namespace BunWulfEducational
                 new IngredientElement("Advanced Research", 20, true),
                 new IngredientElement("Modern Research", 20, true),
             });
-			RecipeVariant.Register<AdvancedCookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianAdvancedCookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(CulinaryResearchPaperAdvancedItem), 30, true),
                 new IngredientElement(typeof(DendrologyResearchPaperModernItem), 15, true),
@@ -90,7 +90,7 @@ namespace BunWulfEducational
                 new IngredientElement("Advanced Research", 15, true),
                 new IngredientElement("Modern Research", 15, true),
             });
-            RecipeVariant.Register<AdvancedMasonrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+            RecipeVariant.Register<LibrarianAdvancedMasonrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(GeologyResearchPaperAdvancedItem), 30, true),
                 new IngredientElement(typeof(GeologyResearchPaperModernItem), 15, true),
@@ -99,41 +99,41 @@ namespace BunWulfEducational
                 new IngredientElement("Basic Research", 45, true),
                 new IngredientElement("Advanced Research", 15, true),
             });
-			RecipeVariant.Register<AdvancedSmeltingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianAdvancedSmeltingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(MetallurgyResearchPaperBasicItem), 30, true),
                 new IngredientElement(typeof(MetallurgyResearchPaperAdvancedItem), 30, true),
                 new IngredientElement("Basic Research", 15, true),
             });
-			RecipeVariant.Register<BakingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianBakingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(CulinaryResearchPaperBasicItem), 15, true),
                 new IngredientElement(typeof(MetallurgyResearchPaperBasicItem), 10, true),
                 new IngredientElement("Basic Research", 15, true),
             });
-			RecipeVariant.Register<BasicEngineeringSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianBasicEngineeringSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(DendrologyResearchPaperAdvancedItem), 6, true),
                 new IngredientElement(typeof(GeologyResearchPaperAdvancedItem), 6, true),
                 new IngredientElement("Basic Research", 10, true),
             });
-            RecipeVariant.Register<BlacksmithSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+            RecipeVariant.Register<LibrarianBlacksmithSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
 {
                 new IngredientElement(typeof(MetallurgyResearchPaperBasicItem), 15, true),
                 new IngredientElement(typeof(DendrologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement(typeof(GeologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement("Basic Research", 10, true),
             });
-            RecipeVariant.Register<ButcherySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+            RecipeVariant.Register<LibrarianButcherySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(CulinaryResearchPaperBasicItem), 6, true),
             });
-			RecipeVariant.Register<CarpentrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianCarpentrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(DendrologyResearchPaperBasicItem), 6, true),
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 6, true),
             });
-			RecipeVariant.Register<CompositesSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianCompositesSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(DendrologyResearchPaperAdvancedItem), 30, true),
                 new IngredientElement(typeof(DendrologyResearchPaperModernItem), 15, true),
@@ -142,13 +142,13 @@ namespace BunWulfEducational
                 new IngredientElement("Basic Research", 45, true),
                 new IngredientElement("Advanced Research", 15, true),
             });
-			RecipeVariant.Register<CookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianCookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(CulinaryResearchPaperBasicItem), 15, true),
                 new IngredientElement(typeof(MetallurgyResearchPaperBasicItem), 10, true),
                 new IngredientElement("Basic Research", 15, true),
             });
-			RecipeVariant.Register<CuttingEdgeCookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianCuttingEdgeCookingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(CulinaryResearchPaperAdvancedItem), 30, true),
                 new IngredientElement(typeof(CulinaryResearchPaperModernItem), 30, true),
@@ -157,7 +157,7 @@ namespace BunWulfEducational
                 new IngredientElement("Basic Research", 45, true),
                 new IngredientElement("Advanced Research", 15, true),
             });
-			RecipeVariant.Register<ElectronicsSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianElectronicsSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(MetallurgyResearchPaperAdvancedItem), 15, true),
                 new IngredientElement(typeof(EngineeringResearchPaperModernItem), 15, true),
@@ -166,25 +166,25 @@ namespace BunWulfEducational
                 new IngredientElement("Advanced Research", 30, true),
                 new IngredientElement("Modern Research", 30, true),
             });
-			RecipeVariant.Register<FarmingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianFarmingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 4, true),
                 new IngredientElement(typeof(GeologyResearchPaperBasicItem), 2, true),
             });
-			RecipeVariant.Register<FertilizersSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianFertilizersSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(AgricultureResearchPaperAdvancedItem), 5, true),
                 new IngredientElement(typeof(GeologyResearchPaperBasicItem), 5, true),
                 new IngredientElement("Basic Research", 10, true),
             });
-			RecipeVariant.Register<GlassworkingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianGlassworkingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(GeologyResearchPaperBasicItem), 20, true),
                 new IngredientElement(typeof(GeologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement(typeof(EngineeringResearchPaperAdvancedItem), 10, true),
                 new IngredientElement("Basic Research", 15, true),
             });
-			RecipeVariant.Register<IndustrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianIndustrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(EngineeringResearchPaperAdvancedItem), 10, true),
                 new IngredientElement(typeof(EngineeringResearchPaperModernItem), 20, true),
@@ -193,19 +193,19 @@ namespace BunWulfEducational
                 new IngredientElement("Advanced Research", 20, true),
                 new IngredientElement("Modern Research", 10, true),
             });
-			RecipeVariant.Register<MasonrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianMasonrySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(GeologyResearchPaperBasicItem), 6, true),
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 6, true),
             });
-			RecipeVariant.Register<MechanicsSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianMechanicsSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(EngineeringResearchPaperAdvancedItem), 15, true),
                 new IngredientElement(typeof(MetallurgyResearchPaperAdvancedItem), 15, true),
                 new IngredientElement("Basic Research", 30, true),
                 new IngredientElement("Advanced Research", 10, true),
             });
-			RecipeVariant.Register<MillingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianMillingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(DendrologyResearchPaperBasicItem), 10, true),
                 new IngredientElement(typeof(GeologyResearchPaperBasicItem), 10, true),
@@ -213,7 +213,7 @@ namespace BunWulfEducational
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 5, true),
                 new IngredientElement("Basic Research", 15, true),
             });
-			RecipeVariant.Register<OilDrillingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianOilDrillingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(AgricultureResearchPaperAdvancedItem), 20, true),
                 new IngredientElement(typeof(GeologyResearchPaperModernItem), 20, true),
@@ -222,39 +222,39 @@ namespace BunWulfEducational
                 new IngredientElement("Basic Research", 45, true),
                 new IngredientElement("Advanced Research", 30, true),
             });
-			RecipeVariant.Register<PaperMillingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianPaperMillingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(DendrologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 10, true),
                 new IngredientElement("Basic Research", 10, true),
             });
-			RecipeVariant.Register<PaintingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianPaintingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
             new IngredientElement(typeof(EngineeringResearchPaperAdvancedItem), 15, typeof(BasicEngineeringSkill)),
             new IngredientElement(typeof(GatheringResearchPaperBasicItem), 15, typeof(BasicEngineeringSkill)),
             new IngredientElement("Basic Research", 30, typeof(BasicEngineeringSkill)), //noloc
             });
-			RecipeVariant.Register<PotterySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianPotterySkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(GeologyResearchPaperBasicItem), 15, true),
                 new IngredientElement(typeof(GeologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement(typeof(EngineeringResearchPaperAdvancedItem), 10, true),
                 new IngredientElement("Basic Research", 15, true),
             });
-			RecipeVariant.Register<SmeltingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+			RecipeVariant.Register<LibrarianSmeltingSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(MetallurgyResearchPaperBasicItem), 15, true),
                 new IngredientElement(typeof(DendrologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement(typeof(GeologyResearchPaperAdvancedItem), 10, true),
                 new IngredientElement("Basic Research", 10, true),
             });
-            RecipeVariant.Register<ShipwrightSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+            RecipeVariant.Register<LibrarianShipwrightSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(DendrologyResearchPaperBasicItem), 10, true),
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 10, true),
                 new IngredientElement("Basic Research", 15, true), //noloc
             });
-            RecipeVariant.Register<TailoringSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
+            RecipeVariant.Register<LibrarianTailoringSkillBookRecipe>(DifficultySettingsConfig.SkillbookRecipesExpensive, new[]
             {
                 new IngredientElement(typeof(GatheringResearchPaperBasicItem), 10, true),
                 new IngredientElement("Basic Research", 10, true),
