@@ -105,11 +105,28 @@ namespace BunWulfModsPublic
             @"using Gameplay.Systems.TextLinks;";
         private static readonly string SecondGameplayUsingReplacement =
             @"using Eco.Gameplay.Systems.TextLinks;";
+        private static readonly string ThirdGameplayUsingPattern = @"using Eco.Gameplay.Players;";
+        private static readonly string ThirdGameplayUsingReplacement =
+            "using Eco.Gameplay.Players;\n    using Eco.Mods.TechTree;";
 
         // Experience Replacement
         private static readonly string ExperiencePattern =
             @"this.ExperienceOnCraft = \d+(\.\d+f?|f)?";
         private static readonly string ExperienceReplacement = "this.ExperienceOnCraft = $1";
+
+        // Simple Computer Lab and Laser Replacements
+        private static readonly string ComputerLabPattern =
+            @"RecipeVariant.RegisterDefault<ComputerLabRecipe>(DifficultySettingsConfig.EndgameRecipesNormal);";
+        private static readonly string LaserPattern =
+            @"RecipeVariant.RegisterDefault<LaserRecipe>(DifficultySettingsConfig.EndgameRecipesNormal);";
+
+        // Skill Book Replacement
+        private static readonly string DefaultSkillBookExtractor =
+            @"RegisterDefault<(?!Librarian)(\w+)SkillBookRecipe>";
+        private static readonly string DefaultSkillBookReplacement =
+            "RegisterDefault<Librarian$1SkillBookRecipe>";
+        private static readonly string DefaultSkillBookPattern =
+            @"RegisterDefault<$1SkillBookRecipe>";
 
         public static void Initialize(string? sourcebaseDirectory = null)
         {
@@ -117,9 +134,10 @@ namespace BunWulfModsPublic
             Console.WriteLine(
                 "[BunWulfEducational] Initializing with base directory: " + sourcebaseDirectory
             );
-            WriteTechDirectory(sourcebaseDirectory);
-            WriteItemDirectory(sourcebaseDirectory);
-            WriteRecipeDirectory(sourcebaseDirectory);
+            // WriteTechDirectory(sourcebaseDirectory);
+            // WriteItemDirectory(sourcebaseDirectory);
+            // WriteRecipeDirectory(sourcebaseDirectory);
+            WriteDifficultRecipes(sourcebaseDirectory);
         }
 
         private static void WriteTechDirectory(string sourcebaseDirectory)
@@ -250,6 +268,71 @@ namespace BunWulfModsPublic
                 _ = Directory.CreateDirectory(targetTechDirectory);
                 File.WriteAllText(targetFilePath, fileData);
             }
+        }
+
+        private static void WriteDifficultRecipes(string sourcebaseDirectory)
+        {
+            string sourceFilePath = Path.Combine(
+                sourcebaseDirectory,
+                "Mods",
+                "__core__",
+                "Systems",
+                "DifficultyBasedRecipeVariants.cs"
+            );
+            string targetFilePath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "Mods",
+                "UserCode",
+                "BunWulfEducational",
+                "Systems",
+                "DifficultyBasedRecipeVariants.cs"
+            );
+            string targetDirectory = Path.GetDirectoryName(targetFilePath);
+
+            Console.WriteLine("[BunWulfEducational] reading: " + sourceFilePath);
+
+            string fileData = File.ReadAllText(sourceFilePath);
+
+            fileData = fileData.Replace(ComputerLabPattern, "");
+            fileData = fileData.Replace(LaserPattern, "");
+
+            while (true)
+            {
+                // keep replacing until the data stops changing
+                string previousFileData = fileData;
+                fileData = TextProcessing.ExtractThenReplaceRegex(
+                    fileData,
+                    sourceFilePath,
+                    DefaultSkillBookExtractor,
+                    extractedValue => extractedValue,
+                    DefaultSkillBookPattern,
+                    DefaultSkillBookReplacement
+                );
+                if (fileData == previousFileData)
+                {
+                    break;
+                }
+            }
+
+            // Replace the namespace with BunWulfEducational
+            (fileData, _) = TextProcessing.StaticReplacePattern(
+                fileData,
+                sourceFilePath,
+                NamespacePattern,
+                NamespaceReplacement
+            );
+
+            // Fixes using statements
+            (fileData, _) = TextProcessing.StaticReplacePattern(
+                fileData,
+                sourceFilePath,
+                ThirdGameplayUsingPattern,
+                ThirdGameplayUsingReplacement
+            );
+
+            Console.WriteLine("[BunWulfEducational] writing " + targetFilePath);
+            _ = Directory.CreateDirectory(targetDirectory);
+            File.WriteAllText(targetFilePath, fileData);
         }
 
         private static void WriteItemDirectory(string sourcebaseDirectory)
@@ -425,6 +508,21 @@ namespace BunWulfModsPublic
         public static readonly string SkillBookPattern = @".*(class \w+SkillBook) .*";
         public static readonly string SkillScrollPattern = @".*(class \w+SkillScroll) .*";
 
+        // public static (string, bool) RemoveLine(string recipeData, string file, string pattern)
+        // {
+        //     string[] recipeLines = recipeData.Split(new[] { '\n' }, StringSplitOptions.None);
+        //     foreach (string line in recipeLines)
+        //     {
+        //         Match match = Regex.Match(line, pattern);
+        //         if (match.Success)
+        //         {
+        //             recipeData = recipeData.Replace(line, "");
+        //             return (recipeData, true);
+        //         }
+        //     }
+        //     return (recipeData, false);
+        // }
+
         public static (string, bool) StaticReplacePattern(
             string recipeData,
             string file,
@@ -435,16 +533,16 @@ namespace BunWulfModsPublic
             Match match = Regex.Match(recipeData, pattern);
             if (match.Success)
             {
-                // Console.WriteLine(
-                //     $"[BunWulfEducational]\tReplacing {match.Value} with {replacement}"
-                // );
+                Console.WriteLine(
+                    $"[BunWulfEducational]\tReplacing {match.Value} with {replacement}"
+                );
                 recipeData = recipeData.Replace(match.Value, replacement);
             }
             else
             {
-                // Console.WriteLine(
-                //     $"[BunWulfEducational]\tCouldn't find pattern {pattern} in {file}"
-                // );
+                Console.WriteLine(
+                    $"[BunWulfEducational]\tCouldn't find pattern {pattern} in {file}"
+                );
             }
             return (recipeData, match.Success);
         }
@@ -464,6 +562,7 @@ namespace BunWulfModsPublic
             if (extractorMatch.Success)
             {
                 extractedValue = extractionProcessor(extractorMatch.Groups[1].Value);
+                Console.WriteLine($"[BunWulfEducational]\tExtracted {extractedValue}");
             }
             else
             {
@@ -473,8 +572,22 @@ namespace BunWulfModsPublic
             // Inside of recipeData, replace pattern with replacement, using
             // extractedValue as the input value into the replacement.
 
-            string replacementReplaced = replacement.Replace("$1", extractedValue);
-            recipeData = Regex.Replace(recipeData, pattern, replacementReplaced);
+            Console.WriteLine(
+                $"[BunWulfEducational]\tInterpolating {extractedValue} into {replacement}"
+            );
+
+            // replacementInterpolated = RegisterDefault<LibrarianSmeltingSkillBookRecipe>
+            string replacementInterpolated = replacement.Replace("$1", extractedValue);
+
+            // interpolate into the pattern as well
+
+            string patternInterpolated = pattern.Replace("$1", extractedValue);
+
+            Console.WriteLine(
+                $"[BunWulfEducational]\tReplacing {patternInterpolated} with {replacementInterpolated}"
+            );
+
+            recipeData = Regex.Replace(recipeData, patternInterpolated, replacementInterpolated);
 
             return recipeData;
         }
@@ -526,9 +639,8 @@ namespace BunWulfModsPublic
             string className
         )
         {
-            List<string> recipeLines = new(
-                recipeData.Split(new[] { '\n' }, StringSplitOptions.None)
-            );
+            List<string> recipeLines =
+                new(recipeData.Split(new[] { '\n' }, StringSplitOptions.None));
             // Console.WriteLine($"[BunWulfEducational]\tRemoving \"{className}\" from recipe");
 
             // Step 1: Identify the line where the class starts.
