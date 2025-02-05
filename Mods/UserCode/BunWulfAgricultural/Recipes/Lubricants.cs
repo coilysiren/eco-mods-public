@@ -24,10 +24,10 @@ namespace BunWulfAgricultural
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 1;
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(20, typeof(ButcherySkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(180, typeof(ButcherySkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(FattyGreaseRecipe),
-                start: 0.1f,
+                start: 1.5f,
                 skillType: typeof(ButcherySkill),
                 typeof(ButcheryFocusedSpeedTalent),
                 typeof(ButcheryParallelSpeedTalent)
@@ -57,10 +57,10 @@ namespace BunWulfAgricultural
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 1;
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(20, typeof(ButcherySkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(180, typeof(ButcherySkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(OilyGreaseRecipe),
-                start: 0.1f,
+                start: 1.5f,
                 skillType: typeof(ButcherySkill),
                 typeof(ButcheryFocusedSpeedTalent),
                 typeof(ButcheryParallelSpeedTalent)
