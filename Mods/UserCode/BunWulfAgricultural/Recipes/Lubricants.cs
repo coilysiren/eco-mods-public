@@ -20,7 +20,7 @@ namespace BunWulfAgricultural
                 {
                     new("Fat", 2, typeof(ButcherySkill), typeof(ButcheryLavishResourcesTalent)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<LubricantItem>() }
+                items: new List<CraftingElement> { new CraftingElement<LubricantItem>(4) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 1;
@@ -36,7 +36,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Grease from Fat"),
                 recipeType: typeof(FattyGreaseRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(SmallPaperMachineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ButcheryTableObject), recipe: this);
         }
     }
 
@@ -53,7 +53,7 @@ namespace BunWulfAgricultural
                 {
                     new("Oil", 2, typeof(ButcherySkill), typeof(ButcheryLavishResourcesTalent)),
                 },
-                items: new List<CraftingElement> { new CraftingElement<LubricantItem>() }
+                items: new List<CraftingElement> { new CraftingElement<LubricantItem>(4) }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 1;
@@ -69,7 +69,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Grease from Oil"),
                 recipeType: typeof(OilyGreaseRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(SmallPaperMachineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ButcheryTableObject), recipe: this);
         }
     }
 }
