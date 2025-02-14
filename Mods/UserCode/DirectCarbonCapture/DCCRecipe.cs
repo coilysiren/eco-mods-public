@@ -65,8 +65,8 @@ namespace DirectCarbonCapture
         {
             Recipe recipe = new();
             recipe.Init(
-                name: "Direct Air Capture Pump",
-                displayName: Localizer.DoStr("Direct Air Capture Pump"),
+                name: "Direct Air Capture Fan",
+                displayName: Localizer.DoStr("Direct Air Capture Fan"),
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(PumpJackItem), 1, staticIngredient: true),
@@ -86,7 +86,7 @@ namespace DirectCarbonCapture
                 typeof(MechanicsParallelSpeedTalent)
             );
             this.Initialize(
-                displayText: Localizer.DoStr("Direct Air Capture Pump"),
+                displayText: Localizer.DoStr("Direct Air Capture Fan"),
                 recipeType: typeof(DirectCarbonCaptureRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipe: this);
