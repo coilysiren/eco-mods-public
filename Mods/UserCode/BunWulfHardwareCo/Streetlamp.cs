@@ -1,9 +1,10 @@
-namespace Eco.Mods.TechTree
+namespace BunWulfHardwareCo
 {
     using System.Collections.Generic;
     using Eco.Gameplay.Components;
     using Eco.Gameplay.Items.Recipes;
     using Eco.Gameplay.Skills;
+    using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
     [RequiresSkill(typeof(MechanicsSkill), 5)]
