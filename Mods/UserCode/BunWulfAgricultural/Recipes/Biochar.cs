@@ -34,7 +34,7 @@ namespace BunWulfAgricultural
                     // 0.5 * 6 = 3
                     new CraftingElement<CharcoalItem>(6),
                     // 0.2 * 4 = 0.8
-                    new CraftingElement<OilItem>(4),
+                    new CraftingElement<OilItem>(2),
                     // products value = 3.8
                 }
             );

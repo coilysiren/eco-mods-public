@@ -36,13 +36,12 @@ namespace DirectCarbonCapture
                 WorldObject.GetOccupancyInfo(this.WorldObjectType)
             );
         public override HomeFurnishingValue HomeValue => homeValue;
-        public static readonly HomeFurnishingValue homeValue =
-            new()
-            {
-                ObjectName = typeof(DirectCarbonCaptureObject).UILink(),
-                Category = HousingConfig.GetRoomCategory("Industrial"),
-                TypeForRoomLimit = Localizer.DoStr(""),
-            };
+        public static readonly HomeFurnishingValue homeValue = new()
+        {
+            ObjectName = typeof(DirectCarbonCaptureObject).UILink(),
+            Category = HousingConfig.GetRoomCategory("Industrial"),
+            TypeForRoomLimit = Localizer.DoStr(""),
+        };
 
         [NewTooltip(CacheAs.SubType, 7)]
         public static LocString PowerConsumptionTooltip() =>
@@ -64,7 +63,7 @@ namespace DirectCarbonCapture
     [LocDescription(
         "Carbon filters are used to remove carbon dioxide (CO2) from the air. They are used in direct air capture systems."
     )]
-    [Fuel(100000)]
+    [Fuel(1000000)]
     [Tag("Filter")]
     [RepairRequiresSkill(typeof(BiochemistSkill), 1)]
     public partial class CarbonFilterItem : Item

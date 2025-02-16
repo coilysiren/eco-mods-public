@@ -38,7 +38,7 @@ namespace DirectCarbonCapture
     public partial class DirectCarbonCaptureObject : WorldObject, IRepresentsItem
     {
         public override TableTextureMode TableTexture => TableTextureMode.Metal;
-        public override LocString DisplayName => Localizer.DoStr("Direct Air Capture Pump");
+        public override LocString DisplayName => Localizer.DoStr("Direct Air Capture Fan");
         public virtual Type RepresentedItemType => typeof(DirectCarbonCaptureItem);
         private static readonly string[] fuelTagList = new[] { "Filter" }; //noloc
 
