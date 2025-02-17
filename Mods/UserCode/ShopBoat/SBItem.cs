@@ -7,6 +7,7 @@ namespace ShopBoat
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
     using Eco.Shared.Serialization;
+    using Eco.Shared.Utils;
 
     [Serialized]
     [Weight(20000)]
@@ -19,6 +20,14 @@ namespace ShopBoat
         public float InteractDistance => DefaultInteractDistance.WaterPlacement;
 
         public bool ShouldHighlight(Type block) => false;
+
+        [NewTooltip(CacheAs.SubType, 50)]
+        public static LocString UpdateTooltip() =>
+            Localizer
+                .Do(
+                    $"{Localizer.DoStr("Increases")} total shelf life by: {Text.InfoLight(Text.Percent(1))}"
+                )
+                .Dash();
 
         [
             Serialized,

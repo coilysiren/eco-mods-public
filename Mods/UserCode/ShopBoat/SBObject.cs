@@ -197,6 +197,7 @@ namespace ShopBoat
                 $"You are too hungry to drive {this.DisplayName}!"
             );
             this.GetComponent<PublicStorageComponent>().Initialize(48, 14000000);
+            this.GetComponent<PublicStorageComponent>().ShelfLifeMultiplier = 2;
             this.GetComponent<PartsComponent>()
                 .Config(
                     () => LocString.Empty,
