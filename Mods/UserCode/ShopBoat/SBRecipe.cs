@@ -21,7 +21,13 @@ namespace ShopBoat
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(WoodenTransportShipItem), 1, true),
-                    new(typeof(StoreItem), 1, true),
+                    new(typeof(WoodShopCartItem), 1, true),
+                    new(
+                        typeof(NailItem),
+                        40,
+                        typeof(ShipwrightSkill),
+                        typeof(ShipwrightLavishResourcesTalent)
+                    ),
                 },
                 items: new List<CraftingElement> { new CraftingElement<ShopBoatItem>() }
             );
@@ -30,7 +36,7 @@ namespace ShopBoat
             this.LaborInCalories = CreateLaborInCaloriesValue(1000, typeof(ShipwrightSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ShopBoatRecipe),
-                start: 15,
+                start: 1,
                 skillType: typeof(ShipwrightSkill)
             );
             this.Initialize(
