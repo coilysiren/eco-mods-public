@@ -33,7 +33,7 @@ namespace BunWulfBioChemical
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                     // priced at 1
-                    new(typeof(EthanolItem), 4, true),
+                    new(typeof(EthanolItem), 1, true),
                     // ingredient cost = 20
                 },
                 items: new List<CraftingElement>
