@@ -58,7 +58,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Tree Rubber"),
                 recipeType: typeof(BiorubberRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 }

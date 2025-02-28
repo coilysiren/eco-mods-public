@@ -58,7 +58,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Coal Fat Epoxy"),
                 recipeType: typeof(CarboEpoxyRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 }

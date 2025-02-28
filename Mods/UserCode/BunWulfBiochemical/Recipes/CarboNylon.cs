@@ -58,7 +58,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Coal Based Nylon"),
                 recipeType: typeof(CarboNylonRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 }

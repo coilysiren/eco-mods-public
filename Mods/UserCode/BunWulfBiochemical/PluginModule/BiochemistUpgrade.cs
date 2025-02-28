@@ -41,7 +41,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Biochemist Upgrade"),
                 recipeType: typeof(BiochemistUpgradeRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 

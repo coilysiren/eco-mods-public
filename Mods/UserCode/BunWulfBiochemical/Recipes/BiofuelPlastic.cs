@@ -52,7 +52,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Plastic Container Biofuel, 50% Ethanol"),
                 recipeType: typeof(PlasticBiofuel)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 }

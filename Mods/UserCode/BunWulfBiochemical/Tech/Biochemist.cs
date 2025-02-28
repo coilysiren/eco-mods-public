@@ -99,7 +99,7 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Biochemist Skill Book"),
                 recipeType: typeof(BiochemistSkillBookRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
     }
 }

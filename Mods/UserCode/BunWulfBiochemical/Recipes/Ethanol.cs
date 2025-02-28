@@ -41,7 +41,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Vegetable Ethanol"),
                 recipeType: typeof(VegetableEthanolRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 }

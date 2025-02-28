@@ -54,7 +54,7 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Dry Hyperaccumulator Phytoremediation"),
                 recipeType: typeof(DryHyperPhyto)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 
@@ -105,7 +105,7 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Wet Hyperaccumulator Phytoremediation"),
                 recipeType: typeof(WetHyperPhyto)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 }

@@ -159,7 +159,10 @@ namespace BunWulfBioChemical
                 displayText: Localizer.DoStr("Chemlab"),
                 recipeType: typeof(ChemicalLaboratoryRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MachinistTableObject),
+                recipeFamily: this
+            );
         }
     }
 }
