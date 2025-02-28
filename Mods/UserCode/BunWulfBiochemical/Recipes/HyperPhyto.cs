@@ -45,7 +45,7 @@ namespace BunWulfBioChemical
             LaborInCalories = CreateLaborInCaloriesValue(40, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(DryHyperPhyto),
-                start: 30,
+                start: 10,
                 skillType: typeof(BiochemistSkill),
                 typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)
@@ -96,7 +96,7 @@ namespace BunWulfBioChemical
             LaborInCalories = CreateLaborInCaloriesValue(40, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(WetHyperPhyto),
-                start: 30,
+                start: 10,
                 skillType: typeof(BiochemistSkill),
                 typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)

@@ -15,6 +15,7 @@ namespace ShopBoat
     using Eco.Gameplay.Objects;
     using Eco.Gameplay.Occupancy;
     using Eco.Gameplay.Property;
+    using Eco.Gameplay.Skills;
     using Eco.Mods.TechTree;
     using Eco.Shared.Items;
     using Eco.Shared.Localization;
@@ -36,6 +37,8 @@ namespace ShopBoat
     [RequireComponent(typeof(MovableLinkComponent))]
     [RequireComponent(typeof(VehicleComponent))]
     [RequireComponent(typeof(StoreComponent))]
+    [RepairRequiresSkill(typeof(ShipwrightSkill), 3)]
+    [RepairRequiresSkill(typeof(SelfImprovementSkill), 3)]
     public partial class ShopBoatObject : PhysicsWorldObject, INullCurrencyAllowed, ICanOverrideAuth
     {
         public NetPhysicsEntity NetEntity => (NetPhysicsEntity)this.netEntity;
