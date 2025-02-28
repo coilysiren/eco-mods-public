@@ -52,7 +52,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Biochar Charcoal Burning"),
                 recipeType: typeof(BiocharRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(KilnObject), recipeFamily: this);
         }
     }
 }

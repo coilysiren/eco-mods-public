@@ -37,7 +37,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Berry Extract Fertilizer Mixing"),
                 recipeType: typeof(BerryExtractFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 
@@ -71,7 +71,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Blood Meal Fertilizer Mixing"),
                 recipeType: typeof(BloodMealFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 
@@ -105,7 +105,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Camas Ash Fertilizer Mixing"),
                 recipeType: typeof(CamasAshFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 
@@ -139,7 +139,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Hide Ash Fertilizer Mixing"),
                 recipeType: typeof(HideAshFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 
@@ -173,7 +173,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Pelt Fertilizer Mixing"),
                 recipeType: typeof(PeltFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 
@@ -207,7 +207,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Phosphate Fertilizer Mixing"),
                 recipeType: typeof(PhosphateFertilizerMixing)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr(name),
                 recipeType: typeof(MashTallowRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(CastIronStoveObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CastIronStoveObject), recipeFamily: this);
         }
     }
 
@@ -73,7 +73,7 @@ namespace BunWulfAgricultural
                 typeof(CookingParallelSpeedTalent)
             );
             this.Initialize(displayText: Localizer.DoStr(name), recipeType: typeof(FlaxyOilRecipe));
-            CraftingComponent.AddRecipe(tableType: typeof(CastIronStoveObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CastIronStoveObject), recipeFamily: this);
         }
     }
 
@@ -105,7 +105,7 @@ namespace BunWulfAgricultural
                 typeof(CookingParallelSpeedTalent)
             );
             this.Initialize(displayText: Localizer.DoStr(name), recipeType: typeof(OilyOilRecipe));
-            CraftingComponent.AddRecipe(tableType: typeof(CastIronStoveObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CastIronStoveObject), recipeFamily: this);
         }
     }
 }

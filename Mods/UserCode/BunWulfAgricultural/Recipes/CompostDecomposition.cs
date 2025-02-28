@@ -34,7 +34,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Compost Decomposition"),
                 recipeType: typeof(CompostDecompositionRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 }

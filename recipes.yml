@@ -24,7 +24,7 @@ BunWulfAgricultural:
 BunWulfEducational:
   # BASIC RESEARCH PAPERS
   Item\GeologyResearchPaperBasic.cs:
-    recipe:
+    recipeFamily:
       - GeologyResearchPaperBasicRecipe
       - LibrarianGeologyResearchPaperBasicRecipe
     level:
@@ -37,7 +37,7 @@ BunWulfEducational:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Item\CulinaryResearchPaperBasic.cs:
-    recipe:
+    recipeFamily:
       - CulinaryResearchPaperBasicRecipe
       - LibrarianCulinaryResearchPaperBasicRecipe
     level:
@@ -50,7 +50,7 @@ BunWulfEducational:
       - typeof(CampfireCookingSkill)
       - typeof(LibrarianSkill)
   Item\GatheringResearchPaperBasic.cs:
-    recipe:
+    recipeFamily:
       - GatheringResearchPaperBasicRecipe
       - LibrarianGatheringResearchPaperBasicRecipe
     level:
@@ -63,7 +63,7 @@ BunWulfEducational:
       - typeof(GatheringSkill)
       - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperBasic.cs:
-    recipe:
+    recipeFamily:
       - DendrologyResearchPaperBasicRecipe
       - LibrarianDendrologyResearchPaperBasicRecipe
     level:
@@ -76,7 +76,7 @@ BunWulfEducational:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperBasic.cs:
-    recipe:
+    recipeFamily:
       - MetallurgyResearchPaperBasicRecipe
       - LibrarianMetallurgyResearchPaperBasicRecipe
     level:
@@ -89,7 +89,7 @@ BunWulfEducational:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperBasicFish.cs:
-    recipe:
+    recipeFamily:
       - CulinaryResearchPaperBasicFishRecipe
       - LibrarianCulinaryResearchPaperBasicFishRecipe
     level:
@@ -102,7 +102,7 @@ BunWulfEducational:
       - typeof(HuntingSkill)
       - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperBasicMeat.cs:
-    recipe:
+    recipeFamily:
       - CulinaryResearchPaperBasicMeatRecipe
       - LibrarianCulinaryResearchPaperBasicMeatRecipe
     level:
@@ -116,7 +116,7 @@ BunWulfEducational:
       - typeof(LibrarianSkill)
   # ADVANCED RESEARCH PAPERS
   Item\GeologyResearchPaperAdvanced.cs:
-    recipe:
+    recipeFamily:
       - GeologyResearchPaperAdvancedRecipe
       - LibrarianGeologyResearchPaperAdvancedRecipe
     level:
@@ -129,7 +129,7 @@ BunWulfEducational:
       - typeof(MasonrySkill)
       - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperAdvanced.cs:
-    recipe:
+    recipeFamily:
       - DendrologyResearchPaperAdvancedRecipe
       - LibrarianDendrologyResearchPaperAdvancedRecipe
     level:
@@ -142,7 +142,7 @@ BunWulfEducational:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperAdvanced.cs:
-    recipe:
+    recipeFamily:
       - MetallurgyResearchPaperAdvancedRecipe
       - LibrarianMetallurgyResearchPaperAdvancedRecipe
     level:
@@ -155,7 +155,7 @@ BunWulfEducational:
       - typeof(SmeltingSkill)
       - typeof(LibrarianSkill)
   Item\AgricultureResearchPaperAdvanced.cs:
-    recipe:
+    recipeFamily:
       - AgricultureResearchPaperAdvancedRecipe
       - LibrarianAgricultureResearchPaperAdvancedRecipe
     level:
@@ -168,7 +168,7 @@ BunWulfEducational:
       - typeof(FarmingSkill)
       - typeof(LibrarianSkill)
   Item\EngineeringResearchPaperAdvanced.cs:
-    recipe:
+    recipeFamily:
       - EngineeringResearchPaperAdvancedRecipe
       - LibrarianEngineeringResearchPaperAdvancedRecipe
     level:
@@ -181,7 +181,7 @@ BunWulfEducational:
       - typeof(BasicEngineeringSkill)
       - typeof(LibrarianSkill)
   Item\CulinaryResearchPaperAdvanced.cs:
-    recipe:
+    recipeFamily:
       - CulinaryResearchPaperAdvancedRecipe
       - LibrarianCulinaryResearchPaperAdvancedRecipe
     level:
@@ -194,7 +194,7 @@ BunWulfEducational:
       - typeof(CookingSkill)
       - typeof(LibrarianSkill)
   Recipe\CulinaryResearchPaperAdvancedMeat.cs:
-    recipe:
+    recipeFamily:
       - CulinaryResearchPaperAdvancedMeatRecipe
       - LibrarianCulinaryResearchPaperAdvancedMeatRecipe
     level:
@@ -208,7 +208,7 @@ BunWulfEducational:
       - typeof(LibrarianSkill)
   # MODERN RESEARCH PAPERS
   Item\CulinaryResearchPaperModern.cs:
-    recipe:
+    recipeFamily:
       - CulinaryResearchPaperModernRecipe
       - LibrarianCulinaryResearchPaperModernRecipe
     level:
@@ -221,7 +221,7 @@ BunWulfEducational:
       - typeof(AdvancedCookingSkill)
       - typeof(LibrarianSkill)
   Item\DendrologyResearchPaperModern.cs:
-    recipe:
+    recipeFamily:
       - DendrologyResearchPaperModernRecipe
       - LibrarianDendrologyResearchPaperModernRecipe
     level:
@@ -234,7 +234,7 @@ BunWulfEducational:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Item\MetallurgyResearchPaperModern.cs:
-    recipe:
+    recipeFamily:
       - MetallurgyResearchPaperModernRecipe
       - LibrarianMetallurgyResearchPaperModernRecipe
     level:
@@ -247,7 +247,7 @@ BunWulfEducational:
       - typeof(AdvancedSmeltingSkill)
       - typeof(LibrarianSkill)
   Item\AgricultureResearchPaperModern.cs:
-    recipe:
+    recipeFamily:
       - AgricultureResearchPaperModernRecipe
       - LibrarianAgricultureResearchPaperModernRecipe
     level:
@@ -260,7 +260,7 @@ BunWulfEducational:
       - typeof(FertilizersSkill)
       - typeof(LibrarianSkill)
   Item\EngineeringResearchPaperModern.cs:
-    recipe:
+    recipeFamily:
       - EngineeringResearchPaperModernRecipe
       - LibrarianEngineeringResearchPaperModernRecipe
     level:
@@ -273,7 +273,7 @@ BunWulfEducational:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Item\GeologyResearchPaperModern.cs:
-    recipe:
+    recipeFamily:
       - GeologyResearchPaperModernRecipe
       - LibrarianGeologyResearchPaperModernRecipe
     level:
@@ -286,7 +286,7 @@ BunWulfEducational:
       - typeof(PotterySkill)
       - typeof(LibrarianSkill)
   Recipe\GeologyResearchPaperModernGlass.cs:
-    recipe:
+    recipeFamily:
       - GeologyResearchPaperModernGlassRecipe
       - LibrarianGeologyResearchPaperModernGlassRecipe
     level:
@@ -300,7 +300,7 @@ BunWulfEducational:
       - typeof(LibrarianSkill)
   # TIER 1 SKILLS
   Tech\Masonry.cs:
-    recipe:
+    recipeFamily:
       - MasonrySkillBookRecipe
       - LibrarianMasonrySkillBookRecipe
     level:
@@ -313,7 +313,7 @@ BunWulfEducational:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Tech\Smelting.cs:
-    recipe:
+    recipeFamily:
       - SmeltingSkillBookRecipe
       - LibrarianSmeltingSkillBookRecipe
     level:
@@ -326,7 +326,7 @@ BunWulfEducational:
       - typeof(MiningSkill)
       - typeof(LibrarianSkill)
   Tech\Pottery.cs:
-    recipe:
+    recipeFamily:
       - PotterySkillBookRecipe
       - LibrarianPotterySkillBookRecipe
     level:
@@ -339,7 +339,7 @@ BunWulfEducational:
       - typeof(MasonrySkill)
       - typeof(LibrarianSkill)
   Tech\Carpentry.cs:
-    recipe:
+    recipeFamily:
       - CarpentrySkillBookRecipe
       - LibrarianCarpentrySkillBookRecipe
     level:
@@ -352,7 +352,7 @@ BunWulfEducational:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
   Tech\Farming.cs:
-    recipe:
+    recipeFamily:
       - FarmingSkillBookRecipe
       - LibrarianFarmingSkillBookRecipe
     level:
@@ -365,7 +365,7 @@ BunWulfEducational:
       - typeof(GatheringSkill)
       - typeof(LibrarianSkill)
   Tech\Cooking.cs:
-    recipe:
+    recipeFamily:
       - CookingSkillBookRecipe
       - LibrarianCookingSkillBookRecipe
     level:
@@ -378,7 +378,7 @@ BunWulfEducational:
       - typeof(CampfireCookingSkill)
       - typeof(LibrarianSkill)
   Tech\Baking.cs:
-    recipe:
+    recipeFamily:
       - BakingSkillBookRecipe
       - LibrarianBakingSkillBookRecipe
     level:
@@ -391,7 +391,7 @@ BunWulfEducational:
       - typeof(CampfireCookingSkill)
       - typeof(LibrarianSkill)
   Tech\Glassworking.cs:
-    recipe:
+    recipeFamily:
       - GlassworkingSkillBookRecipe
       - LibrarianGlassworkingSkillBookRecipe
     level:
@@ -404,7 +404,7 @@ BunWulfEducational:
       - typeof(MasonrySkill)
       - typeof(LibrarianSkill)
   Tech\Fertilizers.cs:
-    recipe:
+    recipeFamily:
       - FertilizersSkillBookRecipe
       - LibrarianFertilizersSkillBookRecipe
     level:
@@ -417,7 +417,7 @@ BunWulfEducational:
       - typeof(FarmingSkill)
       - typeof(LibrarianSkill)
   Tech\Butchery.cs:
-    recipe:
+    recipeFamily:
       - ButcherySkillBookRecipe
       - LibrarianButcherySkillBookRecipe
     level:
@@ -430,7 +430,7 @@ BunWulfEducational:
       - typeof(HuntingSkill)
       - typeof(LibrarianSkill)
   Tech\Tailoring.cs:
-    recipe:
+    recipeFamily:
       - TailoringSkillBookRecipe
       - LibrarianTailoringSkillBookRecipe
     level:
@@ -443,7 +443,7 @@ BunWulfEducational:
       - typeof(GatheringSkill)
       - typeof(LibrarianSkill)
   Tech\BasicEngineering.cs:
-    recipe:
+    recipeFamily:
       - BasicEngineeringSkillBookRecipe
       - LibrarianBasicEngineeringSkillBookRecipe
     level:
@@ -456,7 +456,7 @@ BunWulfEducational:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Tech\Shipwright.cs:
-    recipe:
+    recipeFamily:
       - ShipwrightSkillBookRecipe
       - LibrarianShipwrightSkillBookRecipe
     level:
@@ -469,7 +469,7 @@ BunWulfEducational:
       - typeof(LoggingSkill)
       - typeof(LibrarianSkill)
   # Tech\PaperMilling.cs:
-  #   recipe:
+  #   recipeFamily:
   #     - PaperMillingSkillBookRecipe
   #     - LibrarianPaperMillingSkillBookRecipe
   #   level:
@@ -482,7 +482,7 @@ BunWulfEducational:
   #     - typeof(CarpentrySkill)
   #     - typeof(LibrarianSkill)
   Tech\Milling.cs:
-    recipe:
+    recipeFamily:
       - MillingSkillBookRecipe
       - LibrarianMillingSkillBookRecipe
     level:
@@ -496,7 +496,7 @@ BunWulfEducational:
       - typeof(LibrarianSkill)
   # TIER 2 SKILLS
   Tech\AdvancedSmelting.cs:
-    recipe:
+    recipeFamily:
       - AdvancedSmeltingSkillBookRecipe
       - LibrarianAdvancedSmeltingSkillBookRecipe
     level:
@@ -509,7 +509,7 @@ BunWulfEducational:
       - typeof(SmeltingSkill)
       - typeof(LibrarianSkill)
   Tech\Blacksmith.cs:
-    recipe:
+    recipeFamily:
       - BlacksmithSkillBookRecipe
       - LibrarianBlacksmithSkillBookRecipe
     level:
@@ -522,7 +522,7 @@ BunWulfEducational:
       - typeof(SmeltingSkill)
       - typeof(LibrarianSkill)
   Tech\Painting.cs:
-    recipe:
+    recipeFamily:
       - PaintingSkillBookRecipe
       - LibrarianPaintingSkillBookRecipe
     level:
@@ -535,7 +535,7 @@ BunWulfEducational:
       - typeof(BasicEngineeringSkill)
       - typeof(LibrarianSkill)
   Tech\AdvancedCooking.cs:
-    recipe:
+    recipeFamily:
       - AdvancedCookingSkillBookRecipe
       - LibrarianAdvancedCookingSkillBookRecipe
     level:
@@ -548,7 +548,7 @@ BunWulfEducational:
       - typeof(CookingSkill)
       - typeof(LibrarianSkill)
   Tech\AdvancedBaking.cs:
-    recipe:
+    recipeFamily:
       - AdvancedBakingSkillBookRecipe
       - LibrarianAdvancedBakingSkillBookRecipe
     level:
@@ -561,7 +561,7 @@ BunWulfEducational:
       - typeof(BakingSkill)
       - typeof(LibrarianSkill)
   Tech\Mechanics.cs:
-    recipe:
+    recipeFamily:
       - MechanicsSkillBookRecipe
       - LibrarianMechanicsSkillBookRecipe
     level:
@@ -575,7 +575,7 @@ BunWulfEducational:
       - typeof(LibrarianSkill)
   # TIER 3 SKILLS
   Tech\Industry.cs:
-    recipe:
+    recipeFamily:
       - IndustrySkillBookRecipe
       - LibrarianIndustrySkillBookRecipe
     level:
@@ -588,7 +588,7 @@ BunWulfEducational:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Tech\Electronics.cs:
-    recipe:
+    recipeFamily:
       - ElectronicsSkillBookRecipe
       - LibrarianElectronicsSkillBookRecipe
     level:
@@ -601,7 +601,7 @@ BunWulfEducational:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Tech\CuttingEdgeCooking.cs:
-    recipe:
+    recipeFamily:
       - CuttingEdgeCookingSkillBookRecipe
       - LibrarianCuttingEdgeCookingSkillBookRecipe
     level:
@@ -614,7 +614,7 @@ BunWulfEducational:
       - typeof(AdvancedCookingSkill)
       - typeof(LibrarianSkill)
   Tech\Composites.cs:
-    recipe:
+    recipeFamily:
       - CompositesSkillBookRecipe
       - LibrarianCompositesSkillBookRecipe
     level:
@@ -627,7 +627,7 @@ BunWulfEducational:
       - typeof(CarpentrySkill)
       - typeof(LibrarianSkill)
   Tech\OilDrilling.cs:
-    recipe:
+    recipeFamily:
       - OilDrillingSkillBookRecipe
       - LibrarianOilDrillingSkillBookRecipe
     level:
@@ -640,7 +640,7 @@ BunWulfEducational:
       - typeof(MechanicsSkill)
       - typeof(LibrarianSkill)
   Tech\AdvancedMasonry.cs:
-    recipe:
+    recipeFamily:
       - AdvancedMasonrySkillBookRecipe
       - LibrarianAdvancedMasonrySkillBookRecipe
     level:

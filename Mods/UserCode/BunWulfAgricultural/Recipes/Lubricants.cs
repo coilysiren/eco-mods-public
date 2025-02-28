@@ -36,7 +36,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Grease from Fat"),
                 recipeType: typeof(FattyGreaseRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ButcheryTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ButcheryTableObject), recipeFamily: this);
         }
     }
 
@@ -69,7 +69,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Grease from Oil"),
                 recipeType: typeof(OilyGreaseRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ButcheryTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ButcheryTableObject), recipeFamily: this);
         }
     }
 }

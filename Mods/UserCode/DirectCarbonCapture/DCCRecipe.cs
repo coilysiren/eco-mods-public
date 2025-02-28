@@ -54,7 +54,10 @@ namespace DirectCarbonCapture
                 displayText: Localizer.DoStr("Carbon Filter"),
                 recipeType: typeof(CarbonFilterRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ChemicalLaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(ChemicalLaboratoryObject),
+                recipeFamily: this
+            );
         }
     }
 
@@ -89,7 +92,7 @@ namespace DirectCarbonCapture
                 displayText: Localizer.DoStr("Direct Air Capture Fan"),
                 recipeType: typeof(DirectCarbonCaptureRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipeFamily: this);
         }
     }
 }

@@ -43,7 +43,10 @@ namespace ShopBoat
                 displayText: Localizer.DoStr("Shop Boat"),
                 recipeType: typeof(ShopBoatRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(MediumShipyardObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MediumShipyardObject),
+                recipeFamily: this
+            );
         }
     }
 }

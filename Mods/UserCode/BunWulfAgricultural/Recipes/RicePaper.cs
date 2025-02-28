@@ -41,7 +41,10 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Rice Paper"),
                 recipeType: typeof(RicePaperRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(SmallPaperMachineObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(SmallPaperMachineObject),
+                recipeFamily: this
+            );
         }
     }
 }

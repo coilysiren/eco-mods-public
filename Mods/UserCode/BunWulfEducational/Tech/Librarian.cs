@@ -95,7 +95,7 @@ namespace BunWulfEducational
                 displayText: Localizer.DoStr("Librarian Skill Book"),
                 recipeType: typeof(LibrarianSkillBookRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipeFamily: this);
         }
     }
 }

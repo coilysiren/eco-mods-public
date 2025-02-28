@@ -114,7 +114,7 @@ namespace BunWulfEducational
                 displayText: Localizer.DoStr("Scholars Modern Upgrade 1"),
                 recipeType: typeof(ScholarsModernUpgradeLvl1Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
     }
 
@@ -150,7 +150,7 @@ namespace BunWulfEducational
                 displayText: Localizer.DoStr("Scholars Modern Upgrade 2"),
                 recipeType: typeof(ScholarsModernUpgradeLvl2Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
     }
 
@@ -186,7 +186,7 @@ namespace BunWulfEducational
                 displayText: Localizer.DoStr("Scholars Modern Upgrade 3"),
                 recipeType: typeof(ScholarsModernUpgradeLvl3Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
     }
 
@@ -222,7 +222,7 @@ namespace BunWulfEducational
                 displayText: Localizer.DoStr("Scholars Modern Upgrade 4"),
                 recipeType: typeof(ScholarsModernUpgradeLvl4Recipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
     }
 }

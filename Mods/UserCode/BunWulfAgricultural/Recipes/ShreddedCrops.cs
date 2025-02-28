@@ -34,7 +34,7 @@ namespace BunWulfAgricultural
                 displayText: Localizer.DoStr("Shredded Crops"),
                 recipeType: typeof(ShreddedCropsRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(FarmersTableObject), recipeFamily: this);
         }
     }
 }

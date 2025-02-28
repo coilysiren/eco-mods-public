@@ -54,7 +54,7 @@ namespace BunWulfHardwareCo
                 displayText: Localizer.DoStr("Low Tech Streetlamp"),
                 recipeType: typeof(LowTechStreetlampRecipe)
             );
-            CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(AssemblyLineObject), recipeFamily: this);
         }
     }
 }

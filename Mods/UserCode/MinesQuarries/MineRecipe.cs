@@ -32,7 +32,10 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronMine));
-            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MachinistTableObject),
+                recipeFamily: this
+            );
         }
     }
 
@@ -61,7 +64,10 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperMine));
-            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MachinistTableObject),
+                recipeFamily: this
+            );
         }
     }
 
@@ -90,7 +96,10 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldMine));
-            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MachinistTableObject),
+                recipeFamily: this
+            );
         }
     }
 
@@ -119,7 +128,10 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalMine));
-            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MachinistTableObject),
+                recipeFamily: this
+            );
         }
     }
 
@@ -148,7 +160,10 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SulfurMine));
-            CraftingComponent.AddRecipe(tableType: typeof(MachinistTableObject), recipe: this);
+            CraftingComponent.AddRecipe(
+                tableType: typeof(MachinistTableObject),
+                recipeFamily: this
+            );
         }
     }
 }

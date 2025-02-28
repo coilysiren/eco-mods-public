@@ -32,7 +32,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SandstoneQuarry));
-            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipeFamily: this);
         }
     }
 
@@ -61,7 +61,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(LimestoneQuarry));
-            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipeFamily: this);
         }
     }
 
@@ -90,7 +90,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GraniteQuarry));
-            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipeFamily: this);
         }
     }
 
@@ -119,7 +119,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(ShaleQuarry));
-            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ToolBenchObject), recipeFamily: this);
         }
     }
 }

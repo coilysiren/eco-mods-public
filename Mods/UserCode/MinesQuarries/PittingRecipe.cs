@@ -33,7 +33,7 @@ namespace MinesQuarries
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(DirtDigging));
-            CraftingComponent.AddRecipe(tableType: typeof(DirtPitObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(DirtPitObject), recipeFamily: this);
         }
     }
 
@@ -64,7 +64,7 @@ namespace MinesQuarries
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SandDigging));
-            CraftingComponent.AddRecipe(tableType: typeof(SandPitObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(SandPitObject), recipeFamily: this);
         }
     }
 
@@ -95,7 +95,7 @@ namespace MinesQuarries
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(ClayDigging));
-            CraftingComponent.AddRecipe(tableType: typeof(ClayPitObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ClayPitObject), recipeFamily: this);
         }
     }
 }

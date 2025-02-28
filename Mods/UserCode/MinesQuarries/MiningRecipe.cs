@@ -35,7 +35,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreMining));
-            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipeFamily: this);
         }
     }
 
@@ -67,7 +67,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreBlasting));
-            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipeFamily: this);
         }
     }
 
@@ -95,7 +95,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreBoring));
-            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipeFamily: this);
         }
     }
 
@@ -127,7 +127,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperOreMining));
-            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipeFamily: this);
         }
     }
 
@@ -159,7 +159,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperOreBlasting));
-            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipeFamily: this);
         }
     }
 
@@ -187,7 +187,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperOreBoring));
-            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipeFamily: this);
         }
     }
 
@@ -219,7 +219,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldOreMining));
-            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipeFamily: this);
         }
     }
 
@@ -251,7 +251,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldOreBlasting));
-            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipeFamily: this);
         }
     }
 
@@ -279,7 +279,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldOreBoring));
-            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipeFamily: this);
         }
     }
 
@@ -311,7 +311,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalMining));
-            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipeFamily: this);
         }
     }
 
@@ -343,7 +343,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalBlasting));
-            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipeFamily: this);
         }
     }
 
@@ -371,7 +371,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalBoring));
-            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipeFamily: this);
         }
     }
 
@@ -404,7 +404,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SulfurMining));
-            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipeFamily: this);
         }
     }
 
@@ -437,7 +437,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SulfurBlasting));
-            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipeFamily: this);
         }
     }
 
@@ -465,7 +465,7 @@ namespace MinesQuarries
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SulfurBoring));
-            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipeFamily: this);
         }
     }
 }
