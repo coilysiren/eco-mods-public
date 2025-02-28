@@ -83,7 +83,7 @@ namespace BunWulfEducational
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
-            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipe: this);
+            CraftingComponent.AddRecipe(tableType: typeof(ResearchTableObject), recipeFamily: this);
         }
 
         /// <summary>Hook for mods to customize RecipeFamily before initialization. You can change recipes, xp, labor, time here.</summary>

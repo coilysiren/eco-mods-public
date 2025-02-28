@@ -143,9 +143,9 @@ namespace BunWulfModsPublic
             Console.WriteLine(
                 "[BunWulfEducational] Initializing with base directory: " + sourcebaseDirectory
             );
-            // WriteTechDirectory(sourcebaseDirectory);
-            // WriteItemDirectory(sourcebaseDirectory);
-            // WriteRecipeDirectory(sourcebaseDirectory);
+            WriteTechDirectory(sourcebaseDirectory);
+            WriteItemDirectory(sourcebaseDirectory);
+            WriteRecipeDirectory(sourcebaseDirectory);
             WriteDifficultRecipes(sourcebaseDirectory);
         }
 
