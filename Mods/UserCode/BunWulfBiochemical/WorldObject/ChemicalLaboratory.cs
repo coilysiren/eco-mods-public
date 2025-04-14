@@ -79,7 +79,9 @@ namespace BunWulfBioChemical
 
     [Serialized]
     [LocDisplayName("Chemlab")]
-    [LocDescription("For advanced biochemical manufacturing. While it performs many of the same functions as an oil refinery, it does them very slowly. Plan to run at least 8 of them.")]
+    [LocDescription(
+        "For advanced biochemical manufacturing. While a biochemist's chemlab performs many of the same functions as an oil refinery, it does them very slowly. Plan to run at least 8 of them."
+    )]
     [IconGroup("World Object Minimap")]
     [Ecopedia("Work Stations", "Researching", createAsSubPage: true)]
     [Weight(2000)] // Defines how heavy Chemlab is.

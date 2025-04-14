@@ -8,6 +8,7 @@ namespace BunWulfBioChemical
     using Eco.Shared.Localization;
 
     [RequiresSkill(typeof(BiochemistSkill), 3)]
+    [LocDescription("This is a slow recipe, plan to run it across multiple (3+) tables.")]
     public partial class PlasticBiofuel : RecipeFamily
     {
         public PlasticBiofuel()

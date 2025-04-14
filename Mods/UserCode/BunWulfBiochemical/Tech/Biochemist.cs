@@ -15,7 +15,7 @@ namespace BunWulfBioChemical
     [Serialized]
     [LocDisplayName("Biochemist")]
     [LocDescription(
-        "The Biochemist gets recipes to make Biodiesel, Plastic, Rubber, Epoxy, and Nylon. Biochemists create sustainable hydrocarbon products with no impact on the environment."
+        "The Biochemist gets recipes to make Biofuel, Plastic, Rubber, Epoxy, and Nylon. The recipes have similar costs to Oil Drilling, but the Biochemist is more sustainable and has a lower impact on the environment. While a biochemist's chemlab performs many of the same functions as an oil refinery, it does them very slowly. Plan to run at least 8 of them."
     )]
     [Ecopedia("Professions", "Scientist", createAsSubPage: true)]
     [RequiresSkill(typeof(ScientistSkill), 0), Tag("Scientist Specialty"), Tier(4)]
