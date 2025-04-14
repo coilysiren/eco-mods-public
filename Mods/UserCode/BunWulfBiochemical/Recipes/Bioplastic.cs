@@ -52,7 +52,6 @@ namespace BunWulfBioChemical
                 beneficiary: typeof(BioplasticRecipe),
                 start: 10,
                 skillType: typeof(BiochemistSkill),
-                typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)
             );
             Initialize(
