@@ -97,7 +97,6 @@ namespace BunWulfBioChemical
                 beneficiary: typeof(WetHyperPhyto),
                 start: 10,
                 skillType: typeof(BiochemistSkill),
-                typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)
             );
             Initialize(
