@@ -47,7 +47,6 @@ namespace DirectCarbonCapture
                 beneficiary: typeof(CarbonFilterRecipe),
                 start: 1,
                 skillType: typeof(BiochemistSkill),
-                typeof(BiochemistFocusedSpeedTalent),
                 typeof(BiochemistParallelSpeedTalent)
             );
             this.Initialize(
