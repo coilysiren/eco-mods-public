@@ -83,7 +83,7 @@ namespace BunWulfEducational
             : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.5f) { }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 5)]
     public partial class ScholarsModernUpgradeLvl1Recipe : RecipeFamily
     {
         public ScholarsModernUpgradeLvl1Recipe()
@@ -117,7 +117,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 5)]
     public partial class ScholarsModernUpgradeLvl2Recipe : RecipeFamily
     {
         public ScholarsModernUpgradeLvl2Recipe()
@@ -152,7 +152,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 5)]
     public partial class ScholarsModernUpgradeLvl3Recipe : RecipeFamily
     {
         public ScholarsModernUpgradeLvl3Recipe()
@@ -187,7 +187,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 5)]
     public partial class ScholarsModernUpgradeLvl4Recipe : RecipeFamily
     {
         public ScholarsModernUpgradeLvl4Recipe()
