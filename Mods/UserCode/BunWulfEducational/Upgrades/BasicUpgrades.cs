@@ -95,7 +95,6 @@ namespace BunWulfEducational
                 ingredients: new List<IngredientElement>
                 {
                     new IngredientElement(typeof(BasicUpgradeLvl1Item), 1, true),
-                    new IngredientElement("Basic Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
@@ -131,7 +130,6 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(BasicUpgradeLvl2Item), 1, true),
                     new IngredientElement(typeof(ScholarsBasicUpgradeLvl1Item), 1, true),
-                    new IngredientElement("Basic Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
@@ -167,7 +165,6 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(BasicUpgradeLvl3Item), 1, true),
                     new IngredientElement(typeof(ScholarsBasicUpgradeLvl2Item), 1, true),
-                    new IngredientElement("Basic Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
@@ -203,7 +200,6 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(BasicUpgradeLvl4Item), 1, true),
                     new IngredientElement(typeof(ScholarsBasicUpgradeLvl3Item), 1, true),
-                    new IngredientElement("Basic Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
