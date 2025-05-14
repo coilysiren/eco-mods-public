@@ -87,7 +87,7 @@ namespace BunWulfEducational
             : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.5f) { }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 3)]
     public partial class ScholarsAdvancedUpgradeLvl1Recipe : RecipeFamily
     {
         public ScholarsAdvancedUpgradeLvl1Recipe()
@@ -99,7 +99,6 @@ namespace BunWulfEducational
                 ingredients: new List<IngredientElement>
                 {
                     new IngredientElement(typeof(AdvancedUpgradeLvl1Item), 1, true),
-                    new IngredientElement("Advanced Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
@@ -122,7 +121,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 3)]
     public partial class ScholarsAdvancedUpgradeLvl2Recipe : RecipeFamily
     {
         public ScholarsAdvancedUpgradeLvl2Recipe()
@@ -135,7 +134,6 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(AdvancedUpgradeLvl2Item), 1, true),
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl1Item), 1, true),
-                    new IngredientElement("Advanced Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
@@ -158,7 +156,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 3)]
     public partial class ScholarsAdvancedUpgradeLvl3Recipe : RecipeFamily
     {
         public ScholarsAdvancedUpgradeLvl3Recipe()
@@ -171,7 +169,6 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(AdvancedUpgradeLvl3Item), 1, true),
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl2Item), 1, true),
-                    new IngredientElement("Advanced Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {
@@ -194,7 +191,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 3)]
     public partial class ScholarsAdvancedUpgradeLvl4Recipe : RecipeFamily
     {
         public ScholarsAdvancedUpgradeLvl4Recipe()
@@ -207,7 +204,6 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(AdvancedUpgradeLvl4Item), 1, true),
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl3Item), 1, true),
-                    new IngredientElement("Advanced Research", 1, true),
                 },
                 items: new List<CraftingElement>
                 {

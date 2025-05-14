@@ -28,7 +28,7 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronOreMining),
                 start: 8,
@@ -60,7 +60,7 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronOreBlasting),
                 start: 8,
@@ -88,7 +88,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<CrushedIronOreItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronOreBoring),
                 start: 8,
@@ -120,7 +120,7 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperOreMining),
                 start: 8,
@@ -152,7 +152,7 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperOreBlasting),
                 start: 8,
@@ -180,7 +180,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<CrushedCopperOreItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperOreBoring),
                 start: 8,
@@ -212,7 +212,7 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldOreMining),
                 start: 8,
@@ -244,7 +244,7 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldOreBlasting),
                 start: 8,
@@ -272,7 +272,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<CrushedGoldOreItem>(100) }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldOreBoring),
                 start: 8,
