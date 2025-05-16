@@ -8,6 +8,8 @@ namespace BunWulfAgricultural
     using Eco.Shared.Localization;
 
     [RequiresSkill(typeof(GatheringSkill), 7)]
+    [RequiresModule(typeof(FarmersTableObject))]
+    [LocDescription("An advanced recipe for processing lots of flax stems at once.")]
     public partial class FlaxFiberBulk : RecipeFamily
     {
         public FlaxFiberBulk()
@@ -17,7 +19,10 @@ namespace BunWulfAgricultural
             recipe.Init(
                 name: name.Replace(" ", string.Empty),
                 displayName: Localizer.DoStr(name),
-                ingredients: new List<IngredientElement> { new(typeof(FlaxStemItem), 30) },
+                ingredients: new List<IngredientElement>
+                {
+                    new(typeof(FlaxStemItem), 30, typeof(GatheringSkill)),
+                },
                 items: new List<CraftingElement>
                 {
                     new CraftingElement<FlaxSeedItem>(10),
