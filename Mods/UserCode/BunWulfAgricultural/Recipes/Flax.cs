@@ -21,13 +21,13 @@ namespace BunWulfAgricultural
                 displayName: Localizer.DoStr(name),
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(FlaxStemItem), 30, typeof(GatheringSkill)),
+                    new(typeof(FlaxStemItem), 40, typeof(GatheringSkill)),
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<FlaxSeedItem>(10),
                     new CraftingElement<FlaxFiberItem>(20),
-                    new CraftingElement<PlantFibersItem>(30),
+                    new CraftingElement<FlaxSeedItem>(10),
+                    new CraftingElement<PlantFibersItem>(40),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
