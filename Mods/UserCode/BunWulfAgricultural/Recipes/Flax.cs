@@ -35,7 +35,7 @@ namespace BunWulfAgricultural
             this.LaborInCalories = this.CreateLaborInCaloriesValue(300, typeof(GatheringSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(FlaxFiberBulk),
-                start: 3,
+                start: 8,
                 skillType: typeof(GatheringSkill)
             );
             this.Initialize(displayText: Localizer.DoStr(name), recipeType: typeof(FlaxFiberBulk));
