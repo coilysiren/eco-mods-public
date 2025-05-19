@@ -21,7 +21,7 @@ namespace BunWulfAgricultural
                 displayName: Localizer.DoStr(name),
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(FlaxStemItem), 40, typeof(GatheringSkill)),
+                    new(typeof(FlaxStemItem), 80, typeof(GatheringSkill)),
                 },
                 items: new List<CraftingElement>
                 {
