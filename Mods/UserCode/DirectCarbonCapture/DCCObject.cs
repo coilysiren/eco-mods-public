@@ -48,7 +48,7 @@ namespace DirectCarbonCapture
         // At 1x pollution multiplier, 2 DCC can offset 1 combustion generator.
         // At 2x pollution is 3 DCC to 1 combustion generator.
         public static readonly float pollutionTonsPerHour = (float)(
-            -1 * Math.Sqrt(EcoDef.Obj.ClimateSettings.PollutionMultiplier)
+            -1 * Math.Sqrt(EcoDef.Obj.ClimateSettings.PollutionMultiplier) * 2
         );
 
         // This range should should be roughly 2x the size of the pollution spread radius.
