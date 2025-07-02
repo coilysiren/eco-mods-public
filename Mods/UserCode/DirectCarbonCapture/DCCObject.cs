@@ -45,8 +45,6 @@ namespace DirectCarbonCapture
         // Balancing Configuration
 
         // The DCC decomes less effective at higher pollution multipliers!
-        // At 1x pollution multiplier, 2 DCC can offset 1 combustion generator.
-        // At 2x pollution is 3 DCC to 1 combustion generator.
         public static readonly float pollutionTonsPerHour = (float)(
             -1 * Math.Sqrt(EcoDef.Obj.ClimateSettings.PollutionMultiplier) * 2
         );
