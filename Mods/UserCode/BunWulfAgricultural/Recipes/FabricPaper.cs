@@ -20,7 +20,7 @@ namespace BunWulfAgricultural
                 {
                     new(
                         "Fabric",
-                        6,
+                        2,
                         typeof(PaperMillingSkill),
                         typeof(PaperMillingLavishResourcesTalent)
                     ),
