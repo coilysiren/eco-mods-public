@@ -19,33 +19,36 @@ namespace BunWulfBioChemical
                 displayName: Localizer.DoStr("Dry Hyperaccumulator Phytoremediation"),
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(TailingsItem), 1, staticIngredient: true),
-                    new(typeof(DirtItem), 1, staticIngredient: true),
+                    new(typeof(TailingsItem), 100, staticIngredient: true),
+                    new(typeof(DirtItem), 100, staticIngredient: true),
                     new(
                         typeof(CompostFertilizerItem),
-                        1,
+                        100,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                     new(
                         typeof(SunflowerSeedItem),
-                        10,
+                        100,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<DirtItem>(2),
-                    new CraftingElement<SunflowerItem>(10),
+                    new CraftingElement<DirtItem>(100),
+                    new CraftingElement<SunflowerItem>(100),
+                    new CraftingElement<IronConcentrateItem>(10),
+                    new CraftingElement<CopperConcentrateItem>(3),
+                    new CraftingElement<GoldConcentrateItem>(1),
                 }
             );
             Recipes = new List<Recipe> { recipe };
             ExperienceOnCraft = 1;
-            LaborInCalories = CreateLaborInCaloriesValue(40, typeof(BiochemistSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(2000, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(DryHyperPhyto),
-                start: 10,
+                start: 360,
                 skillType: typeof(BiochemistSkill),
                 typeof(BiochemistParallelSpeedTalent)
             );
@@ -69,33 +72,36 @@ namespace BunWulfBioChemical
                 displayName: Localizer.DoStr("Wet Hyperaccumulator Phytoremediation"),
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(WetTailingsItem), 1, staticIngredient: true),
-                    new(typeof(DirtItem), 1, staticIngredient: true),
+                    new(typeof(WetTailingsItem), 100, staticIngredient: true),
+                    new(typeof(DirtItem), 100, staticIngredient: true),
                     new(
                         typeof(CompostFertilizerItem),
-                        1,
+                        100,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                     new(
                         typeof(SunflowerSeedItem),
-                        10,
+                        100,
                         typeof(BiochemistSkill),
                         typeof(BiochemistLavishResourcesTalent)
                     ),
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<DirtItem>(2),
-                    new CraftingElement<SunflowerItem>(10),
+                    new CraftingElement<DirtItem>(100),
+                    new CraftingElement<SunflowerItem>(100),
+                    new CraftingElement<IronConcentrateItem>(10),
+                    new CraftingElement<CopperConcentrateItem>(3),
+                    new CraftingElement<GoldConcentrateItem>(1),
                 }
             );
             Recipes = new List<Recipe> { recipe };
             ExperienceOnCraft = 1;
-            LaborInCalories = CreateLaborInCaloriesValue(40, typeof(BiochemistSkill));
+            LaborInCalories = CreateLaborInCaloriesValue(2000, typeof(BiochemistSkill));
             CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(WetHyperPhyto),
-                start: 10,
+                start: 360,
                 skillType: typeof(BiochemistSkill),
                 typeof(BiochemistParallelSpeedTalent)
             );
