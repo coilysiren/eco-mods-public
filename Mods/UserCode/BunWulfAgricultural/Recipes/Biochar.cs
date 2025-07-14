@@ -18,24 +18,18 @@ namespace BunWulfAgricultural
                 displayName: Localizer.DoStr("Biochar Charcoal Burning"),
                 ingredients: new List<IngredientElement>
                 {
-                    // 0.5 x 4 = 2 cost
                     new(typeof(CharcoalItem), 4, staticIngredient: true),
-                    // 0.1 x 20 = 2 cost
                     new(
                         "Vegetable",
                         20,
                         typeof(FarmingSkill),
                         typeof(FarmingLavishResourcesTalent)
                     ),
-                    // ingredient cost = 4
                 },
                 items: new List<CraftingElement>
                 {
-                    // 0.5 * 6 = 3
                     new CraftingElement<CharcoalItem>(5),
-                    // 0.2 * 4 = 0.8
                     new CraftingElement<OilItem>(5),
-                    // products value = 3.8
                 }
             );
             Recipes = new List<Recipe> { recipe };
