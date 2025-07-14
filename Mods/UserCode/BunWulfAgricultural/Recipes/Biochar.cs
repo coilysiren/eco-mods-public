@@ -32,9 +32,9 @@ namespace BunWulfAgricultural
                 items: new List<CraftingElement>
                 {
                     // 0.5 * 6 = 3
-                    new CraftingElement<CharcoalItem>(6),
+                    new CraftingElement<CharcoalItem>(5),
                     // 0.2 * 4 = 0.8
-                    new CraftingElement<OilItem>(2),
+                    new CraftingElement<OilItem>(5),
                     // products value = 3.8
                 }
             );
