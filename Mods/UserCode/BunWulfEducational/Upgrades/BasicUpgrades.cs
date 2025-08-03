@@ -14,7 +14,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 1")]
     [LocDescription(
-        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SBU1, A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a BU1."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -32,7 +32,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 2")]
     [LocDescription(
-        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SBU2, A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a BU2."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -50,7 +50,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 3")]
     [LocDescription(
-        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SBU3, A thinking Econian's Basic Upgrade that increases crafting efficiency, 10% better than a BU3, as powerful as a specialist upgrade, but more flexible."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -62,13 +62,13 @@ namespace BunWulfEducational
 
         // base is 0.6
         public ScholarsBasicUpgradeLvl3Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.55f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
     }
 
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 4")]
     [LocDescription(
-        "A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a normal upgrade. As powerful as a specialist upgrade, but more flexible."
+        "SBU4, A thinking Econian's Basic Upgrade that increases crafting efficiency, 10% better than a BU5. The ultimate upgrade for those who seek efficiency."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -80,7 +80,7 @@ namespace BunWulfEducational
 
         // base is 0.55
         public ScholarsBasicUpgradeLvl4Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.5f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.40f) { }
     }
 
     [RequiresSkill(typeof(LibrarianSkill), 1)]

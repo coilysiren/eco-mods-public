@@ -14,7 +14,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Modern Upgrade 1")]
     [LocDescription(
-        "A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SMU1, A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a MU1."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Modern Upgrades", createAsSubPage: true)]
@@ -32,7 +32,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Modern Upgrade 2")]
     [LocDescription(
-        "A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SMU2, A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a MU2."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Modern Upgrades", createAsSubPage: true)]
@@ -50,7 +50,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Modern Upgrade 3")]
     [LocDescription(
-        "A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SMU3, A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a MU3."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Modern Upgrades", createAsSubPage: true)]
@@ -62,13 +62,13 @@ namespace BunWulfEducational
 
         // base is 0.6
         public ScholarsModernUpgradeLvl3Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.55f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.5f) { }
     }
 
     [Serialized]
     [LocDisplayName("Scholars Modern Upgrade 4")]
     [LocDescription(
-        "A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a normal upgrade. As powerful as a specialist upgrade, but more flexible."
+        "SMU4, A thinking Econian's Modern Upgrade that increases crafting efficiency, 10% better than a MU4. The ultimate upgrade for those who seek efficiency."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Modern Upgrades", createAsSubPage: true)]
@@ -80,7 +80,7 @@ namespace BunWulfEducational
 
         // base is 0.55
         public ScholarsModernUpgradeLvl4Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.5f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.4f) { }
     }
 
     [RequiresSkill(typeof(LibrarianSkill), 5)]

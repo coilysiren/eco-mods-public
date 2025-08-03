@@ -14,7 +14,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 1")]
     [LocDescription(
-        "A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SAU1, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a AU1."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -33,7 +33,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 2")]
     [LocDescription(
-        "A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SAU2, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a AU2."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -52,7 +52,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 3")]
     [LocDescription(
-        "A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a normal upgrade."
+        "SAU3, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 10% better than a AU3, as powerful as a specialist upgrade, but more flexible."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -65,13 +65,13 @@ namespace BunWulfEducational
 
         // base is 0.6
         public ScholarsAdvancedUpgradeLvl3Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.55f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
     }
 
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 4")]
     [LocDescription(
-        "A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a normal upgrade. As powerful as a specialist upgrade, but more flexible."
+        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 10% better than a AU4. The ultimate upgrade for those who seek efficiency."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -84,7 +84,7 @@ namespace BunWulfEducational
 
         // base is 0.55
         public ScholarsAdvancedUpgradeLvl4Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.5f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.4f) { }
     }
 
     [RequiresSkill(typeof(LibrarianSkill), 3)]
