@@ -68,7 +68,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 4")]
     [LocDescription(
-        "SBU4, A thinking Econian's Basic Upgrade that increases crafting efficiency, 10% better than a BU5. The ultimate upgrade for those who seek efficiency."
+        "SBU4, A thinking Econian's Basic Upgrade that increases crafting efficiency, 15% better than a BU4. The ultimate upgrade for those who seek efficiency."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]

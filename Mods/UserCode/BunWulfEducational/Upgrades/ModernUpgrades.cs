@@ -50,7 +50,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Modern Upgrade 3")]
     [LocDescription(
-        "SMU3, A thinking Econian's Modern Upgrade that increases crafting efficiency, 5% better than a MU3."
+        "SMU3, A thinking Econian's Modern Upgrade that increases crafting efficiency, 10% better than a MU3, as powerful as a specialist upgrade, but more flexible."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Modern Upgrades", createAsSubPage: true)]
@@ -68,7 +68,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Modern Upgrade 4")]
     [LocDescription(
-        "SMU4, A thinking Econian's Modern Upgrade that increases crafting efficiency, 10% better than a MU4. The ultimate upgrade for those who seek efficiency."
+        "SMU4, A thinking Econian's Modern Upgrade that increases crafting efficiency, 15% better than a MU4. The ultimate upgrade for those who seek efficiency."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Modern Upgrades", createAsSubPage: true)]

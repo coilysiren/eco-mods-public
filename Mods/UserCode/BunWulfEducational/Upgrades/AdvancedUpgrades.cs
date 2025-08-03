@@ -71,7 +71,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 4")]
     [LocDescription(
-        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 10% better than a AU4. The ultimate upgrade for those who seek efficiency."
+        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 15% better than a AU4. The ultimate upgrade for those who seek efficiency."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
