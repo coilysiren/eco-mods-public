@@ -1,0 +1,10 @@
+{
+  "omnisharp.dotNetCliPaths": [
+    "/usr/local/share/dotnet"
+  ],
+  "omnisharp.useGlobalMono": "never",
+  "omnisharp.enableRoslynAnalyzers": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.enableAsyncCompletion": true,
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+}

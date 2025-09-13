@@ -1,0 +1,22 @@
+{
+  "MsBuild": {
+    "UseLegacySdkResolver": true,
+    "LoadProjectsOnDemand": false,
+    "EnablePackageAutoRestore": true,
+    "EnableRoslynAnalyzers": true
+  },
+  "FormattingOptions": {
+    "EnableEditorConfigSupport": true,
+    "OrganizeImports": true
+  },
+  "RoslynExtensionsOptions": {
+    "EnableAnalyzersSupport": true,
+    "EnableImportCompletion": true,
+    "EnableAsyncCompletion": true
+  },
+  "Sdk": {
+    "IncludePrereleases": false,
+    "Path": "/usr/local/share/dotnet"
+  },
+  "DotNetCliPaths": ["/usr/local/share/dotnet"]
+}
