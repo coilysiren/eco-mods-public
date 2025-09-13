@@ -85,7 +85,6 @@ namespace BunWulfBioChemical
     [IconGroup("World Object Minimap")]
     [Ecopedia("Work Stations", "Researching", createAsSubPage: true)]
     [Weight(2000)] // Defines how heavy Chemlab is.
-    [Tag(nameof(SurfaceTags.Rug))]
     [AllowPluginModules(
         Tags = new[] { "ModernUpgrade" },
         ItemTypes = new[] { typeof(BiochemistUpgradeItem) }
