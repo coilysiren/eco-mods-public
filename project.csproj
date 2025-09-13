@@ -10,7 +10,21 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="Eco.ReferenceAssemblies" Version="0.11.1.11-beta-release-866" />
+    <ProjectReference
+      Include="/Users/kai/projects/StrangeLoopGames/Eco/Server/Eco.Gameplay/Eco.Gameplay.csproj"
+    />
+    <ProjectReference
+      Include="/Users/kai/projects/StrangeLoopGames/Eco/Server/Eco.Core/Eco.Core.csproj"
+    />
+    <ProjectReference
+      Include="/Users/kai/projects/StrangeLoopGames/Eco/Server/Eco.Shared/Eco.Shared.csproj"
+    />
+    <ProjectReference
+      Include="/Users/kai/projects/StrangeLoopGames/Eco/Server/Eco.Simulation/Eco.Simulation.csproj"
+    />
+    <ProjectReference
+      Include="/Users/kai/projects/StrangeLoopGames/Eco/Server/Eco.World/Eco.World.csproj"
+    />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Mods\UserCode\BunWulfAgricultural\Plant\**" />
