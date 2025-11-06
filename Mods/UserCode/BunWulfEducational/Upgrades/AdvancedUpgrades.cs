@@ -25,7 +25,6 @@ namespace BunWulfEducational
         public override LocString DisplayNamePlural =>
             Localizer.DoStr("Scholars Advanced Upgrade 1");
 
-        // base is 0.9
         public ScholarsAdvancedUpgradeLvl1Item()
             : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.80f) { }
     }
@@ -44,7 +43,6 @@ namespace BunWulfEducational
         public override LocString DisplayNamePlural =>
             Localizer.DoStr("Scholars Advanced Upgrade 2");
 
-        // base is 0.75
         public ScholarsAdvancedUpgradeLvl2Item()
             : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.7f) { }
     }
@@ -63,7 +61,6 @@ namespace BunWulfEducational
         public override LocString DisplayNamePlural =>
             Localizer.DoStr("Scholars Advanced Upgrade 3");
 
-        // base is 0.6
         public ScholarsAdvancedUpgradeLvl3Item()
             : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.60f) { }
     }
@@ -82,7 +79,6 @@ namespace BunWulfEducational
         public override LocString DisplayNamePlural =>
             Localizer.DoStr("Scholars Advanced Upgrade 4");
 
-        // base is 0.55
         public ScholarsAdvancedUpgradeLvl4Item()
             : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
     }

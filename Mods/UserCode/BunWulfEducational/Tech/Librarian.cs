@@ -34,24 +34,24 @@ namespace BunWulfEducational
             user.ChangedCarryWeight();
         }
 
-        public static MultiplicativeStrategy MultiplicativeStrategy =
-            new(
-                new float[]
-                {
-                    1,
-                    1 - 0.2f,
-                    1 - 0.25f,
-                    1 - 0.3f,
-                    1 - 0.35f,
-                    1 - 0.4f,
-                    1 - 0.45f,
-                    1 - 0.5f,
-                }
-            );
+        public static MultiplicativeStrategy MultiplicativeStrategy = new(
+            new float[]
+            {
+                1,
+                1 - 0.2f,
+                1 - 0.25f,
+                1 - 0.3f,
+                1 - 0.35f,
+                1 - 0.4f,
+                1 - 0.45f,
+                1 - 0.5f,
+            }
+        );
         public override MultiplicativeStrategy MultiStrategy => MultiplicativeStrategy;
 
-        public static AdditiveStrategy AdditiveStrategy =
-            new(new float[] { 0, 0.5f, 0.55f, 0.6f, 0.65f, 0.7f, 0.75f, 0.8f });
+        public static AdditiveStrategy AdditiveStrategy = new(
+            new float[] { 0, 0.5f, 0.55f, 0.6f, 0.65f, 0.7f, 0.75f, 0.8f }
+        );
         public override AdditiveStrategy AddStrategy => AdditiveStrategy;
         public override int MaxLevel => 7;
         public override int Tier => 3;
@@ -74,7 +74,7 @@ namespace BunWulfEducational
     {
         public LibrarianSkillBookRecipe()
         {
-            Recipe recipe = new();
+            var recipe = new Recipe();
             recipe.Init(
                 name: "Librarian",
                 displayName: Localizer.DoStr("Librarian Skill Book"),
