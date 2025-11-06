@@ -28,31 +28,32 @@ namespace BunWulfEducational
     using Eco.Gameplay.Items.Recipes;
     using Eco.Mods.TechTree;
 
-        
+
     /// <summary>
-    /// <para>Server side recipe definition for "GeologyResearchPaperBasic".</para>
+    /// <para>Server side recipe definition for "GatheringResearchPaperBasic".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
     [RequiresSkill(typeof(LibrarianSkill), 1)]
-    [Ecopedia("Items", "Research Papers", subPageName: "Librarian Geology Research Paper Basic Item")]
-    public partial class LibrarianGeologyResearchPaperBasicRecipe : RecipeFamily
+    [Ecopedia("Items", "Research Papers", subPageName: "Librarian Gathering Research Paper Basic Item")]
+    public partial class LibrarianGatheringResearchPaperBasicRecipe : RecipeFamily
     {
-        public LibrarianGeologyResearchPaperBasicRecipe()
+        public LibrarianGatheringResearchPaperBasicRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "GeologyResearchPaperBasic",  //noloc
-                displayName: Localizer.DoStr("Librarian Geology Research Paper Basic"),
+                name: "GatheringResearchPaperBasic",  //noloc
+                displayName: Localizer.DoStr("Librarian Gathering Research Paper Basic"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement("Rock", 30, typeof(LibrarianSkill)), //noloc
+                    new IngredientElement(typeof(PlantFibersItem), 20, typeof(LibrarianSkill)),
+                    new IngredientElement("Raw Food", 30, typeof(LibrarianSkill)), //noloc
                 },
 
                 // Define our recipe output items.
@@ -60,20 +61,20 @@ namespace BunWulfEducational
                 // to create.
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<GeologyResearchPaperBasicItem>()
+                    new CraftingElement<GatheringResearchPaperBasicItem>()
                 });
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 2; // Defines how much experience is gained when crafted.
-            
+            this.ExperienceOnCraft = 10; // Defines how much experience is gained when crafted.
+
             // Defines the amount of labor required and the required skill to add labor
             this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(1);
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Geology Research Paper Basic"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Gathering Research Paper Basic"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Librarian Geology Research Paper Basic"), recipeType: typeof(LibrarianGeologyResearchPaperBasicRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Librarian Gathering Research Paper Basic"), recipeType: typeof(LibrarianGatheringResearchPaperBasicRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
@@ -86,13 +87,13 @@ namespace BunWulfEducational
         /// <summary>Hook for mods to customize RecipeFamily after initialization, but before registration. You can change skill requirements here.</summary>
         partial void ModsPostInitialize();
     }
-    
+
     /// <summary>
-    /// <para>Server side item definition for the "GeologyResearchPaperBasic" item.</para>
+    /// <para>Server side item definition for the "GatheringResearchPaperBasic" item.</para>
     /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.Item.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
 }

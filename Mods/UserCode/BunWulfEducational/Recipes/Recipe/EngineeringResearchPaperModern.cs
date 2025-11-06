@@ -28,35 +28,33 @@ namespace BunWulfEducational
     using Eco.Gameplay.Items.Recipes;
     using Eco.Mods.TechTree;
 
-        
+
     /// <summary>
-    /// <para>Server side recipe definition for "AgricultureResearchPaperModern".</para>
+    /// <para>Server side recipe definition for "EngineeringResearchPaperModern".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
     [RequiresSkill(typeof(LibrarianSkill), 5)]
-    [Ecopedia("Items", "Research Papers", subPageName: "Librarian Agriculture Research Paper Modern Item")]
-    public partial class LibrarianAgricultureResearchPaperModernRecipe : RecipeFamily
+    [Ecopedia("Items", "Research Papers", subPageName: "Librarian Engineering Research Paper Modern Item")]
+    public partial class LibrarianEngineeringResearchPaperModernRecipe : RecipeFamily
     {
-        public LibrarianAgricultureResearchPaperModernRecipe()
+        public LibrarianEngineeringResearchPaperModernRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "AgricultureResearchPaperModern",  //noloc
-                displayName: Localizer.DoStr("Librarian Agriculture Research Paper Modern"),
+                name: "EngineeringResearchPaperModern",  //noloc
+                displayName: Localizer.DoStr("Librarian Engineering Research Paper Modern"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(BerryExtractFertilizerItem), 5, typeof(LibrarianSkill)),
-                    new IngredientElement(typeof(BloodMealFertilizerItem), 5, typeof(LibrarianSkill)),
-                    new IngredientElement(typeof(HideAshFertilizerItem), 5, typeof(LibrarianSkill)),
-                    new IngredientElement(typeof(PeltFertilizerItem), 5, typeof(LibrarianSkill)),
-                    new IngredientElement("Raw Food", 200, typeof(LibrarianSkill)), //noloc
+                    new IngredientElement(typeof(IronAxleItem), 8, typeof(LibrarianSkill)),
+                    new IngredientElement(typeof(IronPlateItem), 8, typeof(LibrarianSkill)),
+                    new IngredientElement(typeof(IronGearItem), 20, typeof(LibrarianSkill)),
                     new IngredientElement(typeof(InkItem), 4, true),
                     new IngredientElement(typeof(PaperItem), 20, true),
                 },
@@ -66,20 +64,20 @@ namespace BunWulfEducational
                 // to create.
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<AgricultureResearchPaperModernItem>()
+                    new CraftingElement<EngineeringResearchPaperModernItem>()
                 });
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 16; // Defines how much experience is gained when crafted.
-            
+            this.ExperienceOnCraft = 30; // Defines how much experience is gained when crafted.
+
             // Defines the amount of labor required and the required skill to add labor
             this.LaborInCalories = CreateLaborInCaloriesValue(600, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(1);
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Agriculture Research Paper Modern"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Engineering Research Paper Modern"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Librarian Agriculture Research Paper Modern"), recipeType: typeof(LibrarianAgricultureResearchPaperModernRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Librarian Engineering Research Paper Modern"), recipeType: typeof(LibrarianEngineeringResearchPaperModernRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
@@ -92,13 +90,13 @@ namespace BunWulfEducational
         /// <summary>Hook for mods to customize RecipeFamily after initialization, but before registration. You can change skill requirements here.</summary>
         partial void ModsPostInitialize();
     }
-    
+
     /// <summary>
-    /// <para>Server side item definition for the "AgricultureResearchPaperModern" item.</para>
+    /// <para>Server side item definition for the "EngineeringResearchPaperModern" item.</para>
     /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.Item.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
 }

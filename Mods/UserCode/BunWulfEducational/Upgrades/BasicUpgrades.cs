@@ -14,7 +14,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 1")]
     [LocDescription(
-        "SBU1, A thinking Econian's Basic Upgrade that increases crafting efficiency, 5% better than a BU1."
+        "SBU1, A thinking Econian's Basic Upgrade that increases crafting efficiency, 10% better than a BU1."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -26,7 +26,7 @@ namespace BunWulfEducational
 
         // base is 0.9
         public ScholarsBasicUpgradeLvl1Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.85f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.8f) { }
     }
 
     [Serialized]
@@ -50,7 +50,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 3")]
     [LocDescription(
-        "SBU3, A thinking Econian's Basic Upgrade that increases crafting efficiency, 10% better than a BU3, as powerful as a specialist upgrade, but more flexible."
+        "SBU3, A thinking Econian's Basic Upgrade that increases crafting efficiency, as good as a BU3, but allows you to craft up to SBU4"
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -62,13 +62,13 @@ namespace BunWulfEducational
 
         // base is 0.6
         public ScholarsBasicUpgradeLvl3Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.60f) { }
     }
 
     [Serialized]
     [LocDisplayName("Scholars Basic Upgrade 4")]
     [LocDescription(
-        "SBU4, A thinking Econian's Basic Upgrade that increases crafting efficiency, 15% better than a BU4. The ultimate upgrade for those who seek efficiency."
+        "SBU4, A thinking Econian's Basic Upgrade that increases crafting efficiency, as good as a BU5, but more flexible."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Basic Upgrades", createAsSubPage: true)]
@@ -80,10 +80,10 @@ namespace BunWulfEducational
 
         // base is 0.55
         public ScholarsBasicUpgradeLvl4Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.40f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 2)]
     public partial class ScholarsBasicUpgradeLvl1Recipe : RecipeFamily
     {
         public ScholarsBasicUpgradeLvl1Recipe()
@@ -102,11 +102,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 10;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsBasicUpgradeLvl1Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
@@ -117,7 +117,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 2)]
     public partial class ScholarsBasicUpgradeLvl2Recipe : RecipeFamily
     {
         public ScholarsBasicUpgradeLvl2Recipe()
@@ -128,7 +128,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 2"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(BasicUpgradeLvl2Item), 1, true),
+                    new IngredientElement(typeof(BasicUpgradeLvl1Item), 1, true),
                     new IngredientElement(typeof(ScholarsBasicUpgradeLvl1Item), 1, true),
                 },
                 items: new List<CraftingElement>
@@ -137,11 +137,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 10;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsBasicUpgradeLvl2Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
@@ -152,7 +152,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 2)]
     public partial class ScholarsBasicUpgradeLvl3Recipe : RecipeFamily
     {
         public ScholarsBasicUpgradeLvl3Recipe()
@@ -163,7 +163,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 3"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(BasicUpgradeLvl3Item), 1, true),
+                    new IngredientElement(typeof(BasicUpgradeLvl2Item), 1, true),
                     new IngredientElement(typeof(ScholarsBasicUpgradeLvl2Item), 1, true),
                 },
                 items: new List<CraftingElement>
@@ -172,11 +172,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 10;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsBasicUpgradeLvl3Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
@@ -187,7 +187,7 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(LibrarianSkill), 1)]
+    [RequiresSkill(typeof(LibrarianSkill), 2)]
     public partial class ScholarsBasicUpgradeLvl4Recipe : RecipeFamily
     {
         public ScholarsBasicUpgradeLvl4Recipe()
@@ -198,7 +198,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Basic Upgrade 4"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(BasicUpgradeLvl4Item), 1, true),
+                    new IngredientElement(typeof(BasicUpgradeLvl3Item), 1, true),
                     new IngredientElement(typeof(ScholarsBasicUpgradeLvl3Item), 1, true),
                 },
                 items: new List<CraftingElement>
@@ -207,11 +207,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 10;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsBasicUpgradeLvl4Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(

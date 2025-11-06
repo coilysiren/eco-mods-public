@@ -28,32 +28,31 @@ namespace BunWulfEducational
     using Eco.Gameplay.Items.Recipes;
     using Eco.Mods.TechTree;
 
-        
+
     /// <summary>
-    /// <para>Server side recipe definition for "CulinaryResearchPaperAdvanced".</para>
+    /// <para>Server side recipe definition for "GeologyResearchPaperAdvanced".</para>
     /// <para>More information about RecipeFamily objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.RecipeFamily.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
     [RequiresSkill(typeof(LibrarianSkill), 3)]
-    [Ecopedia("Items", "Research Papers", subPageName: "Librarian Culinary Research Paper Advanced Item")]
-    public partial class LibrarianCulinaryResearchPaperAdvancedRecipe : RecipeFamily
+    [Ecopedia("Items", "Research Papers", subPageName: "Librarian Geology Research Paper Advanced Item")]
+    public partial class LibrarianGeologyResearchPaperAdvancedRecipe : RecipeFamily
     {
-        public LibrarianCulinaryResearchPaperAdvancedRecipe()
+        public LibrarianGeologyResearchPaperAdvancedRecipe()
         {
             var recipe = new Recipe();
             recipe.Init(
-                name: "CulinaryResearchPaperAdvanced",  //noloc
-                displayName: Localizer.DoStr("Librarian Culinary Research Paper Advanced"),
+                name: "GeologyResearchPaperAdvanced",  //noloc
+                displayName: Localizer.DoStr("Librarian Geology Research Paper Advanced"),
 
                 // Defines the ingredients needed to craft this recipe. An ingredient items takes the following inputs
                 // type of the item, the amount of the item, the skill required, and the talent used.
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement("BakedVegetable", 16, typeof(LibrarianSkill)), //noloc
-                    new IngredientElement("Salad", 10, typeof(LibrarianSkill)), //noloc
+                    new IngredientElement("MortaredStone", 20, typeof(LibrarianSkill)), //noloc
                 },
 
                 // Define our recipe output items.
@@ -61,20 +60,20 @@ namespace BunWulfEducational
                 // to create.
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CulinaryResearchPaperAdvancedItem>()
+                    new CraftingElement<GeologyResearchPaperAdvancedItem>()
                 });
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 4; // Defines how much experience is gained when crafted.
-            
+            this.ExperienceOnCraft = 20; // Defines how much experience is gained when crafted.
+
             // Defines the amount of labor required and the required skill to add labor
             this.LaborInCalories = CreateLaborInCaloriesValue(120, typeof(LibrarianSkill));
 
             // Defines our crafting time for the recipe
             this.CraftMinutes = CreateCraftTimeValue(1);
 
-            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Culinary Research Paper Advanced"
+            // Perform pre/post initialization for user mods and initialize our recipe instance with the display name "Librarian Geology Research Paper Advanced"
             this.ModsPreInitialize();
-            this.Initialize(displayText: Localizer.DoStr("Librarian Culinary Research Paper Advanced"), recipeType: typeof(LibrarianCulinaryResearchPaperAdvancedRecipe));
+            this.Initialize(displayText: Localizer.DoStr("Librarian Geology Research Paper Advanced"), recipeType: typeof(LibrarianGeologyResearchPaperAdvancedRecipe));
             this.ModsPostInitialize();
 
             // Register our RecipeFamily instance with the crafting system so it can be crafted.
@@ -87,13 +86,13 @@ namespace BunWulfEducational
         /// <summary>Hook for mods to customize RecipeFamily after initialization, but before registration. You can change skill requirements here.</summary>
         partial void ModsPostInitialize();
     }
-    
+
     /// <summary>
-    /// <para>Server side item definition for the "CulinaryResearchPaperAdvanced" item.</para>
+    /// <para>Server side item definition for the "GeologyResearchPaperAdvanced" item.</para>
     /// <para>More information about Item objects can be found at https://docs.play.eco/api/server/eco.gameplay/Eco.Gameplay.Items.Item.html</para>
     /// </summary>
     /// <remarks>
-    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization. 
+    /// This is an auto-generated class. Don't modify it! All your changes will be wiped with next update! Use Mods* partial methods instead for customization.
     /// If you wish to modify this class, please create a new partial class or follow the instructions in the "UserCode" folder to override the entire file.
     /// </remarks>
 }

@@ -14,7 +14,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 1")]
     [LocDescription(
-        "SAU1, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a AU1."
+        "SAU1, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 10% better than a AU1."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -27,7 +27,7 @@ namespace BunWulfEducational
 
         // base is 0.9
         public ScholarsAdvancedUpgradeLvl1Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.85f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.80f) { }
     }
 
     [Serialized]
@@ -52,7 +52,7 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 3")]
     [LocDescription(
-        "SAU3, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 10% better than a AU3, as powerful as a specialist upgrade, but more flexible."
+        "SAU3, A thinking Econian's Advanced Upgrade that increases crafting efficiency, as good as a AU3, but allows you to craft up to SAU4"
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -65,13 +65,13 @@ namespace BunWulfEducational
 
         // base is 0.6
         public ScholarsAdvancedUpgradeLvl3Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.60f) { }
     }
 
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 4")]
     [LocDescription(
-        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 15% better than a AU4. The ultimate upgrade for those who seek efficiency."
+        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, as good as a AU5, but more flexible."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
@@ -84,7 +84,7 @@ namespace BunWulfEducational
 
         // base is 0.55
         public ScholarsAdvancedUpgradeLvl4Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.4f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.50f) { }
     }
 
     [RequiresSkill(typeof(LibrarianSkill), 3)]
@@ -106,11 +106,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 20;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsAdvancedUpgradeLvl1Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
@@ -141,11 +141,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 20;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsAdvancedUpgradeLvl2Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
@@ -176,11 +176,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 20;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsAdvancedUpgradeLvl3Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
@@ -211,11 +211,11 @@ namespace BunWulfEducational
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 1;
+            this.ExperienceOnCraft = 20;
             this.LaborInCalories = CreateLaborInCaloriesValue(60, typeof(LibrarianSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ScholarsAdvancedUpgradeLvl4Recipe),
-                start: 4,
+                start: 2,
                 skillType: typeof(LibrarianSkill)
             );
             this.Initialize(
