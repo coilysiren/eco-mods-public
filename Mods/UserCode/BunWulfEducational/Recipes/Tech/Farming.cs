@@ -10,7 +10,6 @@ namespace BunWulfEducational
         public LibrarianFarmingSkillBookRecipe()
             : base()
         {
-            // Re-initialize with the correct recipe type
             this.Initialize(
                 displayText: Localizer.DoStr("Librarian Farming Skill Book"),
                 recipeType: typeof(LibrarianFarmingSkillBookRecipe)
