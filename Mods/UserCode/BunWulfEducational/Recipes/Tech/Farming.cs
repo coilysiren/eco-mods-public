@@ -2,6 +2,7 @@ namespace BunWulfEducational
 {
     using Eco.Mods.TechTree;
     using Eco.Gameplay.Skills;
+    using Eco.Shared.Localization;
 
     [RequiresSkill(typeof(LibrarianSkill), 2)]
     public partial class LibrarianFarmingSkillBookRecipe : FarmingSkillBookRecipe
@@ -9,6 +10,11 @@ namespace BunWulfEducational
         public LibrarianFarmingSkillBookRecipe()
             : base()
         {
+            // Re-initialize with the correct recipe type
+            this.Initialize(
+                displayText: Localizer.DoStr("Librarian Farming Skill Book"),
+                recipeType: typeof(LibrarianFarmingSkillBookRecipe)
+            );
         }
     }
 }
