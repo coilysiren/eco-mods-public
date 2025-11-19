@@ -14,19 +14,21 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 1")]
     [LocDescription(
-        "SAU1, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 10% better than a AU1."
+        "SAU1, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a AU1."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
     [Tag("AdvancedUpgrade")]
+    [Tag("ScholarsUpgrade")]
+    [Tag("SAU1")]
     public partial class ScholarsAdvancedUpgradeLvl1Item : EfficiencyModule
     {
         public override LocString DisplayNamePlural =>
             Localizer.DoStr("Scholars Advanced Upgrade 1");
 
         public ScholarsAdvancedUpgradeLvl1Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.80f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.85f) { }
     }
 
     [Serialized]
@@ -38,6 +40,8 @@ namespace BunWulfEducational
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
     [Tag("AdvancedUpgrade")]
+    [Tag("ScholarsUpgrade")]
+    [Tag("SAU2")]
     public partial class ScholarsAdvancedUpgradeLvl2Item : EfficiencyModule
     {
         public override LocString DisplayNamePlural =>
@@ -50,30 +54,34 @@ namespace BunWulfEducational
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 3")]
     [LocDescription(
-        "SAU3, A thinking Econian's Advanced Upgrade that increases crafting efficiency, as good as a AU3, but allows you to craft up to SAU4"
+        "SAU3, A thinking Econian's Advanced Upgrade that increases crafting efficiency, 5% better than a AU3."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
     [Tag("AdvancedUpgrade")]
+    [Tag("ScholarsUpgrade")]
+    [Tag("SAU3")]
     public partial class ScholarsAdvancedUpgradeLvl3Item : EfficiencyModule
     {
         public override LocString DisplayNamePlural =>
             Localizer.DoStr("Scholars Advanced Upgrade 3");
 
         public ScholarsAdvancedUpgradeLvl3Item()
-            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.60f) { }
+            : base(ModuleTypes.ResourceEfficiency | ModuleTypes.SpeedEfficiency, 0.55f) { }
     }
 
     [Serialized]
     [LocDisplayName("Scholars Advanced Upgrade 4")]
     [LocDescription(
-        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, as good as a AU5, but more flexible."
+        "SAU4, A thinking Econian's Advanced Upgrade that increases crafting efficiency, as good as a AU5 (specialized), but more flexible."
     )]
     [Weight(1)]
     [Ecopedia("Upgrade Modules", "Advanced Upgrades", createAsSubPage: true)]
     [Tag("Upgrade")]
     [Tag("AdvancedUpgrade")]
+    [Tag("ScholarsUpgrade")]
+    [Tag("SAU4")]
     public partial class ScholarsAdvancedUpgradeLvl4Item : EfficiencyModule
     {
         public override LocString DisplayNamePlural =>
@@ -117,6 +125,40 @@ namespace BunWulfEducational
         }
     }
 
+    [RequiresSkill(typeof(SurvivalistSkill), 1)]
+    public partial class ScholarsAdvancedUpgradeLvl1DowngradeRecipe : RecipeFamily
+    {
+        public ScholarsAdvancedUpgradeLvl1DowngradeRecipe()
+        {
+            var recipe = new Recipe();
+            recipe.Init(
+                name: "ScholarsAdvancedUpgradeLvl1Downgrade",
+                displayName: Localizer.DoStr("Scholars Advanced Upgrade 1 Downgrade"),
+                ingredients: new List<IngredientElement>
+                {
+                    new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl1Item), 1, true),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<AdvancedUpgradeLvl1Item>(),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.ExperienceOnCraft = 10;
+            this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(SurvivalistSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(ScholarsAdvancedUpgradeLvl1DowngradeRecipe),
+                start: 1,
+                skillType: typeof(SurvivalistSkill)
+            );
+            this.Initialize(
+                displayText: Localizer.DoStr("Scholars Advanced Upgrade 1 Downgrade"),
+                recipeType: typeof(ScholarsAdvancedUpgradeLvl1DowngradeRecipe)
+            );
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
+        }
+    }
+
     [RequiresSkill(typeof(LibrarianSkill), 4)]
     public partial class ScholarsAdvancedUpgradeLvl2Recipe : RecipeFamily
     {
@@ -147,6 +189,40 @@ namespace BunWulfEducational
             this.Initialize(
                 displayText: Localizer.DoStr("Scholars Advanced Upgrade 2"),
                 recipeType: typeof(ScholarsAdvancedUpgradeLvl2Recipe)
+            );
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
+        }
+    }
+
+    [RequiresSkill(typeof(SurvivalistSkill), 1)]
+    public partial class ScholarsAdvancedUpgradeLvl2DowngradeRecipe : RecipeFamily
+    {
+        public ScholarsAdvancedUpgradeLvl2DowngradeRecipe()
+        {
+            var recipe = new Recipe();
+            recipe.Init(
+                name: "ScholarsAdvancedUpgradeLvl2Downgrade",
+                displayName: Localizer.DoStr("Scholars Advanced Upgrade 2 Downgrade"),
+                ingredients: new List<IngredientElement>
+                {
+                    new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl2Item), 1, true),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<AdvancedUpgradeLvl2Item>(),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.ExperienceOnCraft = 10;
+            this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(SurvivalistSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(ScholarsAdvancedUpgradeLvl2DowngradeRecipe),
+                start: 1,
+                skillType: typeof(SurvivalistSkill)
+            );
+            this.Initialize(
+                displayText: Localizer.DoStr("Scholars Advanced Upgrade 2 Downgrade"),
+                recipeType: typeof(ScholarsAdvancedUpgradeLvl2DowngradeRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
@@ -187,6 +263,40 @@ namespace BunWulfEducational
         }
     }
 
+    [RequiresSkill(typeof(SurvivalistSkill), 1)]
+    public partial class ScholarsAdvancedUpgradeLvl3DowngradeRecipe : RecipeFamily
+    {
+        public ScholarsAdvancedUpgradeLvl3DowngradeRecipe()
+        {
+            var recipe = new Recipe();
+            recipe.Init(
+                name: "ScholarsAdvancedUpgradeLvl3Downgrade",
+                displayName: Localizer.DoStr("Scholars Advanced Upgrade 3 Downgrade"),
+                ingredients: new List<IngredientElement>
+                {
+                    new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl3Item), 1, true),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<AdvancedUpgradeLvl3Item>(),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.ExperienceOnCraft = 10;
+            this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(SurvivalistSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(ScholarsAdvancedUpgradeLvl3DowngradeRecipe),
+                start: 1,
+                skillType: typeof(SurvivalistSkill)
+            );
+            this.Initialize(
+                displayText: Localizer.DoStr("Scholars Advanced Upgrade 3 Downgrade"),
+                recipeType: typeof(ScholarsAdvancedUpgradeLvl3DowngradeRecipe)
+            );
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
+        }
+    }
+
     [RequiresSkill(typeof(LibrarianSkill), 4)]
     public partial class ScholarsAdvancedUpgradeLvl4Recipe : RecipeFamily
     {
@@ -217,6 +327,40 @@ namespace BunWulfEducational
             this.Initialize(
                 displayText: Localizer.DoStr("Scholars Advanced Upgrade 4"),
                 recipeType: typeof(ScholarsAdvancedUpgradeLvl4Recipe)
+            );
+            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
+        }
+    }
+
+    [RequiresSkill(typeof(SurvivalistSkill), 1)]
+    public partial class ScholarsAdvancedUpgradeLvl4DowngradeRecipe : RecipeFamily
+    {
+        public ScholarsAdvancedUpgradeLvl4DowngradeRecipe()
+        {
+            var recipe = new Recipe();
+            recipe.Init(
+                name: "ScholarsAdvancedUpgradeLvl4Downgrade",
+                displayName: Localizer.DoStr("Scholars Advanced Upgrade 4 Downgrade"),
+                ingredients: new List<IngredientElement>
+                {
+                    new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl4Item), 1, true),
+                },
+                items: new List<CraftingElement>
+                {
+                    new CraftingElement<AdvancedUpgradeLvl4Item>(),
+                }
+            );
+            this.Recipes = new List<Recipe> { recipe };
+            this.ExperienceOnCraft = 10;
+            this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(SurvivalistSkill));
+            this.CraftMinutes = CreateCraftTimeValue(
+                beneficiary: typeof(ScholarsAdvancedUpgradeLvl4DowngradeRecipe),
+                start: 1,
+                skillType: typeof(SurvivalistSkill)
+            );
+            this.Initialize(
+                displayText: Localizer.DoStr("Scholars Advanced Upgrade 4 Downgrade"),
+                recipeType: typeof(ScholarsAdvancedUpgradeLvl4DowngradeRecipe)
             );
             CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
         }
