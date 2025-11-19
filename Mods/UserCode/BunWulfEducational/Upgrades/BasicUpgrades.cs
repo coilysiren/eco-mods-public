@@ -122,7 +122,7 @@ namespace BunWulfEducational
     }
 
     [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    public partial class ScholarsBasicUpgradeLvl1DowngradeRecipe : RecipeFamily
+    public partial class ScholarsBasicUpgradeLvl1DowngradeRecipe : RecipeFamily {
         public ScholarsBasicUpgradeLvl1DowngradeRecipe()
         {
             var recipe = new Recipe();
@@ -190,7 +190,7 @@ namespace BunWulfEducational
     }
 
     [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    public partial class ScholarsBasicUpgradeLvl2DowngradeRecipe : RecipeFamily
+    public partial class ScholarsBasicUpgradeLvl2DowngradeRecipe : RecipeFamily {
         public ScholarsBasicUpgradeLvl2DowngradeRecipe()
         {
             var recipe = new Recipe();
@@ -223,7 +223,7 @@ namespace BunWulfEducational
     }
 
     [RequiresSkill(typeof(LibrarianSkill), 2)]
-    public partial class ScholarsBasicUpgradeLvl3Recipe : RecipeFamily
+    public partial class ScholarsBasicUpgradeLvl3Recipe : RecipeFamily {
     {
         public ScholarsBasicUpgradeLvl3Recipe()
         {
@@ -258,7 +258,7 @@ namespace BunWulfEducational
     }
 
     [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    public partial class ScholarsBasicUpgradeLvl3DowngradeRecipe : RecipeFamily
+    public partial class ScholarsBasicUpgradeLvl3DowngradeRecipe : RecipeFamily {
         public ScholarsBasicUpgradeLvl3DowngradeRecipe()
         {
             var recipe = new Recipe();
@@ -291,7 +291,7 @@ namespace BunWulfEducational
     }
 
     [RequiresSkill(typeof(LibrarianSkill), 2)]
-    public partial class ScholarsBasicUpgradeLvl4Recipe : RecipeFamily
+    public partial class ScholarsBasicUpgradeLvl4Recipe : RecipeFamily {
     {
         public ScholarsBasicUpgradeLvl4Recipe()
         {
@@ -326,7 +326,7 @@ namespace BunWulfEducational
     }
 
     [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    public partial class ScholarsBasicUpgradeLvl4DowngradeRecipe : RecipeFamily
+    public partial class ScholarsBasicUpgradeLvl4DowngradeRecipe : RecipeFamily {
         public ScholarsBasicUpgradeLvl4DowngradeRecipe()
         {
             var recipe = new Recipe();
