@@ -134,10 +134,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl1Item), 1, true),
                 },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<ModernUpgradeLvl1Item>(),
-                }
+                items: new List<CraftingElement> { new CraftingElement<ModernUpgradeLvl1Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 15;
@@ -203,10 +200,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl2Item), 1, true),
                 },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<ModernUpgradeLvl2Item>(),
-                }
+                items: new List<CraftingElement> { new CraftingElement<ModernUpgradeLvl2Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 15;
@@ -272,10 +266,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl3Item), 1, true),
                 },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<ModernUpgradeLvl3Item>(),
-                }
+                items: new List<CraftingElement> { new CraftingElement<ModernUpgradeLvl3Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 15;
@@ -341,10 +332,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl4Item), 1, true),
                 },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<ModernUpgradeLvl4Item>(),
-                }
+                items: new List<CraftingElement> { new CraftingElement<ModernUpgradeLvl4Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 15;
