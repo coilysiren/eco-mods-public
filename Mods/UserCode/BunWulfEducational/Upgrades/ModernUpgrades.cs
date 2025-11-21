@@ -163,7 +163,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Modern Upgrade 2"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(ModernUpgradeLvl2Item), 1, true),
+                    new IngredientElement(typeof(ModernUpgradeLvl1Item), 1, true),
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl1Item), 1, true),
                 },
                 items: new List<CraftingElement>
@@ -229,7 +229,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Modern Upgrade 3"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(ModernUpgradeLvl3Item), 1, true),
+                    new IngredientElement(typeof(ModernUpgradeLvl2Item), 1, true),
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl2Item), 1, true),
                 },
                 items: new List<CraftingElement>
@@ -295,7 +295,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Modern Upgrade 4"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(ModernUpgradeLvl4Item), 1, true),
+                    new IngredientElement(typeof(ModernUpgradeLvl3Item), 1, true),
                     new IngredientElement(typeof(ScholarsModernUpgradeLvl3Item), 1, true),
                 },
                 items: new List<CraftingElement>
