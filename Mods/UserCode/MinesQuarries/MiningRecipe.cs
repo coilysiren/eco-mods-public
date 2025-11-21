@@ -7,38 +7,6 @@ namespace MinesQuarries
     using Eco.Mods.TechTree;
     using Eco.Shared.Localization;
 
-    [RequiresSkill(typeof(MiningSkill), 5)]
-    public partial class IronOreMining : RecipeFamily
-    {
-        public IronOreMining()
-        {
-            Recipe recipe = new();
-            LocString displayName = Localizer.DoStr("Iron Mining");
-            recipe.Init(
-                name: this.GetType().Name,
-                displayName: displayName,
-                ingredients: new List<IngredientElement>
-                {
-                    new(typeof(HempMooringRopeItem), 5, typeof(MiningSkill)),
-                },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<IronOreItem>(10),
-                    new CraftingElement<SandstoneItem>(20),
-                }
-            );
-            this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(IronOreMining),
-                start: 8,
-                skillType: typeof(MiningSkill)
-            );
-            this.Initialize(displayText: displayName, recipeType: typeof(IronOreMining));
-            CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipeFamily: this);
-        }
-    }
-
     [RequiresSkill(typeof(MiningSkill), 6)]
     public partial class IronOreBlasting : RecipeFamily
     {
@@ -100,38 +68,6 @@ namespace MinesQuarries
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreBoring));
             CraftingComponent.AddRecipe(tableType: typeof(IronMineObject), recipeFamily: this);
-        }
-    }
-
-    [RequiresSkill(typeof(MiningSkill), 5)]
-    public partial class CopperOreMining : RecipeFamily
-    {
-        public CopperOreMining()
-        {
-            Recipe recipe = new();
-            LocString displayName = Localizer.DoStr("Copper Mining");
-            recipe.Init(
-                name: this.GetType().Name,
-                displayName: displayName,
-                ingredients: new List<IngredientElement>
-                {
-                    new(typeof(HempMooringRopeItem), 5, typeof(MiningSkill)),
-                },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<CopperOreItem>(10),
-                    new CraftingElement<GraniteItem>(20),
-                }
-            );
-            this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(CopperOreMining),
-                start: 8,
-                skillType: typeof(MiningSkill)
-            );
-            this.Initialize(displayText: displayName, recipeType: typeof(CopperOreMining));
-            CraftingComponent.AddRecipe(tableType: typeof(CopperMineObject), recipeFamily: this);
         }
     }
 
@@ -199,38 +135,6 @@ namespace MinesQuarries
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 5)]
-    public partial class GoldOreMining : RecipeFamily
-    {
-        public GoldOreMining()
-        {
-            Recipe recipe = new();
-            LocString displayName = Localizer.DoStr("Gold Mining");
-            recipe.Init(
-                name: this.GetType().Name,
-                displayName: displayName,
-                ingredients: new List<IngredientElement>
-                {
-                    new(typeof(HempMooringRopeItem), 5, typeof(MiningSkill)),
-                },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<GoldOreItem>(10),
-                    new CraftingElement<GraniteItem>(20),
-                }
-            );
-            this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(GoldOreMining),
-                start: 8,
-                skillType: typeof(MiningSkill)
-            );
-            this.Initialize(displayText: displayName, recipeType: typeof(GoldOreMining));
-            CraftingComponent.AddRecipe(tableType: typeof(GoldMineObject), recipeFamily: this);
-        }
-    }
-
     [RequiresSkill(typeof(MiningSkill), 6)]
     public partial class GoldOreBlasting : RecipeFamily
     {
@@ -295,38 +199,6 @@ namespace MinesQuarries
         }
     }
 
-    [RequiresSkill(typeof(MiningSkill), 5)]
-    public partial class CoalMining : RecipeFamily
-    {
-        public CoalMining()
-        {
-            Recipe recipe = new();
-            LocString displayName = Localizer.DoStr("Coal Mining");
-            recipe.Init(
-                name: this.GetType().Name,
-                displayName: displayName,
-                ingredients: new List<IngredientElement>
-                {
-                    new(typeof(HempMooringRopeItem), 5, typeof(MiningSkill)),
-                },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<CoalItem>(10),
-                    new CraftingElement<ShaleItem>(20),
-                }
-            );
-            this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(CoalMining),
-                start: 8,
-                skillType: typeof(MiningSkill)
-            );
-            this.Initialize(displayText: displayName, recipeType: typeof(CoalMining));
-            CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipeFamily: this);
-        }
-    }
-
     [RequiresSkill(typeof(MiningSkill), 6)]
     public partial class CoalBlasting : RecipeFamily
     {
@@ -388,39 +260,6 @@ namespace MinesQuarries
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalBoring));
             CraftingComponent.AddRecipe(tableType: typeof(CoalMineObject), recipeFamily: this);
-        }
-    }
-
-    [RequiresSkill(typeof(MiningSkill), 5)]
-    public partial class SulfurMining : RecipeFamily
-    {
-        public SulfurMining()
-        {
-            Recipe recipe = new();
-            LocString displayName = Localizer.DoStr("Sulfur Mining");
-            recipe.Init(
-                name: this.GetType().Name,
-                displayName: displayName,
-                ingredients: new List<IngredientElement>
-                {
-                    new(typeof(HempMooringRopeItem), 5, typeof(MiningSkill)),
-                },
-                items: new List<CraftingElement>
-                {
-                    new CraftingElement<SulfurItem>(10),
-                    new CraftingElement<SandstoneItem>(10),
-                    new CraftingElement<LimestoneItem>(10),
-                }
-            );
-            this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(SulfurMining),
-                start: 8,
-                skillType: typeof(MiningSkill)
-            );
-            this.Initialize(displayText: displayName, recipeType: typeof(SulfurMining));
-            CraftingComponent.AddRecipe(tableType: typeof(SulfurMineObject), recipeFamily: this);
         }
     }
 
