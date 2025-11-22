@@ -233,7 +233,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Advanced Upgrade 3"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(AdvancedUpgradeLvl3Item), 1, true),
+                    new IngredientElement(typeof(AdvancedUpgradeLvl2Item), 1, true),
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl2Item), 1, true),
                 },
                 items: new List<CraftingElement>
@@ -299,7 +299,7 @@ namespace BunWulfEducational
                 displayName: Localizer.DoStr("Scholars Advanced Upgrade 4"),
                 ingredients: new List<IngredientElement>
                 {
-                    new IngredientElement(typeof(AdvancedUpgradeLvl4Item), 1, true),
+                    new IngredientElement(typeof(AdvancedUpgradeLvl3Item), 1, true),
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl3Item), 1, true),
                 },
                 items: new List<CraftingElement>
