@@ -51,7 +51,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
+                    new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -115,7 +115,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
+                    new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -179,7 +179,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
+                    new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -243,7 +243,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
+                    new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -308,7 +308,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(MiningChargeItem), 2, typeof(MiningSkill)),
+                    new(typeof(MiningChargeItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
