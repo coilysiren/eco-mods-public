@@ -125,37 +125,6 @@ namespace BunWulfEducational
         }
     }
 
-    [RequiresSkill(typeof(SurvivalistSkill), 1)]
-    public partial class ScholarsAdvancedUpgradeLvl1DowngradeRecipe : RecipeFamily
-    {
-        public ScholarsAdvancedUpgradeLvl1DowngradeRecipe()
-        {
-            var recipe = new Recipe();
-            recipe.Init(
-                name: "ScholarsAdvancedUpgradeLvl1Downgrade",
-                displayName: Localizer.DoStr("Scholars Advanced Upgrade 1 Downgrade"),
-                ingredients: new List<IngredientElement>
-                {
-                    new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl1Item), 1, true),
-                },
-                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl1Item>() }
-            );
-            this.Recipes = new List<Recipe> { recipe };
-            this.ExperienceOnCraft = 10;
-            this.LaborInCalories = CreateLaborInCaloriesValue(30, typeof(SurvivalistSkill));
-            this.CraftMinutes = CreateCraftTimeValue(
-                beneficiary: typeof(ScholarsAdvancedUpgradeLvl1DowngradeRecipe),
-                start: 1,
-                skillType: typeof(SurvivalistSkill)
-            );
-            this.Initialize(
-                displayText: Localizer.DoStr("Scholars Advanced Upgrade 1 Downgrade"),
-                recipeType: typeof(ScholarsAdvancedUpgradeLvl1DowngradeRecipe)
-            );
-            CraftingComponent.AddRecipe(tableType: typeof(LaboratoryObject), recipeFamily: this);
-        }
-    }
-
     [RequiresSkill(typeof(LibrarianSkill), 4)]
     public partial class ScholarsAdvancedUpgradeLvl2Recipe : RecipeFamily
     {
@@ -204,7 +173,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl2Item), 1, true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl2Item>() }
+                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl1Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 10;
@@ -270,7 +239,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl3Item), 1, true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl3Item>() }
+                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl2Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 10;
@@ -336,7 +305,7 @@ namespace BunWulfEducational
                 {
                     new IngredientElement(typeof(ScholarsAdvancedUpgradeLvl4Item), 1, true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl4Item>() }
+                items: new List<CraftingElement> { new CraftingElement<AdvancedUpgradeLvl3Item>() }
             );
             this.Recipes = new List<Recipe> { recipe };
             this.ExperienceOnCraft = 10;
