@@ -17,7 +17,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(WoodenShovelItem), 1, staticIngredient: true),
+                    new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<DirtItem>(100) }
             );
@@ -48,7 +48,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(WoodenShovelItem), 1, staticIngredient: true),
+                    new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<SandItem>(100) }
             );
@@ -79,7 +79,7 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(WoodenShovelItem), 1, staticIngredient: true),
+                    new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<ClayItem>(100) }
             );
