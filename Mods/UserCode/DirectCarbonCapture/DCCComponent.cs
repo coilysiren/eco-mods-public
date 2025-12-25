@@ -51,7 +51,8 @@ namespace DirectCarbonCapture
                 WorldLayer airPollution = WorldLayerManager.Obj.GetLayer(
                     LayerNames.AirPollutionSpread
                 );
-                this.RelevantPositions().ForEach(pos => airPollution.SetAtWorldPos(pos.XZ, 0f));
+                this.RelevantPositions()
+                    .ForEach(pos => airPollution.SetAtWorldPos(pos.XZ, 0.0001f));
                 airPollution.Modify();
                 // Lower global CO2 levels
                 WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
