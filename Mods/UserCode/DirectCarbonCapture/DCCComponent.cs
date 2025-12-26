@@ -15,9 +15,10 @@ namespace DirectCarbonCapture
     [RequireComponent(typeof(ChunkSubscriberComponent))]
     public class CarbonCaptureComponent : WorldObjectComponent
     {
-        private int radius;
+        private int radius = 0;
         private double lastCapture = 0;
-        private float pollutionTonsPerHour;
+        private float pollutionTonsPerHour = 0;
+        private float targetPollution = 0.0001f;
 
         public float UpdateFrequencySec => 60;
 
@@ -45,23 +46,65 @@ namespace DirectCarbonCapture
 
         private void ClearPollution()
         {
-            if (this.Enabled && WorldTime.Seconds > this.lastCapture + this.UpdateFrequencySec)
+            if (WorldTime.Seconds <= this.lastCapture + this.UpdateFrequencySec)
             {
-                // Clear localized air pollution
-                WorldLayer airPollution = WorldLayerManager.Obj.GetLayer(
-                    LayerNames.AirPollutionSpread
-                );
-                this.RelevantPositions()
-                    .ForEach(pos => airPollution.SetAtWorldPos(pos.XZ, 0.0001f));
-                airPollution.Modify();
-                // Lower global CO2 levels
+                return;
+            }
+
+            if (!this.Enabled)
+            {
+                this.lastCapture = WorldTime.Seconds;
+                return;
+            }
+
+            List<Vector3i> positions = [.. this.RelevantPositions()];
+            if (positions.Count == 0)
+            {
+                this.lastCapture = WorldTime.Seconds;
+                return;
+            }
+
+            WorldLayer airPollution = WorldLayerManager.Obj.GetLayer(LayerNames.AirPollutionSpread);
+
+            bool hasAllPositiveLocalPollution = positions.All(pos =>
+                airPollution.GetValue(new LayerPosition(pos.XZ, 1)) > this.targetPollution
+            );
+
+            bool hasAnyNegativeLocalPollution = positions.Any(pos =>
+                airPollution.GetValue(new LayerPosition(pos.XZ, 1)) < -this.targetPollution
+            );
+
+            bool pollutionShouldLower =
+                hasAllPositiveLocalPollution && !hasAnyNegativeLocalPollution;
+
+            bool pollutionShouldRaise =
+                hasAnyNegativeLocalPollution && !hasAllPositiveLocalPollution;
+
+            float tonsDelta = this.pollutionTonsPerHour * this.UpdateFrequencySec / 3600f;
+
+            if (pollutionShouldLower)
+            {
                 WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
                     this.Parent.Position3i,
-                    this.pollutionTonsPerHour * this.UpdateFrequencySec / 3600
+                    tonsDelta
                 );
-                // Record the current time so we don't clear pollution too often
-                this.lastCapture = WorldTime.Seconds;
             }
+            else if (pollutionShouldRaise)
+            {
+                WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
+                    this.Parent.Position3i,
+                    -tonsDelta
+                );
+            }
+
+            foreach (Vector3i pos in positions)
+            {
+                airPollution.SetAtWorldPos(pos.XZ, this.targetPollution);
+            }
+
+            airPollution.Modify();
+
+            this.lastCapture = WorldTime.Seconds;
         }
 
         public IEnumerable<Vector3i> RelevantPositions()
