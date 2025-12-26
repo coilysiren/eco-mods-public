@@ -57,7 +57,7 @@ namespace DirectCarbonCapture
                 return;
             }
 
-            List<Vector3i> positions = [.. this.RelevantPositions()];
+            List<Vector3i> positions = this.RelevantPositions().ToList();
             if (positions.Count == 0)
             {
                 this.lastCapture = WorldTime.Seconds;
