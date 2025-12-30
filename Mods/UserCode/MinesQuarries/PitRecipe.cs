@@ -23,10 +23,10 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<DirtPitItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(DirtPit),
-                start: 1,
+                start: 10,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(DirtPit));
@@ -45,17 +45,17 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(WoodenShovelItem), 1, staticIngredient: true),
+                    new(typeof(IronShovelItem), 1, staticIngredient: true),
                     new(typeof(StockpileItem), 1, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<SandPitItem>() }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SandPit),
-                start: 1,
+                start: 10,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SandPit));
@@ -74,17 +74,17 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(WoodenShovelItem), 1, staticIngredient: true),
+                    new(typeof(IronShovelItem), 1, staticIngredient: true),
                     new(typeof(StockpileItem), 1, staticIngredient: true),
                 },
                 items: new List<CraftingElement> { new CraftingElement<ClayPitItem>() }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ClayPit),
-                start: 1,
+                start: 10,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(ClayPit));

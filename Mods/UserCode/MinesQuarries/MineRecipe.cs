@@ -25,7 +25,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<IronMineItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronMine),
                 start: 10,
@@ -57,7 +57,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<CopperMineItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperMine),
                 start: 10,
@@ -89,7 +89,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<GoldMineItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldMine),
                 start: 10,
@@ -121,7 +121,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<CoalMineItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CoalMine),
                 start: 10,
@@ -153,7 +153,7 @@ namespace MinesQuarries
                 items: new List<CraftingElement> { new CraftingElement<SulfurMineItem>() }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = CreateLaborInCaloriesValue(100);
+            this.LaborInCalories = CreateLaborInCaloriesValue(1000);
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SulfurMine),
                 start: 10,

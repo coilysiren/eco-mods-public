@@ -25,8 +25,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedIronOreItem>(30),
-                    new CraftingElement<CrushedSandstoneItem>(30),
+                    new CraftingElement<CrushedIronOreItem>(60),
+                    new CraftingElement<CrushedSandstoneItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -57,8 +57,7 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedIronOreItem>(30),
-                    new CraftingElement<CrushedSandstoneItem>(30),
+                    new CraftingElement<CrushedIronOreItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -91,8 +90,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedCopperOreItem>(30),
-                    new CraftingElement<CrushedGraniteItem>(30),
+                    new CraftingElement<CrushedCopperOreItem>(60),
+                    new CraftingElement<CrushedGraniteItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -123,8 +122,7 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedCopperOreItem>(30),
-                    new CraftingElement<CrushedGraniteItem>(30),
+                    new CraftingElement<CrushedCopperOreItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -157,8 +155,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedGoldOreItem>(30),
-                    new CraftingElement<CrushedGraniteItem>(30),
+                    new CraftingElement<CrushedGoldOreItem>(60),
+                    new CraftingElement<CrushedGraniteItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -189,8 +187,7 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedGoldOreItem>(30),
-                    new CraftingElement<CrushedGraniteItem>(30),
+                    new CraftingElement<CrushedGoldOreItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -223,8 +220,8 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedCoalItem>(30),
-                    new CraftingElement<CrushedShaleItem>(30),
+                    new CraftingElement<CrushedCoalItem>(60),
+                    new CraftingElement<CrushedShaleItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -255,8 +252,7 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedCoalItem>(30),
-                    new CraftingElement<CrushedShaleItem>(30),
+                    new CraftingElement<CrushedCoalItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -289,9 +285,9 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedSulfurItem>(30),
-                    new CraftingElement<CrushedSandstoneItem>(15),
-                    new CraftingElement<CrushedLimestoneItem>(15),
+                    new CraftingElement<CrushedSulfurItem>(60),
+                    new CraftingElement<CrushedSandstoneItem>(30),
+                    new CraftingElement<CrushedLimestoneItem>(30),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
@@ -322,9 +318,7 @@ namespace MinesQuarries
                 },
                 items: new List<CraftingElement>
                 {
-                    new CraftingElement<CrushedSulfurItem>(30),
-                    new CraftingElement<CrushedSandstoneItem>(15),
-                    new CraftingElement<CrushedLimestoneItem>(15),
+                    new CraftingElement<CrushedSulfurItem>(60),
                 }
             );
             this.Recipes = new List<Recipe> { recipe };

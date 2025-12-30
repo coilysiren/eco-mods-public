@@ -17,19 +17,19 @@ namespace MinesQuarries
                 displayName: displayName,
                 ingredients: new List<IngredientElement>
                 {
-                    new(typeof(IronShovelItem), 1, staticIngredient: true),
+                    new(typeof(WoodenShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<DirtItem>(100) }
+                items: new List<CraftingElement> { new CraftingElement<DirtItem>(200) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                2000,
+                4000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(DirtDigging),
-                start: 5,
+                start: 4,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(DirtDigging));
@@ -50,17 +50,17 @@ namespace MinesQuarries
                 {
                     new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<SandItem>(100) }
+                items: new List<CraftingElement> { new CraftingElement<SandItem>(200) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                2000,
+                4000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SandDigging),
-                start: 5,
+                start: 4,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SandDigging));
@@ -81,17 +81,17 @@ namespace MinesQuarries
                 {
                     new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<ClayItem>(100) }
+                items: new List<CraftingElement> { new CraftingElement<ClayItem>(200) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
             this.LaborInCalories = this.CreateLaborInCaloriesValue(
-                2000,
+                4000,
                 typeof(SelfImprovementSkill)
             );
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(ClayDigging),
-                start: 5,
+                start: 4,
                 skillType: typeof(SelfImprovementSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(ClayDigging));
