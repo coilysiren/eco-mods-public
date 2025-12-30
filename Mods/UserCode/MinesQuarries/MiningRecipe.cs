@@ -30,10 +30,10 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronOreBlasting),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreBlasting));
@@ -61,10 +61,10 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(IronOreBoring),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(IronOreBoring));
@@ -95,10 +95,10 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperOreBlasting),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperOreBlasting));
@@ -126,10 +126,10 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CopperOreBoring),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CopperOreBoring));
@@ -160,10 +160,10 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldOreBlasting),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldOreBlasting));
@@ -191,10 +191,10 @@ namespace MinesQuarries
                 }
             );
             this.Recipes = new List<Recipe> { recipe };
-            this.LaborInCalories = this.CreateLaborInCaloriesValue(100, typeof(MiningSkill));
+            this.LaborInCalories = this.CreateLaborInCaloriesValue(4000, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(GoldOreBoring),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(GoldOreBoring));
@@ -228,7 +228,7 @@ namespace MinesQuarries
             this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CoalBlasting),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalBlasting));
@@ -259,7 +259,7 @@ namespace MinesQuarries
             this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(CoalBoring),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(CoalBoring));
@@ -294,7 +294,7 @@ namespace MinesQuarries
             this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SulfurBlasting),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SulfurBlasting));
@@ -325,7 +325,7 @@ namespace MinesQuarries
             this.LaborInCalories = this.CreateLaborInCaloriesValue(600, typeof(MiningSkill));
             this.CraftMinutes = CreateCraftTimeValue(
                 beneficiary: typeof(SulfurBoring),
-                start: 8,
+                start: 4,
                 skillType: typeof(MiningSkill)
             );
             this.Initialize(displayText: displayName, recipeType: typeof(SulfurBoring));
