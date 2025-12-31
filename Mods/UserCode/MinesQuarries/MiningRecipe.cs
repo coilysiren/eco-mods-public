@@ -20,8 +20,8 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(IronPickaxeItem), 1, staticIngredient: true),
-                    new(typeof(HempMooringRopeItem), 10, typeof(MiningSkill)),
-                    new(typeof(DynamiteItem), 3, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 1, typeof(MiningSkill)),
+                    new(typeof(DynamiteItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -85,8 +85,8 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(IronPickaxeItem), 1, staticIngredient: true),
-                    new(typeof(HempMooringRopeItem), 10, typeof(MiningSkill)),
-                    new(typeof(DynamiteItem), 3, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 1, typeof(MiningSkill)),
+                    new(typeof(DynamiteItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -150,8 +150,8 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(IronPickaxeItem), 1, staticIngredient: true),
-                    new(typeof(HempMooringRopeItem), 10, typeof(MiningSkill)),
-                    new(typeof(DynamiteItem), 3, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 1, typeof(MiningSkill)),
+                    new(typeof(DynamiteItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -215,8 +215,8 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(IronPickaxeItem), 1, staticIngredient: true),
-                    new(typeof(HempMooringRopeItem), 10, typeof(MiningSkill)),
-                    new(typeof(DynamiteItem), 3, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 1, typeof(MiningSkill)),
+                    new(typeof(DynamiteItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
@@ -280,8 +280,8 @@ namespace MinesQuarries
                 ingredients: new List<IngredientElement>
                 {
                     new(typeof(IronPickaxeItem), 1, staticIngredient: true),
-                    new(typeof(HempMooringRopeItem), 10, typeof(MiningSkill)),
-                    new(typeof(DynamiteItem), 3, typeof(MiningSkill)),
+                    new(typeof(HempMooringRopeItem), 1, typeof(MiningSkill)),
+                    new(typeof(DynamiteItem), 1, typeof(MiningSkill)),
                 },
                 items: new List<CraftingElement>
                 {
