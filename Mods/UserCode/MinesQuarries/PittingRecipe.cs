@@ -19,7 +19,7 @@ namespace MinesQuarries
                 {
                     new(typeof(WoodenShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<DirtItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<DirtItem>(100) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
@@ -50,7 +50,7 @@ namespace MinesQuarries
                 {
                     new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<SandItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<SandItem>(400) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
@@ -81,7 +81,7 @@ namespace MinesQuarries
                 {
                     new(typeof(IronShovelItem), 1, staticIngredient: true),
                 },
-                items: new List<CraftingElement> { new CraftingElement<ClayItem>(200) }
+                items: new List<CraftingElement> { new CraftingElement<ClayItem>(400) }
             );
             this.ExperienceOnCraft = 0;
             this.Recipes = new List<Recipe> { recipe };
