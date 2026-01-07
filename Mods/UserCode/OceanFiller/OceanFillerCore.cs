@@ -1,14 +1,21 @@
 namespace OceanFiller
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Eco.Gameplay.Players;
+    using Eco.Shared.Localization;
     using Eco.Shared.Math;
     using Eco.Shared.States;
-    using Eco.Shared.Localization;
     using Eco.Simulation.WorldLayers;
-    using Eco.Gameplay.Players;
 
     public class OceanFillerCore
     {
-        public static void SetBiome(Vector2i worldPos, BiomeType previousBiome, BiomeType targetBiome)
+        public static void SetBiome(
+            Vector2i worldPos,
+            BiomeType previousBiome,
+            BiomeType targetBiome
+        )
         {
             WorldLayerManager.Obj.GetLayer(previousBiome.GetName()).SetAtWorldPos(worldPos, 0f);
 
