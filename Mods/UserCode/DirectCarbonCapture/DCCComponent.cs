@@ -89,13 +89,6 @@ namespace DirectCarbonCapture
                     tonsDelta
                 );
             }
-            else if (pollutionShouldRaise)
-            {
-                WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
-                    this.Parent.Position3i,
-                    -tonsDelta
-                );
-            }
 
             foreach (Vector3i pos in positions)
             {
