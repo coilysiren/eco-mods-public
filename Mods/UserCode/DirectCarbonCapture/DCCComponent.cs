@@ -17,7 +17,7 @@ namespace DirectCarbonCapture
     {
         private int radius = 0;
         private double lastCapture = 0;
-        private float pollutionTonsPerHour = 0;
+        private float pollutionRemovalPerHour = 0;
         private float targetPollution = 0.0001f;
 
         public float UpdateFrequencySec => 60;
@@ -32,9 +32,9 @@ namespace DirectCarbonCapture
 
         public bool IgnorePlantUpdates { get; }
 
-        public void Initialize(float pollutionTonsPerHour, int radius)
+        public void Initialize(float pollutionRemovalPerHour, int radius)
         {
-            this.pollutionTonsPerHour = pollutionTonsPerHour;
+            this.pollutionRemovalPerHour = pollutionRemovalPerHour;
             this.radius = radius;
         }
 
@@ -80,13 +80,13 @@ namespace DirectCarbonCapture
             bool pollutionShouldRaise =
                 hasAnyNegativeLocalPollution && !hasAllPositiveLocalPollution;
 
-            float tonsDelta = this.pollutionTonsPerHour * this.UpdateFrequencySec / 3600f;
+            float pollutionToRemove = this.pollutionRemovalPerHour * this.UpdateFrequencySec / 3600f;
 
             if (pollutionShouldLower)
             {
                 WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
                     this.Parent.Position3i,
-                    tonsDelta
+                    pollutionToRemove // This adds a negative number
                 );
             }
 
