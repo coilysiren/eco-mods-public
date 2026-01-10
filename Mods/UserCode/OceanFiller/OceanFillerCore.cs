@@ -20,6 +20,8 @@ namespace OceanFiller
             WorldLayerManager.Obj.GetLayer(previousBiome.GetName()).SetAtWorldPos(worldPos, 0f);
 
             WorldLayerManager.Obj.GetLayer(targetBiome.GetName()).SetAtWorldPos(worldPos, 1f);
+
+            WorldLayerManager.Obj.SaveAll();
         }
 
         public static void TurnDeepOceanIntoShallowOcean(Vector2i worldPos)
