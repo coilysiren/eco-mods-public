@@ -41,7 +41,16 @@ namespace DirectCarbonCapture
         public override void Tick()
         {
             base.Tick();
-            this.ClearPollution();
+            this.ClearLocalPollution();
+            this.ClearGlobalPollution();
+        }
+
+        private ClearGlobalPollution()
+        {
+            WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
+                this.Parent.Position3i,
+                pollutionToRemove // This adds a negative number
+            );
         }
 
         private void ClearPollution()
@@ -84,18 +93,12 @@ namespace DirectCarbonCapture
 
             if (pollutionShouldLower)
             {
-                WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
-                    this.Parent.Position3i,
-                    pollutionToRemove // This adds a negative number
-                );
+                foreach (Vector3i pos in positions)
+                {
+                    airPollution.SetAtWorldPos(pos.XZ, this.targetPollution);
+                }    
+                airPollution.Modify();
             }
-
-            foreach (Vector3i pos in positions)
-            {
-                airPollution.SetAtWorldPos(pos.XZ, this.targetPollution);
-            }
-
-            airPollution.Modify();
 
             this.lastCapture = WorldTime.Seconds;
         }
