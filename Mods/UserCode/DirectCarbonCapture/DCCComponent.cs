@@ -44,7 +44,7 @@ namespace DirectCarbonCapture
             this.ClearGlobalPollution();
         }
 
-        private void ClearPollution()
+        private void ClearLocalPollution()
         {
             if (WorldTime.Seconds <= this.lastLocalCapture + 60)
             {
