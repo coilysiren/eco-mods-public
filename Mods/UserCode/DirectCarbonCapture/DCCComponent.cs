@@ -46,7 +46,7 @@ namespace DirectCarbonCapture
 
         private void ClearLocalPollution()
         {
-            if (WorldTime.Seconds <= this.lastLocalCapture + 60)
+            if (WorldTime.Seconds <= this.lastLocalCapture + 600)
             {
                 return;
             }
@@ -90,7 +90,7 @@ namespace DirectCarbonCapture
 
         private void ClearGlobalPollution()
         {
-            if (WorldTime.Seconds <= this.lastGlobalCapture + 60)
+            if (WorldTime.Seconds <= this.lastGlobalCapture + 600)
             {
                 return;
             }
@@ -100,7 +100,7 @@ namespace DirectCarbonCapture
                 return;
             }
 
-            float pollutionChange = this.pollutionChangePerHour / 60f;
+            float pollutionChange = this.pollutionChangePerHour / 6f;
             WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
                 this.Parent.Position3i,
                 pollutionChange // pollutionChange is always a negative number
