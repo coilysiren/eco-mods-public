@@ -18,8 +18,8 @@ namespace DirectCarbonCapture
         private int radius = 0;
         private double lastLocalCapture = 0;
         private double lastGlobalCapture = 0;
-        private float pollutionRemovalPerHour = 0;
-        private float targetPollution = 0.0001f;
+        private float pollutionChangePerHour = 0;
+        private float targetPollution = 0.01f;
 
         public float MaxQueuedChunkUpdateTime => 60;
 
@@ -31,9 +31,9 @@ namespace DirectCarbonCapture
 
         public bool IgnorePlantUpdates { get; }
 
-        public void Initialize(float pollutionRemovalPerHour, int radius)
+        public void Initialize(float pollutionChangePerHour, int radius)
         {
-            this.pollutionRemovalPerHour = pollutionRemovalPerHour;
+            this.pollutionChangePerHour = pollutionChangePerHour;
             this.radius = radius;
         }
 
@@ -57,7 +57,7 @@ namespace DirectCarbonCapture
             }
 
             List<Vector3i> positions = this.RelevantPositions().ToList();
-            if (positions.Count == 0)
+            if (positions.Count == 0) // should never happen
             {
                 this.lastLocalCapture = WorldTime.Seconds;
                 return;
@@ -76,22 +76,19 @@ namespace DirectCarbonCapture
             bool pollutionShouldLower =
                 hasAllPositiveLocalPollution && !hasAnyNegativeLocalPollution;
 
-            bool pollutionShouldRaise =
-                hasAnyNegativeLocalPollution && !hasAllPositiveLocalPollution;
-
             if (pollutionShouldLower)
             {
                 foreach (Vector3i pos in positions)
                 {
                     airPollution.SetAtWorldPos(pos.XZ, this.targetPollution);
-                }    
+                }
                 airPollution.Modify();
             }
 
             this.lastLocalCapture = WorldTime.Seconds;
         }
 
-        private ClearGlobalPollution()
+        private void ClearGlobalPollution()
         {
             if (WorldTime.Seconds <= this.lastGlobalCapture + 60)
             {
@@ -103,10 +100,10 @@ namespace DirectCarbonCapture
                 return;
             }
 
-            float pollutionToRemove = this.pollutionRemovalPerHour / 60f;
+            float pollutionChange = this.pollutionChangePerHour / 60f;
             WorldLayerManager.Obj.ClimateSim.AddAirPollutionTons(
                 this.Parent.Position3i,
-                pollutionToRemove // This adds a negative number
+                pollutionChange // pollutionChange is always a negative number
             );
 
             this.lastGlobalCapture = WorldTime.Seconds;
